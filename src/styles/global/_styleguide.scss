@@ -1,0 +1,30 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  padding: 2rem;
+}
+
+body {
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: 300;
+}
+
+h1 {
+  line-height: 1.2em;
+}
+
+h2 {
+  letter-spacing: 0.025em;
+  line-height: 1.2em;
+}
+
+h4 {
+  line-height: 2em;
+}
+
+p {
+  letter-spacing: 0.025em;
+  line-height: 1.75em;
+}

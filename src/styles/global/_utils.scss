@@ -1,0 +1,139 @@
+/*
+Creates the following classes (for padding AND margin):
+.padding-none
+.padding
+.padding-left-none (etc)
+.padding-left-half (etc)
+.padding-left (etc)
+.padding-left-2x (etc)
+(all the way through to:)
+.padding-left-10x (etc)
+.padding-vertical-half
+*/
+
+$composable-unit: $column-gutter;
+
+$sizing-attributes: 'padding', 'margin';
+@each $attr in $sizing-attributes {
+  .#{$attr}-none {
+    #{$attr}: 0;
+  }
+  .#{$attr} {
+    #{$attr}: $composable-unit;
+  }
+  /* Generate Direction Based Spacing Classes */
+  $directions: 'top', 'left', 'bottom', 'right';
+  @each $direction in $directions {
+    .#{$attr}-#{$direction}-none {
+      #{$attr}-#{$direction}: 0;
+    }
+    .#{$attr}-#{$direction}-half {
+      #{$attr}-#{$direction}: $composable-unit/2;
+    }
+    .#{$attr}-#{$direction} {
+      #{$attr}-#{$direction}: $composable-unit;
+    }
+    @for $i from 2 through 10 {
+      .#{$attr}-#{$direction}-#{$i}x {
+        #{$attr}-#{$direction}: $composable-unit *$i;
+      }
+    }
+    /* Generate Pole Based Spacing Classes */
+    $poles: 'vertical', 'horizontal';
+    @each $pole in $poles {
+      .#{$attr}-#{$pole}-none {
+        @if $pole == 'vertical' {
+          #{$attr}-top: 0;
+          #{$attr}-bottom: 0;
+        } @else {
+          #{$attr}-left: 0;
+          #{$attr}-right: 0;
+        }
+      }
+      .#{$attr}-#{$pole}-half {
+        @if $pole == 'vertical' {
+          #{$attr}-top: $composable-unit /2;
+          #{$attr}-bottom: $composable-unit /2;
+        } @else {
+          #{$attr}-left: $composable-unit /2;
+          #{$attr}-right: $composable-unit /2;
+        }
+      }
+      .#{$attr}-#{$pole} {
+        @if $pole == 'vertical' {
+          #{$attr}-top: $composable-unit;
+          #{$attr}-bottom: $composable-unit;
+        } @else {
+          #{$attr}-left: $composable-unit;
+          #{$attr}-right: $composable-unit;
+        }
+      }
+      @for $i from 2 through 10 {
+        .#{$attr}-#{$pole}-#{$i}x {
+          @if $pole == 'vertical' {
+            #{$attr}-top: $composable-unit *$i;
+            #{$attr}-bottom: $composable-unit *$i;
+          } @else {
+            #{$attr}-left: $composable-unit *$i;
+            #{$attr}-right: $composable-unit *$i;
+          }
+        }
+      }
+    }
+  }
+}
+
+.center-background-img {
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.z-0 {
+  z-index: 0;
+}
+.z-1 {
+  z-index: 1;
+}
+.z-2 {
+  z-index: 2;
+}
+
+.top-5x {
+  top: $column-gutter*5;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.prevent-scroll {
+  overflow: hidden;
+  position: relative;
+ }
+
+.pointer {
+  cursor: pointer;
+}
+
+.margin-auto {
+  margin: 0 auto;
+}
+
+.display-none { display: none; }
