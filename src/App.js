@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import './styles/app.scss';
 
-import Header from './Header';
-import HomeBox from './HomeBox';
-import Footer from './Footer';
+import Header from './components/Header';
+import HomeBox from './components/HomeBox';
+import Footer from './components/Footer';
 
 class App extends Component {
   render() {
