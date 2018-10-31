@@ -13,17 +13,17 @@ export default class Footer extends Component {
                 <i class="fab fa-github"></i>
               </a>
             </li>
-            <li className="inline-block">
+            <li className="inline-block ml2">
               <a href="https://www.linkedin.com/in/danhemerlein/" target="_blank" rel="noopener noreferrer" title="LinkedIn Icon">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </li>
-            <li className="inline-block">
+            <li className="inline-block ml2">
               <a href="https://open.spotify.com/user/123676733/playlist/5apn8cxFTIuQfDiRSv8zdn?si=MLCfQOJTRhKaR7hem34gRg" target="_blank" rel="noopener noreferrer" title="Headphone Icon">
                 <i class="fa fa-headphones" aria-hidden="true"></i>
               </a>
             </li>
-            <li className="inline-block">
+            <li className="inline-block ml2">
               <a href="https://www.instagram.com/danhemerlein/" target="_blank" rel="noopener noreferrer" title="Instagram Icon">
                 <i class="fab fa-instagram"></i>
               </a>
