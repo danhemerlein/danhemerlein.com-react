@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 
 import './Header.scss'
 
@@ -14,8 +16,8 @@ export default class Header extends Component {
           <div className="flex justify-end col-6">
             <nav rol="navigation">
               <ul className="list-style-none p0">
-                <li className="inline-block">Keep In Touch</li>
-                <li className="inline-block ml2">About</li>
+                <li className="inline-block">keep in touch</li>
+                <li className="inline-block ml2"><Link to="/dansbook">about</Link></li>
               </ul>
             </nav>
           </div>
