@@ -14,7 +14,7 @@ export default class Header extends Component {
             <h2 className="m0">Creative Coder / Music Producer</h2>
           </div>
           <div className="flex justify-end col-6">
-            <nav rol="navigation">
+            <nav role="navigation">
               <ul className="list-style-none p0">
                 <li className="inline-block">keep in touch</li>
                 <li className="inline-block ml2"><Link to="/dansbook">about</Link></li>

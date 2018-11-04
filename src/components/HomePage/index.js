@@ -9,16 +9,16 @@ import Footer from '../Footer';
 class HomePage extends Component {
   render() {
     return (
-      <div>
+      <div className="HomePage">
         <header>
           <Header />
         </header>
-        <div class="my2">
-          <div class="flex">
+        <div className="my2">
+          <div className="flex">
             <HomeBox header="code" />
             <HomeBox header="music" />
           </div>
-          <div class="flex">
+          <div className="flex">
             <HomeBox header="moodboard" />
             <HomeBox header="keep in touch" />
           </div>

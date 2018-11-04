@@ -32,3 +32,13 @@ p {
   letter-spacing: 0.025em;
   line-height: 1.75em;
 }
+
+.bg-img-contain {
+  background-size: contain;
+}
+
+.center-bg-img {
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
