@@ -1,0 +1,26 @@
+$colors: (
+  'light-grey': #f9f9f9,
+  'grey': #d3d3d3,
+  'white': #fff,
+  'black': #000,
+  'blue': #0000ff,
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@each $color-name, $value in $colors {
+  .color-#{$color-name},
+  .text-#{$color-name} {
+    color: $value;
+  }
+
+  .bg-#{$color-name} {
+    background-color: $value;
+  }
+
+  .border-color-#{$color-name} {
+    border-color: $value;
+  }
+}

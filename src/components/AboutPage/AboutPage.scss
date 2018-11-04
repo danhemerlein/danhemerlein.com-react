@@ -1,3 +1,10 @@
 .AboutPage {
-
+  &__main-image {
+    top: 50%;
+    left: 3%;
+  }
+  &__main-image > img {
+    border-radius: inherit;
+    box-shadow: 0 0 0 1px #f9f9f9,
+  }
 }
