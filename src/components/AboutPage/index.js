@@ -37,7 +37,7 @@ class AboutPage extends Component {
                         <span>Friends <span>1,316</span></span>
                       </li>
                       <li className="inline-block">
-                        <span>Photo Journal</span>
+                        <span>Moodboard</span>
                       </li>
                     </ul>
                   </div>
