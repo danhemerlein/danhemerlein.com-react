@@ -8,6 +8,7 @@ import AboutPage from './components/AboutPage';
 import Code from './components/Code';
 import MusicPage from './components/MusicPage';
 import Contact from './components/Contact';
+import Moodboard from './components/Moodboard';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path="/code" component={Code} />
             <Route exact path="/music" component={MusicPage} />
             <Route exact path="/keepintouch" component={Contact} />
+            <Route exact path="/moodboard" component={Moodboard} />
           </div>
         </Router>
       </div>
