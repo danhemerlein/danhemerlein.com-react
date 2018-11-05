@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import './HomePage.scss';
 
@@ -15,12 +16,28 @@ class HomePage extends Component {
         </header>
         <div className="my2">
           <div className="flex">
-            <HomeBox header="code" />
-            <HomeBox header="music" />
+            <div className="col-12 mr1 mb1">
+              <Link to="/code">
+                <HomeBox header="code" />            
+              </Link>
+            </div>
+            <div className="col-12 ml1 mb1">
+              <Link to="/music">
+                <HomeBox header="music" />
+              </Link>
+            </div>
           </div>
           <div className="flex">
-            <HomeBox header="moodboard" />
-            <HomeBox header="keep in touch" />
+            <div className="col-12 mr1 mt1">
+              <Link to="/moodboard">              
+                <HomeBox header="moodboard" />
+              </Link>
+            </div>
+            <div className="col-12 ml1 mt1">
+              <Link to="keepintouch">
+                <HomeBox header="keep in touch" />
+              </Link>
+            </div>
           </div>
         </div>
         <footer>
