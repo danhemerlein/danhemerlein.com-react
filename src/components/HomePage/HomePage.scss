@@ -1,3 +1,34 @@
 .HomePage {
 
+  &__top-left {
+    -webkit-animation: slide-right 2s;
+    -moz-animation: slide-right 2s;
+    -ms-animation: slide-right 2s;
+    -o-animation: slide-right 2s;
+    animation: slide-right 2s;
+  }
+
+  &__bottom-left {
+    -webkit-animation: slide-right-wide 2.5s;
+    -moz-animation: slide-right-wide 2.5s;
+    -ms-animation: slide-right-wide 2.5s;
+    -o-animation: slide-right-wide 2.5s;
+    animation: slide-right-wide 2.5s;
+  }
+
+  &__top-right {
+    -webkit-animation: slide-left 2s;
+    -moz-animation: slide-left 2s;
+    -ms-animation: slide-left 2s;
+    -o-animation: slide-left 2s;
+    animation: slide-left 2s;
+  }
+
+  &__bottom-right {
+    -webkit-animation: slide-left-wide 2.5s;
+    -moz-animation: slide-left-wide 2.5s;
+    -ms-animation: slide-left-wide 2.5s;
+    -o-animation: slide-left-wide 2.5s;
+    animation: slide-left-wide 2.5s;
+  }
 }

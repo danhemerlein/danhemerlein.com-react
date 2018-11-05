@@ -1,0 +1,54 @@
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translate3d(-1%, 0, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+}
+
+@keyframes slide-right-wide {
+  0% {
+    transform: translate3d(-3%, 0, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translate3d(1%, 0, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+}
+
+@keyframes slide-left-wide {
+  0% {
+    transform: translate3d(3%, 0, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+}
