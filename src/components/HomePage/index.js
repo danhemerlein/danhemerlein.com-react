@@ -6,6 +6,7 @@ import './HomePage.scss';
 import Header from '../Header';
 import HomeBox from '../HomeBox';
 import Footer from '../Footer';
+import MoodboardIcon from '../icons/Moodboard';
 
 class HomePage extends Component {
   render() {
@@ -23,7 +24,10 @@ class HomePage extends Component {
             </div>
             <div className="HomePage__bottom-left col-12 mt1">
               <Link to="/moodboard">
-                <HomeBox header="moodboard" />
+                <HomeBox 
+                    header="moodboard"
+                    icon={<MoodboardIcon />}
+                />
               </Link>
             </div>
 
