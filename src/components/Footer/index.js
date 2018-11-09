@@ -11,22 +11,22 @@ export default class Footer extends Component {
             <ul className="Footer__list list-style-none p0">
               <li className="inline-block">
                 <a href="https://github.com/danhemerlein" target="_blank" rel="noopener noreferrer" titl="Github Icon">
-                  <span>Github</span>
+                  <span>github</span>
                 </a>
               </li>
               <li className="inline-block ml2">
                 <a href="https://www.linkedin.com/in/danhemerlein/" target="_blank" rel="noopener noreferrer" title="LinkedIn Icon">
-                  <span>LinkedIn</span>
+                  <span>linkedin</span>
                 </a>
               </li>
               <li className="inline-block ml2">
                 <a href="https://open.spotify.com/user/123676733/playlist/5apn8cxFTIuQfDiRSv8zdn?si=MLCfQOJTRhKaR7hem34gRg" target="_blank" rel="noopener noreferrer" title="Headphone Icon">
-                  <span>Spotify</span>
+                  <span>spotify</span>
                 </a>
               </li>
               <li className="inline-block ml2">
                 <a href="https://www.instagram.com/danhemerlein/" target="_blank" rel="noopener noreferrer" title="Instagram Icon">
-                  <span>Instagram</span>
+                  <span>instagram</span>
                 </a>
               </li>
             </ul>

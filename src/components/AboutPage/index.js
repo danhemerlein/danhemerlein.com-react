@@ -12,8 +12,8 @@ class AboutPage extends Component {
         <header>
           <Header />
         </header>
-        <div className="AboutPage flex justify-center">
-          
+        <div className="AboutPage">
+          this is the about page
         </div>
         <footer>
           <Footer />
