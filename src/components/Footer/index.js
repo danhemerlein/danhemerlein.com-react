@@ -21,7 +21,7 @@ export default class Footer extends Component {
               </li>
               <li className="inline-block ml2">
                 <a href="https://open.spotify.com/user/123676733/playlist/5apn8cxFTIuQfDiRSv8zdn?si=MLCfQOJTRhKaR7hem34gRg" target="_blank" rel="noopener noreferrer" title="Headphone Icon">
-                  <span>Listen</span>
+                  <span>Spotify</span>
                 </a>
               </li>
               <li className="inline-block ml2">

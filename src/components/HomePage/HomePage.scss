@@ -6,6 +6,7 @@
     -ms-animation: slide-right 2s;
     -o-animation: slide-right 2s;
     animation: slide-right 2s;
+    margin-bottom: .25rem;
   }
 
   &__bottom-left {
@@ -14,6 +15,7 @@
     -ms-animation: slide-right-wide 2.5s;
     -o-animation: slide-right-wide 2.5s;
     animation: slide-right-wide 2.5s;
+    margin-top: .25rem;
   }
 
   &__top-right {

@@ -20,7 +20,7 @@ class HomePage extends Component {
         </header>
         <div className="my2 flex">
           <div className="flex flex-column col-12">
-            <div className="HomePage__top-left col-12 mb1">
+            <div className="HomePage__top-left col-12">
               <Link to="/code">
                 <HomeBox
                     header="code"
@@ -39,7 +39,7 @@ class HomePage extends Component {
 
           </div>
           <div className="flex flex-column col-12">
-            <div className="HomePage__top-right col-12 ml2 mb1">
+            <div className="HomePage__top-right col-12 ml1">
               <Link to="/music">
                 <HomeBox
                     header="music"
@@ -47,7 +47,7 @@ class HomePage extends Component {
                 />
               </Link>
             </div>
-            <div className="HomePage__bottom-right col-12 ml2 mt1">
+            <div className="HomePage__bottom-right col-12 ml1 mt1">
               <Link to="keepintouch">
                 <HomeBox
                     header="keep in touch"
