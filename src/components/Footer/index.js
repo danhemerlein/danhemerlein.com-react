@@ -7,7 +7,7 @@ export default class Footer extends Component {
     return (
       <div className="Footer">
         <div className="flex justify-center items-center">
-          <div class="col-6">
+          <div className="col-6">
             <ul className="Footer__list list-style-none p0">
               <li className="inline-block">
                 <a href="https://github.com/danhemerlein" target="_blank" rel="noopener noreferrer" titl="Github Icon">
@@ -31,7 +31,7 @@ export default class Footer extends Component {
               </li>
             </ul>
           </div>
-          <div class="col-6 flex justify-end">
+          <div className="col-6 flex justify-end">
             <small className="Footer__small self-end">
               Copyright Dan Hemerlein 2018
             </small>
