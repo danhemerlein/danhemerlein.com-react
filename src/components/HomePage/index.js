@@ -7,6 +7,9 @@ import Header from '../Header';
 import HomeBox from '../HomeBox';
 import Footer from '../Footer';
 import MoodboardIcon from '../icons/Moodboard';
+import MusicIcon from '../icons/Music';
+import WebsiteIcon from '../icons/Website';
+import ContactIcon from '../icons/Contact';
 
 class HomePage extends Component {
   render() {
@@ -19,12 +22,15 @@ class HomePage extends Component {
           <div className="flex flex-column col-12">
             <div className="HomePage__top-left col-12 mb1">
               <Link to="/code">
-                <HomeBox header="code" />            
+                <HomeBox
+                    header="code"
+                    icon={<WebsiteIcon />}
+                />
               </Link>
             </div>
             <div className="HomePage__bottom-left col-12 mt1">
               <Link to="/moodboard">
-                <HomeBox 
+                <HomeBox
                     header="moodboard"
                     icon={<MoodboardIcon />}
                 />
@@ -35,12 +41,18 @@ class HomePage extends Component {
           <div className="flex flex-column col-12">
             <div className="HomePage__top-right col-12 ml2 mb1">
               <Link to="/music">
-                <HomeBox header="music" />
+                <HomeBox
+                    header="music"
+                    icon={<MusicIcon />}
+                />
               </Link>
             </div>
             <div className="HomePage__bottom-right col-12 ml2 mt1">
               <Link to="keepintouch">
-                <HomeBox header="keep in touch" />
+                <HomeBox
+                    header="keep in touch"
+                    icon={<ContactIcon />}
+                />
               </Link>
             </div>
           </div>

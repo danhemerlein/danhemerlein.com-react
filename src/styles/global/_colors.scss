@@ -1,9 +1,9 @@
 $colors: (
-  'light-grey': #f9f9f9,
-  'grey': #d3d3d3,
   'white': #fff,
   'black': #000,
-  'blue': #0000ff,
+  'solitude': #e4e9ed,
+  'iron': #dadfe1,
+  'silver-sand': #bdc3c7,
 );
 
 @function color($color-name) {
