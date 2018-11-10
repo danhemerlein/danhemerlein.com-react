@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 import './HomePage.scss';
 
-import Header from '../Header';
 import HomeBox from '../HomeBox';
-import Footer from '../Footer';
 import MoodboardIcon from '../icons/Moodboard';
 import MusicIcon from '../icons/Music';
 import WebsiteIcon from '../icons/Website';
@@ -15,9 +13,6 @@ class HomePage extends Component {
   render() {
     return (
       <div className="HomePage">
-        <header>
-          <Header />
-        </header>
         <div className="my2 flex">
           <div className="flex flex-column col-12">
             <div className="HomePage__top-left col-12">
@@ -57,9 +52,6 @@ class HomePage extends Component {
             </div>
           </div>
         </div>
-        <footer>
-          <Footer />
-        </footer>
       </div>
     );
   }

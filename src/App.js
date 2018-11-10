@@ -11,6 +11,8 @@ import Code from './components/Code';
 import MusicPage from './components/MusicPage';
 import Contact from './components/Contact';
 import Moodboard from './components/Moodboard';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const client = contentful.createClient({
   space: keys.spaceId,
@@ -25,18 +27,25 @@ client.getEntries().then(entries => {
   })
 })
 
+
 class App extends Component {
   render() {
     return (
       <div>
         <Router>
           <div>
+            <header>
+              <Header />
+            </header>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/dansbook" component={AboutPage} />
             <Route exact path="/code" component={Code} />
             <Route exact path="/music" component={MusicPage} />
             <Route exact path="/keepintouch" component={Contact} />
             <Route exact path="/moodboard" component={Moodboard} />
+            <footer>
+              <Footer />
+            </footer>
           </div>
         </Router>
       </div>
