@@ -9,8 +9,8 @@ export default class Header extends Component {
       <div className="Header">
         <div className="flex">
           <div className="col-6">
-            <h1 className="heading-serif m0"><Link to="/">Dan Hemerlein</Link></h1>
-            <h2 className="heading-serif m0"><Link to="/code">{this.props.subTitle}</Link> / <Link to="/music">Music Producer</Link></h2>
+            <h1 className="heading-serif m0"><Link to="/">{this.props.title}</Link></h1>
+            <h2 className="heading-serif m0"><Link to="/code">{this.props.subTitle}</Link> / <Link to="/music">{this.props.subTitleTwo}</Link></h2>
           </div>
           <div className="flex justify-end col-6">
             <nav role="navigation">
