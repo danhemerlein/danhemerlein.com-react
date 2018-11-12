@@ -4,6 +4,7 @@ import './Moodboard.scss'
 
 export default class Moodboard extends Component {
   render() {
+    console.log(this.props.images);
     return (
       <div>
         <div className="Moodboard">
