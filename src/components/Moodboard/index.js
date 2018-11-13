@@ -6,16 +6,19 @@ import './Moodboard.scss'
 
 export default class Moodboard extends Component {
   render() {
-    console.log(this.props.images);
     return (
-      <div className="Moodboard flex flex-column">
+      <div className="Moodboard flex flex-column mt2">
         {
-          this.props.images.map((image) => {
+          this.props.images.map((image, index) => {
             return (
-              <div className="col-6">
-                <Image src={image.fields.file.url} />
+              <div className="flex justify-center">
+                <div className="max-width-3">
+                  <div className="my1">
+                    <Image src={image.fields.file.url} />
+                  </div>
+                </div>
               </div>
-            )
+              )
           })
         }
       </div>
