@@ -18,7 +18,7 @@ export default class Moodboard extends Component {
                   </div>
                 </div>
               </div>
-              )
+            )
           })
         }
       </div>

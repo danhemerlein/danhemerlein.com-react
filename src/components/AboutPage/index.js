@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Image from '../base/Image';
+
 import './AboutPage.scss';
 
 class AboutPage extends Component {
@@ -7,7 +9,7 @@ class AboutPage extends Component {
     return (
       <div>
         <div className="AboutPage">
-          this is the about page
+          <Image src={this.props.image.fields.file.url} />
         </div>
       </div>
     );

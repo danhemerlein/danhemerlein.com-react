@@ -26,11 +26,15 @@ const MainView = ({ model }) => {
           </header>
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/dansbook" component={AboutPage} />
+            <Route exact path="/about"
+              render={() => <AboutPage image={model.fields.aboutImage} />}
+            />
             <Route exact path="/code" component={Code} />
             <Route exact path="/music" component={MusicPage} />
             <Route exact path="/keepintouch" component={Contact} />
-            <Route exact path="/moodboard" render={()=> <Moodboard images={model.fields.moodboard}/>} />
+            <Route exact path="/moodboard"
+              render={()=> <Moodboard images={model.fields.moodboard}/>}
+            />
             <Route component={NotFound} />
           </Switch>
           <footer>
