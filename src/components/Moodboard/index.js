@@ -1,27 +1,41 @@
 import React, { Component } from "react";
+import get from "../../utils/get";
 
-import Image from '../base/Image';
+import Image from "../base/Image";
 
-import './Moodboard.scss'
+import "./Moodboard.scss"
 
 export default class Moodboard extends Component {
-  render() {
+  renderGalleryRow = (imageGroup, index) => {
     return (
-      <div className="Moodboard flex flex-column mt2">
-        {
-          this.props.images.map((image, index) => {
-            return (
-              <div className="flex justify-center">
-                <div className="max-width-3">
-                  <div className="my1">
-                    <Image src={image.fields.file.url} />
-                  </div>
-                </div>
-              </div>
-            )
-          })
-        }
+      <div className="full-width flex mb1" key={index}>
+        <div className="flex items-end col-6 mr1">
+          <Image src={get(imageGroup, "[0].fields.file.url")} />
+        </div>
+        <div className="flex items-end col-6">
+          <Image src={get(imageGroup, "[1].fields.file.url")} />
+        </div>
       </div>
-    )
+    );
+  };
+
+  render() {
+    const images = get(this, "props.images", []);
+
+    const imageMatrix = images.reduce(
+      (rows, image, index) =>
+        (index % 2 === 0
+          ? rows.push([image])
+          : rows[rows.length - 1].push(image)) && rows,
+      []
+    );
+
+    return (
+      <div className="Moodboard my2 flex flex-wrap">
+        {imageMatrix.map((imageGroup, index) =>
+          this.renderGalleryRow(imageGroup, index, imageMatrix)
+        )}
+      </div>
+    );
   }
 }

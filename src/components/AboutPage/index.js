@@ -8,7 +8,7 @@ class AboutPage extends Component {
   render() {
     return (
       <div>
-        <div className="AboutPage">
+        <div className="AboutPage my2">
           <Image src={this.props.image.fields.file.url} />
         </div>
       </div>

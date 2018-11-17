@@ -23,3 +23,4 @@ yarn-error.log*
 # Contentful API keys
 
 config.js
+to-do.md
