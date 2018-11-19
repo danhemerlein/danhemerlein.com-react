@@ -7,9 +7,19 @@
     Completed by writing some css rules, I've realized that the global screen width vars are not being loaded into component scss files so I hard coded the min width
 
 - add more images to moodboard content
+  ## DONE
+
 - rename images in moodboard content
+  ## DONE
+
 - get moodboard content to randomize the order of images each time the page is loaded
+  ## DONE
+    Completed by implementing and array shuffle function I found via google
+
 - figure out how to add alt text to the images in contentful
+  ## DONE
+    Completed by using the title of the image in contentful as the alt text in the browser
+
 - make a witty 404 page
 - create a mail chimp account
 - create a form to push addressses to
