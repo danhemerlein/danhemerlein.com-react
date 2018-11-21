@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import get from "../../utils/get";
+import shuffle from "../../utils/shuffle"
 
 import Image from "../base/Image";
 
@@ -20,22 +21,6 @@ export default class Moodboard extends Component {
   };
 
   render() {
-
-    const shuffle = function (arr) {
-      let currentIndex = arr.length;
-      let temporaryValue;
-      let randomIndex;
-
-      while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = arr[currentIndex];
-        arr[currentIndex] = arr[randomIndex];
-        arr[randomIndex] = temporaryValue;
-      }
-      return arr;
-    };
-
     const images = get(this, "props.images", []);
 
     const imageMatrix = shuffle(images).reduce(

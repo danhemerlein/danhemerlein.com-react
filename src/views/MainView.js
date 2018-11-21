@@ -28,13 +28,18 @@ const MainView = ({ model }) => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/about"
-              render={() => <AboutPage image={get(model, "fields.aboutImage", {})} />}
+              render={() =>
+                <AboutPage
+                  image={get(model, "fields.aboutImage", {})}
+                  text={get(model, "fields.aboutText", {})}
+                />
+              }
             />
             <Route exact path="/code" component={Code} />
             <Route exact path="/music" component={MusicPage} />
             <Route exact path="/keepintouch" component={Contact} />
             <Route exact path="/moodboard"
-              render={()=> <Moodboard images={get(model, "fields.moodboard", {})}/>}
+              render={() => <Moodboard images={get(model, "fields.moodboard", {})} />}
             />
             <Route component={NotFound} />
           </Switch>
