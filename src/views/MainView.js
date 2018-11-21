@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import get from "../utils/get";
 
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
@@ -19,21 +20,21 @@ const MainView = ({ model }) => {
         <div>
           <header>
             <Header
-              title={model.fields.title}
-              subTitle={model.fields.subTitle}
-              subTitleTwo={model.fields.subTitleTwo}
+              title={get(model, "fields.title", {})}
+              subTitle={get(model, "fields.subTitle", {})}
+              subTitleTwo={get(model, "fields.subTitleTwo", {})}
             />
           </header>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/about"
-              render={() => <AboutPage image={model.fields.aboutImage} />}
+              render={() => <AboutPage image={get(model, "fields.aboutImage", {})} />}
             />
             <Route exact path="/code" component={Code} />
             <Route exact path="/music" component={MusicPage} />
             <Route exact path="/keepintouch" component={Contact} />
             <Route exact path="/moodboard"
-              render={()=> <Moodboard images={model.fields.moodboard}/>}
+              render={()=> <Moodboard images={get(model, "fields.moodboard", {})}/>}
             />
             <Route component={NotFound} />
           </Switch>

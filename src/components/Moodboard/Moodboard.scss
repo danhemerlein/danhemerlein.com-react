@@ -1,3 +1,5 @@
+@import "../../styles/app.scss";
+
 .Moodboard {
   img {
     width: 100%;
@@ -10,7 +12,7 @@
       margin-bottom: .5rem;
     }
 
-    @media (min-width: 52rem) {
+    @media ($medium-up) {
       flex-direction: row;
 
       div:first-of-type > img {
