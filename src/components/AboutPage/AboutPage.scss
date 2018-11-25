@@ -3,7 +3,6 @@
 .AboutPage {
   img {
     width: 100%;
-    border-radius: 50%;
   }
 
   &__item {
@@ -15,10 +14,6 @@
     &:hover {
       color: color('black');
       cursor: default;
-    }
-
-    &:first-of-type {
-      margin-left: 0;
     }
   }
 }
