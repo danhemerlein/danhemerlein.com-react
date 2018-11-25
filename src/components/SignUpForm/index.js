@@ -49,9 +49,9 @@ export default class SignUpForm extends Component {
                 <form onSubmit={(event) => {
                   event.preventDefault();
                   subscribe({
-                    FIRSTNAME: this.state.firstName,
+                    FNAME: this.state.firstName,
                     EMAIL: this.state.emailAddress,
-                    ZIPCODE: this.state.zipcode
+                    MMERGE5: this.state.zipcode
                   })
                 }
                 }>
@@ -87,21 +87,6 @@ export default class SignUpForm extends Component {
                   </div>
                   <p className="">{this.state.message}</p>
                 </form>
-                {status === 'sending' ? (
-                  this.setState({
-                    message: 'Loading ೭੧(❛▿❛✿)੭೨'
-                  })
-                ) : null}
-                {status === 'success' ? (
-                  this.setState({
-                    message: 'Thanks for subscribing (*＾v＾*)'
-                  })
-                ) : null}
-                {status === 'error' ? (
-                  this.setState({
-                    message: 'Oops, please try again (′ʘ⌄ʘ‵)'
-                  })
-                ) : null}
               </div>
             )}
           />
