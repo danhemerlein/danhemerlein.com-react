@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import get from "../../utils/get";
 
+import ScrollToTop from '../ScrollToTop/index'
 import Image from "../base/Image";
 
 import "./Moodboard.scss"
@@ -35,6 +36,7 @@ export default class Moodboard extends Component {
         {imageMatrix.map((imageGroup, index) =>
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}
+        <ScrollToTop scrollStepInPx="50" delayInMs="16.66" />
       </div>
     );
   }
