@@ -3,10 +3,11 @@
 .AboutPage {
   img {
     width: 100%;
+    border-radius: 50%;
   }
 
   &__item {
-    font-size: 2.75rem;
+    font-size: 5rem;
     color: color('silver-sand');
     margin-left: .5rem;
     margin-right: .5rem;
