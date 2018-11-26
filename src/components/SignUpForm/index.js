@@ -55,6 +55,7 @@ export default class SignUpForm extends PureComponent {
               }}>
                 <label className="">
                   <input
+                    id="inputOne"
                     className="my1 body-serif"
                     type="text"
                     placeholder="first name"
@@ -64,6 +65,7 @@ export default class SignUpForm extends PureComponent {
                 </label>
                 <label className="">
                   <input
+                    id="inputTwo"
                     className="my1 body-serif"
                     type="email"
                     placeholder="hello@example.com"
@@ -73,6 +75,7 @@ export default class SignUpForm extends PureComponent {
                 </label>
                 <label className="">
                   <input
+                    id="inputThree"
                     className="my1 body-serif"
                     type="text"
                     placeholder="zipcode"

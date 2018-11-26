@@ -1,7 +1,9 @@
+@import "../../styles/app.scss";
+
 .Header {
-  -webkit-animation: fadein 3.5s;
-  -moz-animation: fadein 3.5s;
-  -ms-animation: fadein 3.5s;
-  -o-animation: fadein 3.5s;
-  animation: fadein 3.5s;
+  -webkit-animation: fadein $transition-duration-long;
+  -moz-animation: fadein $transition-duration-long;
+  -ms-animation: fadein $transition-duration-long;
+  -o-animation: fadein $transition-duration-long;
+  animation: fadein $transition-duration-long;
 }

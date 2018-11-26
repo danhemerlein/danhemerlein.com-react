@@ -7,8 +7,29 @@
     border: 1px solid color('black');
   }
 
+  #inputOne, #inputThree {
+    -webkit-animation: slide-right $transition-duration-med;
+    -moz-animation: slide-right $transition-duration-med;
+    -ms-animation: slide-right $transition-duration-med;
+    -o-animation: slide-right $transition-duration-med;
+    animation: slide-right $transition-duration-med;
+  }
+
+  #inputTwo {
+    -webkit-animation: slide-left $transition-duration-med;
+    -moz-animation: slide-left $transition-duration-med;
+    -ms-animation: slide-left $transition-duration-med;
+    -o-animation: slide-left $transition-duration-med;
+    animation: slide-left $transition-duration-med;
+  }
+
   &__button {
     border: 1px solid color('black');
     font-size: 1.2rem;
+    -webkit-animation: slide-up $transition-duration-med;
+    -moz-animation: slide-up $transition-duration-med;
+    -ms-animation: slide-up $transition-duration-med;
+    -o-animation: slide-up $transition-duration-med;
+    animation: slide-up $transition-duration-med;
   }
 }
