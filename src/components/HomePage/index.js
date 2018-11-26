@@ -43,7 +43,7 @@ class HomePage extends Component {
               </Link>
             </div>
             <div className="HomePage__bottom-right col-12 ml1 mt1">
-              <Link to="keepintouch">
+              <Link to="keep-in-touch">
                 <HomeBox
                     header="keep in touch"
                     icon={<ContactIcon />}
