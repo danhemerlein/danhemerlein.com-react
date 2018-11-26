@@ -36,7 +36,7 @@ export default class Moodboard extends Component {
         {imageMatrix.map((imageGroup, index) =>
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}
-        <ScrollToTop scrollStepInPx="50" delayInMs="16.66" />
+        <ScrollToTop scrollStepInPx="75" delayInMs="10" />
       </div>
     );
   }

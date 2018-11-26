@@ -27,7 +27,7 @@ export default class ScrollToTop extends Component {
     return (
       <div className="ScrollToTop">
         <button
-          className='scroll'
+          className='ScrollToTop__button'
           onClick={() => { this.scrollToTop(); }}>
           <span>To Top</span>
         </button>

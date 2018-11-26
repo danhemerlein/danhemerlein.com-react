@@ -1,5 +1,7 @@
 @import "../../styles/app.scss";
 
 .ScollToTop {
-  border: 1px solid color('black');
+  &__button {
+    border: 1px solid color('black');
+  }
 }

@@ -29,12 +29,19 @@
   ## DONE
     and will continue to do going forward
 
+- create a ScrollToTop component
+  ## DONE
+
+- style the ScrollToTop component
+
 - look for inspiration on how I want to create the about page
 - add content to about page
 - style about page
 
 - create a mail chimp account
+  ## DONE
 - create a form to push addressses to
+  ## DONE
 - style overlays for homepage boxes
 
 - look for inspriation on how I want to create the code page
