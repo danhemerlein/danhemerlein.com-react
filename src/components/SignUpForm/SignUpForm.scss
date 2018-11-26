@@ -3,5 +3,12 @@
 .SignUpForm {
   input {
     display: block;
+    font-size: 1.5rem;
+    border: 1px solid color('black');
+  }
+
+  &__button {
+    border: 1px solid color('black');
+    font-size: 1.2rem;
   }
 }

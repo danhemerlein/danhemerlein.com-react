@@ -8,8 +8,8 @@ export default class NotFound extends Component {
     return (
       <div>
         <div className="NotFound body-serif flex items-center flex-column">
-          <h3 className="mt4">this is a 404 error. please check the url in your browser</h3>
-          <h3>you might want to <Link to="/">Return Home</Link></h3>
+          <h3 className="mt4">This is a 404 error. Please check the url in your browser</h3>
+          <h3>You might want to <Link to="/">Return Home</Link></h3>
         </div>
       </div>
     )

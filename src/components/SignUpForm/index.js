@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import './SignUpForm.scss'
 
@@ -7,22 +7,21 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe';
 
 const { MAILCHIMP_URL } = ENV;
 
-export default class SignUpForm extends Component {
+export default class SignUpForm extends PureComponent {
   constructor(props) {
-    super(props)
+    super(...arguments)
 
     this.state = {
       firstName: '',
       emailAddress: '',
       zipcode : '',
-      text: ''
+      message: '',
     }
   }
 
   handleNameChange = event => {
     this.setState({
       firstName: event.target.value,
-
     });
   };
 
@@ -40,65 +39,69 @@ export default class SignUpForm extends Component {
 
   render() {
     return (
-      <div className="SignUpForm">
+      <div className="SignUpForm full-width">
         <MailchimpSubscribe
           url={MAILCHIMP_URL}
-          render={({ subscribe, status, message }) => (
+          render={({ subscribe, status }) => (
             <div>
-              <form onSubmit={(event) => {
-                event.preventDefault();
-                subscribe({
-                  FNAME: this.state.firstName,
-                  EMAIL: this.state.emailAddress,
-                  MMERGE5: this.state.zipcode
-                })
-              }
-              }>
-                <div className="">
-                  <label className="">
-                    <input
-                      className=""
-                      placeholder="First Name"
-                      value={this.state.firstName}
-                      onChange={this.handleNameChange}
-                    />
-                  </label>
-                  <label className="">
-                    <input
-                      className=""
-                      type="email"
-                      placeholder="hello@example.com"
-                      value={this.state.emailAddress}
-                      onChange={this.handleEmailChange}
-                    />
-                  </label>
-                  <label className="">
-                    <input
-                      className=""
-                      placeholder="Zipcode"
-                      value={this.state.zipcode}
-                      onChange={this.handleZipChange}
-                    />
-                  </label>
-                  <button className="" type="submit">
-                    Submit
+              <form className="flex flex-column items-center justify-center"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  subscribe({
+                    FNAME: this.state.firstName,
+                    EMAIL: this.state.emailAddress,
+                    MMERGE5: this.state.zipcode
+                  })
+              }}>
+                <label className="">
+                  <input
+                    className="my1 body-serif"
+                    type="text"
+                    placeholder="first name"
+                    value={this.state.firstNameAddress}
+                    onChange={this.handleNameChange}
+                  />
+                </label>
+                <label className="">
+                  <input
+                    className="my1 body-serif"
+                    type="email"
+                    placeholder="hello@example.com"
+                    value={this.state.emailAddress}
+                    onChange={this.handleEmailChange}
+                  />
+                </label>
+                <label className="">
+                  <input
+                    className="my1 body-serif"
+                    type="text"
+                    placeholder="zipcode"
+                    value={this.state.zipcode}
+                    onChange={this.handleZipChange}
+                  />
+                </label>
+                <div className="full-width flex flex-column items-center justify-center">
+                  <button className="SignUpForm__button my1 body-serif" type="submit">
+                    submit
                   </button>
+                  <div className="relative full-width">
+                    <p className="body-serif absolute full-width center">{this.state.message}</p>
+                  </div>
                 </div>
-                <p className="">{this.state.text}</p>
               </form>
               {status === 'sending' ? (
                 this.setState({
-                  text: 'Loading...'
+                  message: 'loading...'
                 })
               ) : null}
               {status === 'success' ? (
                 this.setState({
-                  text: 'Thank you!'
+                  message: 'thanks for subscribing (ﾉﾟ▽ﾟ)ﾉ'
                 })
               ) : null}
               {status === 'error' ? (
                 this.setState({
-                  text: 'Please try again.'
+                  message: 'oops, please try again（＞ｙ＜）'
                 })
               ) : null}
             </div>

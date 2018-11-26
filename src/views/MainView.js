@@ -37,7 +37,13 @@ const MainView = ({ model }) => {
             />
             <Route exact path="/code" component={Code} />
             <Route exact path="/music" component={MusicPage} />
-            <Route exact path="/keepintouch" component={Contact} />
+            <Route exact path="/keep-in-touch"
+              render={() => <Contact
+                cta={get(model, "fields.contactHeadline", {})}
+                ctaTwo={get(model, "fields.contactHeadlineTwo", {})}
+                />
+              }
+            />
             <Route exact path="/moodboard"
               render={() => <Moodboard images={get(model, "fields.moodboard", {})} />}
             />
