@@ -7,8 +7,11 @@ export default class ScrollToTop extends Component {
     super();
 
     this.state = {
-      intervalId: 0
+      intervalId: 0,
+      showScroll: false
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   scrollStep() {
@@ -20,18 +23,42 @@ export default class ScrollToTop extends Component {
 
   scrollToTop() {
     let intervalId = setInterval(this.scrollStep.bind(this), this.props.delayInMs);
-    this.setState({ intervalId: intervalId });
+    this.setState({ intervalId });
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    let y = window.pageYOffset
+
+    if (y > 300) {
+      this.setState({ showScroll: true });
+    }
+    else {
+      this.setState({ showScroll: false });
+    }
   }
 
   render() {
-    return (
-      <div className="ScrollToTop">
-        <button
-          className='ScrollToTop__button'
-          onClick={() => { this.scrollToTop(); }}>
-          <span>To Top</span>
-        </button>
-      </div>
-    )
+    if (this.state.showScroll) {
+      return (
+        <div className="ScrollToTop absolute m4">
+          <div className="fixed">
+            <button
+              className='ScrollToTop__button'
+              onClick={() => { this.scrollToTop(); }}>
+              <span className="body-serif py2 px1 block">to top</span>
+            </button>
+          </div>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div></div>
+      )
+    }
   }
 }

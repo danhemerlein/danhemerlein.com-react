@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import get from "../../utils/get";
 import shuffle from "../../utils/shuffle"
 
+import ScrollToTop from '../ScrollToTop'
 import Image from '../base/Image';
 
 import './AboutPage.scss';
@@ -19,6 +20,7 @@ class AboutPage extends Component {
             return <div className="AboutPage__item full-width">{item}</div>
           })}
         </div>
+        <ScrollToTop scrollStepInPx="75" delayInMs="10" />
       </div>
     );
   }

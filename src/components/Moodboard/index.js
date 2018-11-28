@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import get from "../../utils/get";
 
-import ScrollToTop from '../ScrollToTop/index'
+import ScrollToTop from '../ScrollToTop'
 import Image from "../base/Image";
 
 import "./Moodboard.scss"
