@@ -31,18 +31,23 @@
 
 - create a ScrollToTop component
   ## DONE
+    mixed and matched code from different SO answers
 
 - style the ScrollToTop component
-
-- look for inspiration on how I want to create the about page
-- add content to about page
-- style about page
 
 - create a mail chimp account
   ## DONE
 - create a form to push addressses to
   ## DONE
+
+- add autoprefixer
+- add preitier
+
 - style overlays for homepage boxes
+
+- look for inspiration on how I want to create the about page
+- add content to about page
+- style about page
 
 - look for inspriation on how I want to create the code page
 - add content to the code page

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
-import './ScrollToTop.scss'
+import cx from 'classnames';
+import './ScrollToTop.scss';
 
 export default class ScrollToTop extends Component {
   constructor() {
@@ -10,8 +11,6 @@ export default class ScrollToTop extends Component {
       intervalId: 0,
       showScroll: false
     };
-
-    this.handleScroll = this.handleScroll.bind(this);
   }
 
   scrollStep() {
@@ -30,7 +29,7 @@ export default class ScrollToTop extends Component {
     window.addEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll() {
+  handleScroll = () => {
     let y = window.pageYOffset
 
     if (y > 300) {
@@ -44,14 +43,12 @@ export default class ScrollToTop extends Component {
   render() {
     if (this.state.showScroll) {
       return (
-        <div className="ScrollToTop absolute m4">
-          <div className="fixed">
+        <div className={cx('ScrollToTop')}>
             <button
-              className='ScrollToTop__button'
+              className={cx('ScrollToTop__button p1 z2 fixed overflow-hidden flex items-center justify-center center')}
               onClick={() => { this.scrollToTop(); }}>
               <span className="body-serif py2 px1 block">to top</span>
             </button>
-          </div>
         </div>
       )
     }
