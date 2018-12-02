@@ -37,7 +37,7 @@ export default class Footer extends Component {
             </small>
           </div>
         </div>
-        <div className="full-width mt2 center">
+        <div className="sm-hide md-hide lg-hide full-width mt2 center">
           <small className="Footer__small">
             Copyright Dan Hemerlein 2018
           </small>

@@ -33,8 +33,8 @@ class HomePage extends Component {
             </div>
 
           </div>
-          <div className="flex flex-column col-12">
-            <div className="HomePage__top-right col-12 ml1">
+          <div className="flex flex-column col-12 ml1">
+            <div className="HomePage__top-right col-12">
               <Link to="/music">
                 <HomeBox
                     header="music"
@@ -42,7 +42,7 @@ class HomePage extends Component {
                 />
               </Link>
             </div>
-            <div className="HomePage__bottom-right col-12 ml1 mt1">
+            <div className="HomePage__bottom-right col-12 mt1">
               <Link to="keep-in-touch">
                 <HomeBox
                     header="keep in touch"

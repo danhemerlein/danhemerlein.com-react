@@ -12,7 +12,7 @@ class AboutPage extends Component {
     const text = get(this, "props.text", []);
     return (
       <div className="AboutPage my2 flex flex-column items-center justify-center">
-        <div className="col-4">
+        <div className="col-12 md-col-6 lg-col-4">
           <Image src={this.props.image.fields.file.url} alt={this.props.image.fields.title}/>
         </div>
         <div className="body-serif center">
