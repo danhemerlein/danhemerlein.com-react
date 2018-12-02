@@ -11,6 +11,7 @@ import Moodboard from '../components/Moodboard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import NotFound from '../components/NotFound';
+import MusicShow from '../components/MusicShow';
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Oops, soemthing went wrong!</h1>;
@@ -51,6 +52,7 @@ const MainView = ({ model }) => {
             <Route exact path="/moodboard"
               render={() => <Moodboard images={get(model, "fields.moodboard", {})} />}
             />
+            <Route path="/music/:id" component={MusicShow} />
             <Route component={NotFound} />
           </Switch>
           <footer>
