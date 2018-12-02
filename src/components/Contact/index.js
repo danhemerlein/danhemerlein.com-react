@@ -7,8 +7,8 @@ import SignUpForm from '../SignUpForm';
 export default class Contact extends Component {
   render() {
     return (
-      <div className="Contact body-serif my2 flex flex-column items-center justify-center">
-        <div className="flex flex-column items-center justify-center col-12">
+      <div className="Contact body-serif my2 flex flex-column items-center justify-center full-width">
+        <div className="flex flex-column items-center justify-center">
           <h3 className="p0 m0">{this.props.cta}</h3>
           <h3 className="p0 mt0 mx0 mb2">{this.props.ctaTwo}</h3>
           <SignUpForm />

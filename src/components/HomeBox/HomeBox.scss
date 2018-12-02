@@ -1,3 +1,5 @@
+@import "../../styles/app.scss";
+
 .HomeBox {
   border: 2px solid black;
   height: 38vh;
@@ -7,4 +9,12 @@
     height: 100%;
   }
 
+  &__container:hover .HomeBox__overlay {
+    opacity: 1;
+  }
+
+  &__overlay {
+    top: 50%;
+    bottom: 50%;
+  }
 }
