@@ -56,7 +56,7 @@ export default class SignUpForm extends PureComponent {
                 <label className="">
                   <input
                     id="inputOne"
-                    className="my1 body-serif"
+                    className="my1 body-serif full-width"
                     type="text"
                     placeholder="first name"
                     value={this.state.firstNameAddress}
@@ -66,7 +66,7 @@ export default class SignUpForm extends PureComponent {
                 <label className="">
                   <input
                     id="inputTwo"
-                    className="my1 body-serif"
+                    className="my1 body-serif full-width"
                     type="email"
                     placeholder="hello@example.com"
                     value={this.state.emailAddress}
@@ -76,7 +76,7 @@ export default class SignUpForm extends PureComponent {
                 <label className="">
                   <input
                     id="inputThree"
-                    className="my1 body-serif"
+                    className="my1 body-serif full-width"
                     type="text"
                     placeholder="zipcode"
                     value={this.state.zipcode}
