@@ -22,7 +22,9 @@ export default class Header extends Component {
               </ul>
             </nav>
             <div className="sm-hide md-hide lg-hide full-width">
-              <HamburgerIcon />
+              <div className="pointer">
+                <HamburgerIcon />
+              </div>
             </div>
           </div>
         </div>
