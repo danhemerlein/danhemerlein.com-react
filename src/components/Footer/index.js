@@ -6,7 +6,7 @@ export default class Footer extends Component {
   render() {
     return (
       <div className="Footer">
-        <div className="flex justify-center items-center">
+        <div className="xs-hide flex justify-center items-center">
           <div className="col-6">
             <ul className="Footer__list list-style-none p0">
               <li className="inline-block">
@@ -36,6 +36,11 @@ export default class Footer extends Component {
               Copyright Dan Hemerlein 2018
             </small>
           </div>
+        </div>
+        <div className="full-width mt2 center">
+          <small className="Footer__small">
+            Copyright Dan Hemerlein 2018
+          </small>
         </div>
       </div>
     )
