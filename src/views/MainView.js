@@ -36,7 +36,11 @@ const MainView = ({ model }) => {
               }
             />
             <Route exact path="/code" component={Code} />
-            <Route exact path="/music" component={MusicPage} />
+            <Route exact path="/music"
+              render={() => <MusicPage
+                projects={get(model, "fields.musicProjects.fields", {})}
+              />
+            } />
             <Route exact path="/keep-in-touch"
               render={() => <Contact
                 cta={get(model, "fields.contactHeadline", {})}

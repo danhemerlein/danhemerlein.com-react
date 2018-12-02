@@ -1,7 +1,7 @@
 @import "../../styles/app.scss";
 
 .HomeBox {
-  border: 2px solid black;
+  border: 2px solid color('black');
   height: 38vh;
 
   &:hover .HomeBox__overlay {

@@ -1,3 +1,9 @@
-.MusicPage {
+@import "../../styles/app.scss";
 
+.MusicPage {
+  height: 74vh;
+
+  &__project {
+    border: 1px solid color('black');
+  }
 }
