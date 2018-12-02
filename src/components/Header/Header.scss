@@ -1,9 +1,14 @@
 @import "../../styles/app.scss";
 
 .Header {
-  -webkit-animation: fadein $transition-duration-long;
-  -moz-animation: fadein $transition-duration-long;
-  -ms-animation: fadein $transition-duration-long;
-  -o-animation: fadein $transition-duration-long;
   animation: fadein $transition-duration-long;
+
+  &__title {
+    display: flex;
+    align-items: center;
+
+    @media ($small-up) {
+      display: block
+    }
+  }
 }
