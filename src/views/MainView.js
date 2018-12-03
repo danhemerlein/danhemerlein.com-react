@@ -52,7 +52,11 @@ const MainView = ({ model }) => {
             <Route exact path="/moodboard"
               render={() => <Moodboard images={get(model, "fields.moodboard", {})} />}
             />
-            <Route path="/music/:id" component={MusicShow} />
+            <Route path="/music/:id"
+              render={() => <MusicShow
+                projects={get(model, "fields.musicProjects.fields", {})}
+              />
+            } />
             <Route component={NotFound} />
           </Switch>
           <footer>
