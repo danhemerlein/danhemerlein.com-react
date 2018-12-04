@@ -10,7 +10,7 @@ export default class MusicPage extends Component {
   render() {
     return (
       <div>
-        <div className="MusicPage flex flex-wrap items-center justify-center">
+        <div className="MusicPage mt2 flex flex-wrap items-center justify-center">
           {
             this.props.projects.map((project, key) => {
               return (

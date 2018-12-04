@@ -57,6 +57,7 @@ const MainView = ({ model }) => {
               render={(props) => <MusicShow
                 {...props}
                 projects={get(model, "fields.musicProjects.fields", {})}
+                images={get(model, "fields.musicProjectImages", {})}
               />
             } />
             <Route component={NotFound} />
