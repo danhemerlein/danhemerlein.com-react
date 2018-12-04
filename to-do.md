@@ -49,6 +49,8 @@
   ## DONE
     used some W3 schools answers for reference
 
+- change all realtive paths to be absolute
+
 - look for inspiration on how I want to create the about page
   ## DONE
 - add content to about page

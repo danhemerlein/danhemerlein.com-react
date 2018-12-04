@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import Image from 'components/base/Image';
+
 import './MusicPage.scss'
 
 export default class MusicPage extends Component {
+
   render() {
     return (
       <div>
         <div className="MusicPage flex flex-wrap items-center justify-center">
           {
-            this.props.projects.map(project => {
+            this.props.projects.map((project, key) => {
               return (
                 <div className="col-12 md-col-4 flex flex-column items-center justify-center">
                   <div className="col-11">
@@ -19,6 +22,7 @@ export default class MusicPage extends Component {
                         <h4 className="m0">by {project.artist}</h4>
                         <h5 className="bold m0">{project.role.toLowerCase()}</h5>
                       </div>
+                      <Image src={this.props.images[key].fields.file.url} alt={this.props.images[key].fields.title} />
                     </Link>
                   </div>
                 </div>

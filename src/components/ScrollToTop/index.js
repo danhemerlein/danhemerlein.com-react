@@ -47,15 +47,13 @@ export default class ScrollToTop extends Component {
             <button
               className={cx('ScrollToTop__button p1 z2 fixed overflow-hidden flex items-center justify-center center')}
               onClick={() => { this.scrollToTop(); }}>
-              <span className="body-serif py2 px1 block">to top</span>
+              <span className="pointer body-serif py2 px1 block">to top</span>
             </button>
         </div>
       )
     }
     else {
-      return (
-        <div></div>
-      )
+      return null
     }
   }
 }

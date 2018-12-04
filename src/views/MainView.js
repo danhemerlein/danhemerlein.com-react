@@ -40,6 +40,7 @@ const MainView = ({ model }) => {
             <Route exact path="/music"
               render={() => <MusicPage
                 projects={get(model, "fields.musicProjects.fields", {})}
+                images={get(model, "fields.musicProjectImages", {})}
               />
             } />
             <Route exact path="/keep-in-touch"
