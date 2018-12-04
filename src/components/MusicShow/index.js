@@ -7,23 +7,19 @@ export default class MusicShow extends Component {
     super(props)
 
     this.state = {
-       project: []
-    }
-  }
-
-  componentDidMount() {
-    console.log(this.params);
-
-    for (let project of this.props.projects) {
-      console.log(project.id);
+       project: (this.props.projects[this.props.match.params.id - 1])
     }
   }
 
   render() {
+    console.log(this.state);
     return (
-      <div className="MusicShow">
-        hihihih
-        {this.props.title}
+      <div className="MusicShow flex justify-center items-center flex-column">
+        <h3>{this.state.project.title}</h3>
+        <h3>by {this.state.project.artist}</h3>
+        <h3>{this.state.project.releaseDate}</h3>
+        <h3>{this.state.project.role}</h3>
+        <h3><a href={this.state.project.link} target="_blank" rel="noopener noreferrer">Launch Project</a></h3>
       </div>
     )
   }

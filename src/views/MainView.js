@@ -53,7 +53,8 @@ const MainView = ({ model }) => {
               render={() => <Moodboard images={get(model, "fields.moodboard", {})} />}
             />
             <Route path="/music/:id"
-              render={() => <MusicShow
+              render={(props) => <MusicShow
+                {...props}
                 projects={get(model, "fields.musicProjects.fields", {})}
               />
             } />

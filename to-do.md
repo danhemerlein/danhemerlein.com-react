@@ -34,6 +34,8 @@
     mixed and matched code from different SO answers
 
 - style the ScrollToTop component
+  ## DONE
+    used some Code Pens as a reference
 
 - create a mail chimp account
   ## DONE
@@ -44,21 +46,36 @@
 - add preitier
 
 - style overlays for homepage boxes
+  ## DONE
+    used some W3 schools answers for reference
 
 - look for inspiration on how I want to create the about page
+  ## DONE
 - add content to about page
+  ## DONE
 - style about page
+  ## DONE
 
 - look for inspriation on how I want to create the code page
 - add content to the code page
 - style the code page
 
 - look for inspriation on how I want to create the music page
+  ## DONE
 - add content to the music page
 - style the music page
 
+- look for inspriation on how I want to create the music show page
+  ## DONE
+- add content to the music show page
+- style the music show page
+
 - create a hamburger menu nav on mobile
+  ## DONE
+- create a mobile nav overlay
 - create an announcement banner with a CTA that points to the contact page
+
+- add some meta tags to make the site more shareable on Twitter
 
 - make sure everthing looks great on mobile
 - make sure everything looks great on tablet
