@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import './Contact.scss'
 
-import SignUpForm from '../SignUpForm';
+import SignUpForm from 'components/SignUpForm';
 
 export default class Contact extends Component {
   render() {

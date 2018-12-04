@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 
-import './SignUpForm.scss'
-
-import ENV from '../../config/Enviornment';
+import ENV from 'config/Enviornment';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
+
+import './SignUpForm.scss'
 
 const { MAILCHIMP_URL } = ENV;
 

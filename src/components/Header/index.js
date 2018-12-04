@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './Header.scss'
 
-import HamburgerIcon from '../icons/Hamburger';
+import HamburgerIcon from 'components/icons/Hamburger';
 
 export default class Header extends Component {
   render() {

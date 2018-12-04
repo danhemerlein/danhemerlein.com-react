@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 import './HomePage.scss';
 
-import HomeBox from '../HomeBox';
-import MoodboardIcon from '../icons/Moodboard';
-import MusicIcon from '../icons/Music';
-import WebsiteIcon from '../icons/Website';
-import ContactIcon from '../icons/Contact';
+import HomeBox from 'components/HomeBox';
+import MoodboardIcon from 'components/icons/Moodboard';
+import MusicIcon from 'components/icons/Music';
+import WebsiteIcon from 'components/icons/Website';
+import ContactIcon from 'components/icons/Contact';
 
 class HomePage extends Component {
   render() {
