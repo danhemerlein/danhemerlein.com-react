@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import Image from 'components/base/Image';
+import PlayIcon from 'components/icons/Play';
 
 import './MusicShow.scss'
 
@@ -27,7 +28,14 @@ export default class MusicShow extends Component {
             <h3>by {this.state.project.artist}</h3>
             <h3>{this.state.project.releaseDate}</h3>
             <h3 className="bold">{this.state.project.role.toLowerCase()}</h3>
-            <h3><a href={this.state.project.link} target="_blank" rel="noopener noreferrer">launch project</a></h3>
+            <div className="flex items-center">
+              <div className="col-6">
+                <PlayIcon />
+              </div>
+              <div className="col-6">
+                <h3><a href={this.state.project.link} target="_blank" rel="noopener noreferrer">launch project</a></h3>
+              </div>
+            </div>
             <h3><Link to={'/music/'}><span className="body-serif">Go Back</span></Link></h3>
           </div>
         </div>
