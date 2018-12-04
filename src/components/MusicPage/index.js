@@ -17,12 +17,16 @@ export default class MusicPage extends Component {
                 <div className="col-12 md-col-4 flex flex-column items-center justify-center">
                   <div className="col-11">
                     <Link to={`/music/${project.id}`}>
-                      <div className="MusicPage__project my2 flex flex-column items-center justify-center">
-                        <h3 className="m0">{project.title}</h3>
-                        <h4 className="m0">by {project.artist}</h4>
-                        <h5 className="bold m0">{project.role.toLowerCase()}</h5>
+                      <div className="MusicPage__container relative">
+                        <div>
+                          <Image src={this.props.images[key].fields.file.url} alt={this.props.images[key].fields.title} />
+                        </div>
+                        <div className="MusicPage__overlay bg-white flex justify-center flex-column items-center absolute left-0 top-0 right-0 bottom-0 full-width full-height">
+                          <h3 className="body-serif m0">{project.title}</h3>
+                          <h4 className="body-serif m0">by {project.artist}</h4>
+                          <h5 className="body-serif bold m0">{project.role.toLowerCase()}</h5>
+                        </div>
                       </div>
-                      <Image src={this.props.images[key].fields.file.url} alt={this.props.images[key].fields.title} />
                     </Link>
                   </div>
                 </div>

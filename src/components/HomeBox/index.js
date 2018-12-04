@@ -8,7 +8,7 @@ export default class HomeBox extends Component {
   render() {
     return (
       <div className="HomeBox flex justify-center items-center full-width">
-        <div className="Homebox__c block relative">
+        <div className="Homebox__block relative">
           <div className="HomeBox__svg flex justify-center items-center full-width full-height">
             {this.props.icon}
           </div>
