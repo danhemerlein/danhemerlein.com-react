@@ -78,6 +78,9 @@
 - create an announcement banner with a CTA that points to the contact page
 
 - add some meta tags to make the site more shareable on Twitter
+- add some meta tags to make the site more shareable on Facebook
+- add some dope ASCII art to the source code
+  ## DONE
 
 - make sure everthing looks great on mobile
 - make sure everything looks great on tablet
