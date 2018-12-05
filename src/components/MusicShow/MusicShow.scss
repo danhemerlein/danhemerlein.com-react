@@ -1,5 +1,26 @@
+@import "../../styles/app.scss";
+
+
 .MusicShow {
+  flex-direction: column;
+
+  @media ($medium-up) {
+    flex-direction: row;
+  }
+
   img {
     width: 100%;
+  }
+
+  svg {
+    width: 55%;
+  }
+
+  &__headline {
+    font-size: 3rem;
+  }
+
+  &__subheadline {
+    font-size: 2rem;
   }
 }

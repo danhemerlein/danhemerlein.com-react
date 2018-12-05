@@ -20,20 +20,22 @@ export default class MusicShow extends Component {
 
   render() {
     return (
-      <div className="MusicShow mt2 flex justify-center items-center">
-        <div className="col-6">
+      <div className="MusicShow mt2 flex justify-center">
+        <div className="col-12 md-col-6">
           <Image src={this.state.image.fields.file.url} alt={this.state.image.fields.title} />
         </div>
-        <div className="col-6">
-          <div className="flex justify-center items-center flex-column">
-            <h3 className="body-serif">{this.state.project.title}</h3>
-            <h3 className="body-serif">by {this.state.project.artist}</h3>
+        <div className="col-12 md-col-6">
+          <div className="ml4 flex justify-center items-center flex-column">
+            <a href={this.state.project.link} className="block full-width" target="_blank" rel="noopener noreferrer">
+            <h3 className="MusicShow__headline m0 body-serif full-width">{this.state.project.title.toUpperCase()}</h3>
+            </a>
+            <h3 className="MusicShow__subheadline body-serif full-width">BY {this.state.project.artist.toUpperCase()}</h3>
             <div className="flex items-center full-width">
               <div className="col-1">
                 <CalendarIcon />
               </div>
               <div className="col-11">
-                <h3 className="ml1 body-serif">{this.state.project.releaseDate}</h3>
+                <h3 className="body-serif">{this.state.project.releaseDate.toUpperCase()}</h3>
               </div>
             </div>
             <div className="flex items-center full-width">
@@ -41,7 +43,7 @@ export default class MusicShow extends Component {
                 <ChecklistIcon />
               </div>
               <div className="col-11">
-                <h3 className="ml1 bold body-serif">{this.state.project.role.toUpperCase()}</h3>
+                <h3 className="body-serif">{this.state.project.role.toUpperCase()}</h3>
               </div>
             </div>
             <a href={this.state.project.link} className="block full-width" target="_blank" rel="noopener noreferrer">
@@ -50,11 +52,11 @@ export default class MusicShow extends Component {
                   <PlayIcon />
                 </div>
                 <div className="col-11">
-                  <h3 className="ml1 body-serif">launch project</h3>
+                  <h3 className="body-serif">LAUNCH PROJECT</h3>
                 </div>
               </div>
             </a>
-            <h3><Link to={'/music/'}><span className="body-serif">Go Back</span></Link></h3>
+            <h3 className="full-width"><Link to={'/music/'}><span className="body-serif">GO BACK</span></Link></h3>
           </div>
         </div>
       </div>
