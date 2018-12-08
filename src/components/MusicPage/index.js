@@ -22,10 +22,9 @@ export default class MusicPage extends Component {
       <div className="MusicPage mt2 flex flex-wrap items-center justify-center">
         <div className="MusicPage__coming-soon-block full-width">
           <div className="MusicPage__container relative full-height full-width">
-            <div style={comingSoonStyle}></div>
-            <div className="MusicPage__overlay bg-white flex justify-center flex-column items-center absolute left-0 top-0 right-0 bottom-0 full-width full-height">
-              <h3 className="MusicPage__coming-soon-text body-serif m0">minikit</h3>
-              <h4 className="MusicPage__coming-soon-text body-serif m0">coming this winter</h4>
+            <div style={comingSoonStyle} className="flex justify-between">
+              <h3 className="MusicPage__coming-soon-text MusicPage__coming-soon-text--title p2 text-white body-serif m0">minikit</h3>
+              <h3 className="MusicPage__coming-soon-text MusicPage__coming-soon-text--message p2 text-white body-serif m0 flex items-end">coming this winter</h3>
             </div>
           </div>
         </div>
