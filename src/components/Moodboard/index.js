@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import get from "utils/get";
 
 import ScrollToTop from 'components/ScrollToTop'
@@ -37,6 +39,9 @@ export default class Moodboard extends Component {
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}
         <ScrollToTop scrollStepInPx="75" delayInMs="10" />
+        <div className="flex justify-center full-width">
+          <Link to="/" className="go-home body-serif"> Go Home</Link >
+        </div>
       </div>
     );
   }

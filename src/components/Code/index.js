@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import './Code.scss'
 
@@ -14,11 +15,13 @@ export default class Code extends Component {
                   <a href={project.link} target="_blank" rel="noopener noreferrer"><h4 className="Code__project__title m0 body-serif">{project.title}</h4></a>
                   <h4 className="Code__project__timeline body-serif">({project.timeline})</h4>
                 </div>
+                <a href={project.link} target="_blank" rel="noopener noreferrer"><h4 className="m0 body-serif">Go To App</h4></a>
                 <p className="body-serif">{project.description}</p>
               </div>
             )
           })
         }
+        <Link to="/" className="go-home body-serif">Go Home</Link>
       </div>
     )
   }

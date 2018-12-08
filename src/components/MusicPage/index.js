@@ -50,6 +50,7 @@ export default class MusicPage extends Component {
             )
           })
         }
+      <Link to="/" className="go-home body-serif">Go Home</Link>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import './Contact.scss'
 
@@ -14,6 +15,7 @@ export default class Contact extends Component {
           <SignUpForm />
           <h3 className="mt4">Or feel free to email me <a className="underline" href="mailto:danhemerlein@gmail.com">directly</a></h3>
         </div>
+        <Link to="/" className="go-home body-serif"> Go Home</Link >
       </div>
     )
   }
