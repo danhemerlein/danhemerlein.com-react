@@ -1,3 +1,35 @@
-.Code {
+@import "../../styles/app.scss";
 
+.Code {
+  -webkit-animation: fadein $transition-duration-short;
+  -moz-animation: fadein $transition-duration-short;
+  -ms-animation: fadein $transition-duration-short;
+  -o-animation: fadein $transition-duration-short;
+  animation: fadein $transition-duration-short;
+
+  &__title-container {
+    flex-direction: column;
+
+    @media ($medium-up) {
+      flex-direction: row;
+    }
+  }
+
+  &__project {
+    border: 1px solid color('black');
+    max-width: 60rem;
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__timeline {
+      margin: 0;
+
+      @media ($medium-up) {
+        margin-left: .5rem;
+        margin-top: 1rem;
+      }
+    }
+  }
 }
