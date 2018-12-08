@@ -1,6 +1,11 @@
 @import "../../styles/app.scss";
 
 .MusicPage {
+  -webkit-animation: fadein $transition-duration-short;
+  -moz-animation: fadein $transition-duration-short;
+  -ms-animation: fadein $transition-duration-short;
+  -o-animation: fadein $transition-duration-short;
+  animation: fadein $transition-duration-short;
 
   img {
     width: 100%;
@@ -22,7 +27,10 @@
   }
 
   &__coming-soon-block {
-    height: 50vh;
-    border: 10px solid red;
+    height: 75vh;
+  }
+
+  &__coming-soon-text {
+    font-size: 2.5rem;
   }
 }

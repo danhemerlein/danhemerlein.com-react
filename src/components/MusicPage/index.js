@@ -5,13 +5,29 @@ import Image from 'components/base/Image';
 
 import './MusicPage.scss'
 
+
+
 export default class MusicPage extends Component {
 
   render() {
+    const comingSoonStyle = {
+      width: "100%",
+      height: "100%",
+      backgroundImage: "url(" + this.props.comingSoonImage.fields.file.url + ")",
+      backgroundPosition: "center",
+      backgroundSize: 'cover',
+      overflow: 'hidden',
+    };
     return (
       <div className="MusicPage mt2 flex flex-wrap items-center justify-center">
-        <div className="full-width">
-          <h3 className="MusicPage__coming-soon-block flex items-center justify-center center">COMING SOON BLOCK</h3>
+        <div className="MusicPage__coming-soon-block full-width">
+          <div className="MusicPage__container relative full-height full-width">
+            <div style={comingSoonStyle}></div>
+            <div className="MusicPage__overlay bg-white flex justify-center flex-column items-center absolute left-0 top-0 right-0 bottom-0 full-width full-height">
+              <h3 className="MusicPage__coming-soon-text body-serif m0">minikit</h3>
+              <h4 className="MusicPage__coming-soon-text body-serif m0">coming this winter</h4>
+            </div>
+          </div>
         </div>
         {
           this.props.projects.map((project, key) => {

@@ -41,6 +41,7 @@ const MainView = ({ model }) => {
               render={() => <MusicPage
                 projects={get(model, "fields.musicProjects.fields", {})}
                 images={get(model, "fields.musicProjectImages", {})}
+                comingSoonImage={get(model, "fields.musicProjectsComingSoon", {})}
               />
             } />
             <Route exact path="/keep-in-touch"
