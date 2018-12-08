@@ -24,7 +24,7 @@ export default class MusicPage extends Component {
           <div className="MusicPage__container relative full-height full-width">
             <div style={comingSoonStyle} className="flex justify-between">
               <h3 className="MusicPage__coming-soon-text MusicPage__coming-soon-text--title p2 text-white body-serif m0">minikit</h3>
-              <h3 className="MusicPage__coming-soon-text MusicPage__coming-soon-text--message p2 text-white body-serif m0 flex items-end">coming this winter</h3>
+              <h3 className="MusicPage__coming-soon-sub-text MusicPage__coming-soon-text--message p2 text-white body-serif m0 flex items-end">coming this winter</h3>
             </div>
           </div>
         </div>

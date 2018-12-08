@@ -31,22 +31,30 @@
   }
 
   &__coming-soon-text {
-    font-size: 2.5rem;
+    font-size: 4rem;
 
     &--title {
-      -webkit-animation: slide-right $transition-duration-long;
-      -moz-animation: slide-right $transition-duration-long;
-      -ms-animation: slide-right $transition-duration-long;
-      -o-animation: slide-right $transition-duration-long;
-      animation: slide-right $transition-duration-long;
+      -webkit-animation: slide-right-wide $transition-duration-long;
+      -moz-animation: slide-right-wide $transition-duration-long;
+      -ms-animation: slide-right-wide $transition-duration-long;
+      -o-animation: slide-right-wide $transition-duration-long;
+      animation: slide-right-wide $transition-duration-long;
     }
 
     &--message {
-      -webkit-animation: slide-left $transition-duration-long;
-      -moz-animation: slide-left $transition-duration-long;
-      -ms-animation: slide-left $transition-duration-long;
-      -o-animation: slide-left $transition-duration-long;
-      animation: slide-left $transition-duration-long;
+      -webkit-animation: slide-left-wide $transition-duration-long;
+      -moz-animation: slide-left-wide $transition-duration-long;
+      -ms-animation: slide-left-wide $transition-duration-long;
+      -o-animation: slide-left-wide $transition-duration-long;
+      animation: slide-left-wide $transition-duration-long;
+    }
+  }
+
+  &__coming-soon-sub-text {
+    font-size: 1.5rem;
+
+    @media ($medium-up) {
+      font-size: 2.5rem;
     }
   }
 }
