@@ -39,9 +39,9 @@ export default class MusicPage extends Component {
                         <Image src={this.props.images[key].fields.file.url} alt={this.props.images[key].fields.title} />
                       </div>
                       <div className="MusicPage__overlay bg-white flex justify-center flex-column items-center absolute left-0 top-0 right-0 bottom-0 full-width full-height">
-                        <h3 className="body-serif m0">{project.title}</h3>
-                        <h4 className="body-serif m0">by {project.artist}</h4>
-                        <h5 className="body-serif bold m0">{project.role.toLowerCase()}</h5>
+                        <h3 className="MusicPage__title body-serif m0">{project.title}</h3>
+                        <h4 className="MusicPage__artist body-serif m0">by {project.artist}</h4>
+                        <h5 className="MusicPage__role body-serif bold m0">{project.role.toLowerCase()}</h5>
                       </div>
                     </div>
                   </Link>

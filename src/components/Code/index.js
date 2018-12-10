@@ -15,7 +15,7 @@ export default class Code extends Component {
                   <a href={project.link} target="_blank" rel="noopener noreferrer"><h4 className="Code__project__title m0 body-serif">{project.title}</h4></a>
                   <h4 className="Code__project__timeline body-serif">({project.timeline})</h4>
                 </div>
-                <a href={project.link} target="_blank" rel="noopener noreferrer"><h4 className="m0 body-serif">Open Site</h4></a>
+                <a className="col-3 lg-col-1 block" href={project.link} target="_blank" rel="noopener noreferrer"><h4 className="m0 body-serif">Open Site</h4></a>
                 <p className="body-serif">{project.description}</p>
               </div>
             )
