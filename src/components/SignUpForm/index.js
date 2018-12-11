@@ -1,4 +1,7 @@
 import React, { PureComponent } from "react";
+import { Link } from "react-router-dom";
+
+import cx from 'classnames';
 
 import ENV from 'config/Enviornment';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
@@ -26,6 +29,7 @@ export default class SignUpForm extends PureComponent {
       emailAddress: '',
       zipcode : '',
       message: '',
+      messageActive: false,
     }
   }
 
@@ -54,15 +58,18 @@ export default class SignUpForm extends PureComponent {
                     const errorMessage = result.error.message
                     if (errorMessage.split(' ').includes('"firstName"')) {
                       this.setState({
-                        message: 'oops, an error has occured. please make sure your name is between 2 and 20 characters long :]'
+                        message: 'oops, an error has occured. please make sure your name is between 2 and 20 characters long :]',
+                        messageActive: true
                       })
                     } else if (errorMessage.split(' ').includes('"emailAddress"')) {
                       this.setState({
-                        message: 'oops, an error has occured. please make sure to inlcude your email :]'
+                        message: 'oops, an error has occured. please make sure to inlcude your email :]',
+                        messageActive: true
                       })
                     } else if (errorMessage.split(' ').includes('"zipcode"')) {
                       this.setState({
-                        message: 'oops, an error has occured. please make sure to indlude your zipcode :]'
+                        message: 'oops, an error has occured. please make sure to indlude your zipcode :]',
+                        messageActive: true
                       })
                     }
                   }
@@ -116,25 +123,30 @@ export default class SignUpForm extends PureComponent {
               </form>
               {status === 'sending' ? (
                 this.setState({
-                  message: 'loading...'
+                  message: 'loading...',
+                  messageActive: true
                 })
               ) : null}
               {status === 'success' ? (
                 this.setState({
-                  message: 'thanks for subscribing (ﾉﾟ▽ﾟ)ﾉ'
+                  message: 'thanks for subscribing (ﾉﾟ▽ﾟ)ﾉ',
+                  messageActive: true
                 })
               ) : null}
               {status === 'error' ? (
                 this.setState({
-                  message: 'oops, please try again（＞ｙ＜）'
+                  message: 'oops, please try again（＞ｙ＜）',
+                  messageActive: true
                 })
               ) : null}
             </div>
           )}
         />
         <div className="relative full-width">
-          <p className="body-serif absolute full-width center">{this.state.message}</p>
+          <p className={cx('body-serif absolute full-width center', {'SignUpForm__message ': this.state.messageActive })}>{this.state.message}</p>
         </div>
+        <h3 className={cx({'drop-down' : this.state.messageActive})}>Or feel free to email me <a className="underline" href="mailto:danhemerlein@gmail.com">directly</a></h3>
+        <Link to="/" className="go-home block body-serif full-width center"> Go Home</Link >
       </div>
     )
   }

@@ -33,4 +33,16 @@
     -o-animation: slide-up $transition-duration-med;
     animation: slide-up $transition-duration-med;
   }
+
+  &__message {
+    -webkit-animation: fadein $transition-duration-short;
+    -moz-animation: fadein $transition-duration-short;
+    -ms-animation: fadein $transition-duration-short;
+    -o-animation: fadein $transition-duration-short;
+    animation: fadein $transition-duration-short;
+  }
+}
+
+.drop-down {
+  padding-top: calc(4rem + #{$message-height});
 }
