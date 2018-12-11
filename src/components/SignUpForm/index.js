@@ -2,10 +2,20 @@ import React, { PureComponent } from "react";
 
 import ENV from 'config/Enviornment';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
+import ReactJoiValidations  from 'react-joi-validation'
+import Joi from 'joi-browser'
 
 import './SignUpForm.scss'
 
 const { MAILCHIMP_URL } = ENV;
+
+ReactJoiValidations.setJoi(Joi);
+
+const schema = Joi.object().keys({
+  firstName: Joi.string().min(2).max(20).required(),
+  emailAddress: Joi.string().email().required(),
+  zipcode: Joi.string().length(5).required()
+});
 
 export default class SignUpForm extends PureComponent {
   constructor(props) {
@@ -47,11 +57,23 @@ export default class SignUpForm extends PureComponent {
               <form className="flex flex-column items-center justify-center"
                 onSubmit={(event) => {
                   event.preventDefault();
-                  subscribe({
-                    FNAME: this.state.firstName,
-                    EMAIL: this.state.emailAddress,
-                    MMERGE5: this.state.zipcode
-                  })
+                  const result = Joi.validate({
+                    firstName: this.state.firstName,
+                    emailAddress: this.state.emailAddress,
+                    zipcode: this.state.zipcode
+                  }, schema)
+                  if (result.error) {
+                    this.setState({
+                      message: 'oops, an error has occured, please make sure your name is between 2 and 20 characters, your email is vaild and your zipcode is exactly 5 digits'
+                    })
+                  }
+                  else {
+                    subscribe({
+                      FNAME: result.value.firstName,
+                      EMAIL: result.value.emailAddress,
+                      MMERGE5: result.value.zipcode
+                    })
+                  }
               }}>
                 <label className="">
                   <input
