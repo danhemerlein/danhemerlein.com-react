@@ -52,7 +52,6 @@ export default class SignUpForm extends PureComponent {
 
                   if (result.error) {
                     const errorMessage = result.error.message
-                    console.log(errorMessage);
                     if (errorMessage.split(' ').includes('"firstName"')) {
                       this.setState({
                         message: 'oops, an error has occured. please make sure your name is between 2 and 20 characters long :]'
