@@ -29,23 +29,9 @@ export default class SignUpForm extends PureComponent {
     }
   }
 
-  handleNameChange = event => {
-    this.setState({
-      firstName: event.target.value,
-    });
-  };
-
-  handleEmailChange = event => {
-    this.setState({
-      emailAddress: event.target.value,
-    });
-  };
-
-  handleZipChange = event => {
-    this.setState({
-      zipcode: event.target.value
-    });
-  };
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
   render() {
     return (
@@ -57,16 +43,31 @@ export default class SignUpForm extends PureComponent {
               <form className="flex flex-column items-center justify-center"
                 onSubmit={(event) => {
                   event.preventDefault();
+
                   const result = Joi.validate({
                     firstName: this.state.firstName,
                     emailAddress: this.state.emailAddress,
                     zipcode: this.state.zipcode
                   }, schema)
+
                   if (result.error) {
-                    this.setState({
-                      message: 'oops, an error has occured, please make sure your name is between 2 and 20 characters, your email is vaild and your zipcode is exactly 5 digits'
-                    })
+                    const errorMessage = result.error.message
+                    console.log(errorMessage);
+                    if (errorMessage.split(' ').includes('"firstName"')) {
+                      this.setState({
+                        message: 'oops, an error has occured. please make sure your name is between 2 and 20 characters long :]'
+                      })
+                    } else if (errorMessage.split(' ').includes('"emailAddress"')) {
+                      this.setState({
+                        message: 'oops, an error has occured. please make sure to inlcude your email :]'
+                      })
+                    } else if (errorMessage.split(' ').includes('"zipcode"')) {
+                      this.setState({
+                        message: 'oops, an error has occured. please make sure to indlude your zipcode :]'
+                      })
+                    }
                   }
+
                   else {
                     subscribe({
                       FNAME: result.value.firstName,
@@ -81,8 +82,9 @@ export default class SignUpForm extends PureComponent {
                     className="my1 body-serif full-width"
                     type="text"
                     placeholder="first name"
+                    name="firstName"
                     value={this.state.firstNameAddress}
-                    onChange={this.handleNameChange}
+                    onChange={this.handleChange}
                   />
                 </label>
                 <label className="">
@@ -91,8 +93,9 @@ export default class SignUpForm extends PureComponent {
                     className="my1 body-serif full-width"
                     type="email"
                     placeholder="hello@example.com"
+                    name="emailAddress"
                     value={this.state.emailAddress}
-                    onChange={this.handleEmailChange}
+                    onChange={this.handleChange}
                   />
                 </label>
                 <label className="">
@@ -101,17 +104,15 @@ export default class SignUpForm extends PureComponent {
                     className="my1 body-serif full-width"
                     type="text"
                     placeholder="zipcode"
+                    name="zipcode"
                     value={this.state.zipcode}
-                    onChange={this.handleZipChange}
+                    onChange={this.handleChange}
                   />
                 </label>
                 <div className="full-width flex flex-column items-center justify-center">
                   <button className="SignUpForm__button my1 body-serif" type="submit">
                     submit
                   </button>
-                  <div className="relative full-width">
-                    <p className="body-serif absolute full-width center">{this.state.message}</p>
-                  </div>
                 </div>
               </form>
               {status === 'sending' ? (
@@ -132,6 +133,9 @@ export default class SignUpForm extends PureComponent {
             </div>
           )}
         />
+        <div className="relative full-width">
+          <p className="body-serif absolute full-width center">{this.state.message}</p>
+        </div>
       </div>
     )
   }
