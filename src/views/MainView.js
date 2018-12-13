@@ -32,7 +32,7 @@ const MainView = ({ model }) => {
               render={() =>
                 <AboutPage
                   image={get(model, "fields.aboutImage", {})}
-                  text={get(model, "fields.aboutText", {})}
+                  text={get(model, 'fields.aboutText', {})}
                 />
               }
             />

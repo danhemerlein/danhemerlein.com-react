@@ -9,22 +9,10 @@
 
   img {
     width: 100%;
-    border-radius: 50%;
   }
 
-  &__item {
-    font-size: 1.75rem;
-    color: color('silver-sand');
-    margin-left: .5rem;
-    margin-right: .5rem;
-
-    @media ($medium-up) {
-      font-size: 5rem;
-    }
-
-    &:hover {
-      color: color('black');
-      cursor: default;
-    }
+  p {
+    font-size: 2.5rem;
+    text-align: justify;
   }
 }
