@@ -18,7 +18,7 @@ const MainView = ({ model }) => {
   return (
     <div>
       <Router>
-        <div>
+        <div className="px3 pt3">
           <header>
             <Header
               title={get(model, "fields.title", {})}
@@ -26,50 +26,52 @@ const MainView = ({ model }) => {
               subTitleTwo={get(model, "fields.subTitleTwo", {})}
             />
           </header>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/about"
-              render={() =>
-                <AboutPage
-                  image={get(model, "fields.aboutImage", {})}
-                  text={get(model, 'fields.aboutText', {})}
+          <div id="switch">
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/about"
+                render={() =>
+                  <AboutPage
+                    image={get(model, "fields.aboutImage", {})}
+                    text={get(model, 'fields.aboutText', {})}
+                  />
+                }
+              />
+              <Route exact path="/code"
+                render={() => <Code
+                  projects={get(model, "fields.codeProjects.fields", {})}
                 />
-              }
-            />
-            <Route exact path="/code"
-              render={() => <Code
-                projects={get(model, "fields.codeProjects.fields", {})}
-              />
-            } />
-            <Route exact path="/music"
-              render={() => <MusicPage
-                projects={get(model, "fields.musicProjects.fields", {})}
-                images={get(model, "fields.musicProjectImages", {})}
-                comingSoonImage={get(model, "fields.musicProjectsComingSoon", {})}
-              />
-            } />
-            <Route exact path="/keep-in-touch"
-              render={() => <Contact
-                cta={get(model, "fields.contactHeadline", {})}
-                ctaTwo={get(model, "fields.contactHeadlineTwo", {})}
+              } />
+              <Route exact path="/music"
+                render={() => <MusicPage
+                  projects={get(model, "fields.musicProjects.fields", {})}
+                  images={get(model, "fields.musicProjectImages", {})}
+                  comingSoonImage={get(model, "fields.musicProjectsComingSoon", {})}
                 />
-              }
-            />
-            <Route exact path="/moodboard"
-              render={() => <Moodboard images={get(model, "fields.moodboard", {})} />}
-            />
-            <Route path="/music/:id"
-              render={(props) => <MusicShow
-                {...props}
-                projects={get(model, "fields.musicProjects.fields", {})}
-                images={get(model, "fields.musicProjectImages", {})}
+              } />
+              <Route exact path="/keep-in-touch"
+                render={() => <Contact
+                  cta={get(model, "fields.contactHeadline", {})}
+                  ctaTwo={get(model, "fields.contactHeadlineTwo", {})}
+                  />
+                }
               />
-            } />
-            <Route component={NotFound} />
-          </Switch>
-          <footer>
-            <Footer />
-          </footer>
+              <Route exact path="/moodboard"
+                render={() => <Moodboard images={get(model, "fields.moodboard", {})} />}
+              />
+              <Route path="/music/:id"
+                render={(props) => <MusicShow
+                  {...props}
+                  projects={get(model, "fields.musicProjects.fields", {})}
+                  images={get(model, "fields.musicProjectImages", {})}
+                />
+              } />
+              <Route component={NotFound} />
+            </Switch>
+            <footer>
+              <Footer />
+            </footer>
+          </div>
         </div>
       </Router>
     </div>

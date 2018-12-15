@@ -5,3 +5,9 @@
 @import './global/aspects';
 @import './global/transitions';
 @import './global/fonts';
+
+.App {
+  &__mobile-nav-container {
+    height: 100vh;
+  }
+}
