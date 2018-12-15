@@ -17,11 +17,11 @@ class AboutPage extends Component {
                 <Image src={this.props.image.fields.file.url} alt={this.props.image.fields.title}/>
               </div>
             </div>
-            <p className="m0 p4 body-serif">{this.props.text}</p>
+            <p className="m0 p2 body-serif">{this.props.text}</p>
           </div>
           <ScrollToTop scrollStepInPx="75" delayInMs="10" />
         </div>
-          <Link to="/" className="go-home block full-width center body-serif">Go Home</Link>
+        <Link to="/" className="go-home block full-width center body-serif">Go Home</Link>
       </div>
     );
   }
