@@ -5,7 +5,7 @@ import './Header.scss'
 import cx from 'classnames';
 
 import MobileNav from 'components/MobileNav';
-import HamburgerIcon from 'components/icons/Hamburger';
+import HamburgerIcon from "components/icons/Hamburger";
 
 export default class Header extends Component {
   constructor(props) {
