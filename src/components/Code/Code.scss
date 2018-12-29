@@ -20,7 +20,11 @@
     max-width: 60rem;
 
     &__title {
-      font-size: 2rem;
+      font-size: 1.4rem;
+
+      @media ($medium-up) {
+        font-size: 2rem;        
+      }
     }
 
     &__timeline {

@@ -13,6 +13,12 @@
   }
 
   p {
-    font-size: 1.75rem;
+    font-size: 1rem;
+    text-align: center;
+
+    @media ($medium-up) {
+      font-size: 1.75rem;
+      text-align: left;
+    }
   }
 }

@@ -25,7 +25,7 @@ export default class MusicShow extends Component {
           <Image src={this.state.image.fields.file.url} alt={this.state.image.fields.title} />
         </div>
         <div className="col-12 md-col-6">
-          <div className="ml4 flex justify-center items-center flex-column">
+          <div className="MusicShow__details-container flex justify-center items-center flex-column">
             <a href={this.state.project.link} className="block full-width" target="_blank" rel="noopener noreferrer">
             <h3 className="MusicShow__headline m0 body-serif full-width">{this.state.project.title.toUpperCase()}</h3>
             </a>

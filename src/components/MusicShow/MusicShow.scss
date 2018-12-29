@@ -13,14 +13,37 @@
   }
 
   svg {
-    width: 55%;
+    width: 25px;
+
+    @media ($medium-up) {
+      width: 30px;
+    }
+    @media ($large-up) {
+      width: 45px;
+    }
+  }
+
+  &__details-container {
+    margin: 0;
+
+    @media ($medium-up) {
+      margin-left: 4rem;
+    }
   }
 
   &__headline {
-    font-size: 3rem;
+    font-size: 2rem;
+
+    @media ($medium-up) {
+      font-size: 3rem;
+    }
   }
 
   &__subheadline {
-    font-size: 2rem;
+    font-size:1.3rem;
+
+    @media ($medium-up) {
+      font-size: 2rem;
+    }
   }
 }
