@@ -35,7 +35,6 @@ export default class MusicPage extends Component {
         {this.props.projects.map((project, key) => {
           let longArtist = false;
           if (project.artist.length > 30) {
-            console.log(project.artist);
             longArtist = true;
           }
           console.log(longArtist);
