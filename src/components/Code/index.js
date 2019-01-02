@@ -10,7 +10,7 @@ export default class Code extends Component {
         {
           this.props.projects.map((project, key) => {
             return (
-              <div className="Code__project px2 my2 full-width">
+              <div key={key} className="Code__project px2 my2 full-width">
                 <div className="Code__title-container flex">
                   <a href={project.link} target="_blank" rel="noopener noreferrer"><h4 className="Code__project__title m0 body-serif">{project.title}</h4></a>
                   <h4 className="Code__project__timeline body-serif">({project.timeline})</h4>

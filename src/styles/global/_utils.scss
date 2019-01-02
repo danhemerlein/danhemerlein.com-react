@@ -66,3 +66,15 @@
 .show {
   display: block;
 }
+
+.rem {
+  font-size: 1.25rem;
+
+  @media (max-width: $screen-l) and (min-width: $screen-m) {
+    font-size: .8rem;
+  }
+
+  @media ($large-up) {
+    font-size: 1.5rem;
+  }
+}
