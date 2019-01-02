@@ -37,7 +37,6 @@ export default class MusicPage extends Component {
           if (project.artist.length > 30) {
             longArtist = true;
           }
-          console.log(longArtist);
           return <div key={key} className="col-12 md-col-4 flex flex-column items-center justify-center">
               <div className="col-11">
                 <Link to={`/music/${project.id}`}>
