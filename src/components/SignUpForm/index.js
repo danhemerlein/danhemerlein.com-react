@@ -63,12 +63,12 @@ export default class SignUpForm extends PureComponent {
                       })
                     } else if (errorMessage.split(' ').includes('"emailAddress"')) {
                       this.setState({
-                        message: 'oops, an error has occured. please make sure to inlcude your email :]',
+                        message: 'oops, an error has occured. please make sure to include your email :]',
                         messageActive: true
                       })
                     } else if (errorMessage.split(' ').includes('"zipcode"')) {
                       this.setState({
-                        message: 'oops, an error has occured. please make sure to indlude your zipcode :]',
+                        message: 'oops, an error has occured. please make sure to include your zipcode :]',
                         messageActive: true
                       })
                     }
