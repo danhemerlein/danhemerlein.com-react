@@ -116,7 +116,7 @@ export default class SignUpForm extends PureComponent {
                   />
                 </label>
                 <div className="full-width flex flex-column items-center justify-center">
-                  <button className="SignUpForm__button my1 body-serif" type="submit">
+                  <button className="SignUpForm__button pointer my1 body-serif" type="submit">
                     submit
                   </button>
                 </div>
