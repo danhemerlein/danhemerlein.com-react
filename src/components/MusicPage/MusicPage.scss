@@ -57,15 +57,16 @@
   &__coming-soon-sub-text {
     font-size: 1.25rem;
     text-align: right;
+    display: none;
 
     @media (max-width: $screen-l) and (min-width: $screen-m) {
       font-size: 2rem;
-      text-align: left;
+      display: flex;
     }
 
     @media ($large-up) {
       font-size: 2.5rem;
-      text-align: left;
+      display: flex
     }
   }
 

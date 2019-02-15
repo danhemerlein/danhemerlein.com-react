@@ -25,8 +25,8 @@ export default class MusicPage extends Component {
                 <h3 className="MusicPage__coming-soon-text MusicPage__coming-soon-text--title p2 text-white body-serif m0">
                   minikit
                 </h3>
-                <h3 className="MusicPage__coming-soon-sub-text MusicPage__coming-soon-text--message p2 text-white body-serif m0 flex items-end">
-                  coming this winter
+                <h3 className="MusicPage__coming-soon-sub-text MusicPage__coming-soon-text--message p2 text-white body-serif m0 items-end flex">
+                  debut single '4am (Good for You)' available everywhere now
                 </h3>
               </div>
             </a>
