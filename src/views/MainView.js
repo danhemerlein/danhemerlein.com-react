@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import get from "utils/get";
 
 import HomePage from 'components/HomePage';
-import AboutPage from 'components/AboutPage';
+// import AboutPage from 'components/AboutPage';
+import AboutPageNew from 'components/AboutPageNew';
 import Code from 'components/Code';
 import MusicPage from 'components/MusicPage';
 import Contact from 'components/Contact';
@@ -31,10 +32,11 @@ const MainView = ({ model }) => {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/about"
                 render={() =>
-                  <AboutPage
-                    image={get(model, "fields.aboutImage", {})}
-                    text={get(model, 'fields.aboutText', {})}
-                  />
+                  // <AboutPage
+                  //   image={get(model, "fields.aboutImage", {})}
+                  //   text={get(model, 'fields.aboutText', {})}
+                  // />
+                  <AboutPageNew />
                 }
               />
               <Route exact path="/code"
