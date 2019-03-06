@@ -21,4 +21,12 @@
     -webkit-transition: opacity $transition-duration-ultra-short ease-in-out;
     transition: opacity $transition-duration-ultra-short ease-in-out;
   }
+
+  &__header {
+    font-size: 1.5rem;
+    
+    @media (min-width: 20rem) {
+      font-size: 3.5rem;
+    }
+  }
 }

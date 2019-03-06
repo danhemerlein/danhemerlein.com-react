@@ -52,11 +52,11 @@ listItemClickHandler = () => {
           />
         </div>
         <div id="header" className="flex">
-          <div className="Header__title col-10 md-col-6">
+          <div className="Header__title col-6">
             <h1 className="heading-serif m0"><Link to="/">{this.props.title}</Link></h1>
             <h2 className="xs-hide heading-serif m0"><Link to="/code">{this.props.subTitle}</Link> / <Link to="/music">{this.props.subTitleTwo}</Link></h2>
           </div>
-          <div className="flex justify-end items-center col-2 sm-col-6">
+          <div className="flex justify-end items-center col-6">
             <nav className="Header__desktop-nav" role="navigation">
               <ul className="list-style-none p0">
                 <li className="body-serif inline-block"><Link to="/keep-in-touch">keep in touch</Link></li>
@@ -64,12 +64,7 @@ listItemClickHandler = () => {
               </ul>
             </nav>
             <div className="Header__mobile-nav flex">
-              {/* <div className="pointer"> */}
-                {/* <HamburgerIcon
-                  clickHandler={this.toggleNav}
-                /> */}
-                <Menu clickHandler={this.toggleNav} />
-              {/* </div> */}
+              <Menu clickHandler={this.toggleNav} />
             </div>
           </div>
         </div>

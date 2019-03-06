@@ -10,9 +10,14 @@
   &__title {
     display: flex;
     align-items: center;
+    font-size: 0.5rem;
+
+    @media (min-width: 20rem) {
+      font-size: 1rem;
+    }
 
     @media ($small-up) {
-      display: block
+      display: block;
     }
 
   }
@@ -27,6 +32,12 @@
 
   &__mobile-nav {
     display: none;
+
+    font-size: 0.75rem;
+
+    @media (min-width: 20rem) {
+      font-size: 1rem;
+    }
     
     @media (max-width: 40rem) {
       display: block;
