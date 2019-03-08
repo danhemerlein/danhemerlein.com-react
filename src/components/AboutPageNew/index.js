@@ -24,6 +24,7 @@ class AboutPage extends Component {
 
   componentDidMount() {
     const aboutPage = document.querySelector('.AboutPageNew');
+
     const cursor = document.querySelector('.AboutPageNew__cursor');
     const canvasTag = document.querySelector('.AboutPageNew__canvas--in');
 
@@ -38,12 +39,7 @@ class AboutPage extends Component {
     const shrinkCursor = function () {
       cursor.classList.remove('AboutPageNew__cursor--is-down');
     }
-
-    const moveCursor = function (x, y) {
-      cursor.style.left = x  + 'px';
-      cursor.style.top = y + 'px';     
-    }
-
+   
     const setUpCanvas = function (canvas) {
       
       const w = canvas.offsetWidth + 'px';
@@ -75,7 +71,8 @@ class AboutPage extends Component {
     });
 
     aboutPage.addEventListener('mousemove', function (e) {
-      moveCursor(e.pageX, e.pageY);
+      cursor.style.left = (e.pageX - aboutPage.offsetLeft) + 'px';
+      cursor.style.top = (e.pageY - aboutPage.offsetTop) + 'px';  
     });
   }
   
@@ -85,8 +82,8 @@ class AboutPage extends Component {
 
   render() {
     return (
-      <div className="AboutPageNew">
-        <div className="AboutPageNew__cursor"></div>
+      <div className="AboutPageNew relative">
+        <div className="AboutPageNew__cursor absolute"></div>
         {/* <canvas className="AboutPageNew__canvas--in"></canvas> */}
       </div>
     );
