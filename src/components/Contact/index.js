@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import debounce from "utils/debounce";
 
 import './Contact.scss'
 
@@ -16,23 +17,10 @@ export default class Contact extends Component {
     contactPage.style.height = cpHeight + "px";
   }
 
-  debounce = (func, wait, immediate) => {
-    var timeout;
-    return function () {
-      var context = this, args = arguments;
-      var later = function () {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  };
+
 
   debounceCPHeight = () => {    
-    this.debounce(this.setHeightCP(), 100);
+    debounce(this.setHeightCP(), 100);
   }
   
   componentDidMount = () => {

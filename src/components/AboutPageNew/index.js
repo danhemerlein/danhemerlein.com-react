@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 
-import Image from 'components/base/Image';
+import debounce from "utils/debounce";
 
 import './AboutPageNew.scss';
-import { isContext } from 'vm';
 
 class AboutPage extends Component {
   setHeightAP = () => {
@@ -20,23 +18,8 @@ class AboutPage extends Component {
     aboutPage.style.height = apHeight + "px";
   }
 
-  debounce = (func, wait, immediate) => {
-    var timeout;
-    return function () {
-      var context = this, args = arguments;
-      var later = function () {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  };
-
   debounceAPHeight = () => {
-    this.debounce(this.setHeightAP(), 100);
+    debounce(this.setHeightAP(), 100);
   }
 
   componentDidMount() {
