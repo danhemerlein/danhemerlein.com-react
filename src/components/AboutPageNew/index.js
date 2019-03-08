@@ -4,21 +4,49 @@ import { Link } from "react-router-dom";
 import Image from 'components/base/Image';
 
 import './AboutPageNew.scss';
+import { isContext } from 'vm';
 
 class AboutPage extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-       
-    }
+  setHeightAP = () => {
+    const aboutPage = document.querySelector('.AboutPageNew');
+
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+
+    const headerFooter = header.offsetHeight + footer.offsetHeight;
+
+    const apHeight = ((window.innerHeight - headerFooter) - 32);
+
+    aboutPage.style.height = apHeight + "px";
+  }
+
+  debounce = (func, wait, immediate) => {
+    var timeout;
+    return function () {
+      var context = this, args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
+  debounceAPHeight = () => {
+    this.debounce(this.setHeightAP(), 100);
   }
 
   componentDidMount() {
+    const aboutPage = document.querySelector('.AboutPageNew');
     const cursor = document.querySelector('.AboutPageNew__cursor');
     const canvasTag = document.querySelector('.AboutPageNew__canvas--in');
 
-    let isMouseDown = false;
+    this.setHeightAP();
+
+    window.addEventListener("resize", this.debounceAPHeight);
 
     const growCursor = function () {
       cursor.classList.add('AboutPageNew__cursor--is-down');
@@ -29,59 +57,48 @@ class AboutPage extends Component {
     }
 
     const moveCursor = function (x, y) {
-      cursor.style.left = x + 'px';
-      cursor.style.top = y + 'px';
+      cursor.style.left = x  + 'px';
+      cursor.style.top = y + 'px';     
     }
 
-    const setupCanvas = function (canvas) {
-
+    const setUpCanvas = function (canvas) {
+      
+      const w = canvas.offsetWidth + 'px';
+      const h = canvas.offsetHeight + 'px';
       const dpi = window.devicePixelRatio;
+    
+      canvas.width = canvas.offsetWidth * dpi;
+      canvas.height = canvas.offsetHeight * dpi;
 
-      // which context: 2d or 3d?
+      canvas.style.width = w;
+      canvas.style.height = h;
 
       const ctx = canvas.getContext('2d');
       ctx.scale(dpi, dpi);
 
       ctx.fillStyle = 'red';
-      ctx.strokeStyle = 'red';
-      ctx.lineWidth = 5;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
+      // ctx.rect(100, 100, 600, 400);
+      // ctx.fill();
     }
 
-    const startDraw = function (canvas) {
-      const ctx = canvas.getContext('2d');
-      ctx.fillStyle = 'yellow';
-    }
+    // setUpCanvas(canvasTag);
 
-    // let's draw based on canvas, x and y
-
-    const moveDraw = function (canvas, x, y) {
-      const ctx = canvas.getContext('2d');
-      if (isMouseDown) {
-        ctx.lineTo(x, y);
-        ctx.stroke();
-      }
-    }
-
-    // setupCanvas(canvasTag);
-
-    document.addEventListener('mousedown', function () {
-      isMouseDown = true;
+    aboutPage.addEventListener('mousedown', function () {
       growCursor();
-      // startDraw(canvasTag);
     });
 
-    document.addEventListener('mouseup', function () {
-      isMouseDown = false;
+    aboutPage.addEventListener('mouseup', function () {
       shrinkCursor();
     });
 
-    document.addEventListener('mousemove', function (e) {
+    aboutPage.addEventListener('mousemove', function (e) {
       moveCursor(e.pageX, e.pageY);
-      // moveDraw(canvasTag, e.pageX, e.pageY);
     });
-  }  
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.debounceAPHeight)
+  }
 
   render() {
     return (
