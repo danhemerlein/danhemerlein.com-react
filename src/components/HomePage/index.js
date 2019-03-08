@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import debounce from "utils/debounce";
 
 import './HomePage.scss';
 
@@ -10,11 +11,36 @@ import WebsiteIcon from 'components/icons/Website';
 import ContactIcon from 'components/icons/Contact';
 
 class HomePage extends Component {
+  setHeightHP = () => {
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    const homePage = document.querySelector(".HomePage");
+
+    const headerFooter = header.offsetHeight + footer.offsetHeight;
+    const hpHeight = ((window.innerHeight - headerFooter) - 32);
+
+    homePage.style.height = hpHeight + "px";
+  }
+
+  debounceHPHeight = () => {
+    debounce(this.setHeightHP(), 100);
+  }
+
+  componentDidMount = () => {
+    this.setHeightHP();
+    window.addEventListener("resize", this.debounceHPHeight);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.debounceHPHeight);
+  }
+
+
   render() {
     return (
       <div className="HomePage">
-        <div className="my2 flex">
-          <div className="flex flex-column col-12">
+        <div className="flex full-height">
+          <div className="flex mt2 flex-column col-12">
             <div className="HomePage__top-left col-12">
               <Link to="/code">
                 <HomeBox
@@ -33,7 +59,7 @@ class HomePage extends Component {
             </div>
 
           </div>
-          <div className="flex flex-column col-12 ml1">
+          <div className="flex mt2 flex-column col-12 ml1">
             <div className="HomePage__top-right col-12">
               <Link to="/music">
                 <HomeBox

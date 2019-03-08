@@ -2,7 +2,8 @@
 
 .HomeBox {
   border: 2px solid color('black');
-  height: 38vh;
+  // height: 38vh;
+  height: 100%;
 
   &:hover .HomeBox__overlay {
     opacity: 1;

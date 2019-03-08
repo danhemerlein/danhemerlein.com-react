@@ -18,16 +18,17 @@
   &__project {
     border: 1px solid color('black');
     max-width: 60rem;
-
+    margin-top: 1rem;
+    
     &__title {
       font-size: 1.4rem;
-
+      
       @media ($medium-up) {
         font-size: 2rem;        
       }
     }
 
-    &__timeline {
+    &-timeline {
       margin: 0;
 
       @media ($medium-up) {
@@ -36,4 +37,13 @@
       }
     }
   }
+}
+
+.Code__project:first-of-type{    
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.Code__project:last-of-type{
+  margin-bottom: 1rem;
 }

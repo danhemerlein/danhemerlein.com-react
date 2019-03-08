@@ -10,10 +10,10 @@ export default class Code extends Component {
         {
           this.props.projects.map((project, key) => {
             return (
-              <div key={key} className="Code__project px2 my2 full-width">
+              <div key={key} className="Code__project px2 full-width">
                 <div className="Code__title-container flex">
                   <a href={project.link} target="_blank" rel="noopener noreferrer"><h4 className="Code__project__title m0 body-serif">{project.title}</h4></a>
-                  <h4 className="Code__project__timeline body-serif">({project.timeline})</h4>
+                  <h4 className="Code__project-timeline body-serif">({project.timeline})</h4>
                 </div>
                 <a className="col-6 lg-col-1 block" href={project.link} target="_blank" rel="noopener noreferrer"><h4 className="m0 body-serif">Open Site</h4></a>
                 <p className="body-serif">{project.description}</p>
