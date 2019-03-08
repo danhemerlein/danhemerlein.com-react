@@ -1,8 +1,6 @@
 @import "../../styles/app.scss";
 
 .HomePage {
-  // height: 76vh;
-
   &__top-left {
     -webkit-animation: slide-right $transition-duration-med;
     -moz-animation: slide-right $transition-duration-med;
@@ -10,7 +8,7 @@
     -o-animation: slide-right $transition-duration-med;
     animation: slide-right $transition-duration-med;
     margin-bottom: .25rem;
-    height: 50%;
+    height: 48%;
   }
   
   &__bottom-left {
@@ -20,7 +18,7 @@
     -o-animation: slide-right-wide $transition-duration-mid;
     animation: slide-right-wide $transition-duration-mid;
     margin-top: .25rem;
-    height: 50%;
+    height: 48%;
   }
   
   &__top-right {
@@ -29,7 +27,7 @@
     -ms-animation: slide-left $transition-duration-med;
     -o-animation: slide-left $transition-duration-med;
     animation: slide-left $transition-duration-med;
-    height: 50%;
+    height: 48%;
   }
   
   &__bottom-right {
@@ -38,6 +36,6 @@
     -ms-animation: slide-left-wide $transition-duration-mid;
     -o-animation: slide-left-wide $transition-duration-mid;
     animation: slide-left-wide $transition-duration-mid;
-    height: 50%;
+    height: 48%;
   }
 }
