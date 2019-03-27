@@ -13,6 +13,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import NotFound from 'components/NotFound';
 import MusicShow from 'components/MusicShow';
+import Tunes from 'components/Tunes';
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Oops, soemthing went wrong!</h1>;
@@ -30,44 +31,77 @@ const MainView = ({ model }) => {
           <div id="switch">
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/about"
-                render={() =>
+              <Route
+                exact
+                path="/about"
+                render={() => (
                   // <AboutPage
                   //   image={get(model, "fields.aboutImage", {})}
                   //   text={get(model, 'fields.aboutText', {})}
                   // />
                   <AboutPageNew />
-                }
+                )}
               />
-              <Route exact path="/code"
-                render={() => <Code
-                  projects={get(model, "fields.codeProjects.fields", {})}
-                />
-              } />
-              <Route exact path="/music"
-                render={() => <MusicPage
-                  projects={get(model, "fields.musicProjects.fields", {})}
-                  images={get(model, "fields.musicProjectImages", {})}
-                  comingSoonImage={get(model, "fields.musicProjectsComingSoon", {})}
-                />
-              } />
-              <Route exact path="/keep-in-touch"
-                render={() => <Contact
-                  cta={get(model, "fields.contactHeadline", {})}
-                  ctaTwo={get(model, "fields.contactHeadlineTwo", {})}
+              <Route
+                exact
+                path="/code"
+                render={() => (
+                  <Code
+                    projects={get(model, "fields.codeProjects.fields", {})}
                   />
-                }
+                )}
               />
-              <Route exact path="/moodboard"
-                render={() => <Moodboard images={get(model, "fields.moodboard", {})} />}
+              <Route
+                exact
+                path="/music"
+                render={() => (
+                  <MusicPage
+                    projects={get(model, "fields.musicProjects.fields", {})}
+                    images={get(model, "fields.musicProjectImages", {})}
+                    comingSoonImage={get(
+                      model,
+                      "fields.musicProjectsComingSoon",
+                      {}
+                    )}
+                  />
+                )}
               />
-              <Route path="/music/:id"
-                render={(props) => <MusicShow
-                  {...props}
-                  projects={get(model, "fields.musicProjects.fields", {})}
-                  images={get(model, "fields.musicProjectImages", {})}
-                />
-              } />
+              <Route
+                exact
+                path="/keep-in-touch"
+                render={() => (
+                  <Contact
+                    cta={get(model, "fields.contactHeadline", {})}
+                    ctaTwo={get(model, "fields.contactHeadlineTwo", {})}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/moodboard"
+                render={() => (
+                  <Moodboard images={get(model, "fields.moodboard", {})} />
+                )}
+              />
+              <Route
+                path="/music/:id"
+                render={props => (
+                  <MusicShow
+                    {...props}
+                    projects={get(model, "fields.musicProjects.fields", {})}
+                    images={get(model, "fields.musicProjectImages", {})}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/tunes-test"
+                render={() => (
+                  <Tunes
+                    tunes={get(model, "fields.tunes", {})}
+                  />
+                )}
+              />
               <Route component={NotFound} />
             </Switch>
             <footer>
