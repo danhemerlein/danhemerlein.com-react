@@ -31,7 +31,10 @@ class AboutPage extends Component {
 
     this.setHeightAP();
 
-    window.addEventListener("resize", this.debounceAPHeight);
+    window.addEventListener("resize", () => {
+      this.debounceAPHeight()
+      setUpCanvas(canvasTag);
+    });
 
     const growCursor = function () {
       cursor.classList.add('AboutPageNew__cursor--is-down');
@@ -113,10 +116,6 @@ class AboutPage extends Component {
   render() {
     return (
       <div className="AboutPageNew relative">
-        {/* <div
-          // style={{ backgroundImage: "url('/assets/pattern.svg')" }}
-          className="AboutPageNew__pattern"
-        /> */}
         <p className="AboutPageNew__paragraph-top  absolute">
           I am a <span className="AboutPageNew__paragraph-top--span-hide">web</span><span className="AboutPageNew__paragraph-top--span-hide"> developer</span> and <span className="AboutPageNew__paragraph-top--span-hide">musician</span> based in <span className="AboutPageNew__paragraph-top--span-hide">Brooklyn,</span> <span className="AboutPageNew__paragraph-top--span-hide">New</span><span className="AboutPageNew__paragraph-top--span-hide"> York. </span>I once shook hands with
           <span className="AboutPageNew__paragraph-top--span-hide"> Hillary</span> <span className="AboutPageNew__paragraph-top--span-hide"> Clinton</span> and my mom is the <span className="AboutPageNew__paragraph-top--span-hide">mayor </span>
