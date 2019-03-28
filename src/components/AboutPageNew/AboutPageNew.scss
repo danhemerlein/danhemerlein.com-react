@@ -31,12 +31,12 @@
   }
 
   &__paragraph-top {
-    font-size: 2.25rem;
+    font-size: 3rem;
     user-select: none;
     z-index: 5;
 
     @media ($small-down) {
-      font-size: 1.5rem;
+      font-size: 3rem;
     }
 
     &--span-hide {
