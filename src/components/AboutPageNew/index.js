@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import debounce from "utils/debounce";
 
+import AboutPageMobile from 'components/AboutPage';
+
 import './AboutPageNew.scss';
 
 class AboutPage extends Component {
@@ -53,7 +55,6 @@ class AboutPage extends Component {
       const ctx = canvas.getContext('2d');
       ctx.scale(dpi, dpi);
 
-      // ctx.fillStyle = '#FFF';
       ctx.strokeStyle = "rgba(228, 233, 237, 0.75)";
 
       ctx.lineWidth = 25;
@@ -61,8 +62,6 @@ class AboutPage extends Component {
       ctx.lineJoin = 'round';
       ctx.shadowBlur = 10;
       ctx.shawdowColor = ctx.strokeStyle;
-
-      // ctx.fill();
       
     }
 
@@ -115,18 +114,31 @@ class AboutPage extends Component {
 
   render() {
     return (
-      <div className="AboutPageNew relative">
-        <p className="AboutPageNew__paragraph-top  absolute">
-          I am a <span className="AboutPageNew__paragraph-top--span-hide">web</span><span className="AboutPageNew__paragraph-top--span-hide"> developer</span> and <span className="AboutPageNew__paragraph-top--span-hide">musician</span> based in <span className="AboutPageNew__paragraph-top--span-hide">Brooklyn,</span> <span className="AboutPageNew__paragraph-top--span-hide">New</span><span className="AboutPageNew__paragraph-top--span-hide"> York. </span>I once shook hands with
-          <span className="AboutPageNew__paragraph-top--span-hide"> Hillary</span> <span className="AboutPageNew__paragraph-top--span-hide"> Clinton</span> and my mom is the <span className="AboutPageNew__paragraph-top--span-hide">mayor </span>
-          of <span className="AboutPageNew__paragraph-top--span-hide">the</span> <span className="AboutPageNew__paragraph-top--span-hide">town</span> I’m from. Code / music
-          <span className="AboutPageNew__paragraph-top--span-hide"> is </span><span className="AboutPageNew__paragraph-top--span-hide"> my</span> <span className="AboutPageNew__paragraph-top--span-hide">life</span> and it’s <span className="AboutPageNew__paragraph-top--span-hide">super</span> <span className="AboutPageNew__paragraph-top--span-hide"> trill.</span>
-        </p>
-        <p className="AboutPageNew__paragraph-bottom  absolute">
-          <span className="AboutPageNew__paragraph-top--span-hide">lol hi</span>
-        </p>
-        <canvas className="AboutPageNew__canvas full-height full-width" />
-        <div className="AboutPageNew__cursor absolute" />
+      <div className="AboutPages__container">
+
+        <div className="AboutPageNew relative">
+
+          <p className="AboutPageNew__paragraph-top  absolute">
+            I am a <span className="AboutPageNew__paragraph-top--span-hide">web</span><span className="AboutPageNew__paragraph-top--span-hide"> developer</span> and <span className="AboutPageNew__paragraph-top--span-hide">musician</span> based in <span className="AboutPageNew__paragraph-top--span-hide">Brooklyn,</span> <span className="AboutPageNew__paragraph-top--span-hide">New</span><span className="AboutPageNew__paragraph-top--span-hide"> York. </span>I once shook hands with
+            <span className="AboutPageNew__paragraph-top--span-hide"> Hillary</span> <span className="AboutPageNew__paragraph-top--span-hide"> Clinton</span> and my mom is the <span className="AboutPageNew__paragraph-top--span-hide">mayor </span>
+            of <span className="AboutPageNew__paragraph-top--span-hide">the</span> <span className="AboutPageNew__paragraph-top--span-hide">town</span> I’m from. Code / music
+            <span className="AboutPageNew__paragraph-top--span-hide"> is </span><span className="AboutPageNew__paragraph-top--span-hide"> my</span> <span className="AboutPageNew__paragraph-top--span-hide">life</span> and it’s <span className="AboutPageNew__paragraph-top--span-hide">super</span> <span className="AboutPageNew__paragraph-top--span-hide"> trill.</span>
+          </p>
+          <p className="AboutPageNew__paragraph-bottom  absolute">
+            <span className="AboutPageNew__paragraph-top--span-hide">lol hi</span>
+          </p>
+          <canvas className="AboutPageNew__canvas full-height full-width" />
+          <div className="AboutPageNew__cursor absolute" />
+
+        </div>
+
+        <div className="AboutPage__mobile">
+          <AboutPageMobile 
+            image={this.props.image}
+            text={this.props.text}
+          />
+        </div>
+
       </div>
     );
   }

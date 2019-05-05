@@ -39,7 +39,10 @@ const MainView = ({ model }) => {
                   //   image={get(model, "fields.aboutImage", {})}
                   //   text={get(model, 'fields.aboutText', {})}
                   // />
-                  <AboutPageNew />
+                  <AboutPageNew 
+                    image={get(model, "fields.aboutImage", {})}
+                    text={get(model, 'fields.aboutText', {})}
+                  />
                 )}
               />
               <Route
