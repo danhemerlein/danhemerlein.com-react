@@ -26,9 +26,6 @@ export default class MusicShow extends Component {
 
     const headerFooter = header.offsetHeight + footer.offsetHeight;
     const MSHeight = ((window.innerHeight - headerFooter) - 32);
-    console.log(MSHeight);
-    console.log(headerFooter);
-    console.log(window.innerHeight);
 
     MusicShow.style.height = MSHeight + "px";
   }
