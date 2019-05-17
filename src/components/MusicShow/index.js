@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import debounce from "utils/debounce";
 
 import Image from 'components/base/Image';
 import PlayIcon from 'components/icons/Play';
@@ -18,10 +19,37 @@ export default class MusicShow extends Component {
     }
   }
 
+  setHeightMS = () => {
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    const MusicShow = document.querySelector('.MusicShow');
+
+    const headerFooter = header.offsetHeight + footer.offsetHeight;
+    const MSHeight = ((window.innerHeight - headerFooter) - 32);
+    console.log(MSHeight);
+    console.log(headerFooter);
+    console.log(window.innerHeight);
+
+    MusicShow.style.height = MSHeight + "px";
+  }
+
+  debounceMSHeight = () => {
+    debounce(this.setHeightMS(), 100);
+  }
+
+  componentDidMount = () => {
+    this.setHeightMS();
+    window.addEventListener("resize", this.debounceMSHeight);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.debounceMSHeight);
+  }
+
   render() {
     return (
-      <div className="MusicShow mt2 flex justify-center">
-        <div className="col-12 md-col-6">
+      <div className="MusicShow flex justify-center">
+        <div className="pt2 col-12 md-col-6">
           <Image src={this.state.image.fields.file.url} alt={this.state.image.fields.title} />
         </div>
         <div className="col-12 md-col-6">
