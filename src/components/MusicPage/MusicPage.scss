@@ -1,11 +1,8 @@
 @import "../../styles/app.scss";
 
 .MusicPage {
-  -webkit-animation: fadein $transition-duration-short;
-  -moz-animation: fadein $transition-duration-short;
-  -ms-animation: fadein $transition-duration-short;
-  -o-animation: fadein $transition-duration-short;
-  animation: fadein $transition-duration-short;
+  margin-left: -3rem;
+  margin-right: -3rem;
 
   img {
     width: 100%;
@@ -14,7 +11,6 @@
 
   &__overlay {
     opacity: 0;
-    color: color('black');
     -moz-transition: opacity $transition-duration-ultra-short ease-in-out;
     -webkit-transition: opacity $transition-duration-ultra-short ease-in-out;
     transition: opacity $transition-duration-ultra-short ease-in-out;
@@ -26,55 +22,61 @@
     }
   }
 
-  &__coming-soon-block {
+  &__hero {
     height: 75vh;
   }
 
-  &__coming-soon-text {
-    font-size: 3rem;
+  &__hero-text {
 
-    @media ($medium-up) {
-      font-size: 4rem;
-    }
-
-    &--title {
+    &--headline {
       -webkit-animation: slide-right-wide $transition-duration-long;
       -moz-animation: slide-right-wide $transition-duration-long;
       -ms-animation: slide-right-wide $transition-duration-long;
       -o-animation: slide-right-wide $transition-duration-long;
       animation: slide-right-wide $transition-duration-long;
+
+      font-size: 1.5rem;
+
+      top: 2rem;
+      left: 3.5rem;
+
+      @media ($large-up) {
+        font-size: 2rem;
+      }
     }
 
-    &--message {
+    &--sub-headline {
       -webkit-animation: slide-left-wide $transition-duration-long;
       -moz-animation: slide-left-wide $transition-duration-long;
       -ms-animation: slide-left-wide $transition-duration-long;
       -o-animation: slide-left-wide $transition-duration-long;
       animation: slide-left-wide $transition-duration-long;
+
+      bottom: 2rem;
+      right: 3.5rem;
+
+      font-size: 1.25rem;
+      text-align: right;
+      display: none;
+
+      @media (max-width: $screen-l) and (min-width: $screen-m) {
+        font-size: 2rem;
+        display: flex;
+      }
+
+      @media ($large-up) {
+        font-size: 2.5rem;
+        display: flex
+      }
     }
   }
 
-  &__coming-soon-sub-text {
-    font-size: 1.25rem;
-    text-align: right;
-    display: none;
+  &__projects-container {
+    flex-direction: column;
+    flex-wrap: wrap;
 
-    @media (max-width: $screen-l) and (min-width: $screen-m) {
-      font-size: 2rem;
-      display: flex;
-    }
-
-    @media ($large-up) {
-      font-size: 2.5rem;
-      display: flex
-    }
-  }
-
-  &__title {
-    font-size: 1.5rem;
-
-    @media ($large-up) {
-      font-size: 2rem;
+    @include common-bp (tablet) {
+      flex-direction: row;
     }
   }
 
@@ -84,5 +86,15 @@
 
   &__role {
     font-size: 1.1rem;
+  }
+}
+
+.rem {
+  font-size: 1.25rem;
+  @media (max-width: $screen-l) and (min-width: $screen-m) {
+    font-size: .8rem;
+  }
+  @media ($large-up) {
+    font-size: 1.5rem;
   }
 }

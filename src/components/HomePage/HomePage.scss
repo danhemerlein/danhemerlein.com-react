@@ -10,7 +10,7 @@
     margin-bottom: .25rem;
     height: 48%;
   }
-  
+
   &__bottom-left {
     -webkit-animation: slide-right-wide $transition-duration-mid;
     -moz-animation: slide-right-wide $transition-duration-mid;
@@ -20,7 +20,7 @@
     margin-top: .25rem;
     height: 48%;
   }
-  
+
   &__top-right {
     -webkit-animation: slide-left $transition-duration-med;
     -moz-animation: slide-left $transition-duration-med;
@@ -29,7 +29,7 @@
     animation: slide-left $transition-duration-med;
     height: 48%;
   }
-  
+
   &__bottom-right {
     -webkit-animation: slide-left-wide $transition-duration-mid;
     -moz-animation: slide-left-wide $transition-duration-mid;

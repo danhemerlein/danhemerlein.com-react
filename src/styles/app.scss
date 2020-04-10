@@ -1,10 +1,12 @@
-@import './global/colors';
-@import './global/styleguide';
-@import './global/variables';
-@import './global/utils';
-@import './global/aspects';
-@import './global/transitions';
-@import './global/fonts';
+@import './reset.scss';
+@import './settings/colors';
+@import './settings/functions';
+@import './settings/variables';
+@import './styleguide.scss';
+@import './utils.scss';
+@import './aspects.scss';
+@import './transitions.scss';
+@import './fonts.scss';
 
 .App {
   &__mobile-nav-container {

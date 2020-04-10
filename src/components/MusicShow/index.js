@@ -50,7 +50,7 @@ export default class MusicShow extends Component {
   render() {
     return (
       <div className="MusicShow flex justify-center">
-        <div className="pt2 col-12 md-col-6">
+        {/* <div className="pt2 col-12 md-col-6">
           <Image src={this.state.image.fields.file.url} alt={this.state.image.fields.title} />
         </div>
         <div className="col-12 md-col-6">
@@ -87,7 +87,8 @@ export default class MusicShow extends Component {
             </a>
             <h3 className="full-width"><Link to={'/music/'}><span className="body-serif">GO BACK</span></Link></h3>
           </div>
-        </div>
+        </div> */}
+        fuck
       </div>
     )
   }

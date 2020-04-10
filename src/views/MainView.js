@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import get from "utils/get";
 
 import HomePage from 'components/HomePage';
-// import AboutPage from 'components/AboutPage';
 import AboutPageNew from 'components/AboutPageNew';
 import Code from 'components/Code';
 import MusicPage from 'components/MusicPage';
@@ -17,15 +16,52 @@ import Tunes from 'components/Tunes';
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Oops, soemthing went wrong!</h1>;
+
+  console.log(model);
+  let site = [];
+  let musicProjects = [];
+  for (let i = 0; i < model.length; i++) {
+    const element = model[i];
+    if ("subTitle" in element.fields) {
+      site = element;
+    }
+    if ("releaseDate" in element.fields) {
+      musicProjects.push(element);
+    }
+  }
+
+  musicProjects = musicProjects.sort((a, b) => {
+    return a.fields.order - b.fields.order;
+  });
+
+  const musicPageRoutes = musicProjects.map((project, key) => {
+    var projectHandle = project.fields.title.replace(/[^a-zA-Z0-9 ]/g, "").replace(/ /g, '-').toLowerCase();
+    const handle = `/music/${projectHandle}`;
+
+    return (
+      <Route
+        path={handle}
+        key={key}
+        render={props => (
+          <MusicShow
+            {...props}
+            projects={get(site, "fields.musicProjects.fields", {})}
+            images={get(site, "fields.musicProjectImages", {})}
+          />
+        )}
+      />
+    )
+  })
+
   return (
     <div>
       <Router>
         <div className="px3 pt3">
           <header>
             <Header
-              title={get(model, "fields.title", {})}
-              subTitle={get(model, "fields.subTitle", {})}
-              subTitleTwo={get(model, "fields.subTitleTwo", {})}
+              title={get(site, "fields.title", {})}
+              subTitle={get(site, "fields.subTitle", {})}
+              subTitleTwo={get(site, "fields.subTitleTwo", {})}
             />
           </header>
           <div id="switch">
@@ -35,13 +71,9 @@ const MainView = ({ model }) => {
                 exact
                 path="/about"
                 render={() => (
-                  // <AboutPage
-                  //   image={get(model, "fields.aboutImage", {})}
-                  //   text={get(model, 'fields.aboutText', {})}
-                  // />
-                  <AboutPageNew 
-                    image={get(model, "fields.aboutImage", {})}
-                    text={get(model, 'fields.aboutText', {})}
+                  <AboutPageNew
+                    image={get(site, "fields.aboutImage", {})}
+                    text={get(site, 'fields.aboutText', {})}
                   />
                 )}
               />
@@ -50,7 +82,7 @@ const MainView = ({ model }) => {
                 path="/code"
                 render={() => (
                   <Code
-                    projects={get(model, "fields.codeProjects.fields", {})}
+                    projects={get(site, "fields.codeProjects.fields", {})}
                   />
                 )}
               />
@@ -59,10 +91,9 @@ const MainView = ({ model }) => {
                 path="/music"
                 render={() => (
                   <MusicPage
-                    projects={get(model, "fields.musicProjects.fields", {})}
-                    images={get(model, "fields.musicProjectImages", {})}
+                    projects={musicProjects}
                     comingSoonImage={get(
-                      model,
+                      site,
                       "fields.musicProjectsComingSoon",
                       {}
                     )}
@@ -74,8 +105,8 @@ const MainView = ({ model }) => {
                 path="/keep-in-touch"
                 render={() => (
                   <Contact
-                    cta={get(model, "fields.contactHeadline", {})}
-                    ctaTwo={get(model, "fields.contactHeadlineTwo", {})}
+                    cta={get(site, "fields.contactHeadline", {})}
+                    ctaTwo={get(site, "fields.contactHeadlineTwo", {})}
                   />
                 )}
               />
@@ -83,25 +114,28 @@ const MainView = ({ model }) => {
                 exact
                 path="/moodboard"
                 render={() => (
-                  <Moodboard images={get(model, "fields.moodboard", {})} />
+                  <Moodboard images={get(site, "fields.moodboard", {})} />
                 )}
               />
-              <Route
+              {/* <Route
                 path="/music/:id"
                 render={props => (
                   <MusicShow
                     {...props}
-                    projects={get(model, "fields.musicProjects.fields", {})}
-                    images={get(model, "fields.musicProjectImages", {})}
+                    projects={get(site, "fields.musicProjects.fields", {})}
+                    images={get(site, "fields.musicProjectImages", {})}
                   />
                 )}
-              />
+              /> */}
+
+              {musicPageRoutes}
+
               <Route
                 exact
                 path="/tunes-test"
                 render={() => (
                   <Tunes
-                    tunes={get(model, "fields.tunes", {})}
+                    tunes={get(site, "fields.tunes", {})}
                   />
                 )}
               />

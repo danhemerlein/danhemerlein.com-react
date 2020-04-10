@@ -25,10 +25,6 @@ export default class ScrollToTop extends Component {
     this.setState({ intervalId });
   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
   handleScroll = () => {
     let y = window.pageYOffset
 
@@ -38,6 +34,14 @@ export default class ScrollToTop extends Component {
     else {
       this.setState({ showScroll: false });
     }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 
   render() {
