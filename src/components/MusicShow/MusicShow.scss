@@ -4,43 +4,33 @@
 .MusicShow {
   flex-direction: column;
   height: 100%;
+  background-image: linear-gradient(45deg,#8795e8,#ff6ad5);
 
   img {
     width: 100%;
   }
 
-  svg {
-    width: 25px;
-
-    @media ($medium-up) {
-      width: 30px;
-    }
-    @media ($large-up) {
-      width: 45px;
-    }
-  }
-
   &__details-container {
     margin: 0;
+  }
 
-    @media ($medium-up) {
-      margin-left: 4rem;
-    }
+  &__links-container {
+    @include anchor-white;
   }
 
   &__headline {
     font-size: 2rem;
 
-    @media ($medium-up) {
-      font-size: 3rem;
+    @include common-bp(tablet) {
+      font-size: 1rem;
     }
   }
 
   &__subheadline {
     font-size:1.3rem;
 
-    @media ($medium-up) {
-      font-size: 2rem;
+    @include common-bp(tablet) {
+      font-size: 1rem;
     }
   }
 }

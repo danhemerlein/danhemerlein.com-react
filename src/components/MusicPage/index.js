@@ -62,8 +62,8 @@ export default class MusicPage extends Component {
                           )}>
                           by {project.fields.artist}
                         </h4>
-                        <h5 className="MusicPage__role body-serif bold m0">
-                          {project.fields.role.toLowerCase()}
+                        <h5 className="MusicPage__role body-serif bold m0 text-lowercase">
+                          {project.fields.role}
                         </h5>
                       </div>
                   </Link>

@@ -18,6 +18,7 @@ const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Oops, soemthing went wrong!</h1>;
 
   console.log(model);
+
   let site = [];
   let musicProjects = [];
   for (let i = 0; i < model.length; i++) {

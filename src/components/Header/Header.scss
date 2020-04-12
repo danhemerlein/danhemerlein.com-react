@@ -1,11 +1,13 @@
 @import "../../styles/app.scss";
 
 .Header {
-  -webkit-animation: fadein $transition-duration-long;
-  -moz-animation: fadein $transition-duration-long;
-  -ms-animation: fadein $transition-duration-long;
-  -o-animation: fadein $transition-duration-long;
-  animation: fadein $transition-duration-long;
+  // -webkit-animation: fadein $transition-duration-long;
+  // -moz-animation: fadein $transition-duration-long;
+  // -ms-animation: fadein $transition-duration-long;
+  // -o-animation: fadein $transition-duration-long;
+  // animation: fadein $transition-duration-long;
+
+  @include anchor-black;
 
   &__title {
     display: flex;
@@ -38,7 +40,7 @@
     @media (min-width: 20rem) {
       font-size: 1rem;
     }
-    
+
     @media (max-width: 40rem) {
       display: block;
     }

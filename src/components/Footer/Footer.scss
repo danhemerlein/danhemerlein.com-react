@@ -16,4 +16,6 @@
     -o-animation: fadein $transition-duration-long;
     animation: fadein $transition-duration-long;
   }
+
+  @include anchor-black;
 }
