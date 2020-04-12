@@ -45,8 +45,7 @@ const MainView = ({ model }) => {
         render={props => (
           <MusicShow
             {...props}
-            projects={get(site, "fields.musicProjects.fields", {})}
-            images={get(site, "fields.musicProjectImages", {})}
+            project={project}
           />
         )}
       />

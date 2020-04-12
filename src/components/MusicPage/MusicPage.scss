@@ -11,6 +11,7 @@
 
   &__overlay {
     opacity: 0;
+    text-align: center;
     -moz-transition: opacity $transition-duration-ultra-short ease-in-out;
     -webkit-transition: opacity $transition-duration-ultra-short ease-in-out;
     transition: opacity $transition-duration-ultra-short ease-in-out;
@@ -74,10 +75,15 @@
   &__projects-container {
     flex-direction: column;
     flex-wrap: wrap;
+    background-image: linear-gradient(90deg,#ff6ad5,#8795e8);
 
     @include common-bp (tablet) {
       flex-direction: row;
     }
+  }
+
+  &__project {
+    margin-bottom: 2rem;
   }
 
   &__artist {
