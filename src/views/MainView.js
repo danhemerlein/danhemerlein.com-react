@@ -42,6 +42,8 @@ const MainView = ({ model }) => {
     return a.fields.order - b.fields.order;
   });
 
+  console.log(codeProjects)
+
   const musicPageRoutes = musicProjects.map((project, key) => {
     var projectHandle = project.fields.title.replace(/[^a-zA-Z0-9 ]/g, "").replace(/ /g, '-').toLowerCase();
     const handle = `/music/${projectHandle}`;

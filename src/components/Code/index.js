@@ -5,13 +5,25 @@ import GoHomeBack from "components/base/GoHomeBack";
 import './Code.scss'
 
 export default class Code extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+
+    }
+  }
+
+  componentDidMount() {
+    console.log(this.props.projects);
+  }
+
+
   render() {
     return (
       <div className="Code my2 flex items-center justify-center flex-column">
         {
           this.props.projects.map((project, key) => {
-            console.log(project.fields);
-            console.log(documentToReactComponents(project.fields.description.content[0]))
+            if (!project.fields.isListLink) {
             return (
               <div key={key} className="Code__project p2 full-width">
                 <div className="Code__title-container flex">
@@ -25,6 +37,10 @@ export default class Code extends Component {
 
               </div>
             )
+          } else {
+            return null;
+          }
+
           })
         }
         <div className="mt2">
