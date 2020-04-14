@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
 
 import cx from 'classnames';
 
@@ -143,10 +142,14 @@ export default class SignUpForm extends PureComponent {
           )}
         />
         <div className="relative full-width">
-          <p className={cx('body-serif absolute full-width center', {'SignUpForm__message ': this.state.messageActive })}>{this.state.message}</p>
+          <p className={cx('body-serif absolute full-width center', {'SignUpForm__message ': this.state.messageActive })}>
+            {this.state.message}
+          </p>
         </div>
-        <h3 className={cx({'drop-down' : this.state.messageActive})}>Or feel free to email me <a className="underline" href="mailto:danhemerlein@gmail.com">directly</a></h3>
-        <Link to="/" className="go-home block body-serif full-width center"> Go Home</Link >
+        <h3 className={cx('mt2', {'drop-down' : this.state.messageActive})}>
+          Or feel free to email me
+          <a className="underline" href="mailto:danhemerlein@gmail.com"> directly</a>
+         </h3>
       </div>
     )
   }

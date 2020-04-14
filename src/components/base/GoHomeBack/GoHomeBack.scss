@@ -2,9 +2,9 @@
 
 .GoHomeBack {
   @include anchor-black;
+  text-decoration: underline;
 
   &__white {
     @include anchor-white;
-
   }
 }

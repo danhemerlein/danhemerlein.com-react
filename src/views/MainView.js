@@ -12,15 +12,15 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import NotFound from 'components/NotFound';
 import MusicShow from 'components/MusicShow';
-import Tunes from 'components/Tunes';
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Oops, soemthing went wrong!</h1>;
 
-  console.log(model);
+  console.log('model', model);
 
   let site = [];
   let musicProjects = [];
+  let codeProjects = [];
   for (let i = 0; i < model.length; i++) {
     const element = model[i];
     if ("subTitle" in element.fields) {
@@ -29,9 +29,16 @@ const MainView = ({ model }) => {
     if ("releaseDate" in element.fields) {
       musicProjects.push(element);
     }
+    if ("timelineLaunchDate" in element.fields) {
+      codeProjects.push(element);
+    }
   }
 
   musicProjects = musicProjects.sort((a, b) => {
+    return a.fields.order - b.fields.order;
+  });
+
+  codeProjects = codeProjects.sort((a, b) => {
     return a.fields.order - b.fields.order;
   });
 
@@ -82,7 +89,7 @@ const MainView = ({ model }) => {
                 path="/code"
                 render={() => (
                   <Code
-                    projects={get(site, "fields.codeProjects.fields", {})}
+                    projects={codeProjects}
                   />
                 )}
               />
@@ -117,29 +124,10 @@ const MainView = ({ model }) => {
                   <Moodboard images={get(site, "fields.moodboard", {})} />
                 )}
               />
-              {/* <Route
-                path="/music/:id"
-                render={props => (
-                  <MusicShow
-                    {...props}
-                    projects={get(site, "fields.musicProjects.fields", {})}
-                    images={get(site, "fields.musicProjectImages", {})}
-                  />
-                )}
-              /> */}
 
               {musicPageRoutes}
 
-              <Route
-                exact
-                path="/tunes-test"
-                render={() => (
-                  <Tunes
-                    tunes={get(site, "fields.tunes", {})}
-                  />
-                )}
-              />
-              <Route component={NotFound} />
+            <Route component={NotFound} />
             </Switch>
             <footer>
               <Footer />

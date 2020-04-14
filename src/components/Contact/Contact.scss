@@ -1,5 +1,9 @@
 @import "../../styles/app.scss";
 
 .Contact {
+  @include anchor-black;
 
+  a {
+    text-decoration: underline;
+  }
 }

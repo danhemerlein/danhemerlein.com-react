@@ -2,12 +2,22 @@
 
 .Code {
 
+  @include anchor-black;
+
   &__title-container {
     flex-direction: column;
 
-    @media ($medium-up) {
+    a {
+      text-decoration: underline;
+    }
+
+    @include common-bp(tablet) {
       flex-direction: row;
     }
+  }
+
+  p {
+    line-height: 1.29;
   }
 
   &__project {
@@ -18,17 +28,16 @@
     &__title {
       font-size: 1.4rem;
 
-      @media ($medium-up) {
+      @include common-bp(tablet) {
         font-size: 2rem;
       }
     }
 
     &-timeline {
-      margin: 0;
+      margin-top: 0.5rem;
 
-      @media ($medium-up) {
+      @include common-bp(tablet) {
         margin-left: .5rem;
-        margin-top: 1rem;
       }
     }
   }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^13.4.0",
     "autoprefixer": "^9.3.1",
     "classnames": "^2.2.6",
     "contentful": "^7.0.5",
