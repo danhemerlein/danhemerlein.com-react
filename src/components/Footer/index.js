@@ -33,7 +33,7 @@ export default class Footer extends Component {
           </div>
           <div className="col-6 flex justify-end">
             <small className="Footer__small self-end">
-              Copyright Dan Hemerlein 2018
+              Copyright Dan Hemerlein 2020
             </small>
           </div>
         </div>

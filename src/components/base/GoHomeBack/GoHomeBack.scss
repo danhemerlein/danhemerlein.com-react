@@ -1,0 +1,10 @@
+@import "../../../styles/app.scss";
+
+.GoHomeBack {
+  @include anchor-black;
+
+  &__white {
+    @include anchor-white;
+
+  }
+}
