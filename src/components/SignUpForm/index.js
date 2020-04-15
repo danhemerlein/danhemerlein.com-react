@@ -43,44 +43,52 @@ export default class SignUpForm extends PureComponent {
           url={MAILCHIMP_URL}
           render={({ subscribe, status }) => (
             <div>
-              <form className="flex flex-column items-center justify-center"
+              <form
+                className="flex flex-column items-center justify-center"
                 onSubmit={(event) => {
                   event.preventDefault();
 
-                  const result = Joi.validate({
-                    firstName: this.state.firstName,
-                    emailAddress: this.state.emailAddress,
-                    zipcode: this.state.zipcode
-                  }, schema)
+                  const result = Joi.validate(
+                    {
+                      firstName: this.state.firstName,
+                      emailAddress: this.state.emailAddress,
+                      zipcode: this.state.zipcode,
+                    },
+                    schema
+                  );
 
                   if (result.error) {
-                    const errorMessage = result.error.message
-                    if (errorMessage.split(' ').includes('"firstName"')) {
+                    const errorMessage = result.error.message;
+                    if (errorMessage.split(" ").includes('"firstName"')) {
                       this.setState({
-                        message: 'oops, an error has occured. please make sure your name is between 2 and 20 characters long :]',
-                        messageActive: true
-                      })
-                    } else if (errorMessage.split(' ').includes('"emailAddress"')) {
+                        message:
+                          "oops, an error has occured. please make sure your name is between 2 and 20 characters long :]",
+                        messageActive: true,
+                      });
+                    } else if (
+                      errorMessage.split(" ").includes('"emailAddress"')
+                    ) {
                       this.setState({
-                        message: 'oops, an error has occured. please make sure to include your email :]',
-                        messageActive: true
-                      })
-                    } else if (errorMessage.split(' ').includes('"zipcode"')) {
+                        message:
+                          "oops, an error has occured. please make sure to include your email :]",
+                        messageActive: true,
+                      });
+                    } else if (errorMessage.split(" ").includes('"zipcode"')) {
                       this.setState({
-                        message: 'oops, an error has occured. please make sure to include your zipcode :]',
-                        messageActive: true
-                      })
+                        message:
+                          "oops, an error has occured. please make sure to include your zipcode :]",
+                        messageActive: true,
+                      });
                     }
-                  }
-
-                  else {
+                  } else {
                     subscribe({
                       FNAME: result.value.firstName,
                       EMAIL: result.value.emailAddress,
-                      MMERGE5: result.value.zipcode
-                    })
+                      MMERGE5: result.value.zipcode,
+                    });
                   }
-              }}>
+                }}
+              >
                 <label className="">
                   <input
                     id="inputOne"
@@ -115,42 +123,52 @@ export default class SignUpForm extends PureComponent {
                   />
                 </label>
                 <div className="full-width flex flex-column items-center justify-center">
-                  <button className="SignUpForm__button pointer my1 body-serif" type="submit">
+                  <button
+                    className="SignUpForm__button pointer my1 body-serif"
+                    type="submit"
+                  >
                     submit
                   </button>
                 </div>
               </form>
-              {status === 'sending' ? (
-                this.setState({
-                  message: 'loading...',
-                  messageActive: true
-                })
-              ) : null}
-              {status === 'success' ? (
-                this.setState({
-                  message: 'thanks for subscribing (ﾉﾟ▽ﾟ)ﾉ',
-                  messageActive: true
-                })
-              ) : null}
-              {status === 'error' ? (
-                this.setState({
-                  message: 'oops, please try again（＞ｙ＜）',
-                  messageActive: true
-                })
-              ) : null}
+              {status === "sending"
+                ? this.setState({
+                    message: "loading...",
+                    messageActive: true,
+                  })
+                : null}
+              {status === "success"
+                ? this.setState({
+                    message: "thanks for subscribing (ﾉﾟ▽ﾟ)ﾉ",
+                    messageActive: true,
+                  })
+                : null}
+              {status === "error"
+                ? this.setState({
+                    message: "oops, please try again（＞ｙ＜）",
+                    messageActive: true,
+                  })
+                : null}
             </div>
           )}
         />
         <div className="relative full-width">
-          <p className={cx('body-serif absolute full-width center', {'SignUpForm__message ': this.state.messageActive })}>
+          <p
+            className={cx("body-serif absolute full-width center", {
+              "SignUpForm__message ": this.state.messageActive,
+            })}
+          >
             {this.state.message}
           </p>
         </div>
-        <h3 className={cx('mt2', {'drop-down' : this.state.messageActive})}>
-          Or feel free to email me
-          <a className="underline" href="mailto:danhemerlein@gmail.com"> directly</a>
-         </h3>
+        <h3 className={cx("mt2", { "drop-down": this.state.messageActive })}>
+          Or feel free to{" "}
+          <a className="underline" href="mailto:danhemerlein@gmail.com">
+            email me
+          </a>{" "}
+          directly
+        </h3>
       </div>
-    )
+    );
   }
 }
