@@ -26,11 +26,6 @@ export default class MusicShow extends Component {
     const headerFooter = header.offsetHeight + footer.offsetHeight;
     const MSHeight = ((window.innerHeight - headerFooter) - 32);
 
-    // if (window.innerWidth >= 832) {
-    //   MusicShow.style.height = MSHeight + "px";
-    // } else {
-    //   MusicShow.style.height = "auto";
-    // }
   }
 
   debounceMSHeight = () => {

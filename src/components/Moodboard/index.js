@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import GoHomeBack from "components/base/GoHomeBack";
 
 import get from "utils/get";
 
@@ -39,8 +39,8 @@ export default class Moodboard extends Component {
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}
         <ScrollToTop scrollStepInPx="75" delayInMs="10" />
-        <div className="flex justify-center full-width">
-          <Link to="/" className="go-home body-serif"> Go Home</Link >
+        <div className="full-width flex justify-center my3">
+          <GoHomeBack destination="/" cta="go back" white={false} />
         </div>
       </div>
     );

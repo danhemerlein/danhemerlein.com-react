@@ -2,14 +2,10 @@
 
 .Site {
   &__container {
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
 
     @include common-bp(tablet) {
-      padding-top: 2rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding: 2rem 2rem 1rem 2rem;
     }
   }
 }
