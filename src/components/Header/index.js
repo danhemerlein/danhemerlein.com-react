@@ -6,6 +6,7 @@ import cx from 'classnames';
 
 import MobileNav from 'components/MobileNav';
 import Menu from 'components/Menu';
+import NavOverlay from "components/NavOverlay";
 
 export default class Header extends Component {
   constructor(props) {
@@ -26,14 +27,16 @@ export default class Header extends Component {
   render() {
     return (
       <div className="Header relative">
+        <NavOverlay
+          navOpen={this.state.navActive}
+          clickHandler={this.toggleNav}
+        />
         <div
           className={cx("Header__mobile-nav", {
             "Header__mobile-nav--active": this.state.navActive,
           })}
         >
-          <MobileNav
-            clickHandler={this.toggleNav}
-          />
+          <MobileNav clickHandler={this.toggleNav} />
         </div>
         <div id="header" className="flex">
           <div className="Header__title col-6">

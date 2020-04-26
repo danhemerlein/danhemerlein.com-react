@@ -11,7 +11,7 @@ export default class MobileNav extends Component {
     return (
       <div className="MobileNav bg-white flex flex-column">
         <div className="flex items-end justify-end">
-          <div className="MobileNav__close-icon pointer pr1">
+          <div className="MobileNav__close-icon pointer pr1 pt1">
             <CloseIcon clickHandler={this.props.clickHandler} />
           </div>
         </div>
