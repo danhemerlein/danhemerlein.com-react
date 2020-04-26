@@ -1,13 +1,14 @@
 @import "../../styles/app.scss";
 
 .MobileNav {
-  -webkit-animation: fadein $transition-duration-short;
-  -moz-animation: fadein $transition-duration-short;
-  -ms-animation: fadein $transition-duration-short;
-  -o-animation: fadein $transition-duration-short;
-  animation: fadein $transition-duration-short;
+  width: 210px;
+  height: 100vh;
 
-  li {
+  &__close-icon {
+    width: 40px;
+  }
+
+  &__list-item {
     font-size: 1.17em;
   }
 }

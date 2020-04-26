@@ -1,12 +1,6 @@
 @import "../../styles/app.scss";
 
 .Header {
-  // -webkit-animation: fadein $transition-duration-long;
-  // -moz-animation: fadein $transition-duration-long;
-  // -ms-animation: fadein $transition-duration-long;
-  // -o-animation: fadein $transition-duration-long;
-  // animation: fadein $transition-duration-long;
-
   @include anchor-black;
 
   &__title {
@@ -32,9 +26,8 @@
     }
   }
 
-  &__mobile-nav {
+  &__mobile-nav-toggle {
     display: none;
-
     font-size: 0.75rem;
 
     @media (min-width: 20rem) {
@@ -46,7 +39,16 @@
     }
   }
 
-  svg {
-    height: 10%;
+  &__mobile-nav {
+    z-index: 5;
+    transform: translateX(100%);
+    right: 0;
+    transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1);
+    position: absolute;
+
+    &--active {
+      transform: translateX(0);
+      position: fixed;
+    }
   }
 }

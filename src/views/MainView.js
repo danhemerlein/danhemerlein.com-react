@@ -16,8 +16,6 @@ import MusicShow from 'components/MusicShow';
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Oops, soemthing went wrong!</h1>;
 
-  console.log('model', model);
-
   let site = [];
   let musicProjects = [];
   let codeProjects = [];
@@ -41,8 +39,6 @@ const MainView = ({ model }) => {
   codeProjects = codeProjects.sort((a, b) => {
     return a.fields.order - b.fields.order;
   });
-
-  console.log(codeProjects)
 
   const musicPageRoutes = musicProjects.map((project, key) => {
     var projectHandle = project.fields.title.replace(/[^a-zA-Z0-9 ]/g, "").replace(/ /g, '-').toLowerCase();
@@ -73,7 +69,7 @@ const MainView = ({ model }) => {
               subTitleTwo={get(site, "fields.subTitleTwo", {})}
             />
           </header>
-          <div id="switch">
+          <div>
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route
