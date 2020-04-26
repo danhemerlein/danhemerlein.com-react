@@ -5,43 +5,33 @@
 
   &__title {
     display: flex;
-    align-items: center;
-    font-size: 0.5rem;
-
-    @media (min-width: 20rem) {
-      font-size: 1rem;
-    }
-
-    @media ($small-up) {
-      display: block;
-    }
-
+    align-items: flex-start;
+    font-size: 1.2rem;
+    flex-direction: column;
   }
 
-  &__desktop-nav {
+  &__desktop-nav,
+  &__sub-headline {
     display: none;
+    font-size: 0.9rem;
 
-    @media (min-width: 40.01rem) {
+    @include common-bp(tablet) {
       display: block;
     }
   }
 
   &__mobile-nav-toggle {
-    display: none;
-    font-size: 0.75rem;
+    display: block;
+    font-size: 1.2rem;
 
-    @media (min-width: 20rem) {
-      font-size: 1rem;
-    }
-
-    @media (max-width: 40rem) {
-      display: block;
+    @include common-bp(tablet) {
+      display: none;
     }
   }
 
   &__mobile-nav {
     z-index: 5;
-    transform: translateX(100%);
+    transform: translateX(226px);
     right: 0;
     top: 0;
     transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1);

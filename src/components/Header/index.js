@@ -43,7 +43,7 @@ export default class Header extends Component {
             <h1 className="heading-serif m0">
               <Link to="/">{this.props.title}</Link>
             </h1>
-            <h2 className="xs-hide heading-serif m0">
+            <h2 className="Header__sub-headline heading-serif m0">
               <Link to="/code">{this.props.subTitle}</Link> /{" "}
               <Link to="/music">{this.props.subTitleTwo}</Link>
             </h2>

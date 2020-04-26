@@ -38,10 +38,7 @@ export default class Code extends Component {
     })
   }
 
-
   render() {
-    console.log(this.props.projects);
-    console.log(this.state);
     return (
       <div className="Code my2 flex items-center justify-center flex-column">
         {this.state.topLinks.map((project, key) => {
@@ -49,14 +46,16 @@ export default class Code extends Component {
           if (project.fields.timelineLaunchDate === "Coming Eventually") {
             highlight = true;
           }
-          return (
-            <div
-              key={key}
-              className={cx("Code__project p2 full-width", {
-                "Code__project-highlight": highlight === true,
-              })}
-            >
-              <div className="Code__title-container flex">
+
+          const renderATag = () =>{
+            if(highlight){
+              return (
+                <h4 className="Code__title m0 body-serif">
+                  {project.fields.title}
+                </h4>
+              )
+            } else {
+              return (
                 <a
                   href={project.fields.link}
                   target="_blank"
@@ -66,6 +65,18 @@ export default class Code extends Component {
                     {project.fields.title}
                   </h4>
                 </a>
+              );
+            }
+          }
+          return (
+            <div
+              key={key}
+              className={cx("Code__project p2 full-width", {
+                "Code__project-highlight": highlight === true,
+              })}
+            >
+              <div className="Code__title-container flex">
+                {renderATag()}
                 <h4 className="Code__timeline body-serif">
                   ({project.fields.timelineLaunchDate})
                 </h4>

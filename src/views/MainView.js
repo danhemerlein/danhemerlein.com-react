@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router";
 import get from "utils/get";
 
 import HomePage from 'components/HomePage';
@@ -15,6 +16,8 @@ import MusicShow from 'components/MusicShow';
 
 const MainView = ({ model }) => {
   if (!model || model.isError) return <h1>Oops, soemthing went wrong!</h1>;
+
+  console.log(model)
 
   let site = [];
   let musicProjects = [];
@@ -61,7 +64,7 @@ const MainView = ({ model }) => {
   return (
     <div>
       <Router>
-        <div className="px3 pt3">
+        <div className="App__container">
           <header>
             <Header
               title={get(site, "fields.title", {})}
