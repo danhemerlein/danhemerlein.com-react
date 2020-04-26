@@ -10,11 +10,10 @@ import NavOverlay from "components/NavOverlay";
 
 export default class Header extends Component {
   render() {
-  console.log(this.props);
     return (
       <div className="Header relative">
         <NavOverlay
-          navOpen={this.props.mobileNavActive}
+          navOpen={this.props.mobileNavOpen}
           clickHandler={this.props.toggleMobileNav}
         />
         <div
@@ -27,11 +26,11 @@ export default class Header extends Component {
         <div id="header" className="flex">
           <div className="Header__title col-6">
             <h1 className="heading-serif m0">
-              <Link to="/">{this.props.title}</Link>
+              <Link to="/">dan hemerlein</Link>
             </h1>
             <h2 className="Header__sub-headline heading-serif m0">
-              <Link to="/code">{this.props.subTitle}</Link> /{" "}
-              <Link to="/music">{this.props.subTitleTwo}</Link>
+              <Link to="/code">web engineer</Link> /{" "}
+              <Link to="/music">music producer</Link>
             </h2>
           </div>
           <div className="flex justify-end items-center col-6">

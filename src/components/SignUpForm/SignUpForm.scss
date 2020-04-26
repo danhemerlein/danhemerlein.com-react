@@ -41,6 +41,10 @@
     -o-animation: fadein $transition-duration-short;
     animation: fadein $transition-duration-short;
   }
+
+  &__h3 {
+    text-align: center;
+  }
 }
 
 .drop-down {

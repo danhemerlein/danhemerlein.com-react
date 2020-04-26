@@ -43,11 +43,10 @@ export default class Site extends Component {
         currentRoute: location.pathname,
       });
 
-      if (this.state.currentRoute !== location.pathname) {
+      if ((this.state.currentRoute !== location.pathname) && this.state.mobileNavOpen) {
         this.toggleMobileNav();
       }
     });
-
 
     const musicPageRoutes = this.props.musicProjects.map((project, key) => {
       var projectHandle = project.fields.title
@@ -70,9 +69,6 @@ export default class Site extends Component {
           <div className="Site__container">
             <header>
               <Header
-                title={get(this.props.site, "fields.title", {})}
-                subTitle={get(this.props.site, "fields.subTitle", {})}
-                subTitleTwo={get(this.props.site, "fields.subTitleTwo", {})}
                 toggleMobileNav={this.toggleMobileNav}
                 mobileNavOpen={this.state.mobileNavOpen}
               />
@@ -113,14 +109,7 @@ export default class Site extends Component {
                   exact
                   path="/keep-in-touch"
                   render={() => (
-                    <Contact
-                      cta={get(this.props.site, "fields.contactHeadline", {})}
-                      ctaTwo={get(
-                        this.props.site,
-                        "fields.contactHeadlineTwo",
-                        {}
-                      )}
-                    />
+                    <Contact />
                   )}
                 />
                 <Route

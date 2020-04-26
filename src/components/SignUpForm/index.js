@@ -161,7 +161,7 @@ export default class SignUpForm extends PureComponent {
             {this.state.message}
           </p>
         </div>
-        <h3 className={cx("mt2", { "drop-down": this.state.messageActive })}>
+        <h3 className={cx("SignUpForm__h3 mt2", { "drop-down": this.state.messageActive })}>
           Or feel free to{" "}
           <a className="underline" href="mailto:danhemerlein@gmail.com">
             email me
