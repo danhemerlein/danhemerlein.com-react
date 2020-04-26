@@ -16,4 +16,9 @@
   &__list-item {
     font-size: 1rem;
   }
+
+  &__hr {
+    width: 50%;
+    border: 0.5px solid color('black');
+  }
 }

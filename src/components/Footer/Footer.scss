@@ -3,4 +3,26 @@
 .Footer {
   @include anchor-black;
 
+  &__list {
+    display: none;
+
+    @include common-bp(tablet) {
+      width: 70%;
+      display: flex;
+    }
+  }
+
+  &__small-container {
+    width: 100%;
+    justify-content: flex-start;
+
+    @include common-bp(tablet) {
+      width: 30%;
+      justify-content: flex-end;
+    }
+  }
+
+  &__small {
+    font-size: 12px;
+  }
 }
