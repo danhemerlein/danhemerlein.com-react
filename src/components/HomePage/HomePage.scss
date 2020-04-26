@@ -1,6 +1,13 @@
 @import "../../styles/app.scss";
 
 .HomePage {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  @include common-bp(tablet) {
+    margin-bottom: 0;
+  }
+
   &__top-left {
     -webkit-animation: slide-right $transition-duration-med;
     -moz-animation: slide-right $transition-duration-med;

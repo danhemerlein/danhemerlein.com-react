@@ -3,6 +3,7 @@
 .MusicPage {
   margin-left: -1rem;
   margin-right: -1rem;
+  margin-top: 1rem;
 
   @include common-bp(tablet) {
     margin-left: -2rem;

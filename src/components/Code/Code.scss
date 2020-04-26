@@ -2,6 +2,9 @@
 
 .Code {
 
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
   @include anchor-black;
 
   &__title-container {

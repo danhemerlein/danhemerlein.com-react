@@ -13,28 +13,11 @@ export default class MusicShow extends Component {
     super(props)
 
     this.state = {
-       links: [],
+      links: [],
     }
   }
 
-
-  setHeightMS = () => {
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-    const MusicShow = document.querySelector('.MusicShow');
-
-    const headerFooter = header.offsetHeight + footer.offsetHeight;
-    const MSHeight = ((window.innerHeight - headerFooter) - 32);
-
-  }
-
-  debounceMSHeight = () => {
-    debounce(this.setHeightMS(), 100);
-  }
-
   componentDidMount = () => {
-    this.setHeightMS();
-    window.addEventListener("resize", this.debounceMSHeight);
 
     var keys;
 
@@ -48,12 +31,8 @@ export default class MusicShow extends Component {
 
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.debounceMSHeight);
-  }
-
   render() {
-    return <div className="MusicShow flex items-center justify-between p3 mt2">
+    return <div className="MusicShow flex items-center justify-between flex-column">
         <div className="col-12-dh md-col-8-dh lg-col-4-dh flex justify-center flex-column">
           <Image src={this.props.project.fields.artwork.fields.file.url} alt={this.props.project.fields.artwork.fields.file.title} />
 

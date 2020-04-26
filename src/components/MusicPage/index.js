@@ -23,7 +23,7 @@ export default class MusicPage extends Component {
       overflow: 'hidden',
     };
     return (
-      <div className="MusicPage mt2 flex flex-wrap items-center justify-center">
+      <div className="MusicPage flex flex-wrap items-center justify-center">
         <div className="MusicPage__hero full-width">
           <div className="MusicPage__container relative full-height full-width">
             <a

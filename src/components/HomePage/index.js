@@ -17,7 +17,10 @@ class HomePage extends Component {
     const homePage = document.querySelector(".HomePage");
 
     const headerFooter = header.offsetHeight + footer.offsetHeight;
-    const hpHeight = ((window.innerHeight - headerFooter) - 32);
+
+    // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
+
+    const hpHeight = ((window.innerHeight - headerFooter) - 64);
 
     homePage.style.height = hpHeight + "px";
   }
@@ -35,12 +38,11 @@ class HomePage extends Component {
     window.removeEventListener("resize", this.debounceHPHeight);
   }
 
-
   render() {
     return (
       <div className="HomePage">
         <div className="flex full-height">
-          <div className="flex mt2 flex-column col-12">
+          <div className="flex flex-column col-12">
             <div className="HomePage__top-left col-12">
               <Link to="/code">
                 <HomeBox
@@ -59,7 +61,7 @@ class HomePage extends Component {
             </div>
 
           </div>
-          <div className="flex mt2 flex-column col-12 ml1">
+          <div className="flex flex-column col-12 ml1">
             <div className="HomePage__top-right col-12">
               <Link to="/music">
                 <HomeBox

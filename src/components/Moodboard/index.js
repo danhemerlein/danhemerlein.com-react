@@ -34,7 +34,7 @@ export default class Moodboard extends Component {
     );
 
     return (
-      <div className="Moodboard my2 flex flex-wrap">
+      <div className="Moodboard flex flex-wrap">
         {imageMatrix.map((imageGroup, index) =>
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}

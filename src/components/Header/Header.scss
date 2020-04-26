@@ -2,6 +2,7 @@
 
 .Header {
   @include anchor-black;
+  overflow: hidden;
 
   &__title {
     display: flex;
@@ -13,11 +14,15 @@
   &__desktop-nav,
   &__sub-headline {
     display: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
 
     @include common-bp(tablet) {
       display: block;
     }
+  }
+
+  &__sub-headline {
+    padding: 4px 0 4px 0;
   }
 
   &__mobile-nav-toggle {

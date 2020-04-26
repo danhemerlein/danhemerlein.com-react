@@ -40,7 +40,7 @@ export default class Code extends Component {
 
   render() {
     return (
-      <div className="Code my2 flex items-center justify-center flex-column">
+      <div className="Code flex items-center justify-center flex-column">
         {this.state.topLinks.map((project, key) => {
           let highlight = false;
           if (project.fields.timelineLaunchDate === "Coming Eventually") {

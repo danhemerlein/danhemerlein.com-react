@@ -12,7 +12,7 @@ class AboutPage extends Component {
      const header = document.querySelector('header');
      const footer = document.querySelector('footer');
      const headerFooter = header.offsetHeight + footer.offsetHeight;
-     const apHeight = ((window.innerHeight - headerFooter) - 32);
+     const apHeight = ((window.innerHeight - headerFooter) - 64);
      aboutPage.style.height = apHeight + "px";
    }
    ß
@@ -112,7 +112,7 @@ class AboutPage extends Component {
     return (
       <div className="AboutPages__container">
 
-        <div className="AboutPageNew relative">
+        <div className="AboutPageNew relative ">
 
           <p className="AboutPageNew__paragraph-top  absolute">
             I am a <span className="AboutPageNew__paragraph-top--span-hide">web</span><span className="AboutPageNew__paragraph-top--span-hide"> developer</span> and <span className="AboutPageNew__paragraph-top--span-hide">musician</span> based in <span className="AboutPageNew__paragraph-top--span-hide">Brooklyn,</span> <span className="AboutPageNew__paragraph-top--span-hide">New</span><span className="AboutPageNew__paragraph-top--span-hide"> York. </span>I once shook hands with
