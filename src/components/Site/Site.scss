@@ -1,0 +1,15 @@
+@import "../../styles/app.scss";
+
+.Site {
+  &__container {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @include common-bp(tablet) {
+      padding-top: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}

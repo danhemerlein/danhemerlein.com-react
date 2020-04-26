@@ -9,34 +9,20 @@ import Menu from 'components/Menu';
 import NavOverlay from "components/NavOverlay";
 
 export default class Header extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      navActive: false
-    }
-  }
-
-  toggleNav = () => {
-    this.setState({
-      navActive: !this.state.navActive
-    })
-
-  }
-
   render() {
+  console.log(this.props);
     return (
       <div className="Header relative">
         <NavOverlay
-          navOpen={this.state.navActive}
-          clickHandler={this.toggleNav}
+          navOpen={this.props.mobileNavActive}
+          clickHandler={this.props.toggleMobileNav}
         />
         <div
           className={cx("Header__mobile-nav", {
-            "Header__mobile-nav--active": this.state.navActive,
+            "Header__mobile-nav--active": this.props.mobileNavOpen,
           })}
         >
-          <MobileNav clickHandler={this.toggleNav} />
+          <MobileNav clickHandler={this.props.toggleMobileNav} />
         </div>
         <div id="header" className="flex">
           <div className="Header__title col-6">
@@ -62,7 +48,7 @@ export default class Header extends Component {
             </nav>
 
             <div className="Header__mobile-nav-toggle flex">
-              <Menu clickHandler={this.toggleNav} />
+              <Menu clickHandler={this.props.toggleMobileNav} />
             </div>
           </div>
         </div>

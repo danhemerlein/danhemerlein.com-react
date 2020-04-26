@@ -7,22 +7,18 @@ import AboutPageMobile from 'components/AboutPage';
 import './AboutPageNew.scss';
 
 class AboutPage extends Component {
-  setHeightAP = () => {
-    const aboutPage = document.querySelector('.AboutPageNew');
-
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-
-    const headerFooter = header.offsetHeight + footer.offsetHeight;
-
-    const apHeight = ((window.innerHeight - headerFooter) - 32);
-
-    aboutPage.style.height = apHeight + "px";
-  }
-
-  debounceAPHeight = () => {
+   setHeightAP = () => {
+     const aboutPage = document.querySelector('.AboutPageNew');
+     const header = document.querySelector('header');
+     const footer = document.querySelector('footer');
+     const headerFooter = header.offsetHeight + footer.offsetHeight;
+     const apHeight = ((window.innerHeight - headerFooter) - 32);
+     aboutPage.style.height = apHeight + "px";
+   }
+   ß
+   debounceAPHeight = () => {
     debounce(this.setHeightAP(), 100);
-  }
+   }
 
   componentDidMount() {
     const aboutPage = document.querySelector('.AboutPageNew');
@@ -34,7 +30,7 @@ class AboutPage extends Component {
     this.setHeightAP();
 
     window.addEventListener("resize", () => {
-      this.debounceAPHeight()
+      // this.debounceAPHeight()
       setUpCanvas(canvasTag);
     });
 
@@ -45,10 +41,10 @@ class AboutPage extends Component {
     const shrinkCursor = function () {
       cursor.classList.remove('AboutPageNew__cursor--is-down');
     }
-   
+
     const setUpCanvas = function (canvas) {
       const dpi = window.devicePixelRatio;
-    
+
       canvas.width = canvas.offsetWidth * dpi;
       canvas.height = canvas.offsetHeight * dpi;
 
@@ -62,7 +58,7 @@ class AboutPage extends Component {
       ctx.lineJoin = 'round';
       ctx.shadowBlur = 10;
       ctx.shawdowColor = ctx.strokeStyle;
-      
+
     }
 
     const startDraw = function (canvas, x, y) {
@@ -74,7 +70,7 @@ class AboutPage extends Component {
       const ctx = canvas.getContext('2d');
       if (isMouseDown) {
         ctx.lineTo(x, y);
-        ctx.stroke();  
+        ctx.stroke();
       }
     }
 
@@ -95,7 +91,7 @@ class AboutPage extends Component {
       startDraw(canvasTag, (e.pageX - aboutPage.offsetLeft), (e.pageY - aboutPage.offsetTop));
       isMouseDown = true;
     });
-    
+
     aboutPage.addEventListener('mouseup', function () {
       shrinkCursor();
       isMouseDown = false;
@@ -107,9 +103,9 @@ class AboutPage extends Component {
       moveDraw(canvasTag, (e.pageX - aboutPage.offsetLeft), (e.pageY - aboutPage.offsetTop));
     });
   }
-  
+
   componentWillUnmount() {
-    window.removeEventListener("resize", this.debounceAPHeight)
+    // window.removeEventListener("resize", this.debounceAPHeight)
   }
 
   render() {
@@ -133,7 +129,7 @@ class AboutPage extends Component {
         </div>
 
         <div className="AboutPage__mobile">
-          <AboutPageMobile 
+          <AboutPageMobile
             image={this.props.image}
             text={this.props.text}
           />
