@@ -16,7 +16,12 @@
 
     @include common-bp(tablet) {
       flex-direction: row;
+      align-items: center;
     }
+  }
+
+  &__title-container-inner {
+    flex-direction: column;
   }
 
   p {
@@ -33,11 +38,12 @@
     }
   }
 
+  &__project-row-reverse {
+    flex-direction: row-reverse;
+  }
+
   &__project-highlight {
     background-image: linear-gradient(45deg,#fff,#ff6ad5);
-    .Code__title {
-      // color: #E11C2D;
-    }
   }
 
   &__title {
@@ -51,9 +57,9 @@
   &__timeline {
     margin-top: 0.5rem;
 
-    @include common-bp(tablet) {
-      margin-left: .5rem;
-    }
+    // @include common-bp(tablet) {
+    //   margin-left: .5rem;
+    // }
   }
 
   &__list-link-container {
@@ -104,4 +110,11 @@
 
 .Code__project:last-of-type{
   margin-bottom: 1rem;
+}
+
+.Code__project-bottom {
+  .Code__title-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

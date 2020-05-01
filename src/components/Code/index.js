@@ -38,16 +38,31 @@ export default class Code extends Component {
     })
   }
 
+
   render() {
+    console.log(this.state.topLinks);
     return (
       <div className="Code flex items-center justify-center flex-column">
         {this.state.topLinks.map((project, key) => {
           let highlight = false;
+          let hasImage = false;
+          let secondBlock = false;
+
           if (project.fields.timelineLaunchDate === "Coming Eventually") {
             highlight = true;
           }
 
-          const renderATag = () =>{
+          if (key === 1) {
+            secondBlock = true;
+          }
+
+          console.log(project.fields.image)
+
+          if(project.fields.image !== undefined ) {
+            hasImage = true;
+          }
+
+          const renderATag = () => {
             if(highlight){
               return (
                 <h4 className="Code__title m0 body-serif">
@@ -68,18 +83,36 @@ export default class Code extends Component {
               );
             }
           }
+
+          const renderImage = () => {
+            if (hasImage) {
+              return (
+                <img className="col-2" src={project.fields.image.fields.file.url} alt={project.fields.image.fields.file.title} />
+              )
+            } else {
+              return null;
+            }
+          }
+
           return (
             <div
               key={key}
-              className={cx("Code__project p2 full-width", {
+              className={cx("Code__project Code__project-top p2 full-width", {
                 "Code__project-highlight": highlight === true,
               })}
             >
-              <div className="Code__title-container flex">
-                {renderATag()}
-                <h4 className="Code__timeline body-serif">
-                  ({project.fields.timelineLaunchDate})
-                </h4>
+              <div
+                className={cx("Code__title-container flex justify-between", {
+                  "Code__project-row-reverse": secondBlock === true,
+                })}
+              >
+                <div className={cx("Code__title-container-inner flex")}>
+                  {renderATag()}
+                  <h4 className="Code__timeline body-serif">
+                    ({project.fields.timelineLaunchDate})
+                  </h4>
+                </div>
+                {renderImage()}
               </div>
 
               <div className="body-serif mt2">
@@ -128,7 +161,12 @@ export default class Code extends Component {
           <div className="mt2">
             {this.state.bottomLinks.map((project, key) => {
               return (
-                <div key={key} className={cx("Code__project p2 full-width")}>
+                <div
+                  key={key}
+                  className={cx(
+                    "Code__project Code__project-bottom p2 full-width"
+                  )}
+                >
                   <div className="Code__title-container flex">
                     <a
                       href={project.fields.link}

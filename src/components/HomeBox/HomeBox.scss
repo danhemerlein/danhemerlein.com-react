@@ -24,9 +24,10 @@
 
   &__header {
     font-size: 1.5rem;
-    
-    @media (min-width: 20rem) {
-      font-size: 3.5rem;
+
+    @include common-bp(tablet) {
+
+      font-size: 2rem;
     }
   }
 }

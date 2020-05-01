@@ -4,6 +4,7 @@
   margin-left: -1rem;
   margin-right: -1rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 
   @include common-bp(tablet) {
     margin-left: -2rem;
@@ -24,6 +25,12 @@
   }
 
   &__container {
+    margin: 0;
+
+    @include common-bp(tablet) {
+      margin: 0 1rem;
+    }
+
     &:hover .MusicPage__overlay {
       opacity: .95;
     }
@@ -47,7 +54,7 @@
       top: 2rem;
       left: 3.5rem;
 
-      @media ($large-up) {
+      @include common-bp(tablet) {
         font-size: 2rem;
       }
     }
@@ -71,7 +78,7 @@
         display: flex;
       }
 
-      @media ($large-up) {
+      @include common-bp(tablet) {
         font-size: 2.5rem;
         display: flex
       }
@@ -81,36 +88,35 @@
   &__projects-container {
     flex-direction: column;
     flex-wrap: wrap;
+    padding: 1rem 1rem 0 1rem;
     background-image: linear-gradient(90deg,#ff6ad5,#8795e8);
 
     @include common-bp (tablet) {
+      padding: 2rem 2rem 0 2rem;
       flex-direction: row;
     }
   }
 
   &__project {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+
+    @include common-bp(tablet) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__title {
+    margin: 4px 0;
+    font-size: 1.5rem;
   }
 
   &__artist {
+    margin: 4px 0;
     font-size: 1.5rem;
   }
 
   &__role {
-    font-size: 1.1rem;
-  }
-
-  &__go-back-container {
-
-  }
-}
-
-.rem {
-  font-size: 1.25rem;
-  @media (max-width: $screen-l) and (min-width: $screen-m) {
-    font-size: .8rem;
-  }
-  @media ($large-up) {
-    font-size: 1.5rem;
+    margin: 4px 0;
+    font-size: 1rem;
   }
 }

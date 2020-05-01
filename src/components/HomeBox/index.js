@@ -13,7 +13,7 @@ export default class HomeBox extends Component {
             {this.props.icon}
           </div>
           <div className="HomeBox__overlay bg-white flex justify-center items-center absolute left-0 top-0 right-0 bottom-0 full-width full-height">
-            <h3 className={cx('HomeBox__header full-width center contact-font absolute m0')}>{this.props.header}</h3>
+            <h3 className={cx('HomeBox__header full-width center body-serif absolute m0')}>{this.props.header}</h3>
           </div>
         </div>
       </div>
