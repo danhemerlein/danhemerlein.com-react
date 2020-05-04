@@ -22,6 +22,11 @@
     -moz-transition: opacity $transition-duration-ultra-short ease-in-out;
     -webkit-transition: opacity $transition-duration-ultra-short ease-in-out;
     transition: opacity $transition-duration-ultra-short ease-in-out;
+    display: none;
+
+    @include common-bp(tablet) {
+      display: flex;
+    }
   }
 
   &__container {

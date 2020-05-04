@@ -25,7 +25,8 @@
     margin: 0;
   }
 
-  &__links-container {
+  &__links-container,
+  &__artist-link {
     @include anchor-white;
   }
 

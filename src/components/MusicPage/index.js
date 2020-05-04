@@ -9,10 +9,6 @@ import cx from "classnames";
 
 export default class MusicPage extends Component {
 
-  componentDidMount() {
-    console.log(this.props.projects);
-  }
-
   render() {
     const heroStyle = {
       width: "100%",
@@ -52,7 +48,10 @@ export default class MusicPage extends Component {
             return (
               <div
                 key={key}
-                className="MusicPage__project flex col-12 md-col-4 lg-col-3"
+                data-wrote={project.fields.wrote}
+                data-produced={project.fields.produced}
+                data-performed={project.fields.performed}
+                className="MusicPage__project flex col-12-dh  md-col-4-dh  lg-col-3-dh"
               >
                 <div className="MusicPage__container flex relative">
                   <Link to={`/music/${projectHandle}`} className="">

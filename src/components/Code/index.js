@@ -40,7 +40,6 @@ export default class Code extends Component {
 
 
   render() {
-    console.log(this.state.topLinks);
     return (
       <div className="Code flex items-center justify-center flex-column">
         {this.state.topLinks.map((project, key) => {
@@ -55,8 +54,6 @@ export default class Code extends Component {
           if (key === 1) {
             secondBlock = true;
           }
-
-          console.log(project.fields.image)
 
           if(project.fields.image !== undefined ) {
             hasImage = true;
