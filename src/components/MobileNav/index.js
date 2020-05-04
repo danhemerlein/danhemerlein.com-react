@@ -67,7 +67,7 @@ export default class MobileNav extends Component {
               </a>
             </li> */}
 
-            <li className="MobileNav__list-item  body-serif my2">
+            {/* <li className="MobileNav__list-item  body-serif my2">
               <a
                 href="https://open.spotify.com/user/123676733/playlist/5apn8cxFTIuQfDiRSv8zdn?si=MLCfQOJTRhKaR7hem34gRg"
                 target="_blank"
@@ -75,7 +75,7 @@ export default class MobileNav extends Component {
               >
                 spotify
               </a>
-            </li>
+            </li> */}
 
             <li className="MobileNav__list-item  body-serif my2">
               <a

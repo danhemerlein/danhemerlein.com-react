@@ -35,7 +35,7 @@ export default class Footer extends Component {
                 linkedin
               </a>
             </li> */}
-            <li className="inline-block ml2">
+            {/* <li className="inline-block ml2">
               <a
                 href="https://open.spotify.com/user/123676733/playlist/5apn8cxFTIuQfDiRSv8zdn?si=MLCfQOJTRhKaR7hem34gRg"
                 target="_blank"
@@ -43,7 +43,7 @@ export default class Footer extends Component {
               >
                 spotify
               </a>
-            </li>
+            </li> */}
             <li className="inline-block ml2">
               <a
                 href="https://www.instagram.com/danhemerlein/"

@@ -87,7 +87,7 @@ export default class Code extends Component {
           const renderImage = () => {
             if (hasImage) {
               return (
-                <img className="col-2" src={project.fields.image.fields.file.url} alt={project.fields.image.fields.file.title} />
+                <img src={project.fields.image.fields.file.url} alt={project.fields.image.fields.file.title} />
               )
             } else {
               return null;
@@ -102,7 +102,7 @@ export default class Code extends Component {
               })}
             >
               <div
-                className={cx("Code__title-container flex justify-between", {
+                className={cx("Code__title-container flex", {
                   "Code__project-row-reverse": secondBlock === true,
                 })}
               >
