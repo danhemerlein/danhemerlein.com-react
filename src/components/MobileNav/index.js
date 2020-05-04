@@ -7,8 +7,7 @@ import './MobileNav.scss'
 
 export default class MobileNav extends Component {
   render() {
-    return (
-      <div className="MobileNav bg-white flex flex-column p1">
+    return <div className="MobileNav bg-white flex flex-column p1">
         <div className="flex items-end justify-end">
           <div className="MobileNav__close-icon pointer">
             <CloseIcon clickHandler={this.props.clickHandler} />
@@ -35,60 +34,39 @@ export default class MobileNav extends Component {
               <Link to="/">home</Link>
             </li>
 
-            <hr className="MobileNav__hr"></hr>
+            <hr className="MobileNav__hr" />
 
             <li className="MobileNav__list-item  body-serif my2">
-              <a
-                href="https://github.com/danhemerlein"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://github.com/danhemerlein" target="_blank" rel="noopener noreferrer">
                 github
               </a>
             </li>
 
             <li className="MobileNav__list-item  body-serif my2">
-              <a
-                href="https://workingnotworking.com/58170-dan"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://workingnotworking.com/58170-dan" target="_blank" rel="noopener noreferrer">
                 working not working
               </a>
             </li>
 
-            {/* <li className="MobileNav__list-item  body-serif my2">
-              <a
-                href="https://www.linkedin.com/in/danhemerlein/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                linkedin
+            <li className="MobileNav__list-item  body-serif my2">
+              <a href="https://medium.com/@danhemerlein" target="_blank" rel="noopener noreferrer">
+                medium
               </a>
-            </li> */}
-
-            {/* <li className="MobileNav__list-item  body-serif my2">
-              <a
-                href="https://open.spotify.com/user/123676733/playlist/5apn8cxFTIuQfDiRSv8zdn?si=MLCfQOJTRhKaR7hem34gRg"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                spotify
-              </a>
-            </li> */}
+            </li>
 
             <li className="MobileNav__list-item  body-serif my2">
-              <a
-                href="https://www.instagram.com/danhemerlein/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://twitter.com/danhemerlein" target="_blank" rel="noopener noreferrer">
+                twitter
+              </a>
+            </li>
+
+            <li className="MobileNav__list-item  body-serif my2">
+              <a href="https://www.instagram.com/danhemerlein/" target="_blank" rel="noopener noreferrer">
                 instagram
               </a>
             </li>
           </ul>
         </nav>
-      </div>
-    );
+      </div>;
   }
 }

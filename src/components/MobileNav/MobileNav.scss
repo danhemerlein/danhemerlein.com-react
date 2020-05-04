@@ -4,6 +4,7 @@
   width: 210px;
   height: 100vh;
   display: block;
+  overflow-y: scroll;
 
   @include common-bp(tablet) {
     display: none;
