@@ -1,7 +1,14 @@
 @import "../../styles/app.scss";
 
 .NotFound {
-  min-height: 80vh;
+  @include anchor-black;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  @include common-bp(tablet) {
+    margin-bottom: 0;
+  }
 
   a {
     text-decoration: underline;
