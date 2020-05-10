@@ -31,9 +31,11 @@
 
   &__container {
     margin: 0;
+    flex-direction: column;
 
     @include common-bp(tablet) {
       margin: 0 1rem;
+      flex-direction: row;
     }
 
     &:hover .MusicPage__overlay {
@@ -123,5 +125,28 @@
   &__role {
     margin: 4px 0;
     font-size: 1rem;
+  }
+
+  &__mobile-details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include anchor-white;
+
+    a {
+      text-decoration: underline;
+    }
+
+    @include common-bp(tablet) {
+      display: none;
+    }
+  }
+  &__mobile-details-container-release {
+    margin: 4px 0;
+    text-align: right;
+  }
+  &__mobile-details-container-role {
+    margin: 4px 0;
   }
 }

@@ -54,7 +54,7 @@ export default class MusicPage extends Component {
                 className="MusicPage__project flex col-12-dh  md-col-4-dh  lg-col-3-dh"
               >
                 <div className="MusicPage__container flex relative">
-                  <Link to={`/music/${projectHandle}`} className="">
+                  <Link to={`/music/${projectHandle}`}>
                     <Image
                       src={project.fields.artwork.fields.file.url}
                       alt={project.fields.artwork.fields.file.title}
@@ -63,9 +63,7 @@ export default class MusicPage extends Component {
                       <h3 className="MusicPage__title body-serif">
                         {project.fields.title}
                       </h3>
-                      <h4
-                        className={cx("MusicPage__artist body-serif")}
-                      >
+                      <h4 className={cx("MusicPage__artist body-serif")}>
                         by {project.fields.artist}
                       </h4>
                       <h5 className="MusicPage__role body-serif bold text-lowercase">
@@ -73,6 +71,32 @@ export default class MusicPage extends Component {
                       </h5>
                     </div>
                   </Link>
+                  <div className="MusicPage__mobile-details-container">
+                    <div>
+                      <h3 className="MusicPage__title color-white body-serif">
+                        <Link to={`/music/${projectHandle}`}>
+                          {project.fields.title}
+                        </Link>
+                      </h3>
+                      <h4
+                        className={cx(
+                          "MusicPage__artist color-white body-serif"
+                        )}
+                      >
+                        <Link to={`/music/${projectHandle}`}>
+                          by {project.fields.artist}
+                        </Link>
+                      </h4>
+                    </div>
+                    <div>
+                      <h3 className="MusicPage__mobile-details-container-release color-white  body-serif  text-lowercase">
+                        {project.fields.releaseDate}
+                      </h3>
+                      <h3 className="MusicPage__mobile-details-role color-white  body-serif  text-lowercase">
+                        {project.fields.role}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
               </div>
             );
