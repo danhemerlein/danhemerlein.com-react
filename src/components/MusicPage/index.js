@@ -73,12 +73,12 @@ export default class MusicPage extends Component {
                   </Link>
                   <div className="MusicPage__mobile-details-container">
                     <div>
-                      <h3 className="MusicPage__title color-white body-serif">
+                      <h4 className="MusicPage__title color-white body-serif">
                         <Link to={`/music/${projectHandle}`}>
                           {project.fields.title}
                         </Link>
-                      </h3>
-                      <h4
+                      </h4>
+                      <h3
                         className={cx(
                           "MusicPage__artist color-white body-serif"
                         )}
@@ -86,16 +86,16 @@ export default class MusicPage extends Component {
                         <Link to={`/music/${projectHandle}`}>
                           by {project.fields.artist}
                         </Link>
-                      </h4>
+                      </h3>
                     </div>
-                    <div>
-                      <h3 className="MusicPage__mobile-details-container-release color-white  body-serif  text-lowercase">
+                    {/* <div>
+                      <h3 className="MusicPage__mobile-details-container-release color-white  body-serif  text-lowercase text-right">
                         {project.fields.releaseDate}
                       </h3>
                       <h3 className="MusicPage__mobile-details-role color-white  body-serif  text-lowercase">
                         {project.fields.role}
                       </h3>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
