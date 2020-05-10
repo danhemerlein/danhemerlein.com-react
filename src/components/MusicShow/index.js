@@ -17,7 +17,11 @@ export default class MusicShow extends Component {
 
     // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
 
-    if (window.matchMedia("(min-width: 374px)").matches && (arr.length < 3) ) {
+    if (
+      (window.matchMedia("(min-width: 374px)").matches) &&
+      (window.matchMedia("(max-width: 500px)").matches) &&
+      (arr.length < 3)
+     ) {
       const msHeight = ((window.innerHeight - headerFooter) - 64);
       musicShow.style.height = msHeight + "px";
     } else {
@@ -27,6 +31,15 @@ export default class MusicShow extends Component {
     if (window.matchMedia("(min-width: 1024px)").matches) {
       const msHeight = ((window.innerHeight - headerFooter) - 80);
       musicShow.style.height = msHeight + "px";
+
+      // const detailsContainer = document.querySelector(".MusicShow__details-container");
+      // const titleContainer = document.querySelector(".MusicShow__title-container");
+      // const difference = detailsContainer.offsetHeight - titleContainer.offsetHeight;
+
+      // const links = document.querySelector(".MusicShow__links-container");
+
+      // links.style.height = difference + "px";
+
     }
 
   }
@@ -104,16 +117,25 @@ export default class MusicShow extends Component {
       }
     };
 
+    const renderLinkTitle = (str) => {
+      const stringSplit = str.split("");
+
+      for (let letter of stringSplit) {
+        return <span>{letter}</span>
+      }
+
+    }
+
     return (
-      <div className="MusicShow flex items-center justify-between flex-column">
-        <div className="MusicShow__inner col-12-dh md-col-8-dh lg-col-4-dh flex justify-center">
+      <div className="MusicShow flex items-center flex-column relative">
+        <div className="MusicShow__inner col-12-dh md-col-8-dh lg-col-8-dh flex justify-center">
           <Image
             src={this.props.project.fields.artwork.fields.file.url}
             alt={this.props.project.fields.artwork.fields.file.title}
           />
 
-          <div className="full-width mt1 col-6">
-            <div className="MusicShow__details-container flex justify-between items-center">
+          <div className="MusicShow__details-container col-12-dh  lg-col-6-dh">
+            <div className="MusicShow__title-container flex justify-between items-center m0">
               <div className="flex flex-column">
                 <h3 className="MusicShow__title color-white m0 body-serif">
                   {this.props.project.fields.title}
@@ -132,29 +154,55 @@ export default class MusicShow extends Component {
               </div>
             </div>
 
-            <div className="MusicShow__links-container mt2">
+            <div className="MusicShow__links-container">
               {this.state.links.map((link, key) => {
                 let hasLink = false;
+                let i = ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•"];
+                let k = ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•"];
                 if (link.link !== undefined) {
                   hasLink = true;
                 }
                 if (hasLink) {
                   return (
-                    <div
-                      className="color-white  body-serif flex justify-between full-width mb1"
-                      key={key}
-                    >
-                      <span>{key}</span>
+                    <span>
                       <a
-                        className=""
+                        className="MusicShow__fun-link"
                         href={link.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         key={key}
                       >
-                        {link.title}
+                        <div
+                          className="color-white  body-serif flex justify-between full-width mb2"
+                          key={key}
+                        >
+                          {/* <span>{key}]</span> */}
+                          {i.map((sym, key) => {
+                            return <span key={key}>{sym}</span>;
+                          })}
+                          <span>{link.title}</span>
+                          {k.map((sym, key) => {
+                            return <span key={key}>{sym}</span>;
+                          })}
+                        </div>
                       </a>
-                    </div>
+
+                      <a
+                        className="MusicShow__mobile-link"
+                        href={link.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        key={key}
+                      >
+                        <div
+                          className="color-white  body-serif flex justify-between full-width mb1"
+                          key={key}
+                        >
+                          <span>{key}</span>
+                          <span>{link.title}</span>
+                        </div>
+                      </a>
+                    </span>
                   );
                 } else {
                   return null;
@@ -163,7 +211,9 @@ export default class MusicShow extends Component {
             </div>
           </div>
         </div>
-        <GoHomeBack destination="/music/" cta="go back" white={true} />
+        <div className="MusicShow__go-back-container absolute">
+          <GoHomeBack destination="/music/" cta="go back" white={true} />
+        </div>
       </div>
     );
   }

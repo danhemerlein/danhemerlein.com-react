@@ -10,14 +10,25 @@
   margin-bottom: 1rem;
   margin-right: -1rem;
 
+  justify-content: space-between;
+
   @include common-bp(tablet) {
     padding: 2rem;
     margin-left: -2rem;
     margin-right: -2rem;
   }
 
+  @include common-bp(desktop) {
+    justify-content: center;
+  }
+
   img {
     width: 100%;
+
+    @include common-bp(desktop) {
+      width: 50%;
+      margin-right: 0.5rem;
+    }
   }
 
   &__inner {
@@ -29,12 +40,45 @@
   }
 
   &__details-container {
-    margin: 0;
+    margin-bottom: 1rem;
+
+    @include common-bp (desktop) {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__title-container {
+    margin-top: 1rem;
+
+    @include common-bp (desktop) {
+      margin-top: 0;
+    }
   }
 
   &__links-container,
   &__artist-link {
     @include anchor-white;
+  }
+
+  &__links-container {
+    margin-top: 1rem;
+  }
+
+  &__mobile-link {
+    display: inline;
+
+    @include common-bp (desktop) {
+      display: none;
+    }
+
+  }
+
+  &__fun-link {
+    display: none;
+
+    @include common-bp(desktop) {
+      display: inline;
+    }
   }
 
   &__title {
@@ -51,6 +95,14 @@
   &__release {
     margin: 4px 0;
     font-size: 1rem;
+  }
+
+  &__go-back-container {
+    bottom: 1rem;
+
+    @include common-bp(tablet) {
+      bottom: 2rem;
+    }
   }
 
 }
