@@ -10,23 +10,25 @@ export default class MusicShow extends Component {
   setHeightMS = (arr) => {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
+
     const musicShow = document.querySelector(".MusicShow");
 
     const headerFooter = header.offsetHeight + footer.offsetHeight;
 
     // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
-    const msHeight = ((window.innerHeight - headerFooter) - 80);
-
 
     if (window.matchMedia("(min-width: 374px)").matches && (arr.length < 3) ) {
+      const msHeight = ((window.innerHeight - headerFooter) - 64);
       musicShow.style.height = msHeight + "px";
     } else {
       musicShow.style.height = "auto";
     }
 
     if (window.matchMedia("(min-width: 1024px)").matches) {
+      const msHeight = ((window.innerHeight - headerFooter) - 80);
       musicShow.style.height = msHeight + "px";
     }
+
   }
 
   constructor(props) {
@@ -34,7 +36,8 @@ export default class MusicShow extends Component {
 
     this.state = {
       linkKeys: ["spotify", "bandcamp", "apple", "tidal", "amazon", "deezer", "napster", "google play", "soundcloud"],
-      links: []
+      links: [],
+      id: ""
     };
   }
 
@@ -69,18 +72,19 @@ export default class MusicShow extends Component {
 
     this.setState({ links: k });
 
-    // this.setHeightMS(k);
-    // window.addEventListener("resize", this.debounceMSHeight);
+    this.setHeightMS(k);
+
+    window.addEventListener("resize", this.debounceMSHeight);
 
   }
 
-  // debounceMSHeight = () => {
-  //   debounce(this.setHeightMS(this.state), 100);
-  // }
+  debounceMSHeight = () => {
+    debounce(this.setHeightMS(this.state.links, this.state.id), 100);
+  }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.debounceMSHeight);
-  // }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.debounceMSHeight);
+  }
 
   render() {
 
