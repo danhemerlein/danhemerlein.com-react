@@ -20,6 +20,14 @@
     width: 100%;
   }
 
+  &__inner {
+    flex-direction: column;
+
+    @include common-bp(desktop) {
+      flex-direction: row;
+    }
+  }
+
   &__details-container {
     margin: 0;
   }

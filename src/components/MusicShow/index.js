@@ -1,13 +1,33 @@
 import React, { Component } from "react";
 
-// import debounce from "utils/debounce";
-
 import Image from 'components/base/Image';
 import GoHomeBack from 'components/base/GoHomeBack';
+import debounce from "utils/debounce";
 
 import './MusicShow.scss'
 
 export default class MusicShow extends Component {
+  setHeightMS = (arr) => {
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    const musicShow = document.querySelector(".MusicShow");
+
+    const headerFooter = header.offsetHeight + footer.offsetHeight;
+
+    // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
+    const msHeight = ((window.innerHeight - headerFooter) - 80);
+
+
+    if (window.matchMedia("(min-width: 374px)").matches && (arr.length < 3) ) {
+      musicShow.style.height = msHeight + "px";
+    } else {
+      musicShow.style.height = "auto";
+    }
+
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      musicShow.style.height = msHeight + "px";
+    }
+  }
 
   constructor(props) {
     super(props)
@@ -19,6 +39,8 @@ export default class MusicShow extends Component {
   }
 
   componentDidMount = () => {
+
+    window.scroll(0, 0);
 
     let k = [];
 
@@ -44,8 +66,21 @@ export default class MusicShow extends Component {
         }
       }
     }
+
     this.setState({ links: k });
+
+    // this.setHeightMS(k);
+    // window.addEventListener("resize", this.debounceMSHeight);
+
   }
+
+  // debounceMSHeight = () => {
+  //   debounce(this.setHeightMS(this.state), 100);
+  // }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.debounceMSHeight);
+  // }
 
   render() {
 
@@ -67,7 +102,7 @@ export default class MusicShow extends Component {
 
     return (
       <div className="MusicShow flex items-center justify-between flex-column">
-        <div className="col-12-dh md-col-8-dh lg-col-4-dh flex justify-center flex-column">
+        <div className="MusicShow__inner col-12-dh md-col-8-dh lg-col-4-dh flex justify-center">
           <Image
             src={this.props.project.fields.artwork.fields.file.url}
             alt={this.props.project.fields.artwork.fields.file.title}
