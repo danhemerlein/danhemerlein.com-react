@@ -164,7 +164,7 @@ export default class MusicShow extends Component {
                 }
                 if (hasLink) {
                   return (
-                    <span>
+                    <span key={key}>
                       <a
                         className="MusicShow__fun-link"
                         href={link.link}
@@ -192,11 +192,10 @@ export default class MusicShow extends Component {
                         href={link.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        key={key}
+                        key={key + 10}
                       >
                         <div
                           className="color-white  body-serif flex justify-between full-width mb1"
-                          key={key}
                         >
                           <span>{key}</span>
                           <span>{link.title}</span>

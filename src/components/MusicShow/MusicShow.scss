@@ -84,6 +84,9 @@
   &__title {
     margin: 4px 0;
     font-size: 1.5rem;
+    @include common-bp(desktop) {
+      margin-top: 0;
+    }
   }
 
   &__artist {
@@ -91,11 +94,20 @@
     font-size: 1.25rem;
   }
 
-  &__role,
-  &__release {
+  &__role {
     margin: 4px 0;
     font-size: 1rem;
   }
+
+  &__release {
+    margin: 4px 0;
+    font-size: 1rem;
+
+    @include common-bp(desktop) {
+      margin-top: 0;
+    }
+  }
+
 
   &__go-back-container {
     bottom: 1rem;
