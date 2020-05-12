@@ -80,7 +80,7 @@ export default class MusicPage extends Component {
         <div className="MusicPage__projects-container px3 pt3 flex items-center justify-center">
           <div className="MusicPage__select-container full-width flex justify-center">
             <div className="flex flex-column">
-              <label for="sort" className="MusicPage__label  body-serif">
+              <label for="sort" className="MusicPage__label  body-serif  text-white">
                 sort
               </label>
               <select name="sort" id="sort" onChange={this.handleChange}>
@@ -88,8 +88,8 @@ export default class MusicPage extends Component {
                 <option value="wrote">wrote</option>
                 <option value="produced">produced</option>
                 <option value="performed">perfomed</option>
-                <option value="most-recent">most recent</option>
-                <option value="oldest">oldest</option>
+                {/* <option value="most-recent">most recent</option>
+                <option value="oldest">oldest</option> */}
               </select>
             </div>
           </div>
