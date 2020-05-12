@@ -1,7 +1,7 @@
 @import "../../styles/app.scss";
 
 .MusicShow {
-  background-image: linear-gradient(45deg,#8795e8,#ff6ad5);
+  background-image: linear-gradient(45deg, #8795e8, #ff6ad5);
   height: 100%;
   padding: 1rem;
 
@@ -31,6 +31,14 @@
     }
   }
 
+  a {
+    @include common-bp(desktop) {
+      &:hover {
+        text-decoration: none !important;
+      }
+    }
+  }
+
   &__inner {
     flex-direction: column;
 
@@ -42,15 +50,19 @@
   &__details-container {
     margin-bottom: 1rem;
 
-    @include common-bp (desktop) {
+    @include common-bp(desktop) {
       margin-left: 0.5rem;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 
   &__title-container {
     margin-top: 1rem;
 
-    @include common-bp (desktop) {
+    @include common-bp(desktop) {
       margin-top: 0;
     }
   }
@@ -62,15 +74,24 @@
 
   &__links-container {
     margin-top: 1rem;
+
+    &--inner {
+      @include common-bp(desktop) {
+        border-bottom: 1px solid transparent;
+        // padding-bottom: 1px;
+        &:hover {
+          border-bottom: 1px dashed white;
+        }
+      }
+    }
   }
 
   &__mobile-link {
     display: inline;
 
-    @include common-bp (desktop) {
+    @include common-bp(desktop) {
       display: none;
     }
-
   }
 
   &__fun-link {
@@ -108,7 +129,6 @@
     }
   }
 
-
   &__go-back-container {
     bottom: 1rem;
 
@@ -116,5 +136,4 @@
       bottom: 2rem;
     }
   }
-
 }

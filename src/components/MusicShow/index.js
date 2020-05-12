@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 
-import Image from 'components/base/Image';
-import GoHomeBack from 'components/base/GoHomeBack';
+import Image from "components/base/Image";
+import GoHomeBack from "components/base/GoHomeBack";
 import debounce from "utils/debounce";
 
-import './MusicShow.scss'
+import "./MusicShow.scss";
 
 export default class MusicShow extends Component {
   setHeightMS = (arr) => {
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
+    const header = document.querySelector("header");
+    const footer = document.querySelector("footer");
 
     const musicShow = document.querySelector(".MusicShow");
 
@@ -18,18 +18,18 @@ export default class MusicShow extends Component {
     // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
 
     if (
-      (window.matchMedia("(min-width: 374px)").matches) &&
-      (window.matchMedia("(max-width: 500px)").matches) &&
-      (arr.length < 3)
-     ) {
-      const msHeight = ((window.innerHeight - headerFooter) - 64);
+      window.matchMedia("(min-width: 374px)").matches &&
+      window.matchMedia("(max-width: 500px)").matches &&
+      arr.length < 3
+    ) {
+      const msHeight = window.innerHeight - headerFooter - 64;
       musicShow.style.height = msHeight + "px";
     } else {
       musicShow.style.height = "auto";
     }
 
     if (window.matchMedia("(min-width: 1024px)").matches) {
-      const msHeight = ((window.innerHeight - headerFooter) - 80);
+      const msHeight = window.innerHeight - headerFooter - 80;
       musicShow.style.height = msHeight + "px";
 
       // const detailsContainer = document.querySelector(".MusicShow__details-container");
@@ -39,31 +39,38 @@ export default class MusicShow extends Component {
       // const links = document.querySelector(".MusicShow__links-container");
 
       // links.style.height = difference + "px";
-
     }
-
-  }
+  };
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      linkKeys: ["spotify", "bandcamp", "apple", "tidal", "amazon", "deezer", "napster", "google play", "soundcloud"],
+      linkKeys: [
+        "spotify",
+        "bandcamp",
+        "apple",
+        "tidal",
+        "amazon",
+        "deezer",
+        "napster",
+        "google play",
+        "soundcloud",
+      ],
       links: [],
-      id: ""
+      id: "",
     };
   }
 
   componentDidMount = () => {
-
     window.scroll(0, 0);
 
     let k = [];
 
     for (let key of this.state.linkKeys) {
       let o = {
-        title: '',
-        link: ''
+        title: "",
+        link: "",
       };
 
       if (key === "google play") {
@@ -73,12 +80,11 @@ export default class MusicShow extends Component {
         if (this.props.project.fields[key] !== undefined) {
           k.push(o);
         }
-
       } else {
         o.title = key;
         o.link = this.props.project.fields[key];
         if (this.props.project.fields[key] !== undefined) {
-          k.push(o)
+          k.push(o);
         }
       }
     }
@@ -88,32 +94,39 @@ export default class MusicShow extends Component {
     this.setHeightMS(k);
 
     window.addEventListener("resize", this.debounceMSHeight);
-
-  }
+  };
 
   debounceMSHeight = () => {
     debounce(this.setHeightMS(this.state.links, this.state.id), 100);
-  }
+  };
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.debounceMSHeight);
   }
 
   render() {
-
     const renderArtistATag = () => {
       if (this.props.project.fields.artistWebsite !== undefined) {
-        return <div className="MusicShow__artist-link">
-              <h4 className="MusicShow__artist color-white body-serif full-width">
-            by <a href={this.props.project.fields.artistWebsite} target="_blank" rel="noopener noreferrer">
+        return (
+          <div className="MusicShow__artist-link">
+            <h4 className="MusicShow__artist color-white body-serif full-width">
+              by{" "}
+              <a
+                href={this.props.project.fields.artistWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {this.props.project.fields.artist}
-            </a>
-              </h4>
-          </div>;
+              </a>
+            </h4>
+          </div>
+        );
       } else {
-        return <h4 className="MusicShow__artist color-white body-serif full-width">
+        return (
+          <h4 className="MusicShow__artist color-white body-serif full-width">
             by {this.props.project.fields.artist}
-          </h4>;
+          </h4>
+        );
       }
     };
 
@@ -121,10 +134,9 @@ export default class MusicShow extends Component {
       const stringSplit = str.split("");
 
       for (let letter of stringSplit) {
-        return <span>{letter}</span>
+        return <span>{letter}</span>;
       }
-
-    }
+    };
 
     return (
       <div className="MusicShow flex items-center flex-column relative">
@@ -157,8 +169,52 @@ export default class MusicShow extends Component {
             <div className="MusicShow__links-container">
               {this.state.links.map((link, key) => {
                 let hasLink = false;
-                let i = ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•"];
-                let k = ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•"];
+                let i = [
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                ];
+                let j = [
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                  "•",
+                ];
+                let k = [
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                  ".",
+                ];
                 if (link.link !== undefined) {
                   hasLink = true;
                 }
@@ -173,15 +229,15 @@ export default class MusicShow extends Component {
                         key={key}
                       >
                         <div
-                          className="color-white  body-serif flex justify-between full-width mb2"
+                          className="MusicShow__links-container--inner color-white
+                          body-serif flex justify-between full-width mb2"
                           key={key}
                         >
-                          {/* <span>{key}]</span> */}
                           {i.map((sym, key) => {
                             return <span key={key}>{sym}</span>;
                           })}
                           <span>{link.title}</span>
-                          {k.map((sym, key) => {
+                          {j.map((sym, key) => {
                             return <span key={key}>{sym}</span>;
                           })}
                         </div>
@@ -194,10 +250,11 @@ export default class MusicShow extends Component {
                         rel="noopener noreferrer"
                         key={key + 10}
                       >
-                        <div
-                          className="color-white  body-serif flex justify-between full-width mb1"
-                        >
+                        <div className="color-white  body-serif flex justify-between full-width mb1">
                           <span>{key}</span>
+                          {k.map((sym, key) => {
+                            return <span key={key}>{sym}</span>;
+                          })}
                           <span>{link.title}</span>
                         </div>
                       </a>
