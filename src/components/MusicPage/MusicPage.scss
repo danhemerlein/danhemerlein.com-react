@@ -150,4 +150,18 @@
   &__mobile-details-container-role {
     margin: 4px 0;
   }
+
+  &__select-container {
+    margin-bottom: 1rem;
+
+    @include common-bp(desktop) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__label {
+    // text-align: center;
+    margin-bottom: 4px;
+  }
+
 }

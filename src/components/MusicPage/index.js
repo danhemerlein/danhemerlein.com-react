@@ -1,22 +1,60 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import Image from 'components/base/Image';
+import Image from "components/base/Image";
 import GoHomeBack from "components/base/GoHomeBack";
 
-import './MusicPage.scss'
+import "./MusicPage.scss";
 import cx from "classnames";
 
 export default class MusicPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sort: "default",
+      activeProjects: []
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    console.log(event.target.value);
+
+    if (event.target.value === "") {
+      this.setState({
+        sort: "default",
+        activeProjects: this.props.projects,
+      });
+    } else {
+      let k = this.props.projects.filter(function(project) {
+        return project.fields[event.target.value];
+      });
+
+      this.setState({
+        sort: event.target.value,
+        activeProjects: k,
+      });
+    }
+
+  }
+
+  componentDidMount() {
+    this.setState({
+      activeProjects: this.props.projects,
+    });
+  }
 
   render() {
     const heroStyle = {
       width: "100%",
       height: "100%",
-      backgroundImage: "url(" + this.props.comingSoonImage.fields.file.url + ")",
+      backgroundImage:
+        "url(" + this.props.comingSoonImage.fields.file.url + ")",
       backgroundPosition: "center",
-      backgroundSize: 'cover',
-      overflow: 'hidden',
+      backgroundSize: "cover",
+      overflow: "hidden",
     };
     return (
       <div className="MusicPage flex flex-wrap items-center justify-center">
@@ -38,8 +76,24 @@ export default class MusicPage extends Component {
             </a>
           </div>
         </div>
+
         <div className="MusicPage__projects-container px3 pt3 flex items-center justify-center">
-          {this.props.projects.map((project, key) => {
+          <div className="MusicPage__select-container full-width flex justify-center">
+            <div className="flex flex-column">
+              <label for="sort" className="MusicPage__label  body-serif">
+                sort
+              </label>
+              <select name="sort" id="sort" onChange={this.handleChange}>
+                <option value="">default</option>
+                <option value="wrote">wrote</option>
+                <option value="produced">produced</option>
+                <option value="performed">perfomed</option>
+                <option value="most-recent">most recent</option>
+                <option value="oldest">oldest</option>
+              </select>
+            </div>
+          </div>
+          {this.state.activeProjects.map((project, key) => {
             var projectHandle = project.fields.title
               .replace(/[^a-zA-Z0-9 ]/g, "")
               .replace(/ /g, "-")
@@ -51,7 +105,8 @@ export default class MusicPage extends Component {
                 data-wrote={project.fields.wrote}
                 data-produced={project.fields.produced}
                 data-performed={project.fields.performed}
-                className="MusicPage__project flex col-12-dh  md-col-4-dh  lg-col-3-dh"
+                data-released={project.fields.releaseDate}
+                className="MusicPage__project flex col-12-dh  md-col-6-dh  lg-col-3-dh"
               >
                 <div className="MusicPage__container flex relative">
                   <Link to={`/music/${projectHandle}`}>
