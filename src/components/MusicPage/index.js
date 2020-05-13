@@ -20,21 +20,86 @@ export default class MusicPage extends Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
+
+    function addDateTime (arr) {
+      arr.map(function(project) {
+
+        let date = project.fields.releaseDate;
+
+        const months = {
+          'January': '01',
+          'February': '02',
+          'March': '03',
+          'April': '04',
+          'May': '05',
+          'June': '06',
+          'July': '07',
+          'August': '08',
+          'September': '09',
+          'October': '10',
+          'November': '11',
+          'December': '12'
+        };
+
+        date = date.replace(',', '').split(' ');
+        let year = date[2];
+        let day = date[1];
+        let month = months[date[0]]
+        let dateFormat = year+"-"+month+"-"+day;
+        var d = new Date(dateFormat);
+
+        project.fields['releaseDateFormat'] = d;
+
+      })
+    }
 
     if (event.target.value === "") {
+
+      const k = this.props.projects.sort((a, b) => {
+        return a.fields.order - b.fields.order;
+      });
+
       this.setState({
         sort: "default",
-        activeProjects: this.props.projects,
+        activeProjects: k,
       });
+    } else if (event.target.value === "most-recent") {
+
+      addDateTime(this.props.projects);
+
+      const sorted = this.props.projects.sort((function(a, b) {
+        return b.fields.releaseDateFormat - a.fields.releaseDateFormat
+      }))
+
+      this.setState({
+        sort: event.target.value,
+        activeProjects: sorted,
+      });
+
+    } else if (event.target.value === "oldest") {
+      addDateTime(this.props.projects);
+
+      const sorted = this.props.projects.sort(function(a, b) {
+        return a.fields.releaseDateFormat - b.fields.releaseDateFormat;
+      });
+
+      this.setState({
+        sort: event.target.value,
+        activeProjects: sorted,
+      });
+
     } else {
-      let k = this.props.projects.filter(function(project) {
+      const k = this.props.projects.sort((a, b) => {
+         return a.fields.order - b.fields.order;
+       });
+
+      let j = k.filter(function(project) {
         return project.fields[event.target.value];
       });
 
       this.setState({
         sort: event.target.value,
-        activeProjects: k,
+        activeProjects: j,
       });
     }
 
@@ -80,16 +145,24 @@ export default class MusicPage extends Component {
         <div className="MusicPage__projects-container px3 pt3 flex items-center justify-center">
           <div className="MusicPage__select-container full-width flex justify-center">
             <div className="flex flex-column">
-              <label for="sort" className="MusicPage__label  body-serif  text-white">
+              <label
+                htmlFor="sort"
+                className="MusicPage__label  body-serif  text-white"
+              >
                 sort
               </label>
-              <select name="sort" id="sort" onChange={this.handleChange}>
+              <select
+                name="sort"
+                id="sort"
+                onChange={this.handleChange}
+                className="MusicPage__select"
+              >
                 <option value="">default</option>
+                <option value="most-recent">most recent</option>
+                 <option value="oldest">oldest</option>
                 <option value="wrote">wrote</option>
                 <option value="produced">produced</option>
                 <option value="performed">perfomed</option>
-                {/* <option value="most-recent">most recent</option>
-                <option value="oldest">oldest</option> */}
               </select>
             </div>
           </div>
