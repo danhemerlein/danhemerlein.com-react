@@ -125,11 +125,11 @@ export default class MusicPage extends Component {
       <div className="MusicPage flex flex-wrap items-center justify-center">
         <div className="MusicPage__hero full-width">
           <div className="relative full-height full-width">
-            <a
+            {/* <a
               href="https://www.minikitmusic.com"
               target="_blank"
               rel="noopener noreferrer"
-            >
+            > */}
               <div style={heroStyle} className="flex justify-between relative">
                 <h3 className="MusicPage__hero-text--headline text-white body-serif absolute">
                   minikit
@@ -138,7 +138,7 @@ export default class MusicPage extends Component {
                   '400 Coffees' available everywhere now
                 </h3>
               </div>
-            </a>
+            {/* </a> */}
           </div>
         </div>
 
@@ -212,14 +212,6 @@ export default class MusicPage extends Component {
                         </Link>
                       </h3>
                     </div>
-                    {/* <div>
-                      <h3 className="MusicPage__mobile-details-container-release color-white  body-serif  text-lowercase text-right">
-                        {project.fields.releaseDate}
-                      </h3>
-                      <h3 className="MusicPage__mobile-details-role color-white  body-serif  text-lowercase">
-                        {project.fields.role}
-                      </h3>
-                    </div> */}
                   </div>
                 </div>
               </div>
