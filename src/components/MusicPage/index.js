@@ -175,10 +175,6 @@ export default class MusicPage extends Component {
             return (
               <div
                 key={key}
-                data-wrote={project.fields.wrote}
-                data-produced={project.fields.produced}
-                data-performed={project.fields.performed}
-                data-released={project.fields.releaseDate}
                 className="MusicPage__project flex col-12-dh  md-col-6-dh  lg-col-3-dh"
               >
                 <div className="MusicPage__container flex relative">
