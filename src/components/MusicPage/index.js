@@ -91,9 +91,10 @@ const MusicPage = (props) => {
   const heroStyle = {
     width: "100%",
     height: "100%",
-    backgroundImage: point === 'sm' || point === 'md'
-      ? "url(" + props.heroImageMobile.fields.file.url + ")"
-      : "url(" + props.heroImageDesktop.fields.file.url + ")",
+    backgroundImage: point === "sm" || point === "md"
+        ? "url(" + props.heroImageMobile.fields.file.url + ")"
+        : "url(" + props.heroImageDesktop.fields.file.url + ")",
+    backgroundColor: point === "sm" || point === "md" ? "#8C8582" : "#E6D98C",
     backgroundPosition: "center",
     backgroundSize: "cover",
     overflow: "hidden",
