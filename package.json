@@ -6,15 +6,15 @@
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "autoprefixer": "^9.3.1",
     "classnames": "^2.2.6",
-    "contentful": "^7.0.5",
+    "contentful": "^7.14.4",
     "joi-browser": "^13.4.0",
-    "node-sass": "^4.9.4",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-joi-validation": "^1.7.0",
-    "react-mailchimp-subscribe": "^2.0.2",
+    "react-mailchimp-subscribe": "^2.1.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.4"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "NODE_PATH=src react-scripts start",

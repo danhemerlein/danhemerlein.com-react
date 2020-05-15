@@ -7,19 +7,24 @@ import createHistory from "history/createBrowserHistory";
 import get from "utils/get";
 
 import HomePage from "components/HomePage";
-import AboutPageNew from "components/AboutPageNew";
-import Code from "components/Code";
-import MusicPage from "components/MusicPage";
-import Contact from "components/Contact";
-import Moodboard from "components/Moodboard";
 import Header from "components/Header";
 import Footer from "components/Footer";
+
+import Code from "components/Code";
+
+import MusicPage from "components/MusicPage";
+
+import AboutPageNew from "components/AboutPageNew";
+
+import Contact from "components/Contact";
+import Moodboard from "components/Moodboard";
 import NotFound from "components/NotFound";
 import MusicShow from "components/MusicShow";
 
 import "./Site.scss";
 
 export default class Site extends Component {
+
   constructor(props) {
     super(props)
 
@@ -36,6 +41,8 @@ export default class Site extends Component {
   }
 
   render() {
+    console.log(this.props.site);
+
     const history = createHistory();
     const unlisten = history.listen((location, action) => {
       // console.log(action, location.pathname, location.state);
@@ -97,9 +104,14 @@ export default class Site extends Component {
                   render={() => (
                     <MusicPage
                       projects={this.props.musicProjects}
-                      comingSoonImage={get(
+                      heroImageDesktop={get(
                         this.props.site,
                         "fields.musicProjectsComingSoon",
+                        {}
+                      )}
+                      heroImageMobile={get(
+                        this.props.site,
+                        "fields.musicProjectsHeroMobile",
                         {}
                       )}
                     />
