@@ -5,10 +5,13 @@ import debounce from "utils/debounce";
 import './HomePage.scss';
 
 import HomeBox from 'components/HomeBox';
-import MoodboardIcon from 'components/icons/Moodboard';
-import MusicIcon from 'components/icons/Music';
+
 import WebsiteIcon from 'components/icons/Website';
+import MusicIcon from 'components/icons/Music';
+import MoodboardIcon from 'components/icons/Moodboard';
 import ContactIcon from 'components/icons/Contact';
+
+import WebsiteIconNew from 'components/icons/new/Website';
 
 class HomePage extends Component {
   setHeightHP = () => {

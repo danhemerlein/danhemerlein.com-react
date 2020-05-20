@@ -41,8 +41,6 @@ export default class Site extends Component {
   }
 
   render() {
-    console.log(this.props.site);
-
     const history = createHistory();
     const unlisten = history.listen((location, action) => {
       // console.log(action, location.pathname, location.state);
@@ -50,7 +48,8 @@ export default class Site extends Component {
         currentRoute: location.pathname,
       });
 
-      if ((this.state.currentRoute !== location.pathname) && this.state.mobileNavOpen) {
+      if ((this.state.currentRoute !== location.pathname) &&
+          this.state.mobileNavOpen) {
         this.toggleMobileNav();
       }
     });
@@ -117,13 +116,7 @@ export default class Site extends Component {
                     />
                   )}
                 />
-                <Route
-                  exact
-                  path="/keep-in-touch"
-                  render={() => (
-                    <Contact />
-                  )}
-                />
+                <Route exact path="/keep-in-touch" render={() => <Contact />} />
                 <Route
                   exact
                   path="/moodboard"

@@ -113,10 +113,12 @@ const MusicPage = (props) => {
             style={heroStyle}
             className="flex justify-between relative"
           >
-            <h3 className="MusicPage__hero-text--headline text-white body-serif absolute">
+            <h3 className="MusicPage__hero-text--headline text-white
+            body-serif absolute">
               minikit
             </h3>
-            <h3 className="MusicPage__hero-text--sub-headline text-white body-serif absolute bg-black">
+            <h3 className="MusicPage__hero-text--sub-headline text-white
+            body-serif absolute bg-black">
               '400 Coffees' available everywhere now
             </h3>
           </div>
@@ -124,8 +126,10 @@ const MusicPage = (props) => {
         </div>
       </div>
 
-      <div className="MusicPage__projects-container px3 pt3 flex items-center justify-center">
-        <div className="MusicPage__select-container full-width flex justify-center">
+      <div className="MusicPage__projects-container px3 pt3 flex items-center
+      justify-center">
+        <div className="MusicPage__select-container full-width flex
+        justify-center">
           <div className="flex flex-column">
             <label
               htmlFor="sort"
@@ -157,7 +161,8 @@ const MusicPage = (props) => {
           return (
             <div
               key={key}
-              className="MusicPage__project flex col-12-dh  md-col-6-dh  lg-col-3-dh"
+              className="MusicPage__project flex col-12-dh  md-col-6-dh
+              lg-col-3-dh"
             >
               <div className="MusicPage__container flex relative">
                 <Link to={`/music/${projectHandle}`}>
@@ -165,14 +170,17 @@ const MusicPage = (props) => {
                     src={project.fields.artwork.fields.file.url}
                     alt={project.fields.artwork.fields.file.title}
                   />
-                  <div className="MusicPage__overlay bg-white color-black flex justify-center flex-column items-center absolute left-0 top-0 right-0 bottom-0 full-width full-height">
+                  <div className="MusicPage__overlay bg-white color-black flex
+                  justify-center flex-column items-center absolute left-0 top-0
+                  right-0 bottom-0 full-width full-height">
                     <h3 className="MusicPage__title body-serif">
                       {project.fields.title}
                     </h3>
                     <h4 className={cx("MusicPage__artist body-serif")}>
                       by {project.fields.artist}
                     </h4>
-                    <h5 className="MusicPage__role body-serif bold text-lowercase">
+                    <h5 className="MusicPage__role body-serif bold
+                    text-lowercase">
                       {project.fields.role}
                     </h5>
                   </div>

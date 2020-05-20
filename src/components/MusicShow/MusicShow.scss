@@ -132,7 +132,7 @@
   &__go-back-container {
     bottom: 1rem;
 
-    @include common-bp(tablet) {
+    @include common-bp(desktop) {
       bottom: 2rem;
     }
   }
