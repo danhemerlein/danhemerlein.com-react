@@ -52,7 +52,16 @@ const MusicShow = (props) => {
   const header = document.querySelector("header");
   const footer = document.querySelector("footer");
   const musicShow = document.querySelector(".MusicShow");
+
   useHeight(header, footer, musicShow, links);
+
+  const { data } = usePalette(
+    "https:"+props.project.fields.artwork.fields.file.url
+  );
+
+  const bgStyle  = {
+    backgroundImage: `linear-gradient(45deg, ${data.lightMuted}, ${data.muted})`
+  };
 
   const renderArtistATag = () => {
     if (props.project.fields.artistWebsite !== undefined) {
@@ -80,7 +89,10 @@ const MusicShow = (props) => {
   };
 
   return (
-    <div className="MusicShow flex items-center flex-column relative">
+    <div
+      className="MusicShow flex items-center flex-column relative"
+      style={bgStyle}
+    >
       <div className="MusicShow__inner col-12-dh md-col-8-dh lg-col-8-dh flex justify-center">
         <Image
           src={props.project.fields.artwork.fields.file.url}

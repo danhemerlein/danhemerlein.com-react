@@ -3,6 +3,28 @@ import debounce from "utils/debounce";
 
 const useHeight = (header, footer, comp, arr) => {
 
+  console.log('useHeight');
+
+  if (header != null && footer != null && comp != null) {
+    let headerFooter = header.offsetHeight + footer.offsetHeight;
+
+    if (
+      window.matchMedia("(min-width: 374px)").matches &&
+      window.matchMedia("(max-width: 500px)").matches &&
+      arr.length < 3
+    ) {
+      let compHeight = window.innerHeight - headerFooter - 64;
+      comp.style.height = compHeight + "px";
+    } else {
+      comp.style.height = "auto";
+    }
+
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      let compHeight = window.innerHeight - headerFooter - 80;
+      comp.style.height = compHeight + "px";
+    }
+  }
+
   useEffect(() => {
 
     const calcCompHeight = debounce(function () {
