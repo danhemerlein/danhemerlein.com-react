@@ -3,8 +3,6 @@ import debounce from "utils/debounce";
 
 const useHeight = (header, footer, comp, arr) => {
 
-  console.log('useHeight');
-
   if (header != null && footer != null && comp != null) {
     let headerFooter = header.offsetHeight + footer.offsetHeight;
 

@@ -89,6 +89,7 @@ const MusicShow = (props) => {
   };
 
   return (
+
     <div
       className="MusicShow flex items-center flex-column relative"
       style={bgStyle}
@@ -110,7 +111,7 @@ const MusicShow = (props) => {
 
             <div className="flex flex-column mt1 col-6">
               <h3 className="MusicShow__release color-white  body-serif  text-lowercase text-right">
-                {props.project.fields.releaseDate}
+                {props.project.fields.releaseDate.replace(",", '')}
               </h3>
 
               <h3 className="MusicShow__role  color-white  body-serif  text-lowercase text-right">
