@@ -12,13 +12,7 @@ class Image extends Component {
     };
 
     if (!bg) {
-      return (
-        <img
-          style={style}
-          src={src}
-          alt={alt}
-        />
-      );
+      return <img style={style} src={src} alt={alt} loading="lazy" />;
     }
     return (
       <div style={bgStyle}>

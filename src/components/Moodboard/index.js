@@ -3,12 +3,37 @@ import GoHomeBack from "components/base/GoHomeBack";
 
 import get from "utils/get";
 
-import ScrollToTop from 'components/ScrollToTop'
+import ScrollToTop from 'components/base/ScrollToTop'
 import Image from "components/base/Image";
 
 import "./Moodboard.scss"
 
 export default class Moodboard extends Component {
+
+  /**
+   * Check if an element is in viewport
+   *
+   * @param {number} [offset]
+   * @returns {boolean}
+   */
+  isInViewport = () => {
+    if (!this.elem) return false;
+    const top = this.elem.getBoundingClientRect().top;
+    return (top + 80) <= window.innerHeight;
+  }
+
+  handleScroll = () => {
+    let bool = this.isInViewport();
+
+    if(bool) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
   renderGalleryRow = (imageGroup, index) => {
     return (
       <div className="Moodboard__content full-width flex mb1" key={index}>
@@ -38,10 +63,11 @@ export default class Moodboard extends Component {
         {imageMatrix.map((imageGroup, index) =>
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}
-        <ScrollToTop scrollStepInPx="75" delayInMs="10" />
+        {/* <ScrollToTop scrollStepInPx="75" delayInMs="10" /> */}
         <div className="full-width flex justify-center my3">
           <GoHomeBack destination="/" cta="go back" white={false} />
         </div>
+        <div ref={(el) => this.elem = el}></div>
       </div>
     );
   }
