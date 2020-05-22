@@ -3,15 +3,25 @@
 .NotFound {
   @include anchor-black;
 
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   @include common-bp(tablet) {
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
 
   a {
     text-decoration: underline;
+  }
+
+  &__inner {
+    justify-content: center;
   }
 
   &__sub-headline {

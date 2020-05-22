@@ -21,6 +21,10 @@ import Moodboard from "components/Moodboard";
 import NotFound from "components/NotFound";
 import MusicShow from "components/MusicShow";
 
+// import NotFoundIcon from "components/icons/new/NotFound";
+import NotFoundIcon from "components/icons/521/NotFound";
+
+
 import "./Site.scss";
 
 export default class Site extends Component {
@@ -126,10 +130,8 @@ export default class Site extends Component {
                     />
                   )}
                 />
-
                 {musicPageRoutes}
-
-                <Route component={NotFound} />
+                <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
               </Switch>
               <footer>
                 <Footer />

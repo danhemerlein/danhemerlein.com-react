@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-import ScrollToTop from 'components/ScrollToTop'
+import ScrollToTop from 'components/base/ScrollToTop'
 import Image from 'components/base/Image';
 
 import './AboutPage.scss';

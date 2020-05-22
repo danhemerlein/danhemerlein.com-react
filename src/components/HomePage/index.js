@@ -6,12 +6,20 @@ import './HomePage.scss';
 
 import HomeBox from 'components/HomeBox';
 
-import WebsiteIcon from 'components/icons/Website';
-import MusicIcon from 'components/icons/Music';
-import MoodboardIcon from 'components/icons/Moodboard';
-import ContactIcon from 'components/icons/Contact';
+// import WebsiteIcon from 'components/icons/Website';
+// import MusicIcon from 'components/icons/Music';
+// import MoodboardIcon from 'components/icons/Moodboard';
+// import ContactIcon from 'components/icons/Contact';
 
-import WebsiteIconNew from 'components/icons/new/Website';
+// import WebsiteIconNew from 'components/icons/new/Website';
+// import MusicIconNew from 'components/icons/new/Music';
+// import MoodboardIconNew from 'components/icons/new/Moodboard';
+// import ContactIconNew from 'components/icons/new/Contact';
+
+import CodeIcon from 'components/icons/521/Code';
+import MusicIcon from 'components/icons/521/Music';
+import MoodboardIcon from 'components/icons/521/Moodboard';
+import ContactIcon from 'components/icons/521/Contact';
 
 class HomePage extends Component {
   setHeightHP = () => {
@@ -48,37 +56,24 @@ class HomePage extends Component {
           <div className="flex flex-column col-12">
             <div className="HomePage__top-left col-12">
               <Link to="/code">
-                <HomeBox
-                    header="code"
-                    icon={<WebsiteIcon />}
-                />
+                <HomeBox header="code" icon={<CodeIcon />} />
               </Link>
             </div>
             <div className="HomePage__bottom-left col-12 mt1">
               <Link to="/moodboard">
-                <HomeBox
-                    header="moodboard"
-                    icon={<MoodboardIcon />}
-                />
+                <HomeBox header="moodboard" icon={<MoodboardIcon />} />
               </Link>
             </div>
-
           </div>
           <div className="flex flex-column col-12 ml1">
             <div className="HomePage__top-right col-12">
               <Link to="/music">
-                <HomeBox
-                    header="music"
-                    icon={<MusicIcon />}
-                />
+                <HomeBox header="music" icon={<MusicIcon />} />
               </Link>
             </div>
             <div className="HomePage__bottom-right col-12 mt1">
               <Link to="keep-in-touch">
-                <HomeBox
-                    header="keep in touch"
-                    icon={<ContactIcon />}
-                />
+                <HomeBox header="keep in touch" icon={<ContactIcon />} />
               </Link>
             </div>
           </div>
