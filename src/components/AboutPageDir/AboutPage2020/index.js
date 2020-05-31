@@ -20,9 +20,13 @@ const AboutPage = (props) => {
   let height = useHeight(header, footer);
   const point = useBreakpoint();
 
-  let pageStyle, innerStyle = {
+  let pageStyle = {
     height: point === "md" || point === "lg" || point === "xl" ? `${height - 16}px` : "auto",
   };
+
+  let innerStyle = {
+    height: point === "md" || point === "lg" || point === "xl" ? `${height - 16}px` : "auto",
+  }
 
   const imageStyle = {
     width: "100%",

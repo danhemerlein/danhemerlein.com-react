@@ -172,7 +172,7 @@ const MusicPage = (props) => {
                   />
                   <div className="MusicPage__overlay bg-white color-black flex
                   justify-center flex-column items-center absolute left-0 top-0
-                  right-0 bottom-0 full-width full-height">
+                  right-0 bottom-0 full-width full-height p2">
                     <h3 className="MusicPage__title body-serif">
                       {project.fields.title}
                     </h3>
