@@ -1,0 +1,30 @@
+@import "../../../styles/app.scss";
+
+.AboutPage2020{
+  &__inner {
+    flex-wrap: wrap;
+  }
+
+  &__go-home-container {
+    height: 1rem;
+  }
+
+  &__text {
+    max-width: 50%;
+    margin: 2rem 0;
+
+    @include common-bp(tablet) {
+      margin: 0;
+    }
+  }
+
+  &__img-container {
+    height: 65vh;
+
+    @include common-bp(tablet){
+      height: 100%;
+    }
+
+  }
+
+}

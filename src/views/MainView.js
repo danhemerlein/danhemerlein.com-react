@@ -8,6 +8,7 @@ const MainView = ({ model }) => {
   let site = [];
   let musicProjects = [];
   let codeProjects = [];
+
   for (let i = 0; i < model.length; i++) {
     const element = model[i];
     if ("subTitle" in element.fields) {

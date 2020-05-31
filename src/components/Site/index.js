@@ -14,7 +14,8 @@ import Code from "components/Code";
 
 import MusicPage from "components/MusicPage";
 
-import AboutPageNew from "components/AboutPageNew";
+// import AboutPageNew from "components/AboutPageDir/AboutPageNew";
+import AboutPage from "components/AboutPageDir/AboutPage2020";
 
 import Contact from "components/Contact";
 import Moodboard from "components/Moodboard";
@@ -90,9 +91,9 @@ export default class Site extends Component {
                   exact
                   path="/about"
                   render={() => (
-                    <AboutPageNew
+                    <AboutPage
                       image={get(this.props.site, "fields.aboutImage", {})}
-                      text={get(this.props.site, "fields.aboutText", {})}
+                      // text={get(this.props.site, "fields.aboutText", {})}
                     />
                   )}
                 />

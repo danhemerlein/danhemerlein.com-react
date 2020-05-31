@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import debounce from "utils/debounce";
 
-import AboutPageMobile from 'components/AboutPage';
+import AboutPageMobile from 'components/AboutPageDir/AboutPage';
 
 import './AboutPageNew.scss';
 

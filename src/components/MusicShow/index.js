@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { usePalette } from "react-palette";
 
-import useHeight from "hooks/useHeight";
+import useHeight from "hooks/useHeightMS";
 
 import Image from "components/base/Image";
 import GoHomeBack from "components/base/GoHomeBack";

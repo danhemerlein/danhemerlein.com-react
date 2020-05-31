@@ -153,7 +153,6 @@ const MusicPage = (props) => {
           </div>
         </div>
         {activeProjects.map((project, key) => {
-          console.log(project.fields.releaseDate)
           var projectHandle = project.fields.title
             .replace(/[^a-zA-Z0-9 ]/g, "")
             .replace(/ /g, "-")
