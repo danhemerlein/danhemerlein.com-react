@@ -6,7 +6,7 @@
   }
 
   &__go-home-container {
-    height: 1rem;
+    height: 3rem;
   }
 
   &__text {
@@ -24,7 +24,5 @@
     @include common-bp(tablet){
       height: 100%;
     }
-
   }
-
 }

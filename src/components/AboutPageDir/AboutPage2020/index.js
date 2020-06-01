@@ -1,8 +1,7 @@
 //react
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 // components
-import Image from "components/base/Image";
 import GoHomeBack from "components/base/GoHomeBack";
 
 // hooks
@@ -14,18 +13,20 @@ import "./AboutPage2020.scss";
 
 const AboutPage = (props) => {
 
-  const header = document.querySelector("header");
-  const footer = document.querySelector("footer");
+  var header = document.querySelector("header");
+  var footer = document.querySelector("footer");
 
   let height = useHeight(header, footer);
   const point = useBreakpoint();
 
   let pageStyle = {
-    height: point === "md" || point === "lg" || point === "xl" ? `${height - 16}px` : "auto",
+    height: point === "lg" || point === "xl" ? `${height}px` : "auto",
   };
 
+  // notes on why this is happening please
+
   let innerStyle = {
-    height: point === "md" || point === "lg" || point === "xl" ? `${height - 16}px` : "auto",
+    height: point === "lg" || point === "xl" ? `${height - 64}px` : "auto",
   }
 
   const imageStyle = {
@@ -40,7 +41,7 @@ const AboutPage = (props) => {
 
   return (
     <div
-      className="AboutPage2020 my2 flex flex-column body-serif"
+      className="AboutPage2020 mt2 flex flex-column body-serif"
       style={pageStyle}
     >
       <div
@@ -65,7 +66,7 @@ const AboutPage = (props) => {
           </div>
         </div>
       </div>
-      <div className="AboutPage2020__go-home-container  mt2 flex justify-center col-12">
+      <div className="AboutPage2020__go-home-container py2 flex justify-center col-12">
         <GoHomeBack destination="/" cta="go home" white={false} />
       </div>
     </div>
