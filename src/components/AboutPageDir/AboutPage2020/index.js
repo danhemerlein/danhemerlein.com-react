@@ -17,7 +17,7 @@ const AboutPage = (props) => {
   var footer = document.querySelector("footer");
 
   let height = useHeight(header, footer);
-  const point = useBreakpoint();
+  let point = useBreakpoint();
 
   let pageStyle = {
     height: point === "lg" || point === "xl" ? `${height}px` : "auto",
@@ -57,7 +57,7 @@ const AboutPage = (props) => {
             <p className="body-serif">hey I'm Dan,</p>
 
             <p className="body-serif mt1">
-              I'm a web engineer and music producer based in Brooklyn, New York.
+              I'm a web developer and music producer based in Brooklyn, New York.
             </p>
 
             <p className="body-serif mt1">

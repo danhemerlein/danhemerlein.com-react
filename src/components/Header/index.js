@@ -29,7 +29,7 @@ export default class Header extends Component {
               <Link to="/">dan hemerlein</Link>
             </h1>
             <h2 className="Header__sub-headline body-serif m0">
-              <Link to="/code">web engineer</Link> /{" "}
+              <Link to="/code">web developer</Link> /{" "}
               <Link to="/music">music producer</Link>
             </h2>
           </div>
