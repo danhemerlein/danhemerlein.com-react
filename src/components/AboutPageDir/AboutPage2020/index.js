@@ -24,6 +24,8 @@ const AboutPage = (props) => {
   };
 
   // notes on why this is happening please
+  // auto height for small and medium screen sizes
+  // subtract 64 px for some reason
 
   let innerStyle = {
     height: point === "lg" || point === "xl" ? `${height - 64}px` : "auto",
