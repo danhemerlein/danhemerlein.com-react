@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { Router, Route, Switch } from "react-router";
-import createHistory from "history/createBrowserHistory";
+import React, { Component }       from "react";
+import { Router, Route, Switch }  from "react-router";
+import createHistory              from "history/createBrowserHistory";
 
-import get from "utils/get";
+import get                        from "utils/get";
 
-import Header from "components/Header";
-import Footer from "components/Footer";
-import HomePage from "components/HomePage";
+import Header                     from "components/base/Header";
+import Footer                     from "components/base/Footer";
 
-import Code from "components/Code";
-import MusicPage from "components/MusicPage";
-import About from "components/About";
+import Index                      from "components/pages/Index";
+import Code                       from "components/pages/Code";
+import MusicPage                  from "components/pages/MusicPage";
+import About                      from "components/pages/About";
 
-import Contact from "components/Contact";
-import Moodboard from "components/Moodboard";
-import NotFound from "components/NotFound";
-import MusicShow from "components/MusicShow";
+import Contact                    from "components/Contact";
+import Moodboard                  from "components/Moodboard";
+import NotFound                   from "components/NotFound";
+import MusicShow                  from "components/MusicShow";
 
-import NotFoundIcon from "components/icons/NotFound";
+import NotFoundIcon               from "components/icons/NotFound";
 
 import "./Site.scss";
 
@@ -78,7 +78,7 @@ export default class Site extends Component {
             </header>
             <div>
               <Switch>
-                <Route exact path="/" component={HomePage} />
+                <Route exact path="/" component={Index} />
                 <Route
                   exact
                   path="/about"

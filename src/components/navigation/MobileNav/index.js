@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import CloseIcon from 'components/icons/Close';
+import CloseIcon from 'components/base/icons/Close';
 
 import './MobileNav.scss'
 
@@ -27,9 +27,9 @@ export default class MobileNav extends Component {
             <li className="MobileNav__list-item  body-serif my2">
               <Link to="/about">about</Link>
             </li>
-            <li className="MobileNav__list-item  body-serif my2">
+            {/* <li className="MobileNav__list-item  body-serif my2">
               <Link to="/keep-in-touch">keep in touch</Link>
-            </li>
+            </li> */}
             <li className="MobileNav__list-item  body-serif my2">
               <Link to="/">home</Link>
             </li>

@@ -1,7 +1,6 @@
-@import "../../styles/app.scss";
+@import "../../../styles/app.scss";
 
 .Code {
-
   margin-top: 1rem;
   margin-bottom: 1rem;
 
@@ -29,7 +28,7 @@
   }
 
   &__project {
-    border: 1px solid color('black');
+    border: 1px solid color("black");
     max-width: 60rem;
     margin-top: 1rem;
 
@@ -45,7 +44,7 @@
   }
 
   &__project-highlight {
-    background-image: linear-gradient(45deg,#fff,#ff6ad5);
+    background-image: linear-gradient(45deg, #fff, #ff6ad5);
   }
 
   &__title {
@@ -71,7 +70,7 @@
 
     @include common-bp(tablet) {
       padding-top: 2rem;
-      border: 1px solid color('black');
+      border: 1px solid color("black");
     }
   }
 
@@ -96,23 +95,22 @@
 
   &__markdown {
     padding: 0.25rem;
-    font-family: 'Courier', serif;
+    font-family: "Courier", serif;
     color: red;
   }
 }
 
-.Code__project:first-of-type{
+.Code__project:first-of-type {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.Code__project:last-of-type{
+.Code__project:last-of-type {
   margin-bottom: 1rem;
 }
 
 .Code__project-top {
   .Code__title-container {
-
     flex-direction: column-reverse;
 
     img {
@@ -141,7 +139,6 @@
   .Code__timeline {
     text-align: center;
   }
-
 }
 
 .Code__project-bottom {

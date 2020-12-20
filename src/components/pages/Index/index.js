@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import debounce from "utils/debounce";
+import React, { Component }         from 'react';
+import { Link }                     from "react-router-dom";
+import debounce                     from "utils/debounce";
 
 import './HomePage.scss';
 
-import HomeBox from 'components/HomeBox';
+import HomeBox                      from 'components/other/HomeBox';
 
-import CodeIcon from 'components/base/icons/Code';
-import MusicIcon from 'components/base/icons/Music';
-import MoodboardIcon from 'components/base/icons/Moodboard';
-import ContactIcon from 'components/base/icons/Contact';
+import CodeIcon                     from 'components/base/icons/Code';
+import MusicIcon                    from 'components/base/icons/Music';
+import MoodboardIcon                from 'components/base/icons/Moodboard';
+import ContactIcon                  from 'components/base/icons/Contact';
 
 class HomePage extends Component {
   setHeightHP = () => {

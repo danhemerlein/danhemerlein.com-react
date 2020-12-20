@@ -1,4 +1,4 @@
-@import "../../styles/app.scss";
+@import "../../../styles/app.scss";
 
 .HomePage {
   margin-top: 1rem;
@@ -14,7 +14,7 @@
     -ms-animation: slide-right $transition-duration-med;
     -o-animation: slide-right $transition-duration-med;
     animation: slide-right $transition-duration-med;
-    margin-bottom: .25rem;
+    margin-bottom: 0.25rem;
     height: 48%;
   }
 
@@ -24,7 +24,7 @@
     -ms-animation: slide-right-wide $transition-duration-mid;
     -o-animation: slide-right-wide $transition-duration-mid;
     animation: slide-right-wide $transition-duration-mid;
-    margin-top: .25rem;
+    margin-top: 0.25rem;
     height: 48%;
   }
 

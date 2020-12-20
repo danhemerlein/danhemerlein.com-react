@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import './Header.scss'
 import cx from 'classnames';
 
-import MobileNav from 'components/MobileNav';
-import Menu from 'components/Menu';
-import NavOverlay from "components/NavOverlay";
+import Menu             from 'components/navigation/Menu';
+import MobileNav        from 'components/navigation/MobileNav';
+import MobileNavOverlay       from "components/navigation/MobileNavOverlay";
 
 const Header = (props) => {
   return (
     <div className="Header relative">
-      <NavOverlay
+      <MobileNavOverlay
         navOpen={props.mobileNavOpen}
         clickHandler={props.toggleMobileNav}
       />

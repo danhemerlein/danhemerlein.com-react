@@ -1,4 +1,4 @@
-@import "../../styles/app.scss";
+@import "../../../styles/app.scss";
 
 .MobileNav {
   width: 210px;
@@ -20,6 +20,6 @@
 
   &__hr {
     width: 50%;
-    border: 0.5px solid color('black');
+    border: 0.5px solid color("black");
   }
 }
