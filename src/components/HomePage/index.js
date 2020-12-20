@@ -6,20 +6,10 @@ import './HomePage.scss';
 
 import HomeBox from 'components/HomeBox';
 
-// import WebsiteIcon from 'components/icons/Website';
-// import MusicIcon from 'components/icons/Music';
-// import MoodboardIcon from 'components/icons/Moodboard';
-// import ContactIcon from 'components/icons/Contact';
-
-// import WebsiteIconNew from 'components/icons/new/Website';
-// import MusicIconNew from 'components/icons/new/Music';
-// import MoodboardIconNew from 'components/icons/new/Moodboard';
-// import ContactIconNew from 'components/icons/new/Contact';
-
-import CodeIcon from 'components/icons/521/Code';
-import MusicIcon from 'components/icons/521/Music';
-import MoodboardIcon from 'components/icons/521/Moodboard';
-import ContactIcon from 'components/icons/521/Contact';
+import CodeIcon from 'components/icons/Code';
+import MusicIcon from 'components/icons/Music';
+import MoodboardIcon from 'components/icons/Moodboard';
+import ContactIcon from 'components/icons/Contact';
 
 class HomePage extends Component {
   setHeightHP = () => {

@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-
 import { Router, Route, Switch } from "react-router";
-// import { BrowserRouter as Route, Switch } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 
 import get from "utils/get";
 
-import HomePage from "components/HomePage";
 import Header from "components/Header";
 import Footer from "components/Footer";
+import HomePage from "components/HomePage";
 
 import Code from "components/Code";
 
@@ -22,9 +20,7 @@ import Moodboard from "components/Moodboard";
 import NotFound from "components/NotFound";
 import MusicShow from "components/MusicShow";
 
-// import NotFoundIcon from "components/icons/new/NotFound";
-import NotFoundIcon from "components/icons/521/NotFound";
-
+import NotFoundIcon from "components/icons/NotFound";
 
 import "./Site.scss";
 
@@ -48,7 +44,6 @@ export default class Site extends Component {
   render() {
     const history = createHistory();
     const unlisten = history.listen((location, action) => {
-      // console.log(action, location.pathname, location.state);
       this.setState({
         currentRoute: location.pathname,
       });
@@ -93,7 +88,6 @@ export default class Site extends Component {
                   render={() => (
                     <AboutPage
                       image={get(this.props.site, "fields.aboutImage", {})}
-                      // text={get(this.props.site, "fields.aboutText", {})}
                     />
                   )}
                 />
