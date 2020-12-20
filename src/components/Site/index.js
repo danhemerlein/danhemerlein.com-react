@@ -9,9 +9,7 @@ import Footer from "components/Footer";
 import HomePage from "components/HomePage";
 
 import Code from "components/Code";
-
 import MusicPage from "components/MusicPage";
-
 import About from "components/About";
 
 import Contact from "components/Contact";
