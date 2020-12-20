@@ -1,14 +1,10 @@
-//react
 import React from "react";
 
-// components
 import GoHomeBack from "components/base/GoHomeBack";
 
-// hooks
 import useHeight from "hooks/useHeight";
 import useBreakpoint from "hooks/useBreakpoint";
 
-// styles
 import "./About.scss";
 
 const AboutPage = (props) => {
@@ -56,13 +52,13 @@ const AboutPage = (props) => {
 
         <div className="col-12-dh md-col-6-dh flex items-center justify-center">
           <div className="About__text">
-            <p className="body-serif">hey I'm Dan,</p>
+            <p className="About__paragraph">hey I'm Dan,</p>
 
-            <p className="body-serif mt1">
+            <p className="About__paragraph mt1">
               I'm a web engineer and music producer based in Brooklyn, New York.
             </p>
 
-            <p className="body-serif mt1">
+            <p className="About__paragraph mt1">
               music / coding is my life and it's super trill.
             </p>
           </div>
