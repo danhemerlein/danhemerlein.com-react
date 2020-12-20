@@ -1,6 +1,6 @@
 import React from "react";
 
-const NotFound = () => {
+const NotFoundIcon = () => {
   const css = `
     .not-found-st0{fill:none;}
     .not-found-st1{fill:#202020;}
@@ -204,4 +204,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundIcon;
