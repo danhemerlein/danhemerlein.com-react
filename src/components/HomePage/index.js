@@ -62,8 +62,8 @@ class HomePage extends Component {
               </Link>
             </div>
             <div className="HomePage__bottom-right col-12 mt1">
-              <Link to="keep-in-touch">
-                <HomeBox header="keep in touch" icon={<ContactIcon />} />
+              <Link to="about">
+                <HomeBox header="about" icon={<ContactIcon />} />
               </Link>
             </div>
           </div>

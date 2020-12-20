@@ -9,7 +9,7 @@ import useHeight from "hooks/useHeight";
 import useBreakpoint from "hooks/useBreakpoint";
 
 // styles
-import "./AboutPage2020.scss";
+import "./About.scss";
 
 const AboutPage = (props) => {
 
@@ -43,19 +43,19 @@ const AboutPage = (props) => {
 
   return (
     <div
-      className="AboutPage2020 mt2 flex flex-column body-serif"
+      className="About mt2 flex flex-column body-serif"
       style={pageStyle}
     >
       <div
-        className="AboutPage2020__inner flex justify-center col-12"
+        className="About__inner flex justify-center col-12"
         style={innerStyle}
       >
-        <div className="AboutPage2020__img-container flex col-12-dh  md-col-6-dh">
+        <div className="About__img-container flex col-12-dh  md-col-6-dh">
           <div style={imageStyle} className=""></div>
         </div>
 
         <div className="col-12-dh md-col-6-dh flex items-center justify-center">
-          <div className="AboutPage2020__text">
+          <div className="About__text">
             <p className="body-serif">hey I'm Dan,</p>
 
             <p className="body-serif mt1">
@@ -68,7 +68,7 @@ const AboutPage = (props) => {
           </div>
         </div>
       </div>
-      <div className="AboutPage2020__go-home-container py2 flex justify-center col-12">
+      <div className="About__go-home-container py2 flex justify-center col-12">
         <GoHomeBack destination="/" cta="go home" white={false} />
       </div>
     </div>

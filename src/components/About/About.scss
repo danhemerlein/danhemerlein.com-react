@@ -1,6 +1,6 @@
-@import "../../../styles/app.scss";
+@import "../../styles/app.scss";
 
-.AboutPage2020{
+.About {
   &__inner {
     flex-wrap: wrap;
   }
@@ -21,7 +21,7 @@
   &__img-container {
     height: 65vh;
 
-    @include common-bp(tablet){
+    @include common-bp(tablet) {
       height: 100%;
     }
   }
