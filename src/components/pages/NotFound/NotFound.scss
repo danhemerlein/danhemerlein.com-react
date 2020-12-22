@@ -1,4 +1,4 @@
-@import "../../styles/app.scss";
+@import "../../../styles/app.scss";
 
 .NotFound {
   @include anchor-black;
@@ -14,7 +14,6 @@
     width: 100%;
     height: 100%;
   }
-
 
   a {
     text-decoration: underline;

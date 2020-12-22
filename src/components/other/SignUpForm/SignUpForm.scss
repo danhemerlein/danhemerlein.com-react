@@ -1,14 +1,15 @@
-@import "../../styles/app.scss";
+@import "../../../styles/app.scss";
 
 .SignUpForm {
   input {
     display: block;
     font-size: 1.5rem;
-    border: 1px solid color('black');
+    border: 1px solid color("black");
     border-radius: 0;
   }
 
-  #inputOne, #inputThree {
+  #inputOne,
+  #inputThree {
     -webkit-animation: slide-right $transition-duration-med;
     -moz-animation: slide-right $transition-duration-med;
     -ms-animation: slide-right $transition-duration-med;
@@ -25,7 +26,7 @@
   }
 
   &__button {
-    border: 1px solid color('black');
+    border: 1px solid color("black");
     font-size: 1.2rem;
     -webkit-animation: slide-up $transition-duration-med;
     -moz-animation: slide-up $transition-duration-med;

@@ -11,13 +11,13 @@ import Index                      from "components/pages/Index";
 import Code                       from "components/pages/Code";
 import MusicPage                  from "components/pages/MusicPage";
 import About                      from "components/pages/About";
+import Moodboard                  from "components/pages/Moodboard";
+import NotFound                   from "components/pages/NotFound";
 
-import Contact                    from "components/Contact";
-import Moodboard                  from "components/Moodboard";
-import NotFound                   from "components/NotFound";
-import MusicShow                  from "components/MusicShow";
+import Contact                    from "components/pages/Contact";
+import MusicShow                  from "components/pages/MusicShow";
 
-import NotFoundIcon               from "components/icons/NotFound";
+import NotFoundIcon               from "components/base/icons/NotFound";
 
 import "./Site.scss";
 

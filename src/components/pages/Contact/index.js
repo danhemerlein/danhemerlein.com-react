@@ -4,7 +4,7 @@ import GoHomeBack from "components/base/GoHomeBack";
 
 import './Contact.scss'
 
-import SignUpForm from 'components/SignUpForm';
+import SignUpForm from 'components/other/SignUpForm';
 
 export default class Contact extends Component {
   setHeightCP = () => {

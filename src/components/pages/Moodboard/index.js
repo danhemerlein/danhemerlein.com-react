@@ -3,7 +3,6 @@ import GoHomeBack from "components/base/GoHomeBack";
 
 import get from "utils/get";
 
-import ScrollToTop from 'components/base/ScrollToTop'
 import Image from "components/base/Image";
 
 import "./Moodboard.scss"
