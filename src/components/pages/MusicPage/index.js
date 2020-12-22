@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import useBreakpoint from "hooks/useBreakpoint";
+
+import { useMediaQuery } from 'react-responsive'
+import breakpoints from "../../../utils/breakpoints";
 
 import Image from "components/base/Image";
 import GoHomeBack from "components/base/GoHomeBack";
@@ -8,8 +10,11 @@ import GoHomeBack from "components/base/GoHomeBack";
 import "./MusicPage.scss";
 import cx from "classnames";
 
-
 const MusicPage = (props) => {
+
+  const isTabletUp = useMediaQuery({
+    query: breakpoints.tablet,
+  });
 
   let [sort, setSort] = useState('default');
   let [activeProjects, setActiveProjects] = useState(props.projects);
@@ -86,15 +91,13 @@ const MusicPage = (props) => {
 
   }
 
-  const point = useBreakpoint();
-
   const heroStyle = {
     width: "100%",
     height: "100%",
-    backgroundImage: point === "sm" || point === "md"
+    backgroundImage: !isTabletUp
         ? "url(" + props.heroImageMobile.fields.file.url + ")"
         : "url(" + props.heroImageDesktop.fields.file.url + ")",
-    backgroundColor: point === "sm" || point === "md" ? "#8C8582" : "#E6D98C",
+    backgroundColor: !isTabletUp ? "#8C8582" : "#E6D98C",
     backgroundPosition: "center",
     backgroundSize: "cover",
     overflow: "hidden",
@@ -104,11 +107,11 @@ const MusicPage = (props) => {
     <div className="MusicPage flex flex-wrap items-center justify-center">
       <div className="MusicPage__hero full-width">
         <div className="relative full-height full-width">
-          {/* <a
-            href="https://www.minikitmusic.com"
+          <a
+            href="https://open.spotify.com/artist/0XUXCG6cSY7D6r4KmtCErS?si=bYvY6olVS1ekKR5c2CtBbA"
             target="_blank"
             rel="noopener noreferrer"
-          > */}
+          >
           <div
             style={heroStyle}
             className="flex justify-between relative"
@@ -122,7 +125,7 @@ const MusicPage = (props) => {
               '400 Coffees' available everywhere now
             </h3>
           </div>
-          {/* </a> */}
+          </a>
         </div>
       </div>
 

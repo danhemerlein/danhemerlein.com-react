@@ -11,6 +11,7 @@ import MusicIcon                    from 'components/base/icons/Music';
 import MoodboardIcon                from 'components/base/icons/Moodboard';
 import ContactIcon                  from 'components/base/icons/Contact';
 
+
 class HomePage extends Component {
   setHeightHP = () => {
     const header = document.querySelector('header');

@@ -3,7 +3,9 @@ import React from "react";
 import GoHomeBack from "components/base/GoHomeBack";
 
 import useHeight from "hooks/useHeight";
-import useBreakpoint from "hooks/useBreakpoint";
+
+import { useMediaQuery } from 'react-responsive'
+import breakpoints from "../../../utils/breakpoints";
 
 import "./About.scss";
 
@@ -13,10 +15,13 @@ const AboutPage = (props) => {
   var footer = document.querySelector("footer");
 
   let height = useHeight(header, footer);
-  let point = useBreakpoint();
+
+  const isTabletUp = useMediaQuery({
+    query: breakpoints.tablet,
+  });
 
   let pageStyle = {
-    height: point === "lg" || point === "xl" ? `${height}px` : "auto",
+    height: isTabletUp ? `${height}px` : "auto",
   };
 
   // notes on why this is happening please
@@ -24,7 +29,7 @@ const AboutPage = (props) => {
   // subtract 64 px for some reason
 
   let innerStyle = {
-    height: point === "lg" || point === "xl" ? `${height - 64}px` : "auto",
+    height: isTabletUp ? `${height - 64}px` : "auto",
   }
 
   const imageStyle = {
