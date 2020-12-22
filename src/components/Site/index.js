@@ -43,13 +43,6 @@ function Site(props) {
     );
   });
 
-  let headerMarkup = <Header
-          toggleMobileNav={toggleMobileNav}
-          mobileNavOpen={mobileNavOpen}
-        />
-
-  let footerMarkup = <Footer />
-
   function usePageViews() {
     let location = useLocation();
     setCurrentRoute(location.pathname)
@@ -118,11 +111,12 @@ function Site(props) {
   return (
     <div className="Site">
       <Router>
-        {headerMarkup}
-
+        <Header
+          toggleMobileNav={toggleMobileNav}
+          mobileNavOpen={mobileNavOpen}
+        />
         <SwitchComp />
-
-        {footerMarkup}
+        <Footer />
       </Router>
     </div>
   );
