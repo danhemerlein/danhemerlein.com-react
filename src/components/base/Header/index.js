@@ -10,7 +10,7 @@ import MobileNavOverlay       from "components/navigation/MobileNavOverlay";
 
 const Header = (props) => {
   return (
-    <div className="Header relative">
+    <header className="Header relative">
       <MobileNavOverlay
         navOpen={props.mobileNavOpen}
         clickHandler={props.toggleMobileNav}
@@ -50,7 +50,7 @@ const Header = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   )
 }
 

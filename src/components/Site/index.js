@@ -1,6 +1,5 @@
-import React, { Component }       from "react";
-import { Router, Route, Switch }  from "react-router";
-import createHistory              from "history/createBrowserHistory";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 
 import get                        from "utils/get";
 
@@ -10,10 +9,9 @@ import Footer                     from "components/base/Footer";
 import Index                      from "components/pages/Index";
 import Code                       from "components/pages/Code";
 import MusicPage                  from "components/pages/MusicPage";
-import About                      from "components/pages/About";
 import Moodboard                  from "components/pages/Moodboard";
+import About                      from "components/pages/About";
 import NotFound                   from "components/pages/NotFound";
-
 import Contact                    from "components/pages/Contact";
 import MusicShow                  from "components/pages/MusicShow";
 
@@ -21,117 +19,113 @@ import NotFoundIcon               from "components/base/icons/NotFound";
 
 import "./Site.scss";
 
-export default class Site extends Component {
+function Site(props) {
 
-  constructor(props) {
-    super(props)
+  let [mobileNavOpen, setMobileNavOpen] = useState(false);
+  let [currentRoute, setCurrentRoute] = useState("/");
 
-    this.state = {
-      currentRoute: "/",
-      mobileNavOpen: false
-    }
+  const toggleMobileNav = () => {
+    setMobileNavOpen(!mobileNavOpen);
   }
 
-  toggleMobileNav = () => {
-    this.setState({
-      mobileNavOpen: !this.state.mobileNavOpen,
-    });
-  }
-
-  render() {
-    const history = createHistory();
-    const unlisten = history.listen((location, action) => {
-      this.setState({
-        currentRoute: location.pathname,
-      });
-
-      if ((this.state.currentRoute !== location.pathname) &&
-          this.state.mobileNavOpen) {
-        this.toggleMobileNav();
-      }
-    });
-
-    const musicPageRoutes = this.props.musicProjects.map((project, key) => {
-      var projectHandle = project.fields.title
-        .replace(/[^a-zA-Z0-9 ]/g, "")
-        .replace(/ /g, "-")
-        .toLowerCase();
-      const handle = `/music/${projectHandle}`;
-      return (
-        <Route
-          path={handle}
-          key={key}
-          render={(props) => <MusicShow {...props} project={project} />}
-        />
-      );
-    });
-
+  const musicPageRoutes = props.musicProjects.map((project, key) => {
+    var projectHandle = project.fields.title
+      .replace(/[^a-zA-Z0-9 ]/g, "")
+      .replace(/ /g, "-")
+      .toLowerCase();
+    const handle = `/music/${projectHandle}`;
     return (
-      <div className="Site">
-        <Router history={history}>
-          <div className="Site__container">
-            <header>
-              <Header
-                toggleMobileNav={this.toggleMobileNav}
-                mobileNavOpen={this.state.mobileNavOpen}
-              />
-            </header>
-            <div>
-              <Switch>
-                <Route exact path="/" component={Index} />
-                <Route
-                  exact
-                  path="/about"
-                  render={() => (
-                    <About
-                      image={get(this.props.site, "fields.aboutImage", {})}
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/code"
-                  render={() => <Code projects={this.props.codeProjects} />}
-                />
-                <Route
-                  exact
-                  path="/music"
-                  render={() => (
-                    <MusicPage
-                      projects={this.props.musicProjects}
-                      heroImageDesktop={get(
-                        this.props.site,
-                        "fields.musicProjectsComingSoon",
-                        {}
-                      )}
-                      heroImageMobile={get(
-                        this.props.site,
-                        "fields.musicProjectsHeroMobile",
-                        {}
-                      )}
-                    />
-                  )}
-                />
-                <Route exact path="/keep-in-touch" render={() => <Contact />} />
-                <Route
-                  exact
-                  path="/moodboard"
-                  render={() => (
-                    <Moodboard
-                      images={get(this.props.site, "fields.moodboard", {})}
-                    />
-                  )}
-                />
-                {musicPageRoutes}
-                <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
-              </Switch>
-              <footer>
-                <Footer />
-              </footer>
-            </div>
-          </div>
-        </Router>
-      </div>
+      <Route
+        path={handle}
+        key={key}
+        render={(props) => <MusicShow {...props} project={project} />}
+      />
     );
+  });
+
+  let headerMarkup = <Header
+          toggleMobileNav={toggleMobileNav}
+          mobileNavOpen={mobileNavOpen}
+        />
+
+  let footerMarkup = <Footer />
+
+  function usePageViews() {
+    let location = useLocation();
+    setCurrentRoute(location.pathname)
+
+    useEffect(() => {
+      if (currentRoute !== location.pathname && mobileNavOpen) {
+        toggleMobileNav();
+      }
+    }, [location]);
   }
+
+  function SwitchComp() {
+    usePageViews();
+    return (
+      <Switch>
+        <Route exact path="/" component={Index} />
+        <Route
+          exact
+          path="/about"
+          render={() => (
+            <About
+              image={get(props.site, "fields.aboutImage", {})}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/code"
+          render={() => <Code projects={props.codeProjects} />}
+        />
+        <Route
+          exact
+          path="/music"
+          render={() => (
+            <MusicPage
+              projects={props.musicProjects}
+              heroImageDesktop={get(
+                props.site,
+                "fields.musicProjectsComingSoon",
+                {}
+              )}
+              heroImageMobile={get(
+                props.site,
+                "fields.musicProjectsHeroMobile",
+                {}
+              )}
+            />
+          )}
+        />
+        <Route exact path="/keep-in-touch" render={() => <Contact />} />
+        <Route
+          exact
+          path="/moodboard"
+          render={() => (
+            <Moodboard
+              images={get(props.site, "fields.moodboard", {})}
+            />
+          )}
+        />
+        {musicPageRoutes}
+        <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
+      </Switch>
+    )
+  }
+
+  return (
+    <div className="Site">
+      <Router>
+        {headerMarkup}
+
+        <SwitchComp />
+
+        {footerMarkup}
+      </Router>
+    </div>
+  );
 }
+
+export default Site;

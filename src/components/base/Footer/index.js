@@ -4,7 +4,7 @@ import './Footer.scss'
 
 const Footer = () => {
   return (
-    <div className="Footer">
+    <footer className="Footer">
       <div className="flex justify-center items-center">
         <ul className="Footer__list list-style-none p0">
           <li className="inline-block">
@@ -49,7 +49,7 @@ const Footer = () => {
           </small>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 
