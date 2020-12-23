@@ -10,8 +10,32 @@ class MainContainer extends ContainerBase {
     accessToken: keys.accessToken
   })
 
+
   model = () => {
+    const model = {};
+
+    this.client.getEntries({
+      'content_type': 'musicProject'
+    }).then(function (entries) {
+      model.musicProjects = entries;
+    })
+
+    this.client.getEntries({
+      'content_type': 'codeProject'
+    }).then(function (entries) {
+      model.codeProjects = entries;
+    })
+
+    this.client.getEntries({
+      'content_type': '"musicPage"'
+    }).then(function (entries) {
+      model.musicPage = entries;
+    })
+
+    console.log(model);
+
     return this.client.getEntries().then(response => response.items)
+    // return model;
   }
 }
 
