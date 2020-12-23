@@ -10,7 +10,7 @@ import GoHomeBack from "components/base/GoHomeBack";
 import "./MusicPage.scss";
 import cx from "classnames";
 
-const MusicPage = (props) => {
+const Music = (props) => {
 
   const isTabletUp = useMediaQuery({
     query: breakpoints.tablet,
@@ -104,8 +104,8 @@ const MusicPage = (props) => {
   };
 
   return (
-    <div className="MusicPage flex flex-wrap items-center justify-center">
-      <div className="MusicPage__hero full-width">
+    <div className="Music flex flex-wrap items-center justify-center">
+      <div className="Music__hero full-width">
         <div className="relative full-height full-width">
           <a
             href="https://open.spotify.com/artist/0XUXCG6cSY7D6r4KmtCErS?si=bYvY6olVS1ekKR5c2CtBbA"
@@ -116,11 +116,11 @@ const MusicPage = (props) => {
             style={heroStyle}
             className="flex justify-between relative"
           >
-            <h3 className="MusicPage__hero-text--headline text-white
+            <h3 className="Music__hero-text--headline text-white
             body-serif absolute">
               minikit
             </h3>
-            <h3 className="MusicPage__hero-text--sub-headline text-white
+            <h3 className="Music__hero-text--sub-headline text-white
             body-serif absolute bg-black">
               '400 Coffees' available everywhere now
             </h3>
@@ -129,14 +129,14 @@ const MusicPage = (props) => {
         </div>
       </div>
 
-      <div className="MusicPage__projects-container px3 pt3 flex items-center
+      <div className="Music__projects-container px3 pt3 flex items-center
       justify-center">
-        <div className="MusicPage__select-container full-width flex
+        <div className="Music__select-container full-width flex
         justify-center">
           <div className="flex flex-column">
             <label
               htmlFor="sort"
-              className="MusicPage__label  body-serif  text-white"
+              className="Music__label  body-serif  text-white"
             >
               sort
             </label>
@@ -144,7 +144,7 @@ const MusicPage = (props) => {
               name="sort"
               id="sort"
               onChange={(event) => handleChange(event)}
-              className="MusicPage__select"
+              className="Music__select"
             >
               <option value="">default</option>
               <option value="most-recent">most recent</option>
@@ -164,40 +164,40 @@ const MusicPage = (props) => {
           return (
             <div
               key={key}
-              className="MusicPage__project flex col-12-dh  md-col-6-dh
+              className="Music__project flex col-12-dh  md-col-6-dh
               lg-col-3-dh"
             >
-              <div className="MusicPage__container flex relative">
+              <div className="Music__container flex relative">
                 <Link to={`/music/${projectHandle}`}>
                   <Image
                     src={project.fields.artwork.fields.file.url}
                     alt={project.fields.artwork.fields.file.title}
                   />
-                  <div className="MusicPage__overlay bg-white color-black flex
+                  <div className="Music__overlay bg-white color-black flex
                   justify-center flex-column items-center absolute left-0 top-0
                   right-0 bottom-0 full-width full-height p2">
-                    <h3 className="MusicPage__title body-serif">
+                    <h3 className="Music__title body-serif">
                       {project.fields.title}
                     </h3>
-                    <h4 className={cx("MusicPage__artist body-serif")}>
+                    <h4 className={cx("Music__artist body-serif")}>
                       by {project.fields.artist}
                     </h4>
-                    <h5 className="MusicPage__role body-serif bold
+                    <h5 className="Music__role body-serif bold
                     text-lowercase">
                       {project.fields.role}
                     </h5>
                   </div>
                 </Link>
-                <div className="MusicPage__mobile-details-container">
+                <div className="Music__mobile-details-container">
                   <div>
-                    <h4 className="MusicPage__title color-white body-serif">
+                    <h4 className="Music__title color-white body-serif">
                       <Link to={`/music/${projectHandle}`}>
                         {project.fields.title}
                       </Link>
                     </h4>
                     <h3
                       className={cx(
-                        "MusicPage__artist color-white body-serif"
+                        "Music__artist color-white body-serif"
                       )}
                     >
                       <Link to={`/music/${projectHandle}`}>
@@ -218,4 +218,4 @@ const MusicPage = (props) => {
   );
 };
 
-export default MusicPage;
+export default Music;

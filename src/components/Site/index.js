@@ -8,12 +8,13 @@ import Footer                     from "components/base/Footer";
 
 import Index                      from "components/pages/Index";
 import Code                       from "components/pages/Code";
-import MusicPage                  from "components/pages/MusicPage";
+import Music                      from "components/pages/Music";
+import MusicProject               from "components/pages/MusicProject";
 import Moodboard                  from "components/pages/Moodboard";
 import About                      from "components/pages/About";
 import NotFound                   from "components/pages/NotFound";
 import Contact                    from "components/pages/Contact";
-import MusicShow                  from "components/pages/MusicShow";
+
 
 import NotFoundIcon               from "components/base/icons/NotFound";
 
@@ -38,7 +39,7 @@ function Site(props) {
       <Route
         path={handle}
         key={key}
-        render={(props) => <MusicShow {...props} project={project} />}
+        render={(props) => <MusicProject {...props} project={project} />}
       />
     );
   });
@@ -77,7 +78,7 @@ function Site(props) {
           exact
           path="/music"
           render={() => (
-            <MusicPage
+            <Music
               projects={props.musicProjects}
               heroImageDesktop={get(
                 props.site,

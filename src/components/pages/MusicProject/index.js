@@ -9,7 +9,7 @@ import GoHomeBack from "components/base/GoHomeBack";
 
 import "./MusicShow.scss";
 
-const MusicShow = (props) => {
+const MusicProject = (props) => {
   let [linkKeys, setLinkKeys] = useState([
     "spotify",
     "bandcamp",
@@ -51,9 +51,9 @@ const MusicShow = (props) => {
 
   const header = document.querySelector("header");
   const footer = document.querySelector("footer");
-  const musicShow = document.querySelector(".MusicShow");
+  const MusicProject = document.querySelector(".MusicProject");
 
-  useHeight(header, footer, musicShow, links);
+  useHeight(header, footer, MusicProject, links);
 
   const { data } = usePalette(
     "https:"+props.project.fields.artwork.fields.file.url
@@ -66,8 +66,8 @@ const MusicShow = (props) => {
   const renderArtistATag = () => {
     if (props.project.fields.artistWebsite !== undefined) {
       return (
-        <div className="MusicShow__artist-link">
-          <h4 className="MusicShow__artist color-white body-serif full-width">
+        <div className="MusicProject__artist-link">
+          <h4 className="MusicProject__artist color-white body-serif full-width">
             by{" "}
             <a
               href={props.project.fields.artistWebsite}
@@ -81,7 +81,7 @@ const MusicShow = (props) => {
       );
     } else {
       return (
-        <h4 className="MusicShow__artist color-white body-serif full-width">
+        <h4 className="MusicProject__artist color-white body-serif full-width">
           by {props.project.fields.artist}
         </h4>
       );
@@ -91,36 +91,36 @@ const MusicShow = (props) => {
   return (
 
     <div
-      className="MusicShow flex items-center flex-column relative"
+      className="MusicProject flex items-center flex-column relative"
       style={bgStyle}
     >
-      <div className="MusicShow__inner col-12-dh md-col-8-dh lg-col-8-dh flex justify-center">
+      <div className="MusicProject__inner col-12-dh md-col-8-dh lg-col-8-dh flex justify-center">
         <Image
           src={props.project.fields.artwork.fields.file.url}
           alt={props.project.fields.artwork.fields.file.title}
         />
 
-        <div className="MusicShow__details-container col-12-dh  lg-col-6-dh">
-          <div className="MusicShow__title-container flex justify-between items-center m0">
+        <div className="MusicProject__details-container col-12-dh  lg-col-6-dh">
+          <div className="MusicProject__title-container flex justify-between items-center m0">
             <div className="flex flex-column">
-              <h3 className="MusicShow__title color-white m0 body-serif">
+              <h3 className="MusicProject__title color-white m0 body-serif">
                 {props.project.fields.title}
               </h3>
               {renderArtistATag()}
             </div>
 
             <div className="flex flex-column mt1 col-6">
-              <h3 className="MusicShow__release color-white  body-serif  text-lowercase text-right">
+              <h3 className="MusicProject__release color-white  body-serif  text-lowercase text-right">
                 {props.project.fields.releaseDate.replace(",", '')}
               </h3>
 
-              <h3 className="MusicShow__role  color-white  body-serif  text-lowercase text-right">
+              <h3 className="MusicProject__role  color-white  body-serif  text-lowercase text-right">
                 {props.project.fields.role}
               </h3>
             </div>
           </div>
 
-          <div className="MusicShow__links-container">
+          <div className="MusicProject__links-container">
             {links.map((link, key) => {
               let hasLink = false;
               let i = [
@@ -176,14 +176,14 @@ const MusicShow = (props) => {
                 return (
                   <span key={key}>
                     <a
-                      className="MusicShow__fun-link"
+                      className="MusicProject__fun-link"
                       href={link.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       key={key}
                     >
                       <div
-                        className="MusicShow__links-container--inner color-white
+                        className="MusicProject__links-container--inner color-white
                       body-serif flex justify-between full-width mb2"
                         key={key}
                       >
@@ -198,7 +198,7 @@ const MusicShow = (props) => {
                     </a>
 
                     <a
-                      className="MusicShow__mobile-link"
+                      className="MusicProject__mobile-link"
                       href={link.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -221,11 +221,11 @@ const MusicShow = (props) => {
           </div>
         </div>
       </div>
-      <div className="MusicShow__go-back-container absolute">
+      <div className="MusicProject__go-back-container absolute">
         <GoHomeBack destination="/music/" cta="go back" white={true} />
       </div>
     </div>
   );
 };
 
-export default MusicShow;
+export default MusicProject;
