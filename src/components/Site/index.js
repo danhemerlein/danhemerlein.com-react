@@ -22,6 +22,10 @@ import "./Site.scss";
 
 function Site(props) {
 
+  const { musicProjects, aboutPage } = props;
+
+  console.log('Site musicProjects', musicProjects);
+
   let [mobileNavOpen, setMobileNavOpen] = useState(false);
   let [currentRoute, setCurrentRoute] = useState("/");
 
@@ -29,7 +33,7 @@ function Site(props) {
     setMobileNavOpen(!mobileNavOpen);
   }
 
-  const musicPageRoutes = props.musicProjects.map((project, key) => {
+  const musicPageRoutes = musicProjects.items.map((project, key) => {
     var projectHandle = project.fields.title
       .replace(/[^a-zA-Z0-9 ]/g, "")
       .replace(/ /g, "-")
@@ -65,7 +69,8 @@ function Site(props) {
           path="/about"
           render={() => (
             <About
-              image={get(props.site, "fields.aboutImage", {})}
+              // image={get(props.site, "fields.aboutImage", {})}
+              content={aboutPage.items}
             />
           )}
         />

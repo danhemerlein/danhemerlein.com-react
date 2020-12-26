@@ -14,6 +14,8 @@ const AboutPage = (props) => {
   var header = document.querySelector("header");
   var footer = document.querySelector("footer");
 
+  console.log(props.content);
+
   let height = useHeight(header, footer);
 
   const isTabletUp = useMediaQuery({
@@ -35,7 +37,7 @@ const AboutPage = (props) => {
   const imageStyle = {
     width: "100%",
     height: "100%",
-    backgroundImage: "url(" + props.image.fields.file.url + ")",
+    backgroundImage: "url(" + props.content[0].fields.heroImage.fields.file.url + ")",
     backgroundColor: "#8C8582",
     backgroundPosition: "50% 85%",
     backgroundSize: "cover",

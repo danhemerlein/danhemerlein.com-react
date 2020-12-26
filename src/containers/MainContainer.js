@@ -10,7 +10,6 @@ class MainContainer extends ContainerBase {
     accessToken: keys.accessToken
   })
 
-
   model = () => {
     const model = {};
 
@@ -27,15 +26,27 @@ class MainContainer extends ContainerBase {
     })
 
     this.client.getEntries({
-      'content_type': '"musicPage"'
+      'content_type': 'musicPage'
     }).then(function (entries) {
       model.musicPage = entries;
     })
 
-    console.log(model);
+    this.client.getEntries({
+      'content_type': 'moodboard'
+    }).then(function (entries) {
+      model.moodboard = entries;
+    })
 
-    return this.client.getEntries().then(response => response.items)
-    // return model;
+    this.client.getEntries({
+      'content_type': 'aboutPage'
+    }).then(function (entries) {
+      model.aboutPage = entries;
+    })
+
+    console.log('this is the modal i am trying to create', model);
+
+    // return this.client.getEntries().then(response => response.items)
+    return model;
   }
 }
 
