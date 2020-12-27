@@ -15,16 +15,13 @@ import About                      from "components/pages/About";
 import NotFound                   from "components/pages/NotFound";
 import Contact                    from "components/pages/Contact";
 
-
 import NotFoundIcon               from "components/base/icons/NotFound";
 
 import "./Site.scss";
 
 function Site(props) {
 
-  const { musicProjects, aboutPage } = props;
-
-  console.log('Site musicProjects', musicProjects);
+  const { codeProjects, musicProjects, musicPage, moodboard, aboutPage } = props;
 
   let [mobileNavOpen, setMobileNavOpen] = useState(false);
   let [currentRoute, setCurrentRoute] = useState("/");
@@ -77,24 +74,26 @@ function Site(props) {
         <Route
           exact
           path="/code"
-          render={() => <Code projects={props.codeProjects} />}
+          render={() => <Code projects={codeProjects.items} />}
         />
         <Route
           exact
           path="/music"
           render={() => (
             <Music
-              projects={props.musicProjects}
-              heroImageDesktop={get(
-                props.site,
-                "fields.musicProjectsComingSoon",
-                {}
-              )}
-              heroImageMobile={get(
-                props.site,
-                "fields.musicProjectsHeroMobile",
-                {}
-              )}
+              projects={musicProjects.items}
+              // heroImageDesktop={get(
+              //   props.site,
+              //   "fields.musicProjectsComingSoon",
+              //   {}
+              // )}
+              // heroImageMobile={get(
+              //   props.site,
+              //   "fields.musicProjectsHeroMobile",
+              //   {}
+              // )}
+              heroImageDesktop={musicPage.items[0].fields.heroDesktop}
+              heroImageMobile={musicPage.items[0].fields.heroMobile}
             />
           )}
         />

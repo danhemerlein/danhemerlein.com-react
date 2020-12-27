@@ -13,37 +13,17 @@ class MainContainer extends ContainerBase {
   model = () => {
     const model = {};
 
-    this.client.getEntries({
-      'content_type': 'musicProject'
-    }).then(function (entries) {
-      model.musicProjects = entries;
+    const contentTypes = ['musicProject', 'codeProject', 'musicPage','moodboard','aboutPage'];
+
+    contentTypes.map(type => {
+      this.client.getEntries({
+        'content_type': type
+      }).then(function(entries) {
+        model[type] = entries;
+      })
+      console.log('this is the modal i am trying to create', model);
     })
 
-    this.client.getEntries({
-      'content_type': 'codeProject'
-    }).then(function (entries) {
-      model.codeProjects = entries;
-    })
-
-    this.client.getEntries({
-      'content_type': 'musicPage'
-    }).then(function (entries) {
-      model.musicPage = entries;
-    })
-
-    this.client.getEntries({
-      'content_type': 'moodboard'
-    }).then(function (entries) {
-      model.moodboard = entries;
-    })
-
-    this.client.getEntries({
-      'content_type': 'aboutPage'
-    }).then(function (entries) {
-      model.aboutPage = entries;
-    })
-
-    console.log('this is the modal i am trying to create', model);
 
     // return this.client.getEntries().then(response => response.items)
     return model;
