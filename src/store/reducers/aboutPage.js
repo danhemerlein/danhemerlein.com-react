@@ -1,5 +1,5 @@
 const initState = {
-  heroImage: {},
+  content: {},
   aboutPageMessage: null,
   aboutPageErrorCode: null,
   loading: false,
@@ -8,7 +8,6 @@ const initState = {
 const aboutPage = (state = initState, action) => {
   switch (action.type) {
     case "GET_ABOUT_PAGE_CONTENT_STARTED":
-      console.log('', action.payload);
       return {
         ...state,
         loading: true,
@@ -18,7 +17,7 @@ const aboutPage = (state = initState, action) => {
       return {
         ...state,
         loading: false,
-        weightGoalDocuments: [action.payload],
+        content: action.payload,
         aboutPageMessage: null,
         aboutPageErrorCode: null,
       };

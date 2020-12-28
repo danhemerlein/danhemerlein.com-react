@@ -4,12 +4,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
 import rootReducer from './store/reducers';
 import { Provider } from 'react-redux';
 
-const store = createStore(rootReducer);
-const rootElement = document.getElementById('root');
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
+const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <React.StrictMode>

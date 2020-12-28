@@ -1,3 +1,4 @@
+
 import ContainerBase from '../lib/ContainerBase';
 import * as contentful from 'contentful';
 import keys from '../config';
@@ -10,10 +11,10 @@ class MainContainer extends ContainerBase {
     accessToken: keys.accessToken
   })
 
-  model = () => {
+  model = (props) => {
     const model = {};
 
-    const contentTypes = ['musicProject', 'codeProject', 'musicPage','moodboard','aboutPage'];
+    const contentTypes = ['musicProject', 'codeProject', 'musicPage','moodboard'];
 
     contentTypes.map(type => {
       this.client.getEntries({
