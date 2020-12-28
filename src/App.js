@@ -2,11 +2,12 @@ import React from 'react';
 
 import './styles/app.scss';
 
-import MainContainer from './containers/MainContainer';
+import Site from "components/Site";
+
 
 const App = () => {
   return (
-    <MainContainer />
+    <Site />
   );
 }
 

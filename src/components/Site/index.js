@@ -8,8 +8,6 @@ import { getMoodboardContent }                                  from "../../stor
 import { getMusicProjectsContent }                              from "../../store/actions/musicProjects";
 import { getCodeProjectsContent }                               from "../../store/actions/codeProjects";
 
-import get                                                      from "utils/get";
-
 import Header                                                   from "components/base/Header";
 import Footer                                                   from "components/base/Footer";
 
@@ -33,8 +31,6 @@ function Site(props) {
   const { moodboardLoading, moodboard } = props;
   const { musicProjectsLoading, musicProjects } = props;
   const { codeProjectsLoading, codeProjects } = props;
-
-  console.log('music page', musicPage);
 
   const dispatch = useDispatch();
 
@@ -89,16 +85,12 @@ function Site(props) {
     }, [location]);
   }
 
-  const loading = aboutPageLoading && moodboardLoading && musicProjectsLoading && codeProjectsLoading;
-  const content = aboutPage.length && moodboard.length && musicProjects.length && codeProjects.length;
+  const loading = aboutPageLoading && moodboardLoading && musicProjectsLoading && codeProjectsLoading && musicPageLoading;
+  const content = aboutPage.length && moodboard.length && musicProjects.length && codeProjects.length && musicPage.length;
 
   function SwitchComp() {
     usePageViews();
-    if (loading === false && !content) {
-      return null;
-    } else if (loading === true && !content) {
-      return <div>loading...</div>;
-    } else {
+
       return (
         <Switch>
           <Route exact path="/" component={Index} />
@@ -122,16 +114,6 @@ function Site(props) {
             render={() => (
               <Music
                 projects={musicProjects.items}
-                // heroImageDesktop={get(
-                //   props.site,
-                //   "fields.musicProjectsComingSoon",
-                //   {}
-                // )}
-                // heroImageMobile={get(
-                //   props.site,
-                //   "fields.musicProjectsHeroMobile",
-                //   {}
-                // )}
                 heroImageDesktop={musicPage.items[0].fields.heroDesktop}
                 heroImageMobile={musicPage.items[0].fields.heroMobile}
               />
@@ -144,7 +126,6 @@ function Site(props) {
             render={() => (
               <Moodboard
                 content={moodboard}
-                // images={get(props.site, "fields.moodboard", {})}
               />
             )}
           />
@@ -153,20 +134,25 @@ function Site(props) {
         </Switch>
       )
     }
-  }
 
-  return (
-    <div className="Site">
-      <Router>
-        <Header
-          toggleMobileNav={toggleMobileNav}
-          mobileNavOpen={mobileNavOpen}
-        />
-        <SwitchComp />
-        <Footer />
-      </Router>
-    </div>
-  );
+  if (loading === false && !content) {
+    return null;
+  } else if (loading === true && !content) {
+    return <div className="Site">loading...</div>;
+  } else {
+    return (
+      <div className="Site">
+        <Router>
+          <Header
+            toggleMobileNav={toggleMobileNav}
+            mobileNavOpen={mobileNavOpen}
+          />
+          <SwitchComp />
+          <Footer />
+        </Router>
+      </div>
+    );
+  }
 }
 
 // export default Site;
