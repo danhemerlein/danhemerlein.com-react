@@ -2,7 +2,6 @@ import React, { useState, useEffect }                           from "react";
 import { BrowserRouter as Router, Route, Switch, useLocation }  from "react-router-dom";
 import { connect, useDispatch }                                 from "react-redux";
 
-import { getAboutPageContent }                                  from "../../store/actions/aboutPage";
 import { getMusicPageContent }                                  from "../../store/actions/musicPage";
 import { getMoodboardContent }                                  from "../../store/actions/moodboard";
 import { getMusicProjectsContent }                              from "../../store/actions/musicProjects";
@@ -27,7 +26,6 @@ import "./Site.scss";
 function Site(props) {
 
   const { musicPageLoading, musicPage } = props;
-  const { aboutPageLoading, aboutPage } = props;
   const { moodboardLoading, moodboard } = props;
   const { musicProjectsLoading, musicProjects } = props;
   const { codeProjectsLoading, codeProjects } = props;
@@ -37,7 +35,6 @@ function Site(props) {
   useEffect(() => {
 
     const loadContent = async () => {
-      await dispatch(getAboutPageContent());
       await dispatch(getMusicPageContent());
       await dispatch(getMoodboardContent());
       await dispatch(getMusicProjectsContent());
@@ -85,8 +82,8 @@ function Site(props) {
     }, [location]);
   }
 
-  const loading = aboutPageLoading && moodboardLoading && musicProjectsLoading && codeProjectsLoading && musicPageLoading;
-  const content = aboutPage.length && moodboard.length && musicProjects.length && codeProjects.length && musicPage.length;
+  const loading = moodboardLoading && musicProjectsLoading && codeProjectsLoading && musicPageLoading;
+  const content = moodboard.length && musicProjects.length && codeProjects.length && musicPage.length;
 
   function SwitchComp() {
     usePageViews();
@@ -98,9 +95,7 @@ function Site(props) {
             exact
             path="/about"
             render={() => (
-              <About
-                content={aboutPage}
-              />
+              <About />
             )}
           />
           <Route
@@ -138,7 +133,7 @@ function Site(props) {
   if (loading === false && !content) {
     return null;
   } else if (loading === true && !content) {
-    return <div className="Site">loading...</div>;
+    return <div className="p2">loading...</div>;
   } else {
     return (
       <div className="Site">
@@ -155,17 +150,13 @@ function Site(props) {
   }
 }
 
-// export default Site;
-
 const mapStateToProps = (state) => {
   return {
-    aboutPageLoading:     state.aboutPage.loading,
     musicPageLoading:     state.musicPage.loading,
     moodboardLoading:     state.moodboard.loading,
     musicProjectsLoading: state.musicProjects.loading,
     codeProjectsLoading:  state.codeProjects.loading,
 
-    aboutPage:            state.aboutPage.content,
     musicPage:            state.musicPage.content,
     moodboard:            state.moodboard.content,
     musicProjects:        state.musicProjects.content,

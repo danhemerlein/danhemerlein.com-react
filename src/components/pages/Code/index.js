@@ -199,3 +199,12 @@ export default class Code extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    codeProjectsLoading:  state.codeProjects.loading,
+    codeProjects:         state.codeProjects.content,
+  }
+}
+
+export default connect(mapStateToProps)(Code);
