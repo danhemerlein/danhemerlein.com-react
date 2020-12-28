@@ -11,6 +11,8 @@ import "./About.scss";
 
 const AboutPage = (props) => {
 
+  const content = props.content[0];
+
   var header = document.querySelector("header");
   var footer = document.querySelector("footer");
 
@@ -24,6 +26,8 @@ const AboutPage = (props) => {
     height: isTabletUp ? `${height}px` : "auto",
   };
 
+  console.log(content);
+
   // notes on why this is happening please
   // auto height for small and medium screen sizes
   // subtract 64 px for some reason
@@ -32,15 +36,15 @@ const AboutPage = (props) => {
     height: isTabletUp ? `${height - 64}px` : "auto",
   }
 
-  // const imageStyle = {
-  //   width: "100%",
-  //   height: "100%",
-  //   backgroundImage: "url(" + props.content[0].fields.heroImage.fields.file.url + ")",
-  //   backgroundColor: "#8C8582",
-  //   backgroundPosition: "50% 85%",
-  //   backgroundSize: "cover",
-  //   overflow: "hidden",
-  // };
+  const imageStyle = {
+    width: "100%",
+    height: "100%",
+    backgroundImage: "url(" + content.fields.heroImage.fields.file.url + ")",
+    backgroundColor: "#8C8582",
+    backgroundPosition: "50% 85%",
+    backgroundSize: "cover",
+    overflow: "hidden",
+  };
 
   return (
     <div
@@ -52,7 +56,7 @@ const AboutPage = (props) => {
         style={innerStyle}
       >
         <div className="About__img-container flex col-12-dh  md-col-6-dh">
-          {/* <div style={imageStyle} className=""></div> */}
+          <div style={imageStyle} className=""></div>
         </div>
 
         <div className="col-12-dh md-col-6-dh flex items-center justify-center">

@@ -6,6 +6,8 @@ import cx from "classnames";
 import './Code.scss'
 
 export default class Code extends Component {
+  // const content = this.props.content[0];
+
   constructor(props) {
     super(props)
 

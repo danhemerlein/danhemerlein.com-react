@@ -106,7 +106,7 @@ function Site(props) {
           <Route
             exact
             path="/code"
-            render={() => <Code projects={codeProjects.items} />}
+            render={() => <Code projects={codeProjects} />}
           />
           <Route
             exact
