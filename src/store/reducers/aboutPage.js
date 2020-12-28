@@ -7,7 +7,7 @@ const initState = {
 
 const aboutPage = (state = initState, action) => {
   switch (action.type) {
-    case "GET_ABOUT_PAGE_CONTENT_STARTED":
+  case "GET_ABOUT_PAGE_CONTENT_STARTED":
       return {
         ...state,
         loading: true,

@@ -1,50 +1,50 @@
-import React, { useState, useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
-import { getAboutPageContent } from "../../store/actions/aboutPage";
-import { getMoodboardContent } from "../../store/actions/moodboard";
+import React, { useState, useEffect }                           from "react";
+import { BrowserRouter as Router, Route, Switch, useLocation }  from "react-router-dom";
+import { connect, useDispatch }                                 from "react-redux";
 
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
+import { getAboutPageContent }                                  from "../../store/actions/aboutPage";
+import { getMoodboardContent }                                  from "../../store/actions/moodboard";
+import { getMusicProjectsContent }                              from "../../store/actions/musicProjects";
 
-import get                        from "utils/get";
+import get                                                      from "utils/get";
 
-import Header                     from "components/base/Header";
-import Footer                     from "components/base/Footer";
+import Header                                                   from "components/base/Header";
+import Footer                                                   from "components/base/Footer";
 
-import Index                      from "components/pages/Index";
-import Code                       from "components/pages/Code";
-import Music                      from "components/pages/Music";
-import MusicProject               from "components/pages/MusicProject";
-import Moodboard                  from "components/pages/Moodboard";
-import About                      from "components/pages/About";
-import NotFound                   from "components/pages/NotFound";
-import Contact                    from "components/pages/Contact";
+import Index                                                    from "components/pages/Index";
+import Code                                                     from "components/pages/Code";
+import Music                                                    from "components/pages/Music";
+import MusicProject                                             from "components/pages/MusicProject";
+import Moodboard                                                from "components/pages/Moodboard";
+import About                                                    from "components/pages/About";
+import NotFound                                                 from "components/pages/NotFound";
+import Contact                                                  from "components/pages/Contact";
 
-import NotFoundIcon               from "components/base/icons/NotFound";
+import NotFoundIcon                                             from "components/base/icons/NotFound";
 
 import "./Site.scss";
 
 function Site(props) {
 
-  const { codeProjects, musicProjects, musicPage } = props;
+  const { codeProjects, musicPage } = props;
+
   const { aboutPageLoading, aboutPage } = props;
   const { moodboardLoading, moodboard } = props;
+  const { musicProjectsLoading, musicProjects } = props;
 
-  console.log(moodboard);
+  console.log(musicProjects);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
 
-    const loadAboutPageContent = async () => {
+    const loadContent = async () => {
       await dispatch(getAboutPageContent());
-    }
-
-    const loadMoodboardContent = async () => {
       await dispatch(getMoodboardContent());
+      await dispatch(getMusicProjectsContent());
     }
 
-    loadAboutPageContent();
-    loadMoodboardContent();
+    loadContent();
 
   }, [dispatch]);
 
@@ -55,20 +55,26 @@ function Site(props) {
     setMobileNavOpen(!mobileNavOpen);
   }
 
-  // const musicPageRoutes = musicProjects.items.map((project, key) => {
-  //   var projectHandle = project.fields.title
-  //     .replace(/[^a-zA-Z0-9 ]/g, "")
-  //     .replace(/ /g, "-")
-  //     .toLowerCase();
-  //   const handle = `/music/${projectHandle}`;
-  //   return (
-  //     <Route
-  //       path={handle}
-  //       key={key}
-  //       render={(props) => <MusicProject {...props} project={project} />}
-  //     />
-  //   );
-  // });
+  let musicPageRoutes;
+
+  if (!musicProjectsLoading && musicProjects.length ) {
+    musicPageRoutes = musicProjects.map((project, key) => {
+      var projectHandle = project.fields.title
+        .replace(/[^a-zA-Z0-9 ]/g, "")
+        .replace(/ /g, "-")
+        .toLowerCase();
+      const handle = `/music/${projectHandle}`;
+      return (
+        <Route
+          path={handle}
+          key={key}
+          render={(props) => <MusicProject {...props} project={project} />}
+        />
+      );
+    });
+  }
+
+
 
   function usePageViews() {
     let location = useLocation();
@@ -81,8 +87,8 @@ function Site(props) {
     }, [location]);
   }
 
-  const loading = aboutPageLoading && moodboardLoading;
-  const content = aboutPage.length && moodboard.length;
+  const loading = aboutPageLoading && moodboardLoading && musicProjectsLoading;
+  const content = aboutPage.length && moodboard.length && musicProjects.length;
 
   function SwitchComp() {
     usePageViews();
@@ -91,7 +97,6 @@ function Site(props) {
     } else if (loading === true && !content) {
       return <div>loading...</div>;
     } else {
-      console.log(aboutPage);
       return (
         <Switch>
           <Route exact path="/" component={Index} />
@@ -141,7 +146,7 @@ function Site(props) {
               />
             )}
           />
-          {/* {musicPageRoutes} */}
+          {musicPageRoutes}
           <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
         </Switch>
       )
@@ -168,8 +173,10 @@ const mapStateToProps = (state) => {
   return {
     aboutPageLoading: state.aboutPage.loading,
     moodboardLoading: state.moodboard.loading,
+    musicPorjectsLoading: state.musicProjects.loading,
     aboutPage: state.aboutPage.content,
     moodboard: state.moodboard.content,
+    musicProjects: state.musicProjects.content,
   }
 }
 

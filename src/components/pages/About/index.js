@@ -11,12 +11,8 @@ import "./About.scss";
 
 const AboutPage = (props) => {
 
-  console.log(props);
-
   var header = document.querySelector("header");
   var footer = document.querySelector("footer");
-
-  console.log(props.content);
 
   let height = useHeight(header, footer);
 
