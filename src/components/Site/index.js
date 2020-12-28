@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Switch, useLocation }  from "react-rout
 import { connect, useDispatch }                                 from "react-redux";
 
 import { getAboutPageContent }                                  from "../../store/actions/aboutPage";
+import { getMusicPageContent }                                  from "../../store/actions/musicPage";
 import { getMoodboardContent }                                  from "../../store/actions/moodboard";
 import { getMusicProjectsContent }                              from "../../store/actions/musicProjects";
+import { getCodeProjectsContent }                               from "../../store/actions/codeProjects";
 
 import get                                                      from "utils/get";
 
@@ -26,13 +28,13 @@ import "./Site.scss";
 
 function Site(props) {
 
-  const { codeProjects, musicPage } = props;
-
+  const { musicPageLoading, musicPage } = props;
   const { aboutPageLoading, aboutPage } = props;
   const { moodboardLoading, moodboard } = props;
   const { musicProjectsLoading, musicProjects } = props;
+  const { codeProjectsLoading, codeProjects } = props;
 
-  console.log(musicProjects);
+  console.log('music page', musicPage);
 
   const dispatch = useDispatch();
 
@@ -40,8 +42,10 @@ function Site(props) {
 
     const loadContent = async () => {
       await dispatch(getAboutPageContent());
+      await dispatch(getMusicPageContent());
       await dispatch(getMoodboardContent());
       await dispatch(getMusicProjectsContent());
+      await dispatch(getCodeProjectsContent());
     }
 
     loadContent();
@@ -74,8 +78,6 @@ function Site(props) {
     });
   }
 
-
-
   function usePageViews() {
     let location = useLocation();
     setCurrentRoute(location.pathname)
@@ -87,8 +89,8 @@ function Site(props) {
     }, [location]);
   }
 
-  const loading = aboutPageLoading && moodboardLoading && musicProjectsLoading;
-  const content = aboutPage.length && moodboard.length && musicProjects.length;
+  const loading = aboutPageLoading && moodboardLoading && musicProjectsLoading && codeProjectsLoading;
+  const content = aboutPage.length && moodboard.length && musicProjects.length && codeProjects.length;
 
   function SwitchComp() {
     usePageViews();
@@ -171,12 +173,17 @@ function Site(props) {
 
 const mapStateToProps = (state) => {
   return {
-    aboutPageLoading: state.aboutPage.loading,
-    moodboardLoading: state.moodboard.loading,
-    musicPorjectsLoading: state.musicProjects.loading,
-    aboutPage: state.aboutPage.content,
-    moodboard: state.moodboard.content,
-    musicProjects: state.musicProjects.content,
+    aboutPageLoading:     state.aboutPage.loading,
+    musicPageLoading:     state.musicPage.loading,
+    moodboardLoading:     state.moodboard.loading,
+    musicProjectsLoading: state.musicProjects.loading,
+    codeProjectsLoading:  state.codeProjects.loading,
+
+    aboutPage:            state.aboutPage.content,
+    musicPage:            state.musicPage.content,
+    moodboard:            state.moodboard.content,
+    musicProjects:        state.musicProjects.content,
+    codeProjects:         state.codeProjects.content,
   }
 }
 
