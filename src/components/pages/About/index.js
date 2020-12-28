@@ -54,12 +54,12 @@ const AboutPage = (props) => {
     return <div className="p2">loading...</div>;
   } else {
 
-    const content = aboutPage[0];
+    const bgImage = aboutPage[0];
 
     const imageStyle = {
       width: "100%",
       height: "100%",
-      backgroundImage: "url(" + content.fields.heroImage.fields.file.url + ")",
+      backgroundImage: "url(" + bgImage.fields.heroImage.fields.file.url + ")",
       backgroundColor: "#8C8582",
       backgroundPosition: "50% 85%",
       backgroundSize: "cover",

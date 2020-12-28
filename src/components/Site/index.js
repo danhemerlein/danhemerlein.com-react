@@ -5,7 +5,7 @@ import { connect, useDispatch }                                 from "react-redu
 import { getMusicPageContent }                                  from "../../store/actions/musicPage";
 import { getMoodboardContent }                                  from "../../store/actions/moodboard";
 import { getMusicProjectsContent }                              from "../../store/actions/musicProjects";
-import { getCodeProjectsContent }                               from "../../store/actions/codeProjects";
+// import { getCodeProjectsContent }                               from "../../store/actions/codeProjects";
 
 import Header                                                   from "components/base/Header";
 import Footer                                                   from "components/base/Footer";
@@ -38,7 +38,7 @@ function Site(props) {
       await dispatch(getMusicPageContent());
       await dispatch(getMoodboardContent());
       await dispatch(getMusicProjectsContent());
-      await dispatch(getCodeProjectsContent());
+      // await dispatch(getCodeProjectsContent());
     }
 
     loadContent();
@@ -82,8 +82,8 @@ function Site(props) {
     }, [location]);
   }
 
-  const loading = moodboardLoading && musicProjectsLoading && codeProjectsLoading && musicPageLoading;
-  const content = moodboard.length && musicProjects.length && codeProjects.length && musicPage.length;
+  const loading = moodboardLoading && musicProjectsLoading && musicPageLoading;
+  const content = moodboard.length && musicProjects.length && musicPage.length;
 
   function SwitchComp() {
     usePageViews();
@@ -91,18 +91,8 @@ function Site(props) {
       return (
         <Switch>
           <Route exact path="/" component={Index} />
-          <Route
-            exact
-            path="/about"
-            render={() => (
-              <About />
-            )}
-          />
-          <Route
-            exact
-            path="/code"
-            render={() => <Code projects={codeProjects} />}
-          />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/code" component={Code} />
           <Route
             exact
             path="/music"
@@ -155,12 +145,10 @@ const mapStateToProps = (state) => {
     musicPageLoading:     state.musicPage.loading,
     moodboardLoading:     state.moodboard.loading,
     musicProjectsLoading: state.musicProjects.loading,
-    codeProjectsLoading:  state.codeProjects.loading,
 
     musicPage:            state.musicPage.content,
     moodboard:            state.moodboard.content,
     musicProjects:        state.musicProjects.content,
-    codeProjects:         state.codeProjects.content,
   }
 }
 

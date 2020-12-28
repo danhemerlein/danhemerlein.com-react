@@ -1,50 +1,46 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import { connect, useDispatch } from "react-redux";
+
+import { getCodeProjectsContent } from "../../../store/actions/codeProjects";
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import GoHomeBack from "components/base/GoHomeBack";
 import cx from "classnames";
 
 import './Code.scss'
 
-export default class Code extends Component {
-  // const content = this.props.content[0];
+const Code = (props) => {
 
-  constructor(props) {
-    super(props)
+  const { codeProjectsLoading, codeProjects } = props;
 
-    this.state = {
-      topLinks: [],
-      listLinks: [],
-      bottomLinks: [],
-    }
-  }
+  const topLinks = codeProjects.topLinks;
+  const listLinks = codeProjects.listLinks;
+  const bottomLinks = codeProjects.bottomLinks;
 
-  componentDidMount() {
-    const topLinks = [];
-    const listLinks = [];
-    const bottomLinks = [];
+  // console.log(codeProjects);
+  const codeProjectsLength = Object.keys(codeProjects).length;
 
-    for (let project of this.props.projects) {
-      if (project.fields.isListLink) {
-        listLinks.push(project);
-      } else if (project.fields.order <= 4) {
-        topLinks.push(project);
-      } else if (project.fields.order >= 4) {
-        bottomLinks.push(project);
-      }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    const loadContent = async () => {
+      await dispatch(getCodeProjectsContent());
     }
 
-    this.setState({
-      topLinks: topLinks,
-      listLinks: listLinks,
-      bottomLinks: bottomLinks
-    })
-  }
+    loadContent();
 
+  }, [dispatch]);
 
-  render() {
+  if (codeProjectsLoading === false && !codeProjectsLength) {
+    return null;
+  } else if (codeProjectsLoading === true && !codeProjectsLength) {
+    return <div className="p2">loading...</div>;
+  } else {
+
     return (
       <div className="Code flex items-center justify-center flex-column">
-        {this.state.topLinks.map((project, key) => {
+        {topLinks.map((project, key) => {
           let highlight = false;
           let hasImage = false;
           let secondBlock = false;
@@ -130,7 +126,7 @@ export default class Code extends Component {
           </p>
 
           <div className="Code__list-links-container flex col-12 md-col-8-dh">
-            {this.state.listLinks.map((project, key) => {
+            {listLinks.map((project, key) => {
               return (
                 <div key={key} className="Code__list-link col-12 md-col-6-dh">
                   <div className="Code__title-container flex">
@@ -158,7 +154,7 @@ export default class Code extends Component {
             projects I've done:
           </p>
           <div className="mt2">
-            {this.state.bottomLinks.map((project, key) => {
+            {bottomLinks.map((project, key) => {
               return (
                 <div
                   key={key}
@@ -196,7 +192,7 @@ export default class Code extends Component {
           <GoHomeBack destination="/" cta="go home" white={false} />
         </div>
       </div>
-    );
+    )
   }
 }
 
