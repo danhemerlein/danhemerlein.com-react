@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { getAboutPageContent } from "../../store/actions/aboutPage";
+import { getMoodboardContent } from "../../store/actions/moodboard";
 
 import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 
@@ -24,10 +25,11 @@ import "./Site.scss";
 
 function Site(props) {
 
-  const { codeProjects, musicProjects, musicPage, moodboard } = props;
+  const { codeProjects, musicProjects, musicPage } = props;
   const { aboutPageLoading, aboutPage } = props;
+  const { moodboardLoading, moodboard } = props;
 
-  console.log(aboutPage);
+  console.log(moodboard);
 
   const dispatch = useDispatch();
 
@@ -37,7 +39,12 @@ function Site(props) {
       await dispatch(getAboutPageContent());
     }
 
+    const loadMoodboardContent = async () => {
+      await dispatch(getMoodboardContent());
+    }
+
     loadAboutPageContent();
+    loadMoodboardContent();
 
   }, [dispatch]);
 
@@ -74,8 +81,8 @@ function Site(props) {
     }, [location]);
   }
 
-  const loading = aboutPageLoading;
-  const content = aboutPage;
+  const loading = aboutPageLoading && moodboardLoading;
+  const content = aboutPage.length && moodboard.length;
 
   function SwitchComp() {
     usePageViews();
@@ -93,7 +100,6 @@ function Site(props) {
             path="/about"
             render={() => (
               <About
-                // image={get(props.site, "fields.aboutImage", {})}
                 content={aboutPage}
               />
             )}
@@ -130,7 +136,8 @@ function Site(props) {
             path="/moodboard"
             render={() => (
               <Moodboard
-                images={get(props.site, "fields.moodboard", {})}
+                content={moodboard}
+                // images={get(props.site, "fields.moodboard", {})}
               />
             )}
           />
@@ -160,7 +167,9 @@ function Site(props) {
 const mapStateToProps = (state) => {
   return {
     aboutPageLoading: state.aboutPage.loading,
+    moodboardLoading: state.moodboard.loading,
     aboutPage: state.aboutPage.content,
+    moodboard: state.moodboard.content,
   }
 }
 

@@ -7,7 +7,6 @@ export const getAboutPageContent = () => {
     contentfulClient.getEntries({
       'content_type': 'aboutPage'
     }).then(function(entries) {
-      console.log(entries.items);
       dispatch(getAboutPageSuccess(entries.items))
     }).catch(err => {
       dispatch(getAboutPageFailure(err.message))

@@ -22,7 +22,6 @@ class MainContainer extends ContainerBase {
       }).then(function(entries) {
         model[type] = entries;
       })
-      console.log('this is the modal i am trying to create', model);
     })
 
 
