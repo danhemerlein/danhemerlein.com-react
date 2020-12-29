@@ -1,134 +1,75 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import { connect, useDispatch } from "react-redux";
+
+import { getCodeProjectsContent } from "../../../store/actions/codeProjects";
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import GoHomeBack from "components/base/GoHomeBack";
+import TopCodeProject from './TopCodeProject';
+import HighlightCodeProject from './HighlightCodeProject';
 import cx from "classnames";
 
 import './Code.scss'
 
-export default class Code extends Component {
-  constructor(props) {
-    super(props)
+const Code = (props) => {
 
-    this.state = {
-      topLinks: [],
-      listLinks: [],
-      bottomLinks: [],
+  const { codeProjectsLoading, codeProjects } = props;
+
+  // console.log(codeProjects);
+
+  const topLinks = codeProjects.topLinks;
+  const listLinks = codeProjects.listLinks;
+  const bottomLinks = codeProjects.bottomLinks;
+  const highlight  = codeProjects.highlight;
+
+  console.log(highlight)
+
+  // TODO
+  // ADD THE HIGHLIGHT PROJECT!!
+
+  // console.log(codeProjects);
+  const codeProjectsLength = Object.keys(codeProjects).length;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    const loadContent = async () => {
+      await dispatch(getCodeProjectsContent());
     }
-  }
 
-  componentDidMount() {
-    const topLinks = [];
-    const listLinks = [];
-    const bottomLinks = [];
+    loadContent();
 
-    for (let project of this.props.projects) {
-      if (project.fields.isListLink) {
-        listLinks.push(project);
-      } else if (project.fields.order <= 4) {
-        topLinks.push(project);
-      } else if (project.fields.order >= 4) {
-        bottomLinks.push(project);
-      }
-    }
+  }, [dispatch]);
 
-    this.setState({
-      topLinks: topLinks,
-      listLinks: listLinks,
-      bottomLinks: bottomLinks
-    })
-  }
-
-
-  render() {
+  if (codeProjectsLoading === false && !codeProjectsLength) {
+    return null;
+  } else if (codeProjectsLoading === true && !codeProjectsLength) {
+    return <div className="p2">loading...</div>;
+  } else {
     return (
-      <div className="Code flex items-center justify-center flex-column">
-        {this.state.topLinks.map((project, key) => {
-          let highlight = false;
-          let hasImage = false;
-          let secondBlock = false;
+      <div className="Code flex items-center justify-center flex-col">
 
-          if (project.fields.timelineLaunchDate === "Coming Eventually") {
-            highlight = true;
-          }
-
-          if (key === 1) {
-            secondBlock = true;
-          }
-
-          if(project.fields.image !== undefined ) {
-            hasImage = true;
-          }
-
-          const renderATag = () => {
-            if(highlight){
-              return (
-                <h4 className="Code__title m0 body-serif">
-                  {project.fields.title}
-                </h4>
-              )
-            } else {
-              return (
-                <a
-                  href={project.fields.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <h4 className="Code__title m0 body-serif">
-                    {project.fields.title}
-                  </h4>
-                </a>
-              );
-            }
-          }
-
-          const renderImage = () => {
-            if (hasImage) {
-              return (
-                <img src={project.fields.image.fields.file.url} alt={project.fields.image.fields.file.title} />
-              )
-            } else {
-              return null;
-            }
-          }
-
+        {topLinks.map((project, key) => {
           return (
-            <div
-              key={key}
-              className={cx("Code__project Code__project-top p2 full-width", {
-                "Code__project-highlight": highlight === true,
-              })}
-            >
-              <div
-                className={cx("Code__title-container flex", {
-                  "Code__project-row-reverse": secondBlock === true,
-                })}
-              >
-                <div className={cx("Code__title-container-inner flex")}>
-                  {renderATag()}
-                  <h4 className="Code__timeline body-serif">
-                    ({project.fields.timelineLaunchDate})
-                  </h4>
-                </div>
-                {renderImage()}
-              </div>
-
-              <div className="body-serif mt2">
-                {documentToReactComponents(
-                  project.fields.description.content[0]
-                )}
-              </div>
-            </div>
-          );
+            <TopCodeProject project={project} index={key} key={key} />
+          )
         })}
 
-        <div className="Code__list-link-container  full-width  flex  flex-column  items-center body-serif">
+        {highlight.map((project, key) => {
+          return (
+            <HighlightCodeProject project={project} index={key} key={key} />
+          )
+        })}
+
+        <div className="Code__list-link-container  full-width  flex  flex-col  items-center body-serif">
           <p className="px2  full-width">
             In my spare time, I enjoy developing, hosting and maintaining
             websites for my musician friends. Below are few recent selections.
           </p>
 
           <div className="Code__list-links-container flex col-12 md-col-8-dh">
-            {this.state.listLinks.map((project, key) => {
+            {listLinks.map((project, key) => {
               return (
                 <div key={key} className="Code__list-link col-12 md-col-6-dh">
                   <div className="Code__title-container flex">
@@ -149,19 +90,19 @@ export default class Code extends Component {
           </div>
         </div>
 
-        <div className="Code__list-link-container  full-width  flex  flex-column  items-center body-serif mt2">
-          <p className="px2  full-width">
+        <div className="Code__list-link-container  w100  flex  flex-col  items-center  mt2">
+          <p className="px2  w100">
             Below are a few{" "}
             <span className="Code__markdown bg-solitude">just for fun</span>{" "}
             projects I've done:
           </p>
           <div className="mt2">
-            {this.state.bottomLinks.map((project, key) => {
+            {bottomLinks.map((project, key) => {
               return (
                 <div
                   key={key}
                   className={cx(
-                    "Code__project Code__project-bottom p2 full-width"
+                    "Code__project Code__project-bottom p2 w100"
                   )}
                 >
                   <div className="Code__title-container flex">
@@ -170,16 +111,16 @@ export default class Code extends Component {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <h4 className="Code__title m0 body-serif">
+                      <h4 className="Code__title m0 ">
                         {project.fields.title}
                       </h4>
                     </a>
-                    <h4 className="Code__timeline body-serif">
+                    <h4 className="Code__timeline ">
                       ({project.fields.timelineLaunchDate})
                     </h4>
                   </div>
 
-                  <div className="body-serif mt2">
+                  <div className=" mt2">
                     {documentToReactComponents(
                       project.fields.description.content[0]
                     )}
@@ -194,6 +135,15 @@ export default class Code extends Component {
           <GoHomeBack destination="/" cta="go home" white={false} />
         </div>
       </div>
-    );
+    )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    codeProjectsLoading:  state.codeProjects.loading,
+    codeProjects:         state.codeProjects.content,
+  }
+}
+
+export default connect(mapStateToProps)(Code);
