@@ -10,8 +10,6 @@ const TopCodeProject = (props) => {
     return index % 2 === 0;
   }
 
-  console.log(isEven(index));
-
   const TitleContainer = styled.div`
     display: flex;
     flex-direction: ${isEven(index) ? "row" : "row-reverse"};

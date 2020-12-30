@@ -1,8 +1,7 @@
-@import "../../../styles/app.scss";
+@import "../../../../styles/app.scss";
 
 .HomeBox {
   border: 2px solid color("black");
-  height: 100%;
 
   &:hover .HomeBox__overlay {
     opacity: 1;
@@ -17,8 +16,6 @@
     opacity: 0;
     font-size: 3rem;
     color: color("black");
-    -moz-transition: opacity $transition-duration-ultra-short ease-in-out;
-    -webkit-transition: opacity $transition-duration-ultra-short ease-in-out;
     transition: opacity $transition-duration-ultra-short ease-in-out;
   }
 

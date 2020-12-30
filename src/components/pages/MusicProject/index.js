@@ -7,7 +7,7 @@ import useHeight from "hooks/useHeightMS";
 import Image from "components/base/Image";
 import GoHomeBack from "components/base/GoHomeBack";
 
-import "./MusicShow.scss";
+import "./MusicProject.scss";
 
 const MusicProject = (props) => {
   let [linkKeys, setLinkKeys] = useState([
@@ -91,30 +91,30 @@ const MusicProject = (props) => {
   return (
 
     <div
-      className="MusicProject flex items-center flex-column relative"
+      className="MusicProject flex items-center flex-col relative"
       style={bgStyle}
     >
-      <div className="MusicProject__inner col-12-dh md-col-8-dh lg-col-8-dh flex justify-center">
+      <div className="MusicProject__inner col-12 md:col-8 lg:col-8 flex justify-center">
         <Image
           src={props.project.fields.artwork.fields.file.url}
           alt={props.project.fields.artwork.fields.file.title}
         />
 
-        <div className="MusicProject__details-container col-12-dh  lg-col-6-dh">
+        <div className="MusicProject__details-container col-12  lg:col-6">
           <div className="MusicProject__title-container flex justify-between items-center m0">
-            <div className="flex flex-column">
+            <div className="flex flex-col">
               <h3 className="MusicProject__title color-white m0 body-serif">
                 {props.project.fields.title}
               </h3>
               {renderArtistATag()}
             </div>
 
-            <div className="flex flex-column mt1 col-6">
-              <h3 className="MusicProject__release color-white  body-serif  text-lowercase text-right">
+            <div className="flex flex-col mt1 col-6">
+              <h3 className="MusicProject__release color-white body-serif text-lowercase text-right">
                 {props.project.fields.releaseDate.replace(",", '')}
               </h3>
 
-              <h3 className="MusicProject__role  color-white  body-serif  text-lowercase text-right">
+              <h3 className="MusicProject__role color-white body-serif text-lowercase text-right">
                 {props.project.fields.role}
               </h3>
             </div>
@@ -204,7 +204,7 @@ const MusicProject = (props) => {
                       rel="noopener noreferrer"
                       key={key + 10}
                     >
-                      <div className="color-white  body-serif flex justify-between full-width mb1">
+                      <div className="color-white body-serif flex justify-between full-width mb1">
                         <span>{key}</span>
                         {k.map((sym, key) => {
                           return <span key={key}>{sym}</span>;

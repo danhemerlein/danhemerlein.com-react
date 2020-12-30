@@ -2,10 +2,8 @@ import React, { useState, useEffect }                           from "react";
 import { BrowserRouter as Router, Route, Switch, useLocation }  from "react-router-dom";
 import { connect, useDispatch }                                 from "react-redux";
 
-import { getMusicPageContent }                                  from "../../store/actions/musicPage";
 import { getMoodboardContent }                                  from "../../store/actions/moodboard";
 import { getMusicProjectsContent }                              from "../../store/actions/musicProjects";
-// import { getCodeProjectsContent }                               from "../../store/actions/codeProjects";
 
 import Header                                                   from "components/base/Header";
 import Footer                                                   from "components/base/Footer";
@@ -17,7 +15,7 @@ import MusicProject                                             from "components
 import Moodboard                                                from "components/pages/Moodboard";
 import About                                                    from "components/pages/About";
 import NotFound                                                 from "components/pages/NotFound";
-import Contact                                                  from "components/pages/Contact";
+// import Contact                                                  from "components/pages/Contact";
 
 import NotFoundIcon                                             from "components/base/icons/NotFound";
 
@@ -25,20 +23,16 @@ import "./Site.scss";
 
 function Site(props) {
 
-  const { musicPageLoading, musicPage } = props;
   const { moodboardLoading, moodboard } = props;
   const { musicProjectsLoading, musicProjects } = props;
-  const { codeProjectsLoading, codeProjects } = props;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
 
     const loadContent = async () => {
-      await dispatch(getMusicPageContent());
       await dispatch(getMoodboardContent());
       await dispatch(getMusicProjectsContent());
-      // await dispatch(getCodeProjectsContent());
     }
 
     loadContent();
@@ -56,11 +50,7 @@ function Site(props) {
 
   if (!musicProjectsLoading && musicProjects.length ) {
     musicPageRoutes = musicProjects.map((project, key) => {
-      var projectHandle = project.fields.title
-        .replace(/[^a-zA-Z0-9 ]/g, "")
-        .replace(/ /g, "-")
-        .toLowerCase();
-      const handle = `/music/${projectHandle}`;
+      const handle = `/music/${project.fields.handle}`;
       return (
         <Route
           path={handle}
@@ -82,43 +72,25 @@ function Site(props) {
     }, [location]);
   }
 
-  const loading = moodboardLoading && musicProjectsLoading && musicPageLoading;
-  const content = moodboard.length && musicProjects.length && musicPage.length;
+  const loading = moodboardLoading && musicProjectsLoading;
+  const content = moodboard.length && musicProjects.length;
 
   function SwitchComp() {
     usePageViews();
 
-      return (
-        <Switch>
-          <Route exact path="/" component={Index} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/code" component={Code} />
-          <Route
-            exact
-            path="/music"
-            render={() => (
-              <Music
-                projects={musicProjects.items}
-                heroImageDesktop={musicPage.items[0].fields.heroDesktop}
-                heroImageMobile={musicPage.items[0].fields.heroMobile}
-              />
-            )}
-          />
-          <Route exact path="/keep-in-touch" render={() => <Contact />} />
-          <Route
-            exact
-            path="/moodboard"
-            render={() => (
-              <Moodboard
-                content={moodboard}
-              />
-            )}
-          />
-          {musicPageRoutes}
-          <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
-        </Switch>
-      )
-    }
+    return (
+      <Switch>
+        <Route exact path="/" component={Index} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/code" component={Code} />
+        <Route exact path="/music" render={() => <Music projects={musicProjects} />} />
+        <Route exact path="/moodboard" component={Moodboard} />
+        {musicPageRoutes}
+        <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
+        {/* <Route exact path="/keep-in-touch" render={() => <Contact />} /> */}
+      </Switch>
+    )
+  }
 
   if (loading === false && !content) {
     return null;
@@ -142,11 +114,8 @@ function Site(props) {
 
 const mapStateToProps = (state) => {
   return {
-    musicPageLoading:     state.musicPage.loading,
     moodboardLoading:     state.moodboard.loading,
     musicProjectsLoading: state.musicProjects.loading,
-
-    musicPage:            state.musicPage.content,
     moodboard:            state.moodboard.content,
     musicProjects:        state.musicProjects.content,
   }

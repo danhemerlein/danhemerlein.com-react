@@ -4,7 +4,7 @@ import debounce                     from "utils/debounce";
 
 import './HomePage.scss';
 
-import HomeBox                      from 'components/other/HomeBox';
+import HomeBox                      from './HomeBox';
 
 import CodeIcon                     from 'components/base/icons/Code';
 import MusicIcon                    from 'components/base/icons/Music';
@@ -42,9 +42,9 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="HomePage">
-        <div className="flex full-height">
-          <div className="flex flex-column col-12">
+      <div className="HomePage mt1 mb1 md:mb0">
+        <div className="flex h100">
+          <div className="flex flex-col col-12">
             <div className="HomePage__top-left col-12">
               <Link to="/code">
                 <HomeBox header="code" icon={<CodeIcon />} />
@@ -56,7 +56,7 @@ class HomePage extends Component {
               </Link>
             </div>
           </div>
-          <div className="flex flex-column col-12 ml1">
+          <div className="flex flex-col col-12 ml1">
             <div className="HomePage__top-right col-12">
               <Link to="/music">
                 <HomeBox header="music" icon={<MusicIcon />} />

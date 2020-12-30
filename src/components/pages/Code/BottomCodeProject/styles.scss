@@ -1,0 +1,23 @@
+@import "../../../../styles/app.scss";
+
+.BottomCodeProject {
+  border: 1px solid color("black");
+  max-width: 60rem;
+
+  &__a {
+    text-decoration: underline;
+    color: color("black");
+
+    &:visited {
+      color: color("black");
+    }
+  }
+
+  &__title {
+    font-size: 1.4rem;
+
+    @include common-bp(tablet) {
+      font-size: 2rem;
+    }
+  }
+}
