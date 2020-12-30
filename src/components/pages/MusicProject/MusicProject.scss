@@ -26,37 +26,15 @@
     }
   }
 
-  &__links-container,
-  &__artist-link {
+  &__links-container {
     @include anchor-white;
   }
 
-  &__links-container {
-    &--inner {
-      @include common-bp(desktop) {
-        border-bottom: 1px solid transparent;
-        &:hover {
-          border-bottom: 1px dashed white;
-        }
-      }
-    }
-  }
+  // &__links-container {
+  //   &--inner {
 
-  &__title {
-    font-size: 1.5rem;
-  }
-
-  &__artist {
-    font-size: 1.25rem;
-  }
-
-  &__role {
-    font-size: 1rem;
-  }
-
-  &__release {
-    font-size: 1rem;
-  }
+  //   }
+  // }
 
   &__go-back-container {
     bottom: 1rem;
