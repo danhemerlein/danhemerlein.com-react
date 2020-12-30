@@ -28,7 +28,7 @@ const Header = (props) => {
             <Link to="/">dan hemerlein</Link>
           </h1>
           <h2 className="Header__sub-headline m0">
-            <Link to="/code">web engineer</Link> /{" "}
+            <Link to="/code">font-end engineer</Link> /{" "}
             <Link to="/music">music producer</Link>
           </h2>
         </div>
