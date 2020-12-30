@@ -6,8 +6,8 @@ const BottomCodeProject = (props) => {
   const { project } = props;
 
   return (
-    <div className="BottomCodeProject Code__project Code__project-bottom p2 mt1 w100">
-    <div className="Code__title-container flex">
+    <div className="BottomCodeProject p2 mt1 w100">
+    <div className="flex justify-center items-center md:items-start flex-col">
       <a
         href={project.fields.link}
         target="_blank"

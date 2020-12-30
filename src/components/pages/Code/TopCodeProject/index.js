@@ -12,10 +12,13 @@ const TopCodeProject = (props) => {
 
   const TitleContainer = styled.div`
     display: flex;
-    flex-direction: ${isEven(index) ? "row" : "row-reverse"};
+    flex-direction: column-reverse;
     justify-content: space-evenly;
+
+    @media (min-width: 720px) {
+      flex-direction: ${isEven(index) ? "row" : "row-reverse"};
+    }
   `
-  console.log(project.fields.description.content);
 
   return (
     <div className="TopCodeProject mt1 p2 w100 body-serif">
