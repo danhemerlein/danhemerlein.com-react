@@ -11,20 +11,22 @@ export const getMusicProjectsContent = () => {
       'content_type': 'musicProject'
     }).then(function(entries) {
 
+      const activeEntries = entries.items.filter(project => project.fields.archived !== true);
+
       // add date time for front-end sorting
-      addDateTime(entries.items);
+      addDateTime(activeEntries);
 
       // create project handle from song title
-      addProjectHandle(entries.items);
+      addProjectHandle(activeEntries);
 
       // create an object of links
-      createLinksObject(entries.items);
+      createLinksObject(activeEntries);
 
-      entries.items.sort((a, b) => {
+      activeEntries.sort((a, b) => {
         return a.fields.order - b.fields.order;
       });
 
-      dispatch(getMusicProjectsSuccess(entries.items))
+      dispatch(getMusicProjectsSuccess(activeEntries))
     }).catch(err => {
       dispatch(getMusicPorjectsFailure(err.message))
     });

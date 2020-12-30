@@ -23,10 +23,8 @@ const BottomCodeProject = (props) => {
       </h4>
     </div>
 
-    <div className="mt2">
-      {documentToReactComponents(
-        project.fields.description.content[0]
-      )}
+    <div className="BottomCodeProject__content mt2">
+      {project.fields.description.content.map((node, key) => documentToReactComponents(node))}
     </div>
   </div>
   )

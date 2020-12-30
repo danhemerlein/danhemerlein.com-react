@@ -8,4 +8,18 @@
       font-size: 2rem;
     }
   }
+
+  &__content {
+    a {
+      text-decoration: underline;
+      color: color("black");
+
+      &:visited {
+        color: color("black");
+      }
+    }
+    p {
+      margin: 0.5rem 0;
+    }
+  }
 }

@@ -48,7 +48,7 @@ const MusicProject = (props) => {
 
           <div className="MusicProject__links-container mt1">
             {project.fields.links.map((link, key) => {
-              return <ProjectLink key={key} link={link} />
+              return <ProjectLink mapKey={key} link={link} />
             })}
           </div>
 
