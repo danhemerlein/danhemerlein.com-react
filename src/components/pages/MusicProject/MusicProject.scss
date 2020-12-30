@@ -77,7 +77,6 @@
     &--inner {
       @include common-bp(desktop) {
         border-bottom: 1px solid transparent;
-        // padding-bottom: 1px;
         &:hover {
           border-bottom: 1px dashed white;
         }
