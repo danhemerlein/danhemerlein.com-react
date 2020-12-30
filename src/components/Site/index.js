@@ -83,8 +83,13 @@ function Site(props) {
         <Route exact path="/" component={Index} />
         <Route exact path="/about" component={About} />
         <Route exact path="/code" component={Code} />
-        <Route exact path="/music" render={() => <Music projects={musicProjects} />} />
-        <Route exact path="/moodboard" component={Moodboard} />
+        <Route exact path="/music"
+          render={() => <Music projects={musicProjects} />}
+        />
+        <Route exact path="/moodboard"
+          render={() => <Moodboard images={moodboard} />}
+        />
+
         {musicPageRoutes}
         <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
         {/* <Route exact path="/keep-in-touch" render={() => <Contact />} /> */}

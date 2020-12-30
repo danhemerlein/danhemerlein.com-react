@@ -8,8 +8,6 @@ export const getCodeProjectsContent = () => {
       'content_type': 'codeProject'
     }).then(function(entries) {
 
-      // console.log(entries.items);
-
       const topLinks = entries.items.filter(project => project.fields.isTopLink && !project.fields.highlight);
       const listLinks = entries.items.filter(project => project.fields.isListLink && !project.fields.highlight);
       const bottomLinks = entries.items.filter(project => project.fields.isBottomLink && !project.fields.highlight);
