@@ -19,8 +19,6 @@
   &__overlay {
     opacity: 0;
     text-align: center;
-    -moz-transition: opacity $transition-duration-ultra-short ease-in-out;
-    -webkit-transition: opacity $transition-duration-ultra-short ease-in-out;
     transition: opacity $transition-duration-ultra-short ease-in-out;
     display: none;
 
@@ -40,54 +38,6 @@
 
     &:hover .MusicPage__overlay {
       opacity: 0.95;
-    }
-  }
-
-  &__hero {
-    height: 75vh;
-  }
-
-  &__hero-text {
-    &--headline {
-      -webkit-animation: slide-right-wide $transition-duration-long;
-      -moz-animation: slide-right-wide $transition-duration-long;
-      -ms-animation: slide-right-wide $transition-duration-long;
-      -o-animation: slide-right-wide $transition-duration-long;
-      animation: slide-right-wide $transition-duration-long;
-
-      font-size: 1.5rem;
-
-      top: 2rem;
-      left: 3.5rem;
-
-      @include common-bp(tablet) {
-        font-size: 2rem;
-      }
-    }
-
-    &--sub-headline {
-      -webkit-animation: slide-left-wide $transition-duration-long;
-      -moz-animation: slide-left-wide $transition-duration-long;
-      -ms-animation: slide-left-wide $transition-duration-long;
-      -o-animation: slide-left-wide $transition-duration-long;
-      animation: slide-left-wide $transition-duration-long;
-
-      bottom: 2rem;
-      right: 3.5rem;
-
-      font-size: 1.25rem;
-      text-align: right;
-      display: none;
-
-      @media (max-width: $screen-l) and (min-width: $screen-m) {
-        font-size: 2rem;
-        display: flex;
-      }
-
-      @include common-bp(tablet) {
-        font-size: 2.5rem;
-        display: flex;
-      }
     }
   }
 
@@ -159,7 +109,6 @@
   }
 
   &__label {
-    // text-align: center;
     margin-bottom: 4px;
     font-size: 1.25rem;
   }
