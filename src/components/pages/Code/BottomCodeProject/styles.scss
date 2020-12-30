@@ -1,0 +1,12 @@
+@import "../../../../styles/app.scss";
+
+.BottomCodeProject {
+  &__a {
+    text-decoration: underline;
+    color: color("black");
+
+    &:visited {
+      color: color("black");
+    }
+  }
+}

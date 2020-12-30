@@ -4,12 +4,20 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import styled from 'styled-components'
 
 const HighlightCodeProject = (props) => {
-  const { project, index } = props;
+  const { project, gradientRotation, gradientStart, gradientEnd } = props;
 
+  const HighlightCodeProject = styled.div`
+    border: 1px solid #000;
+    max-width: 60rem;
+    margin-top: 1rem;
+    padding: 2rem;
+    width: 100%;
+    background: linear-gradient(${gradientRotation}, ${gradientStart}, ${gradientEnd})};
+  `
   return (
-    <div className="HighlightCodeProject mt1 p2 w100 body-serif">
-      <div className="flex flex-col items-center justify-center">
-        <h4 className="TopCodeProject__title m0">
+    <HighlightCodeProject>
+      <div className="HighlightCodeProject flex flex-col items-center justify-center">
+        <h4 className="HighlightCodeProject__title m0">
           {project.fields.title}
         </h4>
 
@@ -24,7 +32,7 @@ const HighlightCodeProject = (props) => {
         )}
       </div>
 
-    </div>
+    </HighlightCodeProject>
   )
 
 }

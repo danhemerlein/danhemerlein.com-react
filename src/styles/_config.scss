@@ -2,7 +2,7 @@ $colors: (
   "black": #000,
   "white": #fff,
   "green": #03c03c,
-  "red": #c23b22,
+  "red": #ff0000,
 );
 
 $breakpoints: (
@@ -66,3 +66,7 @@ $aspect-ratios: (
     stroke: $value;
   }
 }
+
+$spacing-units: auto, 0, 0.25rem, 0.5rem, 0.75rem, 0.8rem, 1rem, 1.2rem, 1.5rem,
+  1.6rem, 2rem, 2.4rem, 2.5rem, 3rem, 3.2rem, 3.5rem, 4rem, 4.8rem, 5rem, 6rem,
+  6.5rem, 7rem, 8rem, 8.5rem, 9rem, 10rem, 11rem, 12rem, 13rem, 14rem, 15rem;

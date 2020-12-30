@@ -1,11 +1,6 @@
 @import "../../../styles/app.scss";
 
 .Code {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-  // @include anchor-black;
-
   &__title-container {
     flex-direction: column;
 
@@ -37,16 +32,6 @@
     }
   }
 
-  &__project-row-reverse {
-    @include common-bp(tablet) {
-      flex-direction: row-reverse !important;
-    }
-  }
-
-  &__project-highlight {
-    background-image: linear-gradient(45deg, #fff, #ff6ad5);
-  }
-
   &__title {
     font-size: 1.4rem;
 
@@ -73,30 +58,9 @@
       border: 1px solid color("black");
     }
   }
-
-  &__list-link {
-    margin-bottom: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-
-    @include common-bp(tablet) {
-      padding-left: 0;
-      padding-right: 0;
-
-      .Code__title-container {
-        justify-content: center;
-      }
-    }
-  }
-
-  &__list-link-title {
-    font-size: 1rem;
-  }
-
   &__markdown {
     padding: 0.25rem;
     font-family: "Courier", serif;
-    color: red;
   }
 }
 
@@ -107,38 +71,6 @@
 
 .Code__project:last-of-type {
   margin-bottom: 1rem;
-}
-
-.Code__project-top {
-  .Code__title-container {
-    flex-direction: column-reverse;
-
-    img {
-      width: 25%;
-      margin: 0rem auto 1rem auto;
-    }
-
-    @include common-bp(tablet) {
-      justify-content: space-evenly;
-
-      &:not(.Code__project-row-reverse) {
-        flex-direction: row;
-      }
-
-      img {
-        width: 16.66667%;
-        margin: unset;
-      }
-    }
-  }
-
-  .Code__title {
-    text-align: center;
-  }
-
-  .Code__timeline {
-    text-align: center;
-  }
 }
 
 .Code__project-bottom {
