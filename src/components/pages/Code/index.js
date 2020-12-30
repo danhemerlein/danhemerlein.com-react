@@ -1,16 +1,13 @@
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import { getCodeProjectsContent } from "../../../store/actions/codeProjects";
 
-import GoHomeBack from "components/base/GoHomeBack";
 import TopCodeProject from './TopCodeProject';
 import HighlightCodeProject from './HighlightCodeProject';
 import ListLinkCodeProject from './ListLinkCodeProject';
 import BottomCodeProject from './BottomCodeProject';
-
-import cx from "classnames";
+import GoHomeBack from "components/base/GoHomeBack";
 
 import './Code.scss'
 
@@ -63,6 +60,7 @@ const Code = (props) => {
         })}
 
         <div className="Code__list-link-container  w100  flex  flex-col  items-center">
+
           <p className="px2  w100">
             In my spare time, I enjoy developing, hosting and maintaining
             websites for my musician friends. Below are few recent selections.
@@ -75,14 +73,19 @@ const Code = (props) => {
               );
             })}
           </div>
+
         </div>
 
         <div className="Code__list-link-container w100 flex flex-col items-center mt2">
+
           <p className="px2  w100">
             Below are a few{" "}
-            <span className="Code__markdown color-red bg-solitude">just for fun</span>{" "}
+            <span className="Code__markdown p_25 color-red bg-solitude">
+              just for fun
+            </span>{" "}
             projects I've done:
           </p>
+
           <div className="mt2">
             {bottomLinks.map((project, key) => {
               return (
@@ -90,11 +93,13 @@ const Code = (props) => {
               );
             })}
           </div>
+
         </div>
 
         <div className="mt2">
           <GoHomeBack destination="/" cta="go home" white={false} />
         </div>
+
       </div>
     )
   }

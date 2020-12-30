@@ -6,7 +6,7 @@ const BottomCodeProject = (props) => {
   const { project } = props;
 
   return (
-    <div className="Code__project Code__project-bottom p2 w100">
+    <div className="BottomCodeProject Code__project Code__project-bottom p2 mt1 w100">
     <div className="Code__title-container flex">
       <a
         href={project.fields.link}
@@ -14,11 +14,11 @@ const BottomCodeProject = (props) => {
         rel="noopener noreferrer"
         className="BottomCodeProject__a"
       >
-        <h4 className="Code__title m0">
+        <h4 className="BottomCodeProject__title m0">
           {project.fields.title}
         </h4>
       </a>
-      <h4 className="Code__timeline">
+      <h4 className="mt_5">
         ({project.fields.timelineLaunchDate})
       </h4>
     </div>

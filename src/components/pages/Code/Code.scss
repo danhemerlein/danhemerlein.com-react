@@ -22,28 +22,6 @@
     line-height: 1.69;
   }
 
-  &__project {
-    border: 1px solid color("black");
-    max-width: 60rem;
-    margin-top: 1rem;
-
-    a {
-      text-decoration: underline;
-    }
-  }
-
-  &__title {
-    font-size: 1.4rem;
-
-    @include common-bp(tablet) {
-      font-size: 2rem;
-    }
-  }
-
-  &__timeline {
-    margin-top: 0.5rem;
-  }
-
   &__list-link-container {
     max-width: 60rem;
     margin-top: 1rem;
@@ -58,8 +36,8 @@
       border: 1px solid color("black");
     }
   }
+
   &__markdown {
-    padding: 0.25rem;
     font-family: "Courier", serif;
   }
 }
