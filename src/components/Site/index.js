@@ -50,11 +50,7 @@ function Site(props) {
 
   if (!musicProjectsLoading && musicProjects.length ) {
     musicPageRoutes = musicProjects.map((project, key) => {
-      var projectHandle = project.fields.title
-        .replace(/[^a-zA-Z0-9 ]/g, "")
-        .replace(/ /g, "-")
-        .toLowerCase();
-      const handle = `/music/${projectHandle}`;
+      const handle = `/music/${project.fields.handle}`;
       return (
         <Route
           path={handle}

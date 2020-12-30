@@ -6,6 +6,8 @@ import { connect, useDispatch } from "react-redux";
 import { getMusicPageContent }  from "../../../store/actions/musicPage";
 
 import Hero from "./MusicHero/"
+import Sort from "./MusicSort/"
+
 import Image from "components/base/Image";
 import GoHomeBack from "components/base/GoHomeBack";
 
@@ -14,7 +16,6 @@ import cx from "classnames";
 
 const Music = (props) => {
 
-  // const { musicProjectsLoading, musicProjects } = props;
   const { musicPageLoading, musicPage, projects } = props;
 
   let [sort, setSort] = useState('default');
@@ -33,36 +34,6 @@ const Music = (props) => {
   }, [dispatch]);
 
 
-  function addDateTime(arr) {
-    arr.map(function (project) {
-      let date = project.fields.releaseDate;
-
-      const months = {
-        January: "01",
-        February: "02",
-        March: "03",
-        April: "04",
-        May: "05",
-        June: "06",
-        July: "07",
-        August: "08",
-        September: "09",
-        October: "10",
-        November: "11",
-        December: "12",
-      };
-
-      date = date.replace(",", "").split(" ");
-      let year = date[2];
-      let day = date[1];
-      let month = months[date[0]];
-      let dateFormat = year + "-" + month + "-" + day;
-      var d = new Date(dateFormat);
-
-      project.fields["releaseDateFormat"] = d;
-    });
-  }
-
   function handleChange (event) {
     setSort(event.target.value);
 
@@ -74,7 +45,6 @@ const Music = (props) => {
       setActiveProjects(k);
 
     } else if (event.target.value === "most-recent") {
-      addDateTime(props.projects);
 
       const sorted = props.projects.sort(function (a, b) {
         return b.fields.releaseDateFormat - a.fields.releaseDateFormat;
@@ -83,7 +53,6 @@ const Music = (props) => {
       setActiveProjects(sorted);
 
     } else if (event.target.value === "oldest") {
-      addDateTime(props.projects);
 
       const sorted = props.projects.sort(function (a, b) {
         return a.fields.releaseDateFormat - b.fields.releaseDateFormat;
@@ -119,35 +88,10 @@ const Music = (props) => {
 
         <div className="Music__projects-container px3 pt3 flex items-center
         justify-center">
-          <div className="Music__select-container full-width flex
-          justify-center">
-            <div className="flex flex-col">
-              <label
-                htmlFor="sort"
-                className="Music__label  body-serif  text-white"
-              >
-                sort
-              </label>
-              <select
-                name="sort"
-                id="sort"
-                onChange={(event) => handleChange(event)}
-                className="Music__select"
-              >
-                <option value="">default</option>
-                <option value="most-recent">most recent</option>
-                <option value="oldest">oldest</option>
-                <option value="wrote">wrote</option>
-                <option value="produced">produced</option>
-                <option value="performed">perfomed</option>
-              </select>
-            </div>
-          </div>
+
+          <Sort handleChange={handleChange} />
+
           {activeProjects.map((project, key) => {
-            var projectHandle = project.fields.title
-              .replace(/[^a-zA-Z0-9 ]/g, "")
-              .replace(/ /g, "-")
-              .toLowerCase();
 
             return (
               <div
@@ -156,7 +100,7 @@ const Music = (props) => {
                 lg:col-3 body-serif"
               >
                 <div className="Music__container flex relative">
-                  <Link to={`/music/${projectHandle}`}>
+                  <Link to={`/music/${project.fields.handle}`}>
                     <Image
                       src={project.fields.artwork.fields.file.url}
                       alt={project.fields.artwork.fields.file.title}
@@ -179,7 +123,7 @@ const Music = (props) => {
                   <div className="Music__mobile-details-container">
                     <div>
                       <h4 className="Music__title color-white">
-                        <Link to={`/music/${projectHandle}`}>
+                        <Link to={`/music/${project.fields.handle}`}>
                           {project.fields.title}
                         </Link>
                       </h4>
@@ -188,7 +132,7 @@ const Music = (props) => {
                           "Music__artist color-white"
                         )}
                       >
-                        <Link to={`/music/${projectHandle}`}>
+                        <Link to={`/music/${project.fields.handle}`}>
                           by {project.fields.artist}
                         </Link>
                       </h3>
@@ -198,6 +142,7 @@ const Music = (props) => {
               </div>
             );
           })}
+
           <div className="w100 flex justify-center mb3">
             <GoHomeBack destination="/" cta="go back" white={true} />
           </div>

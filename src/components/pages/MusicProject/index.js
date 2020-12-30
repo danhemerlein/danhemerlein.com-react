@@ -7,7 +7,7 @@ import useHeight from "hooks/useHeightMS";
 import Image from "components/base/Image";
 import GoHomeBack from "components/base/GoHomeBack";
 
-import "./MusicShow.scss";
+import "./MusicProject.scss";
 
 const MusicProject = (props) => {
   let [linkKeys, setLinkKeys] = useState([

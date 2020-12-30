@@ -99,21 +99,4 @@
   &__mobile-details-container-role {
     margin: 4px 0;
   }
-
-  &__select-container {
-    margin-bottom: 1rem;
-
-    @include common-bp(tablet) {
-      margin-bottom: 2rem;
-    }
-  }
-
-  &__label {
-    margin-bottom: 4px;
-    font-size: 1.25rem;
-  }
-
-  &__select {
-    font-size: 1.25rem;
-  }
 }
