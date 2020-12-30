@@ -68,18 +68,18 @@ const AboutPage = (props) => {
 
     return (
       <div
-        className="About mt2 flex flex-column body-serif"
+        className="About mt2 flex flex-col body-serif"
         style={pageStyle}
       >
         <div
           className="About__inner flex justify-center col-12"
           style={innerStyle}
         >
-          <div className="About__img-container flex col-12-dh  md-col-6-dh">
+          <div className="About__img-container flex col-12  md:col-6">
             <div style={imageStyle} className=""></div>
           </div>
 
-          <div className="col-12-dh md-col-6-dh flex items-center justify-center">
+          <div className="col-12 md:col-6 flex items-center justify-center">
             <div className="About__text">
               <p className="About__paragraph">hey I'm Dan,</p>
 

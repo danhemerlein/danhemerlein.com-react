@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import './Header.scss'
 import cx from 'classnames';
 
-import Menu             from 'components/navigation/Menu';
-import MobileNav        from 'components/navigation/MobileNav';
+import Menu                   from 'components/navigation/Menu';
+import MobileNav              from 'components/navigation/MobileNav';
 import MobileNavOverlay       from "components/navigation/MobileNavOverlay";
 
 const Header = (props) => {
@@ -35,17 +35,13 @@ const Header = (props) => {
         <div className="flex justify-end items-center col-6">
           <nav className="Header__desktop-nav" role="navigation">
             <ul className="list-style-none p0">
-              {/* <li className="inline-block">
-                <Link to="/keep-in-touch">keep in touch</Link>
-              </li> */}
-
               <li className="inline-block ml2">
                 <Link to="/about">about</Link>
               </li>
             </ul>
           </nav>
 
-          <div className="Header__mobile-nav-toggle flex">
+          <div className="Header__mobile-nav-toggle">
             <Menu clickHandler={props.toggleMobileNav} />
           </div>
         </div>

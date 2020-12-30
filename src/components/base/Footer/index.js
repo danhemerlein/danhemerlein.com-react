@@ -45,7 +45,7 @@ const Footer = () => {
         </ul>
         <div className="Footer__small-container flex">
           <small className="Footer__small self-end">
-            © Dan Hemerlein 2020
+            © Dan Hemerlein 2021
           </small>
         </div>
       </div>
