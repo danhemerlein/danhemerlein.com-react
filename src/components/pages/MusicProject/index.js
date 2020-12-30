@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { usePalette } from "react-palette";
 
@@ -10,53 +10,16 @@ import GoHomeBack from "components/base/GoHomeBack";
 import "./MusicProject.scss";
 
 const MusicProject = (props) => {
-  let [linkKeys, setLinkKeys] = useState([
-    "spotify",
-    "bandcamp",
-    "apple",
-    "tidal",
-    "amazon",
-    "deezer",
-    "napster",
-    "google play",
-    "soundcloud",
-  ]);
-
-  let [links, setLinks] = useState([]);
-
-  useEffect(() => {
-    let k = [];
-
-    for (let key of linkKeys) {
-      let o = {
-        title: "",
-        link: "",
-      };
-      if (key === "google play") {
-        o.title = "google play";
-        o.link = props.project.fields["googlePlay"];
-        if (props.project.fields[key] !== undefined) {
-          k.push(o);
-        }
-      } else {
-        o.title = key;
-        o.link = props.project.fields[key];
-        if (props.project.fields[key] !== undefined) {
-          k.push(o);
-        }
-      }
-    }
-    setLinks(k);
-  }, [linkKeys, props.project.fields]);
+  const { project } = props;
 
   const header = document.querySelector("header");
   const footer = document.querySelector("footer");
   const MusicProject = document.querySelector(".MusicProject");
 
-  useHeight(header, footer, MusicProject, links);
+  // useHeight(header, footer, MusicProject, links);
 
   const { data } = usePalette(
-    "https:"+props.project.fields.artwork.fields.file.url
+    "https:"+project.fields.artwork.fields.file.url
   );
 
   const bgStyle  = {
@@ -64,25 +27,25 @@ const MusicProject = (props) => {
   };
 
   const renderArtistATag = () => {
-    if (props.project.fields.artistWebsite !== undefined) {
+    if (project.fields.artistWebsite !== undefined) {
       return (
         <div className="MusicProject__artist-link">
-          <h4 className="MusicProject__artist color-white body-serif full-width">
+          <h4 className="MusicProject__artist color-white body-serif full-width my_25">
             by{" "}
             <a
-              href={props.project.fields.artistWebsite}
+              href={project.fields.artistWebsite}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {props.project.fields.artist}
+              {project.fields.artist}
             </a>
           </h4>
         </div>
       );
     } else {
       return (
-        <h4 className="MusicProject__artist color-white body-serif full-width">
-          by {props.project.fields.artist}
+        <h4 className="MusicProject__artist color-white body-serif full-width my_25">
+          by {project.fields.artist}
         </h4>
       );
     }
@@ -91,37 +54,38 @@ const MusicProject = (props) => {
   return (
 
     <div
-      className="MusicProject flex items-center flex-col relative"
+      className="MusicProject flex items-center flex-col relative h100 p1 md:p2 justify-between md:justify-center my1"
       style={bgStyle}
     >
-      <div className="MusicProject__inner col-12 md:col-8 lg:col-8 flex justify-center">
+      <div className="col-12 md:col-8 lg:col-8 flex justify-center flex-col lg:flex-row">
         <Image
-          src={props.project.fields.artwork.fields.file.url}
-          alt={props.project.fields.artwork.fields.file.title}
+          src={project.fields.artwork.fields.file.url}
+          alt={project.fields.artwork.fields.file.title}
         />
 
-        <div className="MusicProject__details-container col-12  lg:col-6">
-          <div className="MusicProject__title-container flex justify-between items-center m0">
+        <div className="col-12 lg:col-6 mb1 lg:mb0 lg:ml_5 lg:flex lg:flex-col lg:justify-center">
+          <div className="flex justify-between items-center m0">
             <div className="flex flex-col">
               <h3 className="MusicProject__title color-white m0 body-serif">
-                {props.project.fields.title}
+                {project.fields.title}
               </h3>
               {renderArtistATag()}
             </div>
 
             <div className="flex flex-col mt1 col-6">
-              <h3 className="MusicProject__release color-white body-serif text-lowercase text-right">
-                {props.project.fields.releaseDate.replace(",", '')}
+              <h3 className="MusicProject__release color-white body-serif text-lowercase text-right my_25 lg:mt0">
+                {project.fields.releaseDate.replace(",", '')}
               </h3>
 
               <h3 className="MusicProject__role color-white body-serif text-lowercase text-right">
-                {props.project.fields.role}
+                {project.fields.role}
               </h3>
             </div>
           </div>
 
-          <div className="MusicProject__links-container">
-            {links.map((link, key) => {
+           <div className="MusicProject__links-container mt1">
+            {project.fields.links.map((link, key) => {
+
               let hasLink = false;
               let i = [
                 "•",
@@ -176,7 +140,7 @@ const MusicProject = (props) => {
                 return (
                   <span key={key}>
                     <a
-                      className="MusicProject__fun-link"
+                      className="none lg:inline"
                       href={link.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -198,7 +162,7 @@ const MusicProject = (props) => {
                     </a>
 
                     <a
-                      className="MusicProject__mobile-link"
+                      className="inline lg:none"
                       href={link.link}
                       target="_blank"
                       rel="noopener noreferrer"

@@ -1,5 +1,7 @@
 import contentfulClient from '../../contentfulClient'
-import addDateTime from '../../utils/addDateTime'
+import addDateTime from '../../utils/musicProjects/addDateTime'
+import addProjectHandle from '../../utils/musicProjects/addProjectHandle'
+import createLinksObject from '../../utils/musicProjects/createLinksObject'
 
 export const getMusicProjectsContent = () => {
   return (dispatch, getState) => {
@@ -9,23 +11,20 @@ export const getMusicProjectsContent = () => {
       'content_type': 'musicProject'
     }).then(function(entries) {
 
-      addDateTime(entries.items)
+      // add date time for front-end sorting
+      addDateTime(entries.items);
+
+      // create project handle from song title
+      addProjectHandle(entries.items);
+
+      // create an object of links
+      createLinksObject(entries.items);
+
+      console.log(entries.items);
 
       entries.items.sort((a, b) => {
         return a.fields.order - b.fields.order;
       });
-
-      entries.items.map(project => {
-        var projectHandle = project.fields.title
-          .replace(/[^a-zA-Z0-9 ]/g, "")
-          .replace(/ /g, "-")
-          .toLowerCase();
-        project.fields["handle"] = projectHandle;
-      })
-
-      console.log(entries.items);
-
-
 
       dispatch(getMusicProjectsSuccess(entries.items))
     }).catch(err => {

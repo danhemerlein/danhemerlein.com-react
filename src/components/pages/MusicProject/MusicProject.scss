@@ -1,24 +1,12 @@
 @import "../../../styles/app.scss";
 
 .MusicProject {
-  height: 100%;
-  padding: 1rem;
-
-  margin-top: 1rem;
   margin-left: -1rem;
-  margin-bottom: 1rem;
   margin-right: -1rem;
 
-  justify-content: space-between;
-
   @include common-bp(tablet) {
-    padding: 2rem;
     margin-left: -2rem;
     margin-right: -2rem;
-  }
-
-  @include common-bp(desktop) {
-    justify-content: center;
   }
 
   img {
@@ -38,42 +26,12 @@
     }
   }
 
-  &__inner {
-    flex-direction: column;
-
-    @include common-bp(desktop) {
-      flex-direction: row;
-    }
-  }
-
-  &__details-container {
-    margin-bottom: 1rem;
-
-    @include common-bp(desktop) {
-      margin-left: 0.5rem;
-      margin-bottom: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  }
-
-  &__title-container {
-    margin-top: 1rem;
-
-    @include common-bp(desktop) {
-      margin-top: 0;
-    }
-  }
-
   &__links-container,
   &__artist-link {
     @include anchor-white;
   }
 
   &__links-container {
-    margin-top: 1rem;
-
     &--inner {
       @include common-bp(desktop) {
         border-bottom: 1px solid transparent;
@@ -84,47 +42,20 @@
     }
   }
 
-  &__mobile-link {
-    display: inline;
-
-    @include common-bp(desktop) {
-      display: none;
-    }
-  }
-
-  &__fun-link {
-    display: none;
-
-    @include common-bp(desktop) {
-      display: inline;
-    }
-  }
-
   &__title {
-    margin: 4px 0;
     font-size: 1.5rem;
-    @include common-bp(desktop) {
-      margin-top: 0;
-    }
   }
 
   &__artist {
-    margin: 4px 0;
     font-size: 1.25rem;
   }
 
   &__role {
-    margin: 4px 0;
     font-size: 1rem;
   }
 
   &__release {
-    margin: 4px 0;
     font-size: 1rem;
-
-    @include common-bp(desktop) {
-      margin-top: 0;
-    }
   }
 
   &__go-back-container {
