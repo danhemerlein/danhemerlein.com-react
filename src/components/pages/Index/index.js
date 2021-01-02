@@ -22,7 +22,7 @@ class Index extends Component {
 
     // so the 64 here is the Site container paddding top and bottom which is 48px plus the indexPage's top margin of 16px
 
-    if (window.innerWidth > 721) {
+    if (window.innerWidth >= 720) {
       const hpHeight = ((window.innerHeight - headerFooter) - 64);
       indexPage.style.height = hpHeight + "px";
     } else {
