@@ -1,0 +1,35 @@
+@import "../../../styles/app.scss";
+
+.Index {
+  &__top-left {
+    height: 48%;
+
+    @include common-bp(tablet) {
+      animation: slide-right $transition-duration-med;
+    }
+  }
+
+  &__bottom-left {
+    height: 48%;
+
+    @include common-bp(tablet) {
+      animation: slide-right-wide $transition-duration-mid;
+    }
+  }
+
+  &__top-right {
+    height: 48%;
+
+    @include common-bp(tablet) {
+      animation: slide-left $transition-duration-med;
+    }
+  }
+
+  &__bottom-right {
+    height: 48%;
+
+    @include common-bp(tablet) {
+      animation: slide-left-wide $transition-duration-mid;
+    }
+  }
+}
