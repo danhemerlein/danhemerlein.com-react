@@ -2,7 +2,7 @@ import React, { Component }         from 'react';
 import { Link }                     from "react-router-dom";
 import debounce                     from "utils/debounce";
 
-import './HomePage.scss';
+import './Index.scss';
 
 import HomeBox                      from './HomeBox';
 
@@ -12,19 +12,22 @@ import MoodboardIcon                from 'components/base/icons/Moodboard';
 import ContactIcon                  from 'components/base/icons/Contact';
 
 
-class HomePage extends Component {
+class Index extends Component {
   setHeightHP = () => {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
-    const homePage = document.querySelector(".HomePage");
+    const indexPage = document.querySelector(".Index");
 
     const headerFooter = header.offsetHeight + footer.offsetHeight;
 
-    // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
+    // so the 64 here is the Site container paddding top and bottom which is 48px plus the indexPage's top margin of 16px
 
-    const hpHeight = ((window.innerHeight - headerFooter) - 64);
-
-    homePage.style.height = hpHeight + "px";
+    if (window.innerWidth >= 720) {
+      const hpHeight = ((window.innerHeight - headerFooter) - 64);
+      indexPage.style.height = hpHeight + "px";
+    } else {
+      indexPage.style.height = "auto";
+    }
   }
 
   debounceHPHeight = () => {
@@ -42,36 +45,57 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="HomePage mt1 mb1 md:mb0">
-        <div className="flex h100">
-          <div className="flex flex-col col-12">
-            <div className="HomePage__top-left col-12">
+      <div className="Index mt1 mb1 md:mb0">
+        <div className="flex h100 flex-col md:flex-row">
+
+          <div className="flex flex-row md:flex-col w100 flex-wrap md:flex-nowrap">
+
+            <div className="Index__top-left w100">
               <Link to="/code">
                 <HomeBox header="code" icon={<CodeIcon />} />
               </Link>
             </div>
-            <div className="HomePage__bottom-left col-12 mt1">
+
+            <div className="Index__bottom-left w100 mt1 none md:block">
               <Link to="/moodboard">
                 <HomeBox header="moodboard" icon={<MoodboardIcon />} />
               </Link>
             </div>
-          </div>
-          <div className="flex flex-col col-12 ml1">
-            <div className="HomePage__top-right col-12">
+
+            <div className="Index__bottom-left w100 mt1 md:mt0 block md:none">
               <Link to="/music">
                 <HomeBox header="music" icon={<MusicIcon />} />
               </Link>
             </div>
-            <div className="HomePage__bottom-right col-12 mt1">
+
+          </div>
+
+          <div className="flex flex-row md:flex-col w100 md:ml1 flex-wrap md:flex-nowrap">
+
+            <div className="Index__top-right w100 mt1 md:mt0 none md:block">
+              <Link to="/music">
+                <HomeBox header="music" icon={<MusicIcon />} />
+              </Link>
+            </div>
+
+              <div className="Index__top-right w100 mt1 block md:none">
+              <Link to="/moodboard">
+                <HomeBox header="moodboard" icon={<MoodboardIcon />} />
+              </Link>
+            </div>
+
+            <div className="Index__bottom-right w100 mt1">
               <Link to="about">
                 <HomeBox header="about" icon={<ContactIcon />} />
               </Link>
             </div>
+
           </div>
+
         </div>
       </div>
     );
   }
 }
 
-export default HomePage;
+export default Index;
