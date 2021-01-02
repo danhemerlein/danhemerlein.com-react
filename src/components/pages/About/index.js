@@ -32,12 +32,12 @@ const AboutPage = (props) => {
 
   let height = useHeight(header, footer);
 
-  const isTabletUp = useMediaQuery({
-    query: breakpoints.tablet,
+  const isDesktopUp = useMediaQuery({
+    query: breakpoints.desktop,
   });
 
   let pageStyle = {
-    height: isTabletUp ? `${height}px` : "auto",
+    height: isDesktopUp ? `${height}px` : "auto",
   };
 
   // notes on why this is happening please
@@ -45,7 +45,7 @@ const AboutPage = (props) => {
   // subtract 64 px for some reason
 
   let innerStyle = {
-    height: isTabletUp ? `${height - 64}px` : "auto",
+    height: isDesktopUp ? `${height - 64}px` : "auto",
   }
 
   if (aboutPageLoading === false && !aboutPage.length) {
@@ -72,24 +72,37 @@ const AboutPage = (props) => {
         style={pageStyle}
       >
         <div
-          className="About__inner flex justify-center col-12"
+          className="flex items-center justify-center col-12 flex-wrap"
           style={innerStyle}
         >
-          <div className="About__img-container flex col-12  md:col-6">
+          <div className="About__img-container flex col-12 lg:col-6">
             <div style={imageStyle} className=""></div>
           </div>
 
-          <div className="col-12 md:col-6 flex items-center justify-center">
+          <div className="col-12 lg:col-6 flex justify-center">
             <div className="About__text">
-              <p className="About__paragraph">hey I'm Dan,</p>
+              <p className="About__paragraph">hey I'm Dan (he/him),</p>
 
               <p className="About__paragraph mt1">
-                I'm a web engineer and music producer based in Brooklyn, New York.
+                I'm a front-end web engineer and music producer based in Brooklyn, New York.
               </p>
 
               <p className="About__paragraph mt1">
-                music / coding is my life and it's super trill.
+                As a coder, I'm really into JavaScript, e-commerce, CSS, accessibility, developer experience and learning something new everyday. I find a lot of joy in the process of achieving a technical goal.
               </p>
+
+              <p className="About__paragraph mt1">
+                It’s been a weird time for my relationship with music but pre-Covid you could find me playing shows with indie-rock bands all over Manhattan and Brooklyn. These days, I mostly write and produce songs on my own out of my home studio. I’m planning to release a few tracks from a side project I’m currently manifesting in winter 2021.
+              </p>
+
+              <p className="About__paragraph mt1">
+                In my non-code/non-music time, I journal, moodboard, jog and aimlessly ride my bike around Brooklyn.
+              </p>
+
+              <p className="About__paragraph mt1">
+                I write code and make music because I can't not and it's super trill.
+              </p>
+
             </div>
           </div>
         </div>
@@ -100,8 +113,6 @@ const AboutPage = (props) => {
     )
   }
 };
-
-// export default AboutPage;
 
 const mapStateToProps = (state) => {
   return {

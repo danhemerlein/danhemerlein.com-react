@@ -12,9 +12,14 @@ const TopCodeProject = (props) => {
 
   const TitleContainer = styled.div`
     display: flex;
-    flex-direction: ${isEven(index) ? "row" : "row-reverse"};
+    flex-direction: column-reverse;
     justify-content: space-evenly;
+
+    @media (min-width: 720px) {
+      flex-direction: ${isEven(index) ? "row" : "row-reverse"};
+    }
   `
+
   return (
     <div className="TopCodeProject mt1 p2 w100 body-serif">
       <TitleContainer>
@@ -39,10 +44,8 @@ const TopCodeProject = (props) => {
 
       </TitleContainer>
 
-      <div className="mt2">
-        {documentToReactComponents(
-          project.fields.description.content[0]
-        )}
+      <div className="TopCodeProject__content mt2">
+        {project.fields.description.content.map((node, key) => documentToReactComponents(node))}
       </div>
     </div>
   )

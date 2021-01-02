@@ -24,7 +24,7 @@ export default class Moodboard extends Component {
   handleScroll = () => {
     let bool = this.isInViewport();
 
-    if(bool) {
+    if (bool) {
       window.scrollTo(0, 0);
     }
   }
@@ -47,9 +47,9 @@ export default class Moodboard extends Component {
   };
 
   render() {
-    const images = get(this, "props.images", []);
+    const { images } = this.props;
 
-    const imageMatrix = images.reduce(
+    const imageMatrix = images[0].fields.images.reduce(
       (rows, image, index) =>
         (index % 2 === 0
           ? rows.push([image])

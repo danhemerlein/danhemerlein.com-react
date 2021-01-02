@@ -6,8 +6,8 @@ const BottomCodeProject = (props) => {
   const { project } = props;
 
   return (
-    <div className="BottomCodeProject Code__project Code__project-bottom p2 mt1 w100">
-    <div className="Code__title-container flex">
+    <div className="BottomCodeProject p2 mt1 w100">
+    <div className="flex justify-center items-center md:items-start flex-col">
       <a
         href={project.fields.link}
         target="_blank"
@@ -23,10 +23,8 @@ const BottomCodeProject = (props) => {
       </h4>
     </div>
 
-    <div className="mt2">
-      {documentToReactComponents(
-        project.fields.description.content[0]
-      )}
+    <div className="BottomCodeProject__content mt2">
+      {project.fields.description.content.map((node, key) => documentToReactComponents(node))}
     </div>
   </div>
   )

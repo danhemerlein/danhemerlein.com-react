@@ -8,12 +8,12 @@ export const getCodeProjectsContent = () => {
       'content_type': 'codeProject'
     }).then(function(entries) {
 
-      // console.log(entries.items);
+      const activeEntries = entries.items.filter(project => project.fields.archived !== true);
 
-      const topLinks = entries.items.filter(project => project.fields.isTopLink && !project.fields.highlight);
-      const listLinks = entries.items.filter(project => project.fields.isListLink && !project.fields.highlight);
-      const bottomLinks = entries.items.filter(project => project.fields.isBottomLink && !project.fields.highlight);
-      const highlight = entries.items.filter(project => project.fields.highlight);
+      const topLinks = activeEntries.filter(project => project.fields.isTopLink && !project.fields.highlight);
+      const listLinks = activeEntries.filter(project => project.fields.isListLink && !project.fields.highlight);
+      const bottomLinks = activeEntries.filter(project => project.fields.isBottomLink && !project.fields.highlight);
+      const highlight = activeEntries.filter(project => project.fields.highlight);
 
       const compareFunction = function(a, b) {
         return a.fields.order - b.fields.order;

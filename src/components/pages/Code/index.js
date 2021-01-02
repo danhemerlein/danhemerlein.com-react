@@ -83,7 +83,7 @@ const Code = (props) => {
             <span className="Code__markdown p_25 color-red bg-solitude">
               just for fun
             </span>{" "}
-            projects I've done:
+            projects I'm working on in various states of completion:
           </p>
 
           <div className="mt2">
