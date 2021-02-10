@@ -5,9 +5,12 @@ import { connect, useDispatch }                                 from "react-redu
 import { getMoodboardContent }                                  from "../../store/actions/moodboard";
 import { getMusicProjectsContent }                              from "../../store/actions/musicProjects";
 
+// base components
 import Header                                                   from "components/base/Header";
 import Footer                                                   from "components/base/Footer";
+import NotFoundIcon                                             from "components/base/icons/NotFound";
 
+// pages
 import Index                                                    from "components/pages/Index";
 import Code                                                     from "components/pages/Code";
 import Music                                                    from "components/pages/Music";
@@ -17,7 +20,6 @@ import About                                                    from "components
 import NotFound                                                 from "components/pages/NotFound";
 // import Contact                                                  from "components/pages/Contact";
 
-import NotFoundIcon                                             from "components/base/icons/NotFound";
 
 import "./Site.scss";
 
@@ -81,18 +83,27 @@ function Site(props) {
     return (
       <Switch>
         <Route exact path="/" component={Index} />
+
         <Route exact path="/about" component={About} />
+
         <Route exact path="/code" component={Code} />
+
         <Route exact path="/music"
           render={() => <Music projects={musicProjects} />}
         />
+
         <Route exact path="/moodboard"
           render={() => <Moodboard images={moodboard} />}
         />
 
         {musicPageRoutes}
-        <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
+
+        <Route
+          render={() => <NotFound icon={<NotFoundIcon />} />}
+        />
+
         {/* <Route exact path="/keep-in-touch" render={() => <Contact />} /> */}
+
       </Switch>
     )
   }
