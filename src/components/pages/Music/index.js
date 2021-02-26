@@ -3,8 +3,8 @@ import { connect, useDispatch } from "react-redux";
 
 import { getMusicPageContent }  from "../../../store/actions/musicPage";
 
-import Hero from "./MusicHero/"
-import Sort from "./MusicSort/"
+import MusicHero from "./MusicHero/"
+import MusicSort from "./MusicSort/"
 import ProjectPreview from "./ProjectPreview/"
 
 import GoHomeBack from "components/base/GoHomeBack";
@@ -35,11 +35,11 @@ const Music = (props) => {
     setSort(event.target.value);
 
     if (event.target.value === "") {
-      const k = props.projects.sort((a, b) => {
+      const sorted = props.projects.sort((a, b) => {
         return a.fields.order - b.fields.order;
       });
 
-      setActiveProjects(k);
+      setActiveProjects(sorted);
 
     } else if (event.target.value === "most-recent") {
 
@@ -58,15 +58,15 @@ const Music = (props) => {
       setActiveProjects(sorted);
 
     } else {
-      const k = props.projects.sort((a, b) => {
+      const sorted = props.projects.sort((a, b) => {
         return a.fields.order - b.fields.order;
       });
 
-      let j = k.filter(function (project) {
+      let filtered = sorted.filter(function (project) {
         return project.fields[event.target.value];
       });
 
-      setActiveProjects(j);
+      setActiveProjects(filtered);
     }
 
   }
@@ -82,12 +82,12 @@ const Music = (props) => {
     return (
       <div className="Music flex flex-wrap items-center justify-center my1">
 
-        <Hero />
+        <MusicHero />
 
         <div className="Music__projects-container px3 pt3 flex items-center
         justify-center flex-col flex-wrap md:flex-row">
 
-          <Sort handleChange={handleChange} />
+          <MusicSort handleChange={handleChange} />
 
           {activeProjects.map((project, key) => {
             return (

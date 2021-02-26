@@ -7,14 +7,14 @@ import './MobileNav.scss'
 
 const MobileNav = (props) => {
   return (
-    <div className="MobileNav bg-white flex flex-column p1">
+    <div className="MobileNav bg-white flex flex-col p1">
       <div className="flex items-end justify-end">
         <div className="MobileNav__close-icon pointer">
           <CloseIcon clickHandler={props.clickHandler} />
         </div>
       </div>
       <nav role="navigation">
-        <ul className="list-style-none p0 flex items-center justify-center flex-column">
+        <ul className="list-style-none p0 flex items-center justify-center flex-col">
           <li className="MobileNav__list-item body-serif my2">
             <Link to="/code">code</Link>
           </li>

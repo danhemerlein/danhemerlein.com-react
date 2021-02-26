@@ -9,7 +9,7 @@ const MusicHero = (props) => {
         young & nauseous
       </h2>
       <h3 className="MusicHero__sub-headline color-red lack-italic">
-        coming winter 2021
+        coming spring 2021
       </h3>
 
     </div>
