@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import { connect, useDispatch } from "react-redux";
 import styled from 'styled-components'
 
-import GoHomeBack from "components/base/GoHomeBack";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
 
 import useHeight from "hooks/useHeight";
@@ -94,15 +95,15 @@ const AboutPage = (props) => {
               </p>
 
               <p className="About__paragraph mt_5">
-                As a coder, I'm really into JavaScript, e-commerce, CSS, accessibility, developer experience and learning something new everyday. I find a lot of joy in the process of achieving a technical goal.
+                As a coder, I'm really into JavaScript, e-commerce, CSS, accessibility, developer experience and learning something new every day. I find a lot of joy in the process of achieving a technical goal.
               </p>
 
               <p className="About__paragraph mt_5">
-                It’s been a weird time for my relationship with music but pre-Covid you could find me playing shows with indie-rock bands all over Manhattan and Brooklyn. These days, I mostly write and produce songs on my own out of my home studio. I’m planning to release a few tracks from a side project I’m currently manifesting in winter 2021.
+                Back before the pandemic you could find me playing shows with indie-rock bands all over Manhattan and Brooklyn. These days, I mostly write and produce songs on my own out of my home studio. I’m planning to release a few tracks from a side project I’m currently manifesting in spring 2021.
               </p>
 
               <p className="About__paragraph mt_5">
-                In my non-code/non-music time, I journal, moodboard, jog and aimlessly ride my bike around Brooklyn.
+                In my non-code/non-music time, I journal, read, <Link to="/blog"><span className="underline">blog?</span></Link> moodboard, jog in McCarren Park and aimlessly ride my bike around the city.
               </p>
 
               <p className="About__paragraph mt_5">
@@ -112,9 +113,6 @@ const AboutPage = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className="About__go-home-container py2 flex justify-center col-12">
-          <GoHomeBack destination="/" cta="go home" white={false} />
-        </div> */}
       </div>
     )
   }

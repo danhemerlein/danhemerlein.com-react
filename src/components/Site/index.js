@@ -17,6 +17,7 @@ import Music                                                    from "components
 import MusicProject                                             from "components/pages/MusicProject";
 import Moodboard                                                from "components/pages/Moodboard";
 import About                                                    from "components/pages/About";
+import Blog                                                     from "components/pages/Blog";
 import NotFound                                                 from "components/pages/NotFound";
 // import Contact                                                  from "components/pages/Contact";
 
@@ -94,6 +95,10 @@ function Site(props) {
 
         <Route exact path="/moodboard"
           render={() => <Moodboard images={moodboard} />}
+        />
+
+        <Route exact path="/blog"
+          render={() => <Blog />}
         />
 
         {musicPageRoutes}
