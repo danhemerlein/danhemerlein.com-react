@@ -1,0 +1,98 @@
+[
+  { "music": [{}] },
+  {
+    "movies": [
+      {
+        "month": "january",
+        "data": [
+          {
+            "title": "Palm Springs",
+            "releaseYear": "2020"
+          },
+          {
+            "title": "The Sound of Metal",
+            "releaseYear": "2019"
+          },
+          {
+            "title": "One Night in Miami",
+            "releaseYear": "2021"
+          }
+        ]
+      },
+      {
+        "month": "february",
+        "data": [
+          {
+            "title": "Blow The Man Down",
+            "releaseYear": "2019"
+          },
+          {
+            "title": "The Finest Hours",
+            "releaseYear": "2016"
+          },
+          {
+            "title": "Miracle",
+            "releaseYear": "2004"
+          },
+          {
+            "title": "Young Lean: In My Head",
+            "releaseYear": "2020"
+          }
+        ]
+      },
+      {
+        "month": "march",
+        "data": [
+          {
+            "title": "Adaptation",
+            "releaseYear": "2002"
+          }
+        ]
+      }
+    ]
+  },
+  { "books": [{}] },
+
+  {
+    "tvShows": [
+      {
+        "month": "january",
+        "data": [
+          {
+            "title": "Bridgerton",
+            "releaseYear": "2020"
+          },
+          {
+            "title": "Euphoria Special Episode Part 2",
+            "releaseYear": "2021"
+          }
+        ]
+      },
+      {
+        "month": "february",
+        "data": [
+          {
+            "title": "The Young Pope",
+            "releaseYear": "2016"
+          },
+          {
+            "title": "Are You The One (Season 8 episodes 8-12)",
+            "releaseYear": "2019"
+          },
+          {
+            "title": "Fleabag (Season 1)",
+            "releaseYear": "2016"
+          },
+          {
+            "title": "Ted Lasso (Season 1)",
+            "releaseYear": "2016"
+          },
+          {
+            "title": "Fleabag (Season 2)",
+            "releaseYear": "2019"
+          }
+        ]
+      }
+    ]
+  }
+]
