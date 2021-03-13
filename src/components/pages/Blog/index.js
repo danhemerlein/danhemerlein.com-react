@@ -13,8 +13,25 @@ const Blog = () => {
 
   return (
     <section className='blog'>
-      <h1 className='mb_5 text-center'>music movies, books & tv shows</h1>
+      <h1 className='mb_5 text-center'>music, movies, books & tv shows</h1>
       <h2 className='text-center'>january - march 2021</h2>
+
+      {data.map((datum, key) => {
+        const title = Object.keys(datum)[0]
+        return (
+          <>
+            <CategoryTitle>{title}</CategoryTitle>
+            {datum[title].map((data, key) => {
+              const title = Object.keys(data)[0]
+              return (
+                <p key={key}>
+                  <CategoryTitle>{data.month}</CategoryTitle>
+                </p>
+              )
+            })}
+          </>
+        )
+      })}
 
       <div>
         <CategoryTitle>movies</CategoryTitle>
