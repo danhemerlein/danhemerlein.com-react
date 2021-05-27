@@ -1,28 +1,28 @@
-import React from 'react'
-import styled from 'styled-components'
-import data from './q1-2021.json'
+import React from "react";
+import styled from "styled-components";
+import data from "./q1-2021.json";
 
 const CategoryTitle = styled.strong`
   font-weight: 900;
-`
+`;
 
 const StyledSpan = styled.span`
   font-style: italic;
-`
+`;
 
 const Blog = () => {
-  const [music, movies, books, tvShows] = data
+  const [music, movies, books, tvShows] = data;
 
   return (
-    <section className='blog'>
-      <h1 className='mb_5 text-center'>music, movies, books & tv shows</h1>
-      <h2 className='text-center'>january - march 2021</h2>
+    <section className="blog">
+      <h1 className="mb_5 text-center">music, movies, books & tv shows</h1>
+      <h2 className="text-center">january - march 2021</h2>
 
       <div>
         <CategoryTitle>music</CategoryTitle>
         {music.music.map((album, key) => {
           return (
-            <div key={key} className='my1'>
+            <div key={key} className="my1">
               <p>
                 <CategoryTitle>{album.month}</CategoryTitle>
               </p>
@@ -34,10 +34,10 @@ const Blog = () => {
                     <span>({data.releaseYear})</span>
                     <span> by {data.artist}</span>
                   </p>
-                )
+                );
               })}
             </div>
-          )
+          );
         })}
       </div>
 
@@ -45,7 +45,7 @@ const Blog = () => {
         <CategoryTitle>books</CategoryTitle>
         {books.books.map((book, key) => {
           return (
-            <div key={key} className='my1'>
+            <div key={key} className="my1">
               <p>
                 <CategoryTitle>{book.month}</CategoryTitle>
               </p>
@@ -57,10 +57,10 @@ const Blog = () => {
                     <span>({data.releaseYear})</span>
                     <span> by {data.author}</span>
                   </p>
-                )
+                );
               })}
             </div>
-          )
+          );
         })}
       </div>
 
@@ -68,7 +68,7 @@ const Blog = () => {
         <CategoryTitle>movies</CategoryTitle>
         {movies.movies.map((movie, key) => {
           return (
-            <div key={key} className='my1'>
+            <div key={key} className="my1">
               <p>
                 <CategoryTitle>{movie.month}</CategoryTitle>
               </p>
@@ -79,10 +79,10 @@ const Blog = () => {
                     <span>{data.title}</span>&nbsp;
                     <span>({data.releaseYear})</span>
                   </p>
-                )
+                );
               })}
             </div>
-          )
+          );
         })}
       </div>
 
@@ -90,7 +90,7 @@ const Blog = () => {
         <CategoryTitle>tv shows</CategoryTitle>
         {tvShows.tvShows.map((show, key) => {
           return (
-            <div key={key} className='my1'>
+            <div key={key} className="my1">
               <p>
                 <CategoryTitle>{show.month}</CategoryTitle>
               </p>
@@ -101,14 +101,14 @@ const Blog = () => {
                     <span>{data.title}</span>&nbsp;
                     <span>({data.releaseYear})</span>
                   </p>
-                )
+                );
               })}
             </div>
-          )
+          );
         })}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
