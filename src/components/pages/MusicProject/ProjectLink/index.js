@@ -1,38 +1,12 @@
 import React from "react";
-import "./styles.scss"
+import "./styles.scss";
 
 const Links = (props) => {
-  const {key, link} = props;
+  const { key, link } = props;
   let hasLink = false;
-  let i = [
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-  ];
-  let j = [
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-    "•",
-  ];
-  let k = [
+  const i = ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•"];
+  const j = ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•", "•"];
+  const k = [
     ".",
     ".",
     ".",
@@ -95,9 +69,8 @@ const Links = (props) => {
         </a>
       </span>
     );
-  } else {
-    return null;
   }
-}
+  return null;
+};
 
 export default Links;

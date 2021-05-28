@@ -1,23 +1,22 @@
-import React from "react";
-
 import cx from "classnames";
+import React from "react";
 import "./NavOverlay.scss";
 
-const MobileNavOverlay = (props) => {
+const MobileNavOverlay = ({ navOpen, clickHandler }) => {
   return (
     <div
       className={cx(
         "NavOverlay",
         {
-          "NavOverlay--active": props.navOpen === true,
+          "NavOverlay--active": navOpen === true,
         },
         {
-          NavOverlay: props.navOpen === false,
+          NavOverlay: navOpen === false,
         }
       )}
-      onClick={props.clickHandler}
-    ></div>
+      onClick={clickHandler}
+    />
   );
-}
+};
 
 export default MobileNavOverlay;

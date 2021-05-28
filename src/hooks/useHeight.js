@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import throttle from "utils/throttle";
 
 const getHeight = (head, foot) => {
   let compHeight;
   if (head != null && foot != null) {
-    let headerFooter = head.offsetHeight + foot.offsetHeight;
+    const headerFooter = head.offsetHeight + foot.offsetHeight;
     compHeight = window.innerHeight - headerFooter - 64;
   }
   return compHeight;
@@ -14,7 +14,7 @@ const getHeaderHeight = (head) => {
   if (head != null) {
     return head.offsetHeight;
   }
-}
+};
 
 const getFooterHeight = (foot) => {
   if (foot != null) {
@@ -23,15 +23,18 @@ const getFooterHeight = (foot) => {
 };
 
 const heightTrottle = (height1, height2) => {
-  let num = ( window.innerHeight - (height1 + height2) - 64);
+  const num = window.innerHeight - (height1 + height2) - 64;
   return num;
-}
+};
 
 const useHeight = (header, footer) => {
-
-  let [height, setHeight] = useState(() => getHeight(header, footer));
-  let [headerHeight, setHeaderHeight] = useState(() => getHeaderHeight(header));
-  let [footerHeight, setFooterHeight] = useState(() => getFooterHeight(footer));
+  const [height, setHeight] = useState(() => getHeight(header, footer));
+  const [headerHeight, setHeaderHeight] = useState(() =>
+    getHeaderHeight(header)
+  );
+  const [footerHeight, setFooterHeight] = useState(() =>
+    getFooterHeight(footer)
+  );
 
   useEffect(() => {
     const calcHeight = throttle(function () {
@@ -41,7 +44,6 @@ const useHeight = (header, footer) => {
     window.addEventListener("resize", calcHeight);
     return () => window.removeEventListener("resize", calcHeight);
   }, []);
-
 
   return height;
 };

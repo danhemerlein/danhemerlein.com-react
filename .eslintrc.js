@@ -37,10 +37,11 @@ module.exports = {
       },
     ],
     "react/prop-types": 0,
+    // suppress jsx one expression per line error
+    "react/jsx-one-expression-per-line": "off",
     // suppress errors for missing 'import React' in files
     "react/react-in-jsx-scope": "off",
     // allow jsx syntax in js files (for next.js project)
-    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }], //should add ".ts" if typescript project
     "no-underscore-dangle": 0,
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",

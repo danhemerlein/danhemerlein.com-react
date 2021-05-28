@@ -18,13 +18,13 @@ function addDateTime(arr) {
     };
 
     date = date.replace(",", "").split(" ");
-    let year = date[2];
-    let day = date[1];
-    let month = months[date[0]];
-    let dateFormat = year + "-" + month + "-" + day;
-    var d = new Date(dateFormat);
+    const year = date[2];
+    const day = date[1];
+    const month = months[date[0]];
+    const dateFormat = `${year}-${month}-${day}`;
+    const d = new Date(dateFormat);
 
-    item.fields["releaseDateFormat"] = d;
+    item.fields.releaseDateFormat = d;
   });
 }
 

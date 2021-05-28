@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-const MusicSort = (props) => {
+const MusicSort = ({ handleChange }) => {
   return (
     <div className="MusicSort full-width flex justify-center mb1 md:mb2">
       <div className="flex flex-col">
@@ -14,7 +14,7 @@ const MusicSort = (props) => {
         <select
           name="sort"
           id="sort"
-          onChange={(event) => props.handleChange(event)}
+          onChange={(event) => handleChange(event)}
           className="MusicSort__select"
         >
           <option value="">default</option>
@@ -26,8 +26,7 @@ const MusicSort = (props) => {
         </select>
       </div>
     </div>
-  )
+  );
+};
 
-}
-
-export default MusicSort
+export default MusicSort;

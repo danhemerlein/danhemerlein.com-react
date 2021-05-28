@@ -1,11 +1,19 @@
 import React from "react";
+import styled from "styled-components";
 
-const Menu = (props) => {
+const StyledButton = styled.button`
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+`;
+
+const Menu = ({ clickHandler }) => {
   return (
-    <h3 className="body-serif pointer" onClick={props.clickHandler}>
-      menu
-    </h3>
-  )
-}
+    <StyledButton type="button" onClick={clickHandler}>
+      <h3 className="body-serif">menu</h3>
+    </StyledButton>
+  );
+};
 
 export default Menu;

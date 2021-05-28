@@ -1,16 +1,14 @@
+import CloseIcon from "components/base/icons/Close";
 import React from "react";
 import { Link } from "react-router-dom";
+import "./MobileNav.scss";
 
-import CloseIcon from 'components/base/icons/Close';
-
-import './MobileNav.scss'
-
-const MobileNav = (props) => {
+const MobileNav = ({ clickHandler }) => {
   return (
     <div className="MobileNav bg-white flex flex-col p1">
       <div className="flex items-end justify-end">
         <div className="MobileNav__close-icon pointer">
-          <CloseIcon clickHandler={props.clickHandler} />
+          <CloseIcon clickHandler={clickHandler} />
         </div>
       </div>
       <nav role="navigation">
@@ -27,9 +25,6 @@ const MobileNav = (props) => {
           <li className="MobileNav__list-item  body-serif my2">
             <Link to="/about">about</Link>
           </li>
-          {/* <li className="MobileNav__list-item  body-serif my2">
-            <Link to="/keep-in-touch">keep in touch</Link>
-          </li> */}
           <li className="MobileNav__list-item  body-serif my2">
             <Link to="/">home</Link>
           </li>
@@ -37,37 +32,61 @@ const MobileNav = (props) => {
           <hr className="MobileNav__hr" />
 
           <li className="MobileNav__list-item  body-serif my2">
-            <a href="https://github.com/danhemerlein" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/danhemerlein"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               github
             </a>
           </li>
 
           <li className="MobileNav__list-item  body-serif my2">
-            <a href="https://workingnotworking.com/58170-dan" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://workingnotworking.com/58170-dan"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               working not working
             </a>
           </li>
 
           <li className="MobileNav__list-item  body-serif my2">
-            <a href="https://www.are.na/dan-hemerlein" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.are.na/dan-hemerlein"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               are.na
             </a>
           </li>
 
           <li className="MobileNav__list-item  body-serif my2">
-            <a href="https://medium.com/@danhemerlein" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://medium.com/@danhemerlein"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               medium
             </a>
           </li>
 
           <li className="MobileNav__list-item  body-serif my2">
-            <a href="https://twitter.com/danhemerlein" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://twitter.com/danhemerlein"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               twitter
             </a>
           </li>
 
           <li className="MobileNav__list-item  body-serif my2">
-            <a href="https://www.instagram.com/danhemerlein/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/danhemerlein/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               instagram
             </a>
           </li>
@@ -75,6 +94,6 @@ const MobileNav = (props) => {
       </nav>
     </div>
   );
-}
+};
 
 export default MobileNav;

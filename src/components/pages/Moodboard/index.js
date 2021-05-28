@@ -1,14 +1,10 @@
-import React, { Component } from "react";
 import GoHomeBack from "components/base/GoHomeBack";
-
-import get from "utils/get";
-
 import Image from "components/base/Image";
-
-import "./Moodboard.scss"
+import React, { Component } from "react";
+import get from "utils/get";
+import "./Moodboard.scss";
 
 export default class Moodboard extends Component {
-
   /**
    * Check if an element is in viewport
    *
@@ -18,8 +14,8 @@ export default class Moodboard extends Component {
   isInViewport = () => {
     if (!this.elem) return false;
     const top = this.elem.getBoundingClientRect().top;
-    return (top + 80) <= window.innerHeight;
-  }
+    return top + 80 <= window.innerHeight;
+  };
 
   handleScroll = () => {
     let bool = this.isInViewport();
@@ -27,7 +23,7 @@ export default class Moodboard extends Component {
     if (bool) {
       window.scrollTo(0, 0);
     }
-  }
+  };
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
@@ -37,10 +33,16 @@ export default class Moodboard extends Component {
     return (
       <div className="Moodboard__content full-width flex mb1" key={index}>
         <div className="flex items-end col-12 md-col-6 mr1">
-          <Image src={get(imageGroup, "[0].fields.file.url")} alt={get(imageGroup, "[0].fields.title")} />
+          <Image
+            src={get(imageGroup, "[0].fields.file.url")}
+            alt={get(imageGroup, "[0].fields.title")}
+          />
         </div>
         <div className="flex items-end col-12 md-col-6">
-          <Image src={get(imageGroup, "[1].fields.file.url")} alt={get(imageGroup, "[1].fields.title")} />
+          <Image
+            src={get(imageGroup, "[1].fields.file.url")}
+            alt={get(imageGroup, "[1].fields.title")}
+          />
         </div>
       </div>
     );
@@ -66,7 +68,7 @@ export default class Moodboard extends Component {
         <div className="full-width flex justify-center my3">
           <GoHomeBack destination="/" cta="go back" white={false} />
         </div>
-        <div ref={(el) => this.elem = el}></div>
+        <div ref={(el) => (this.elem = el)}></div>
       </div>
     );
   }
