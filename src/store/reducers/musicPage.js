@@ -7,7 +7,7 @@ const initState = {
 
 const MusicPage = (state = initState, action) => {
   switch (action.type) {
-  case "GET_MUSIC_PAGE_CONTENT_STARTED":
+    case "GET_MUSIC_PAGE_CONTENT_STARTED":
       return {
         ...state,
         loading: true,
@@ -32,6 +32,6 @@ const MusicPage = (state = initState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default MusicPage;

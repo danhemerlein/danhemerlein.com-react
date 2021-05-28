@@ -1,7 +1,7 @@
 import contentfulClient from "../../contentfulClient";
 
 export const getAboutPageContent = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(getAboutPageStarted());
 
     contentfulClient

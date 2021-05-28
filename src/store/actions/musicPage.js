@@ -1,7 +1,7 @@
 import contentfulClient from "../../contentfulClient";
 
 export const getMusicPageContent = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(getMusicPageStarted());
 
     contentfulClient

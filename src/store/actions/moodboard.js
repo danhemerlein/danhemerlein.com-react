@@ -1,7 +1,7 @@
 import contentfulClient from "../../contentfulClient";
 
 export const getMoodboardContent = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(getMoodboardStarted());
 
     contentfulClient

@@ -5,29 +5,23 @@ import get from "utils/get";
 import "./Moodboard.scss";
 
 export default class Moodboard extends Component {
-  /**
-   * Check if an element is in viewport
-   *
-   * @param {number} [offset]
-   * @returns {boolean}
-   */
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
   isInViewport = () => {
     if (!this.elem) return false;
-    const top = this.elem.getBoundingClientRect().top;
+    const { top } = this.elem.getBoundingClientRect();
     return top + 80 <= window.innerHeight;
   };
 
   handleScroll = () => {
-    let bool = this.isInViewport();
+    const bool = this.isInViewport();
 
     if (bool) {
       window.scrollTo(0, 0);
     }
   };
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  }
 
   renderGalleryRow = (imageGroup, index) => {
     return (
@@ -68,7 +62,7 @@ export default class Moodboard extends Component {
         <div className="full-width flex justify-center my3">
           <GoHomeBack destination="/" cta="go back" white={false} />
         </div>
-        <div ref={(el) => (this.elem = el)}></div>
+        <div ref={(el) => (this.elem = el)} />
       </div>
     );
   }

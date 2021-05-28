@@ -32,6 +32,6 @@ const CodeProjects = (state = initState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default CodeProjects;

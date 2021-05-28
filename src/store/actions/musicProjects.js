@@ -4,7 +4,7 @@ import addProjectHandle from "../../utils/musicProjects/addProjectHandle";
 import createLinksObject from "../../utils/musicProjects/createLinksObject";
 
 export const getMusicProjectsContent = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(getMusicProjectsStarted());
 
     contentfulClient

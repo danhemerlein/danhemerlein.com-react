@@ -27,8 +27,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  // parser: "babel-eslint",
-  plugins: ["react", "prettier"],
+  plugins: ["react", "prettier", "jsx-a11y", "import"],
   rules: {
     "react/jsx-filename-extension": [
       1,
@@ -39,6 +38,7 @@ module.exports = {
     "react/prop-types": 0,
     // suppress jsx one expression per line error
     "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
     // suppress errors for missing 'import React' in files
     "react/react-in-jsx-scope": "off",
     // allow jsx syntax in js files (for next.js project)
@@ -49,7 +49,6 @@ module.exports = {
     semi: "error",
     "no-use-before-define": ["error", { variables: false }],
     "no-var": 0,
-    "selector-pseudo-element-colon-notation": 2,
     "import/no-unresolved": 0,
     "import/no-webpack-loader-syntax": 0,
     "consistent-return": 0,

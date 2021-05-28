@@ -1,13 +1,11 @@
 import React from "react";
 import "./styles.scss";
 
-const ListLinkCodeProject = (props) => {
-  const { project } = props;
-
+const ListLinkCodeProject = ({ project }) => {
   return (
     <div className="ListLinkCodeProject col-12 md:col-6 mb2 px2 md:px0">
       <div className="flex md:justify-center">
-         <a
+        <a
           href={project.fields.link}
           target="_blank"
           rel="noopener noreferrer"
@@ -19,8 +17,7 @@ const ListLinkCodeProject = (props) => {
         </a>
       </div>
     </div>
-  )
+  );
+};
 
-}
-
-export default ListLinkCodeProject
+export default ListLinkCodeProject;

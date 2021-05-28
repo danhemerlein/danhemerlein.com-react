@@ -1,7 +1,7 @@
 import contentfulClient from "../../contentfulClient";
 
 export const getCodeProjectsContent = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(getCodeProjectsStarted());
 
     contentfulClient

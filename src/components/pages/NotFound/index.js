@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import debounce from "utils/debounce";
-
-import './NotFound.scss'
+import "./NotFound.scss";
 
 export default class NotFound extends Component {
   setHeightNF = () => {
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
+    const header = document.querySelector("header");
+    const footer = document.querySelector("footer");
     const notFound = document.querySelector(".NotFound");
 
     const headerFooter = header.offsetHeight + footer.offsetHeight;
 
     // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
-    const nfHeight = ((window.innerHeight - headerFooter) - 48);
+    const nfHeight = window.innerHeight - headerFooter - 48;
 
     notFound.style.height = nfHeight + "px";
-  }
+  };
 
   debounceNFHeight = () => {
     debounce(this.setHeightNF(), 100);
-  }
+  };
 
   componentDidMount = () => {
     this.setHeightNF();
     window.addEventListener("resize", this.debounceNFHeight);
-  }
+  };
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.debounceNFHeight);
@@ -44,9 +43,7 @@ export default class NotFound extends Component {
               You might want to <Link to="/">return home</Link>
             </h3>
           </div>
-          <div className="">
-            {this.props.icon}
-          </div>
+          <div className="">{this.props.icon}</div>
         </div>
       </div>
     );
