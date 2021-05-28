@@ -1,26 +1,24 @@
+import cx from "classnames";
+import Menu from "components/navigation/Menu";
+import MobileNav from "components/navigation/MobileNav";
+import MobileNavOverlay from "components/navigation/MobileNavOverlay";
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Header.scss";
 
-import './Header.scss'
-import cx from 'classnames';
-
-import Menu                   from 'components/navigation/Menu';
-import MobileNav              from 'components/navigation/MobileNav';
-import MobileNavOverlay       from "components/navigation/MobileNavOverlay";
-
-const Header = (props) => {
+const Header = ({ mobileNavOpen, toggleMobileNav }) => {
   return (
     <header className="Header relative">
       <MobileNavOverlay
-        navOpen={props.mobileNavOpen}
-        clickHandler={props.toggleMobileNav}
+        navOpen={mobileNavOpen}
+        clickHandler={toggleMobileNav}
       />
       <div
         className={cx("Header__mobile-nav", {
-          "Header__mobile-nav--active": props.mobileNavOpen,
+          "Header__mobile-nav--active": mobileNavOpen,
         })}
       >
-        <MobileNav clickHandler={props.toggleMobileNav} />
+        <MobileNav clickHandler={toggleMobileNav} />
       </div>
       <div id="header" className="flex body-serif">
         <div className="Header__title col-6">
@@ -28,7 +26,8 @@ const Header = (props) => {
             <Link to="/">dan hemerlein</Link>
           </h1>
           <h2 className="Header__sub-headline m0">
-            <Link to="/code">font-end engineer</Link> /{" "}
+            <Link to="/code">font-end engineer</Link>
+            <span>&nbsp;/&nbsp;</span>
             <Link to="/music">music producer</Link>
           </h2>
         </div>
@@ -42,12 +41,12 @@ const Header = (props) => {
           </nav>
 
           <div className="Header__mobile-nav-toggle">
-            <Menu clickHandler={props.toggleMobileNav} />
+            <Menu clickHandler={toggleMobileNav} />
           </div>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
 export default Header;

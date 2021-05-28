@@ -1,22 +1,20 @@
+import cx from "classnames";
 import React from "react";
 import { Link } from "react-router-dom";
-
-import cx from "classnames";
-
 import "./GoHomeBack.scss";
 
-const GoHomeBack = (props) => {
+const GoHomeBack = ({ white, destination, cta }) => {
   return (
     <div
-        className={cx("GoHomeBack", {
-          "GoHomeBack__white ": props.white
-        })}
-      >
-      <Link to={props.destination}>
-        <span className="body-serif">{props.cta}</span>
+      className={cx("GoHomeBack", {
+        "GoHomeBack__white ": white,
+      })}
+    >
+      <Link to={destination}>
+        <span className="body-serif">{cta}</span>
       </Link>
     </div>
-  )
-}
+  );
+};
 
 export default GoHomeBack;

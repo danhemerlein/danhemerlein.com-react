@@ -1,13 +1,9 @@
-import React from 'react';
-
-import './styles/app.scss';
-
 import Site from "components/Site";
+import React from "react";
+import "./styles/app.scss";
 
 const App = () => {
-  return (
-    <Site />
-  );
-}
+  return <Site />;
+};
 
 export default App;
