@@ -1,4 +1,5 @@
 import React from "react";
+import { makeKey } from "utils";
 import "./styles.scss";
 
 const Links = (props) => {
@@ -35,19 +36,19 @@ const Links = (props) => {
           href={link.link}
           target="_blank"
           rel="noopener noreferrer"
-          key={key}
+          key={makeKey(key)}
         >
           <div
             className="ProjectLink__inner color-white
             flex justify-between w100 mb2"
-            key={key}
+            key={makeKey(key)}
           >
-            {i.map((sym, key) => {
-              return <span key={key}>{sym}</span>;
+            {i.map((sym, iSymbolKey) => {
+              return <span key={makeKey(iSymbolKey)}>{sym}</span>;
             })}
             <span>{link.title}</span>
-            {j.map((sym, key) => {
-              return <span key={key}>{sym}</span>;
+            {j.map((sym, jSymbolKey) => {
+              return <span key={makeKey(jSymbolKey)}>{sym}</span>;
             })}
           </div>
         </a>
@@ -61,8 +62,8 @@ const Links = (props) => {
         >
           <div className="color-white flex justify-between w100 mb1">
             <span>{key}</span>
-            {k.map((sym, key) => {
-              return <span key={key}>{sym}</span>;
+            {k.map((sym, kSymbolKey) => {
+              return <span key={makeKey(kSymbolKey)}>{sym}</span>;
             })}
             <span>{link.title}</span>
           </div>

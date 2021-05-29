@@ -29,7 +29,7 @@ const HighlightCodeProject = ({
       </div>
 
       <div className="HighlightCodeProject__content mt2">
-        {project.fields.description.content.map((node, key) =>
+        {project.fields.description.content.map((node) =>
           documentToReactComponents(node)
         )}
       </div>

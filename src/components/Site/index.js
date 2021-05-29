@@ -21,7 +21,6 @@ import {
 } from "react-router-dom";
 import { getMoodboardContent } from "../../store/actions/moodboard";
 import { getMusicProjectsContent } from "../../store/actions/musicProjects";
-// import Contact                                                  from "components/pages/Contact";
 import "./Site.scss";
 
 function Site(props) {
@@ -49,12 +48,12 @@ function Site(props) {
   let musicPageRoutes;
 
   if (!musicProjectsLoading && musicProjects.length) {
-    musicPageRoutes = musicProjects.map((project, key) => {
+    musicPageRoutes = musicProjects.map((project) => {
       const handle = `/music/${project.fields.handle}`;
       return (
         <Route
           path={handle}
-          key={key}
+          key={project}
           render={(props) => <MusicProject {...props} project={project} />}
         />
       );

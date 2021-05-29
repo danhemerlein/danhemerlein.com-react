@@ -11,6 +11,7 @@ export default (func, wait, options) => {
     result = func.apply(context, args);
     if (!timeout) context = args = null;
   };
+
   return function () {
     const now = Date.now();
     if (!previous && options.leading === false) previous = now;

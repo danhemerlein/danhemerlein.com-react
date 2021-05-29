@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { makeKey } from "utils";
 import data from "./q1-2021.json";
 
 const CategoryTitle = styled.strong`
@@ -20,19 +21,19 @@ const Blog = () => {
 
       <div>
         <CategoryTitle>music</CategoryTitle>
-        {music.music.map((album, key) => {
+        {music.music.map((album, albumMonthKey) => {
           return (
-            <div key={key} className="my1">
+            <div key={makeKey(albumMonthKey)} className="my1">
               <p>
                 <CategoryTitle>{album.month}</CategoryTitle>
               </p>
 
-              {album.data.map((data, key) => {
+              {album.data.map((albumData, albumKey) => {
                 return (
-                  <p key={key}>
-                    <StyledSpan>{data.title}</StyledSpan>&nbsp;
-                    <span>({data.releaseYear})</span>
-                    <span> by {data.artist}</span>
+                  <p key={makeKey(albumKey)}>
+                    <StyledSpan>{albumData.title}</StyledSpan>&nbsp;
+                    <span>({albumData.releaseYear})</span>
+                    <span> by {albumData.artist}</span>
                   </p>
                 );
               })}
@@ -43,19 +44,19 @@ const Blog = () => {
 
       <div>
         <CategoryTitle>books</CategoryTitle>
-        {books.books.map((book, key) => {
+        {books.books.map((book, bookMonthKey) => {
           return (
-            <div key={key} className="my1">
+            <div key={makeKey(bookMonthKey)} className="my1">
               <p>
                 <CategoryTitle>{book.month}</CategoryTitle>
               </p>
 
-              {book.data.map((data, key) => {
+              {book.data.map((bookData, bookKey) => {
                 return (
-                  <p key={key}>
-                    <StyledSpan>{data.title}</StyledSpan>&nbsp;
-                    <span>({data.releaseYear})</span>
-                    <span> by {data.author}</span>
+                  <p bookKey={makeKey(bookKey)}>
+                    <StyledSpan>{bookData.title}</StyledSpan>&nbsp;
+                    <span>({bookData.releaseYear})</span>
+                    <span> by {bookData.author}</span>
                   </p>
                 );
               })}
@@ -66,18 +67,18 @@ const Blog = () => {
 
       <div>
         <CategoryTitle>movies</CategoryTitle>
-        {movies.movies.map((movie, key) => {
+        {movies.movies.map((movie, movieMonthKey) => {
           return (
-            <div key={key} className="my1">
+            <div key={makeKey(movieMonthKey)} className="my1">
               <p>
                 <CategoryTitle>{movie.month}</CategoryTitle>
               </p>
 
-              {movie.data.map((data, key) => {
+              {movie.data.map((movieData, movieKey) => {
                 return (
-                  <p key={key}>
-                    <span>{data.title}</span>&nbsp;
-                    <span>({data.releaseYear})</span>
+                  <p key={makeKey(movieKey)}>
+                    <span>{movieData.title}</span>&nbsp;
+                    <span>({movieData.releaseYear})</span>
                   </p>
                 );
               })}
@@ -88,18 +89,18 @@ const Blog = () => {
 
       <div>
         <CategoryTitle>tv shows</CategoryTitle>
-        {tvShows.tvShows.map((show, key) => {
+        {tvShows.tvShows.map((show, tvShowsMonthKey) => {
           return (
-            <div key={key} className="my1">
+            <div key={makeKey(tvShowsMonthKey)} className="my1">
               <p>
                 <CategoryTitle>{show.month}</CategoryTitle>
               </p>
 
-              {show.data.map((data, key) => {
+              {show.data.map((showData, showKey) => {
                 return (
-                  <p key={key}>
-                    <span>{data.title}</span>&nbsp;
-                    <span>({data.releaseYear})</span>
+                  <p key={makeKey(showKey)}>
+                    <span>{showData.title}</span>&nbsp;
+                    <span>({showData.releaseYear})</span>
                   </p>
                 );
               })}

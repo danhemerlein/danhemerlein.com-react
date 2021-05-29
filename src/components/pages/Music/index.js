@@ -24,6 +24,7 @@ const Music = (props) => {
   }, [dispatch]);
 
   function handleChange(event) {
+    console.log(sort);
     setSort(event.target.value);
 
     if (event.target.value === "") {
@@ -76,8 +77,8 @@ const Music = (props) => {
       >
         <MusicSort handleChange={handleChange} />
 
-        {activeProjects.map((project, key) => {
-          return <ProjectPreview project={project} key={key} />;
+        {activeProjects.map((project) => {
+          return <ProjectPreview project={project} key={project} />;
         })}
 
         <div className="w100 flex justify-center mb3">

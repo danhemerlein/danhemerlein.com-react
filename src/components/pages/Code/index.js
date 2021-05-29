@@ -1,6 +1,7 @@
 import GoHomeBack from "components/base/GoHomeBack";
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
+import { makeKey } from "utils";
 import { getCodeProjectsContent } from "../../../store/actions/codeProjects";
 import BottomCodeProject from "./BottomCodeProject";
 import "./Code.scss";
@@ -33,16 +34,22 @@ const Code = (props) => {
   }
   return (
     <div className="Code flex items-center justify-center flex-col body-serif my1">
-      {topLinks.map((project, key) => {
-        return <TopCodeProject project={project} index={key} key={key} />;
+      {topLinks.map((project, topLinkKey) => {
+        return (
+          <TopCodeProject
+            project={project}
+            index={topLinkKey}
+            key={makeKey(topLinkKey)}
+          />
+        );
       })}
 
-      {highlight.map((project, key) => {
+      {highlight.map((project, projectKey) => {
         return (
           <HighlightCodeProject
             project={project}
-            index={key}
-            key={key}
+            index={projectKey}
+            key={makeKey(projectKey)}
             gradientRotation="45deg"
             gradientStart="#fff"
             gradientEnd="#ff6ad5"
@@ -59,7 +66,11 @@ const Code = (props) => {
         <div className="Code__list-links-container flex col-12 md:col-8">
           {listLinks.map((project, key) => {
             return (
-              <ListLinkCodeProject project={project} index={key} key={key} />
+              <ListLinkCodeProject
+                project={project}
+                index={key}
+                key={project}
+              />
             );
           })}
         </div>
@@ -77,7 +88,7 @@ const Code = (props) => {
         <div className="mt2">
           {bottomLinks.map((project, key) => {
             return (
-              <BottomCodeProject project={project} index={key} key={key} />
+              <BottomCodeProject project={project} index={key} key={project} />
             );
           })}
         </div>

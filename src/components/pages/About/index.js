@@ -21,8 +21,8 @@ const AboutPage = (props) => {
     loadContent();
   }, [dispatch]);
 
-  var header = document.querySelector("header");
-  var footer = document.querySelector("footer");
+  const header = document.querySelector("header");
+  const footer = document.querySelector("footer");
 
   const height = useHeight(header, footer);
 

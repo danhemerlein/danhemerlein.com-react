@@ -4,6 +4,19 @@ import debounce from "utils/debounce";
 import "./NotFound.scss";
 
 export default class NotFound extends Component {
+  componentDidMount = () => {
+    this.setHeightNF();
+    window.addEventListener("resize", this.debounceNFHeight);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.debounceNFHeight);
+  }
+
+  debounceNFHeight = () => {
+    debounce(this.setHeightNF(), 100);
+  };
+
   setHeightNF = () => {
     const header = document.querySelector("header");
     const footer = document.querySelector("footer");
@@ -14,23 +27,10 @@ export default class NotFound extends Component {
     // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
     const nfHeight = window.innerHeight - headerFooter - 48;
 
-    notFound.style.height = nfHeight + "px";
+    notFound.style.height = `${nfHeight}px`;
   };
 
-  debounceNFHeight = () => {
-    debounce(this.setHeightNF(), 100);
-  };
-
-  componentDidMount = () => {
-    this.setHeightNF();
-    window.addEventListener("resize", this.debounceNFHeight);
-  };
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.debounceNFHeight);
-  }
-
-  render() {
+  render({ icon }) {
     return (
       <div className="NotFound">
         <div className="NotFound__inner body-serif flex items-center flex-column full-height">
@@ -43,7 +43,7 @@ export default class NotFound extends Component {
               You might want to <Link to="/">return home</Link>
             </h3>
           </div>
-          <div className="">{this.props.icon}</div>
+          <div className="">{icon}</div>
         </div>
       </div>
     );

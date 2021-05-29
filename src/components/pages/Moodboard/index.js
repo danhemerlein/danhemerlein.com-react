@@ -58,7 +58,6 @@ export default class Moodboard extends Component {
         {imageMatrix.map((imageGroup, index) =>
           this.renderGalleryRow(imageGroup, index, imageMatrix)
         )}
-        {/* <ScrollToTop scrollStepInPx="75" delayInMs="10" /> */}
         <div className="full-width flex justify-center my3">
           <GoHomeBack destination="/" cta="go back" white={false} />
         </div>

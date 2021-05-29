@@ -29,12 +29,8 @@ const heightTrottle = (height1, height2) => {
 
 const useHeight = (header, footer) => {
   const [height, setHeight] = useState(() => getHeight(header, footer));
-  const [headerHeight, setHeaderHeight] = useState(() =>
-    getHeaderHeight(header)
-  );
-  const [footerHeight, setFooterHeight] = useState(() =>
-    getFooterHeight(footer)
-  );
+  const [headerHeight] = useState(() => getHeaderHeight(header));
+  const [footerHeight] = useState(() => getFooterHeight(footer));
 
   useEffect(() => {
     const calcHeight = throttle(function () {

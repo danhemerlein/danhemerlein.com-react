@@ -32,6 +32,6 @@ const MusicProjects = (state = initState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default MusicProjects;
