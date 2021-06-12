@@ -102,8 +102,6 @@ function Site(props) {
         {musicPageRoutes}
 
         <Route render={() => <NotFound icon={<NotFoundIcon />} />} />
-
-        {/* <Route exact path="/keep-in-touch" render={() => <Contact />} /> */}
       </Switch>
     );
   }

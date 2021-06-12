@@ -20,6 +20,7 @@ const Header = ({ mobileNavOpen, toggleMobileNav }) => {
       >
         <MobileNav clickHandler={toggleMobileNav} />
       </div>
+
       <div id="header" className="flex body-serif">
         <div className="Header__title col-6">
           <h1 className="m0">
