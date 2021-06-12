@@ -5,20 +5,41 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
-import { spacing } from "../../../utils";
-import "./Header.scss";
+import { above, anchorColor } from "../../../styles/utilities";
+
+const StyledHeader = styled.header`
+  position: relative;
+`;
+
+const StyledLink = styled(Link)`
+  ${anchorColor({
+    color: "black",
+  })};
+`;
 
 const HeadlineContainer = styled(FlexContainer)`
   width: 50%;
 `;
 
 const SubHeadline = styled.h2`
-  padding: 0 ${spacing[0.25]};
+  display: none;
+
+  ${above.tablet`
+    display: block;
+  `}
+`;
+
+const AboutContainer = styled.nav`
+  display: none;
+
+  ${above.tablet`
+    display: block;
+  `}
 `;
 
 const Header = ({ mobileNavOpen, toggleMobileNav }) => {
   return (
-    <header className="Header relative">
+    <StyledHeader>
       <MobileNavOverlay
         navOpen={mobileNavOpen}
         clickHandler={toggleMobileNav}
@@ -29,24 +50,24 @@ const Header = ({ mobileNavOpen, toggleMobileNav }) => {
       <FlexContainer id="header">
         <HeadlineContainer direction="column">
           <h1>
-            <Link to="/">dan hemerlein</Link>
+            <StyledLink to="/">dan hemerlein</StyledLink>
           </h1>
           <SubHeadline>
-            <Link to="/code">web engineer</Link>
+            <StyledLink to="/code">web engineer</StyledLink>
             <span>&nbsp;/&nbsp;</span>
-            <Link to="/music">music producer</Link>
+            <StyledLink to="/music">music producer</StyledLink>
           </SubHeadline>
         </HeadlineContainer>
 
         <HeadlineContainer justify="flex-end" items="center">
-          <nav className="Header__desktop-nav" role="navigation">
-            <Link to="/about">about</Link>
-          </nav>
+          <AboutContainer role="navigation">
+            <StyledLink to="/about">about</StyledLink>
+          </AboutContainer>
 
           <Menu clickHandler={toggleMobileNav} />
         </HeadlineContainer>
       </FlexContainer>
-    </header>
+    </StyledHeader>
   );
 };
 

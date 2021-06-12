@@ -1,9 +1,0 @@
-@import "../../styles/app.scss";
-
-.Site {
-  padding: 1rem 1rem 0.5rem 1rem;
-
-  @include common-bp(tablet) {
-    padding: 2rem 2rem 1rem 2rem;
-  }
-}

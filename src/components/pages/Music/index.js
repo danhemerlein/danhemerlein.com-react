@@ -24,7 +24,6 @@ const Music = (props) => {
   }, [dispatch]);
 
   function handleChange(event) {
-    console.log(sort);
     setSort(event.target.value);
 
     if (event.target.value === "") {
