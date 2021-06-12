@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import { css } from "styled-components";
 
 // media queries in styled components
@@ -16,3 +17,20 @@ export const above = Object.keys(sizes).reduce((accumulater, label) => {
   `;
   return accumulater;
 }, {});
+
+export const BREAKPOINT = {
+  mobile: "320px",
+  tablet: "720px",
+  desktop: "1024px",
+  desktopMax: "1440px",
+};
+
+/**
+ * Check if the current viewport is greater or equal to given breakpoint
+ * @param {string} "tablet", "desktop" or "desktopMax"
+ * @returns {boolean}
+ */
+export const checkMediaQuery = (breakpoint) =>
+  useMediaQuery({
+    query: `(min-width: ${breakpoint})`,
+  });

@@ -29,6 +29,7 @@ import { spacing } from "./utils";
 const AppContainer = styled.div`
   padding: ${spacing[1]};
   ${bodySerif}
+  overflow: hidden;
 `;
 
 function App(props) {
