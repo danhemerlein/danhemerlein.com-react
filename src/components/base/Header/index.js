@@ -3,7 +3,18 @@ import MobileNav from "components/navigation/MobileNav";
 import MobileNavOverlay from "components/navigation/MobileNavOverlay";
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import { spacing } from "../../../utils";
 import "./Header.scss";
+
+const HeadlineContainer = styled(FlexContainer)`
+  width: 50%;
+`;
+
+const SubHeadline = styled.h2`
+  padding: 0 ${spacing[0.25]};
+`;
 
 const Header = ({ mobileNavOpen, toggleMobileNav }) => {
   return (
@@ -15,30 +26,26 @@ const Header = ({ mobileNavOpen, toggleMobileNav }) => {
 
       <MobileNav clickHandler={toggleMobileNav} navOpen={mobileNavOpen} />
 
-      <div id="header" className="flex body-serif">
-        <div className="Header__title col-6">
-          <h1 className="m0">
+      <FlexContainer id="header">
+        <HeadlineContainer direction="column">
+          <h1>
             <Link to="/">dan hemerlein</Link>
           </h1>
-          <h2 className="Header__sub-headline m0">
+          <SubHeadline>
             <Link to="/code">web engineer</Link>
             <span>&nbsp;/&nbsp;</span>
             <Link to="/music">music producer</Link>
-          </h2>
-        </div>
+          </SubHeadline>
+        </HeadlineContainer>
 
-        <div className="flex justify-end items-center col-6">
+        <HeadlineContainer justify="flex-end" items="center">
           <nav className="Header__desktop-nav" role="navigation">
-            <ul className="list-style-none p0">
-              <li className="inline-block ml2">
-                <Link to="/about">about</Link>
-              </li>
-            </ul>
+            <Link to="/about">about</Link>
           </nav>
 
           <Menu clickHandler={toggleMobileNav} />
-        </div>
-      </div>
+        </HeadlineContainer>
+      </FlexContainer>
     </header>
   );
 };

@@ -2,14 +2,6 @@
 
 .Header {
   @include anchor-black;
-  overflow: hidden;
-
-  &__title {
-    display: flex;
-    align-items: flex-start;
-    font-size: 1.2rem;
-    flex-direction: column;
-  }
 
   &__desktop-nav,
   &__sub-headline {
@@ -21,7 +13,4 @@
     }
   }
 
-  &__sub-headline {
-    padding: 4px 0 4px 0;
-  }
 }

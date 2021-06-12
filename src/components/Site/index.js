@@ -113,7 +113,7 @@ function Site(props) {
     return <div className="p2">loading...</div>;
   }
   return (
-    <div className="Site">
+    <div className="Site body-serif">
       <Router>
         <Header
           toggleMobileNav={toggleMobileNav}
