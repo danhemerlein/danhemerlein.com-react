@@ -67,7 +67,7 @@ const AboutPage = (props) => {
     }
   `;
   return (
-    <div className="About pt2 flex flex-col body-serif" style={pageStyle}>
+    <div className="About pt2 flex flex-col" style={pageStyle}>
       <div
         className="flex items-center justify-center col-12 flex-wrap"
         style={innerStyle}

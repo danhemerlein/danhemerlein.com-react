@@ -5,7 +5,7 @@ const MusicSort = ({ handleChange }) => {
   return (
     <div className="MusicSort full-width flex justify-center mb1 md:mb2">
       <div className="flex flex-col">
-        <label className="MusicSort__label  body-serif  text-white">
+        <label className="MusicSort__label text-white">
           sort
           <select
             onChange={(event) => handleChange(event)}

@@ -27,7 +27,7 @@ import { bodySerif } from "./styles/utilities";
 import { spacing } from "./utils";
 
 const AppContainer = styled.div`
-  padding: ${spacing[2]};
+  padding: ${spacing[1]};
   ${bodySerif}
 `;
 

@@ -19,7 +19,7 @@ const TopCodeProject = ({ project, index }) => {
   `;
 
   return (
-    <div className="TopCodeProject mt1 p2 w100 body-serif">
+    <div className="TopCodeProject mt1 p2 w100">
       <TitleContainer>
         <div className="flex flex-col items-center justify-center">
           <a

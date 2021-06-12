@@ -33,7 +33,7 @@ export default class NotFound extends Component {
   render({ icon }) {
     return (
       <div className="NotFound">
-        <div className="NotFound__inner body-serif flex items-center flex-column full-height">
+        <div className="NotFound__inner flex items-center flex-column full-height">
           <div className="mb4">
             <h3 className="NotFound__sub-headline">This is a 404 error</h3>
             <h3 className="NotFound__sub-headline">

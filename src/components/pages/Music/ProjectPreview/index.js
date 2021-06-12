@@ -8,7 +8,7 @@ const ProjectPreview = (props) => {
   return (
     <div
       className="ProjectPreview flex col-12 md:col-6
-      lg:col-3 body-serif mb1 md:mb2"
+      lg:col-3 mb1 md:mb2"
     >
       <div className="ProjectPreview__container flex relative mx0 my0 md:mx1 flex-col md:flex-row">
         <Link to={`/music/${project.fields.handle}`}>

@@ -33,7 +33,7 @@ const Code = (props) => {
     return <div className="p2">loading...</div>;
   }
   return (
-    <div className="Code flex items-center justify-center flex-col body-serif my1">
+    <div className="Code flex items-center justify-center flex-col my1">
       {topLinks.map((project, topLinkKey) => {
         return (
           <TopCodeProject

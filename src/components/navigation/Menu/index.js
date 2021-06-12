@@ -17,7 +17,7 @@ const StyledButton = styled.button`
 const Menu = ({ clickHandler }) => {
   return (
     <StyledButton type="button" onClick={clickHandler}>
-      <h3 className="body-serif">menu</h3>
+      menu
     </StyledButton>
   );
 };

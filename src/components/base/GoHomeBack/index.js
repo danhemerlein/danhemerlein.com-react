@@ -11,7 +11,7 @@ const GoHomeBack = ({ white, destination, cta }) => {
       })}
     >
       <Link to={destination}>
-        <span className="body-serif">{cta}</span>
+        <span>{cta}</span>
       </Link>
     </div>
   );
