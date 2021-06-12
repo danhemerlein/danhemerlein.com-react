@@ -5,53 +5,145 @@ import MusicIcon from "components/base/icons/Music";
 import FullScreenHeight from "components/other/FullScreenHeight";
 import React from "react";
 import { Link } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import { above } from "../../../styles/utilities";
+import { spacing } from "../../../utils";
 import HomeBox from "./HomeBox";
-import "./Index.scss";
 
 export default function Index() {
   return (
     <FullScreenHeight>
-      <div className="flex w100 flex-col md:flex-row">
-        <div className="flex flex-row md:flex-col w100 flex-wrap md:flex-nowrap">
-          <div className="Index__top-left w100">
+      <IndexContainer>
+        <RowContainer index={0}>
+          <CodeLinkContainer>
             <Link to="/code">
               <HomeBox header="code" icon={<CodeIcon />} />
             </Link>
-          </div>
+          </CodeLinkContainer>
 
-          <div className="Index__bottom-left w100 mt1 none md:block">
-            <Link to="/moodboard">
-              <HomeBox header="moodboard" icon={<MoodboardIcon />} />
-            </Link>
-          </div>
-
-          <div className="Index__bottom-left w100 mt1 md:mt0 block md:none">
+          <MusicLinkContainer>
             <Link to="/music">
               <HomeBox header="music" icon={<MusicIcon />} />
             </Link>
-          </div>
-        </div>
+          </MusicLinkContainer>
+        </RowContainer>
 
-        <div className="flex flex-row md:flex-col w100 md:ml1 flex-wrap md:flex-nowrap">
-          <div className="Index__top-right w100 mt1 md:mt0 none md:block">
-            <Link to="/music">
-              <HomeBox header="music" icon={<MusicIcon />} />
-            </Link>
-          </div>
-
-          <div className="Index__top-right w100 mt1 block md:none">
+        <RowContainer index={1}>
+          <MoodboardLinkContainer>
             <Link to="/moodboard">
               <HomeBox header="moodboard" icon={<MoodboardIcon />} />
             </Link>
-          </div>
+          </MoodboardLinkContainer>
 
-          <div className="Index__bottom-right w100 mt1">
+          <AboutLinkContainer>
             <Link to="about">
               <HomeBox header="about" icon={<ContactIcon />} />
             </Link>
-          </div>
-        </div>
-      </div>
+          </AboutLinkContainer>
+        </RowContainer>
+      </IndexContainer>
     </FullScreenHeight>
   );
 }
+
+const SlideRight = keyframes`
+  0% {
+    transform: translate3d(-1%, 0, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+`;
+
+const SlideWideRight = keyframes`
+  0% {
+    transform: translate3d(-3%, 0, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+`;
+
+const SlideLeft = keyframes`
+  0% {
+    transform: translate3d(1%, 0, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+`;
+
+const SlideWideLeft = keyframes`
+  0% {
+    transform: translate3d(3%, 0, 0);
+  }
+
+  100% {
+    transform: transform3d(0, 0, 0);
+  }
+`;
+
+const LinkContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  ${above.tablet`
+    width: 50%;
+  `}
+`;
+
+const CodeLinkContainer = styled(LinkContainer)`
+  ${above.tablet`
+    animation: ${SlideRight} 2s;
+    margin-right: 1rem;
+  `}
+`;
+
+const MusicLinkContainer = styled(LinkContainer)`
+  margin-top: ${spacing[1]};
+
+  ${above.tablet`
+    animation: ${SlideLeft} 2s;
+    margin-top: 0;
+  `}
+`;
+
+const MoodboardLinkContainer = styled(LinkContainer)`
+  margin-top: ${spacing[1]};
+
+  ${above.tablet`
+    animation: ${SlideWideRight} 2.5s;
+    margin-right: 1rem;
+    margin-top: 0;
+  `}
+`;
+
+const AboutLinkContainer = styled(LinkContainer)`
+  margin-top: ${spacing[1]};
+
+  ${above.tablet`
+    animation: ${SlideWideLeft} 2.5s;
+    margin-top: 0;
+  `}
+`;
+
+const IndexContainer = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+`;
+
+const RowContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  ${above.tablet`
+    flex-direction: row;
+    ${({ index }) => index === 0 && `margin-bottom: ${spacing[1]}`};
+  `};
+`;
