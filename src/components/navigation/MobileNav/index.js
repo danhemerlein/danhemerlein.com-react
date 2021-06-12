@@ -1,11 +1,37 @@
 import CloseIcon from "components/base/icons/Close";
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { spacing } from "../../../utils";
 import "./MobileNav.scss";
 
-const MobileNav = ({ clickHandler }) => {
+const Nav = styled.div`
+  z-index: 5;
+  transform: translateX(226px);
+  right: 0;
+  top: 0;
+  transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  position: absolute;
+  width: 210px;
+  height: 100vh;
+  display: block;
+  overflow-y: scroll;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: ${spacing[1]};
+
+  ${({ navOpen }) =>
+    navOpen &&
+    `
+      transform: translateX(0);
+      position: fixed;
+  `};
+`;
+
+const MobileNav = ({ clickHandler, navOpen }) => {
   return (
-    <div className="MobileNav bg-white flex flex-col p1">
+    <Nav navOpen={navOpen}>
       <div className="flex items-end justify-end">
         <div className="MobileNav__close-icon pointer">
           <CloseIcon clickHandler={clickHandler} />
@@ -92,7 +118,7 @@ const MobileNav = ({ clickHandler }) => {
           </li>
         </ul>
       </nav>
-    </div>
+    </Nav>
   );
 };
 
