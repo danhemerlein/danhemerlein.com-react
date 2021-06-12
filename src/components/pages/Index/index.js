@@ -11,7 +11,7 @@ import "./Index.scss";
 export default function Index() {
   return (
     <FullScreenHeight>
-      <div className="flex h100 flex-col md:flex-row">
+      <div className="flex w100 flex-col md:flex-row">
         <div className="flex flex-row md:flex-col w100 flex-wrap md:flex-nowrap">
           <div className="Index__top-left w100">
             <Link to="/code">
