@@ -4,12 +4,7 @@
   margin-left: -1rem;
   margin-right: -1rem;
 
-  @include common-bp(tablet) {
-    margin-left: -2rem;
-    margin-right: -2rem;
-  }
-
   &__projects-container {
-    background-image: linear-gradient(90deg, #ff6ad5, #8795e8);
+    background-image: linear-gradient(45deg, #000, #c23b22);
   }
 }
