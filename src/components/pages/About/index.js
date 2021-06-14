@@ -30,11 +30,20 @@ const AboutPage = (props) => {
 
   const bgImage = aboutPage[0];
 
+  const ContentContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    ${above.tablet`
+      flex-direction: row;
+    `}
+  `;
+
   const ImageContainer = styled.div`
     width: 100%;
     display: flex;
 
-    ${above.tablet`
+    ${above.desktop`
       width: 50%;
     `}
   `;
@@ -42,6 +51,14 @@ const AboutPage = (props) => {
   const StyledImage = styled.img`
     width: 50%;
     margin: 0 auto;
+
+    ${above.tablet`
+      width: 75%;
+    `}
+
+    ${above.desktop`
+      width: 50%;
+    `}
   `;
 
   const TextContainer = styled.div`
@@ -70,45 +87,49 @@ const AboutPage = (props) => {
 
   return (
     <FullScreenHeight>
-      <ImageContainer>
-        <StyledImage src={bgImage.fields.heroImage.fields.file.url} alt="" />
-      </ImageContainer>
+      <ContentContainer>
+        <ImageContainer>
+          <StyledImage src={bgImage.fields.heroImage.fields.file.url} alt="" />
+        </ImageContainer>
 
-      <TextContainer>
-        <StyledParagraph>hey I'm Dan (he/him),</StyledParagraph>
+        <TextContainer>
+          <StyledParagraph>hey I'm Dan (he/him),</StyledParagraph>
 
-        <StyledParagraph index={1}>
-          I'm a front-end web engineer and music producer based in Brooklyn, New
-          York.
-        </StyledParagraph>
+          <StyledParagraph index={1}>
+            I'm a front-end web engineer and music producer based in Brooklyn,
+            New York.
+          </StyledParagraph>
 
-        <StyledParagraph index={2}>
-          As a coder, I'm really into JavaScript, e-commerce, CSS,
-          accessibility, developer experience and learning something new every
-          day. I find a lot of joy in the process of achieving a technical goal.
-        </StyledParagraph>
+          <StyledParagraph index={2}>
+            As a coder, I'm really into JavaScript, e-commerce, CSS,
+            accessibility, developer experience and learning something new every
+            day. I find a lot of joy in the process of achieving a technical
+            goal.
+          </StyledParagraph>
 
-        <StyledParagraph index={3}>
-          Back before the pandemic you could find me playing shows with
-          indie-rock bands all over Manhattan and Brooklyn. These days, I mostly
-          write and produce songs on my own out of my home studio. I’m planning
-          to release a few tracks from a side project I’m currently manifesting
-          in spring 2021.
-        </StyledParagraph>
+          <StyledParagraph index={3}>
+            Back before the pandemic you could find me playing shows with
+            indie-rock bands all over Manhattan and Brooklyn. These days, I
+            mostly write and produce songs on my own out of my home studio. I’m
+            planning to release a few tracks from a side project I’m currently
+            manifesting in spring 2021.
+          </StyledParagraph>
 
-        <StyledParagraph index={4}>
-          In my non-code/non-music time, I journal, read,&nbsp;
-          <StyledLink to="/blog">
-            <span className="underline">blog?</span>
-          </StyledLink>
-          &nbsp;moodboard, jog in McCarren Park and aimlessly ride my bike
-          around the city.
-        </StyledParagraph>
+          <StyledParagraph index={4}>
+            In my non-code/non-music time, I journal, read,&nbsp;
+            <StyledLink to="/blog">
+              <span className="underline">blog?</span>
+            </StyledLink>
+            &nbsp;moodboard, jog in McCarren Park and aimlessly ride my bike
+            around the city.
+          </StyledParagraph>
 
-        <StyledParagraph index={5}>
-          I write code and make music because I can't not and it's super trill.
-        </StyledParagraph>
-      </TextContainer>
+          <StyledParagraph index={5}>
+            I write code and make music because I can't not and it's super
+            trill.
+          </StyledParagraph>
+        </TextContainer>
+      </ContentContainer>
     </FullScreenHeight>
   );
 };

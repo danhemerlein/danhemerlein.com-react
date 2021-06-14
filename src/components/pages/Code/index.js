@@ -1,4 +1,5 @@
 import GoHomeBack from "components/base/GoHomeBack";
+import Loading from "components/other/Loading";
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { makeKey } from "utils";
@@ -30,7 +31,7 @@ const Code = (props) => {
     return null;
   }
   if (codeProjectsLoading === true && !codeProjectsLength) {
-    return <div className="p2">loading...</div>;
+    return <Loading />;
   }
   return (
     <div className="Code flex items-center justify-center flex-col my1">
