@@ -5,8 +5,14 @@ import MusicIcon from "components/base/icons/Music";
 import FullScreenHeight from "components/other/FullScreenHeight";
 import React from "react";
 import { Link } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
-import { above } from "../../../styles/utilities";
+import styled from "styled-components";
+import {
+  above,
+  SlideLeft,
+  SlideRight,
+  SlideWideLeft,
+  SlideWideRight,
+} from "../../../styles/utilities";
 import { spacing } from "../../../utils";
 import HomeBox from "./HomeBox";
 
@@ -45,46 +51,6 @@ export default function Index() {
     </FullScreenHeight>
   );
 }
-
-const SlideRight = keyframes`
-  0% {
-    transform: translate3d(-1%, 0, 0);
-  }
-
-  100% {
-    transform: transform3d(0, 0, 0);
-  }
-`;
-
-const SlideWideRight = keyframes`
-  0% {
-    transform: translate3d(-3%, 0, 0);
-  }
-
-  100% {
-    transform: transform3d(0, 0, 0);
-  }
-`;
-
-const SlideLeft = keyframes`
-  0% {
-    transform: translate3d(1%, 0, 0);
-  }
-
-  100% {
-    transform: transform3d(0, 0, 0);
-  }
-`;
-
-const SlideWideLeft = keyframes`
-  0% {
-    transform: translate3d(3%, 0, 0);
-  }
-
-  100% {
-    transform: transform3d(0, 0, 0);
-  }
-`;
 
 const LinkContainer = styled.div`
   width: 100%;

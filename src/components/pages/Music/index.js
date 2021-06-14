@@ -1,11 +1,36 @@
 import GoHomeBack from "components/base/GoHomeBack";
+import Loading from "components/other/Loading";
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
 import { getMusicPageContent } from "../../../store/actions/musicPage";
+import { above, fullBleed } from "../../../styles/utilities";
+import { spacing } from "../../../utils";
 import MusicHero from "./MusicHero";
-import "./MusicPage.scss";
 import MusicSort from "./MusicSort";
 import ProjectPreview from "./ProjectPreview";
+
+const PageContainter = styled(FlexContainer)`
+  ${fullBleed({ space: 1, right: true, left: true })};
+  margin-top: ${spacing[1]};
+  margin-bottom: ${spacing[1]};
+  background-image: linear-gradient(
+    180deg,
+    rgba(194, 59, 34, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(194, 59, 34, 1) 100%
+  );
+`;
+
+const ProjectPreviewContainer = styled(FlexContainer)`
+  flex-direction: column;
+  padding: 0 ${spacing[1]} 0 ${spacing[1]};
+
+  ${above.tablet`
+    flex-direction: row;
+  `}
+`;
 
 const Music = (props) => {
   const { musicPageLoading, musicPage, projects } = props;
@@ -63,17 +88,14 @@ const Music = (props) => {
     return null;
   }
   if (musicPageLoading === true && !content) {
-    return <div className="p2">loading...</div>;
+    return <Loading />;
   }
 
   return (
-    <div className="Music flex flex-wrap items-center justify-center my1">
+    <PageContainter wrap="wrap" items="center" justify="center">
       <MusicHero />
 
-      <div
-        className="Music__projects-container px3 pt3 flex items-center
-        justify-center flex-col flex-wrap md:flex-row"
-      >
+      <ProjectPreviewContainer wrap="wrap" items="center" justify="center">
         <MusicSort handleChange={handleChange} />
 
         {activeProjects.map((project) => {
@@ -83,8 +105,8 @@ const Music = (props) => {
         <div className="w100 flex justify-center mb3">
           <GoHomeBack destination="/" cta="go back" white />
         </div>
-      </div>
-    </div>
+      </ProjectPreviewContainer>
+    </PageContainter>
   );
 };
 
