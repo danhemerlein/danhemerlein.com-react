@@ -12,21 +12,24 @@ const Container = styled.div`
   padding: ${spacing[1]} 0;
 `;
 
-export default function FullScreenHeight({ children }) {
+export default function FullScreenHeight({
+  children,
+  unsetBreakpoint = "tablet",
+}) {
   const PADDING = 32;
   const HEADER_HEIGHT = 32;
   const FOOTER_HEIGHT = 16;
   const offset = PADDING + HEADER_HEIGHT + FOOTER_HEIGHT;
   const height = use100vh();
 
-  const isTabletUp = checkMediaQuery(BREAKPOINT.tablet);
+  const breakpoint = checkMediaQuery(BREAKPOINT[unsetBreakpoint]);
 
-  const generateHeight = (isTablet, height, heightOffset) => {
-    return isTablet ? height - heightOffset : "auto";
+  const generateHeight = (mediaQuery, height, heightOffset) => {
+    return mediaQuery ? height - heightOffset : "auto";
   };
 
   return (
-    <div style={{ height: generateHeight(isTabletUp, height, offset) }}>
+    <div style={{ height: generateHeight(breakpoint, height, offset) }}>
       <Container>{children}</Container>
     </div>
   );
