@@ -1,7 +1,11 @@
 import React from "react";
 import { use100vh } from "react-div-100vh";
 import styled from "styled-components";
-import { BREAKPOINT, checkMediaQuery } from "../../../styles/utilities";
+import {
+  BREAKPOINT,
+  checkIsBreakpoint,
+  checkMediaQuery,
+} from "../../../styles/utilities";
 import { spacing } from "../../../utils";
 
 const Container = styled.div`
@@ -16,19 +20,15 @@ export default function FullScreenHeight({
   children,
   unsetBreakpoint = "tablet",
 }) {
+  const isMobile = checkIsBreakpoint(BREAKPOINT.tablet);
   const PADDING = 32;
-  const HEADER_HEIGHT = 32;
-  const FOOTER_HEIGHT = 16;
+  const HEADER_HEIGHT = isMobile ? 17 : 32;
+  const FOOTER_HEIGHT = isMobile ? 12 : 16;
+
   const offset = PADDING + HEADER_HEIGHT + FOOTER_HEIGHT;
   const height = use100vh();
 
   const breakpoint = checkMediaQuery(BREAKPOINT[unsetBreakpoint]);
-  const isMobile = checkMediaQuery(BREAKPOINT.mobile);
-
-  const isNotMobile = checkMediaQuery(BREAKPOINT.tablet);
-
-  console.log("isMobile", isMobile);
-  console.log("isNotMobile", isNotMobile);
 
   const generateHeight = (mediaQuery, height, heightOffset) => {
     if (mediaQuery) {

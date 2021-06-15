@@ -2,9 +2,11 @@ import Menu from "components/navigation/Menu";
 import MobileNav from "components/navigation/MobileNav";
 import MobileNavOverlay from "components/navigation/MobileNavOverlay";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
+import { toggleHomepage } from "../../../store/actions/siteSettings";
 import { above, anchorColor } from "../../../styles/utilities";
 
 const StyledHeader = styled.header`
@@ -38,6 +40,12 @@ const AboutContainer = styled.nav`
 `;
 
 const Header = ({ mobileNavOpen, toggleMobileNav }) => {
+  const dispatch = useDispatch();
+
+  const clickHandler = () => {
+    return dispatch(toggleHomepage());
+  };
+
   return (
     <StyledHeader>
       <MobileNavOverlay
@@ -61,6 +69,9 @@ const Header = ({ mobileNavOpen, toggleMobileNav }) => {
 
         <HeadlineContainer justify="flex-end" items="center">
           <AboutContainer role="navigation">
+            <button type="button" onClick={clickHandler}>
+              toggle homepage
+            </button>
             <StyledLink to="/about">about</StyledLink>
           </AboutContainer>
 

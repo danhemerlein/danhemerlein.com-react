@@ -11,6 +11,7 @@ import Index from "components/pages/Index";
 import Moodboard from "components/pages/Moodboard";
 import Music from "components/pages/Music";
 import MusicProject from "components/pages/MusicProject";
+import NewHomePage from "components/pages/NewHomePage";
 import NotFound from "components/pages/NotFound";
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
@@ -32,10 +33,13 @@ const AppContainer = styled.div`
   overflow: hidden;
 `;
 
-function App(props) {
-  const { moodboardLoading, moodboard } = props;
-  const { musicProjectsLoading, musicProjects } = props;
-
+function App({
+  moodboardLoading,
+  moodboard,
+  musicProjectsLoading,
+  musicProjects,
+  showNewHomepage,
+}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -88,7 +92,11 @@ function App(props) {
 
     return (
       <Switch>
-        <Route exact path="/" component={Index} />
+        <Route
+          exact
+          path="/"
+          component={showNewHomepage ? NewHomePage : Index}
+        />
 
         <Route exact path="/about" component={About} />
 
@@ -141,6 +149,7 @@ const mapStateToProps = (state) => {
     musicProjectsLoading: state.musicProjects.loading,
     moodboard: state.moodboard.content,
     musicProjects: state.musicProjects.content,
+    showNewHomepage: state.siteSettings.showNewHomepage,
   };
 };
 

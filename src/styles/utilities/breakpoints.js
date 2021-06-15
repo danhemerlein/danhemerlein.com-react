@@ -34,3 +34,8 @@ export const checkMediaQuery = (breakpoint) =>
   useMediaQuery({
     query: `(min-width: ${breakpoint})`,
   });
+
+export const checkIsBreakpoint = (breakpoint) =>
+  useMediaQuery({
+    query: `(max-width: ${breakpoint})`,
+  });
