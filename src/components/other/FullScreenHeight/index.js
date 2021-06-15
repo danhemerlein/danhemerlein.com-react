@@ -23,9 +23,18 @@ export default function FullScreenHeight({
   const height = use100vh();
 
   const breakpoint = checkMediaQuery(BREAKPOINT[unsetBreakpoint]);
+  const isMobile = checkMediaQuery(BREAKPOINT.mobile);
+
+  const isNotMobile = checkMediaQuery(BREAKPOINT.tablet);
+
+  console.log("isMobile", isMobile);
+  console.log("isNotMobile", isNotMobile);
 
   const generateHeight = (mediaQuery, height, heightOffset) => {
-    return mediaQuery ? height - heightOffset : "auto";
+    if (mediaQuery) {
+      return mediaQuery ? height - heightOffset : "auto";
+    }
+    return height - heightOffset;
   };
 
   return (

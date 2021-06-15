@@ -1,51 +1,58 @@
-import React, { Component } from "react";
+import FullScreenHeight from "components/other/FullScreenHeight";
+import React from "react";
 import { Link } from "react-router-dom";
-import debounce from "utils/debounce";
-import "./NotFound.scss";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import { above, anchorColor } from "../../../styles/utilities";
+import { spacing } from "../../../utils";
 
-export default class NotFound extends Component {
-  componentDidMount = () => {
-    this.setHeightNF();
-    window.addEventListener("resize", this.debounceNFHeight);
-  };
+const PageContainer = styled(FlexContainer)`
+  height: 100%;
+  flex-direction: column;
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.debounceNFHeight);
+  ${above.tablet`
+    flex-direction: row;
+  `}
+`;
+
+const StyledHeadline = styled.div`
+  text-align: center;
+`;
+
+const SVGContainer = styled.div`
+  svg {
+    height: 100%;
+    width: 100%;
   }
+`;
 
-  debounceNFHeight = () => {
-    debounce(this.setHeightNF(), 100);
-  };
+const TextContainer = styled.div`
+  margin-bottom: ${spacing[2]};
+`;
 
-  setHeightNF = () => {
-    const header = document.querySelector("header");
-    const footer = document.querySelector("footer");
-    const notFound = document.querySelector(".NotFound");
+const StyledLink = styled(Link)`
+  ${anchorColor({
+    color: "black",
+  })};
 
-    const headerFooter = header.offsetHeight + footer.offsetHeight;
+  text-decoration: underline;
+`;
 
-    // so the 64 here is the Site container paddding top and bottom which is 48px plus the HomePage's top margin of 16px
-    const nfHeight = window.innerHeight - headerFooter - 48;
+const NotFound = ({ icon }) => {
+  return (
+    <FullScreenHeight unsetBreakPoint="none">
+      <PageContainer items="center" justify="center">
+        <TextContainer>
+          <StyledHeadline>This is a 404 error</StyledHeadline>
+          <StyledHeadline>Please check the url in your browser</StyledHeadline>
+          <StyledHeadline>
+            You might want to <StyledLink to="/">return home</StyledLink>
+          </StyledHeadline>
+        </TextContainer>
+        <SVGContainer>{icon}</SVGContainer>
+      </PageContainer>
+    </FullScreenHeight>
+  );
+};
 
-    notFound.style.height = `${nfHeight}px`;
-  };
-
-  render({ icon }) {
-    return (
-      <div className="NotFound">
-        <div className="NotFound__inner flex items-center flex-column full-height">
-          <div className="mb4">
-            <h3 className="NotFound__sub-headline">This is a 404 error</h3>
-            <h3 className="NotFound__sub-headline">
-              Please check the url in your browser
-            </h3>
-            <h3 className="NotFound__sub-headline">
-              You might want to <Link to="/">return home</Link>
-            </h3>
-          </div>
-          <div className="">{icon}</div>
-        </div>
-      </div>
-    );
-  }
-}
+export default NotFound;

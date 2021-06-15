@@ -9,9 +9,7 @@ import { getAboutPageContent } from "../../../store/actions/aboutPage";
 import { above, anchorColor } from "../../../styles/utilities";
 import { spacing } from "../../../utils";
 
-const AboutPage = (props) => {
-  const { aboutPageLoading, aboutPage } = props;
-
+const AboutPage = ({ aboutPageLoading, aboutPage }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
