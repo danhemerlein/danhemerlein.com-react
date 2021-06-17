@@ -82,7 +82,7 @@ const Music = (props) => {
     }
   }
 
-  const content = projects.length && musicPage.length;
+  const content = projects.length;
 
   if (musicPageLoading === false && !content) {
     return null;
