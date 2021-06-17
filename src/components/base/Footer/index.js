@@ -45,26 +45,6 @@ const Footer = () => {
               medium
             </a>
           </li>
-
-          <li className="inline-block ml1 lg:ml2">
-            <a
-              href="https://twitter.com/danhemerlein"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              twitter
-            </a>
-          </li>
-
-          <li className="inline-block ml1 lg:ml2">
-            <a
-              href="https://www.instagram.com/danhemerlein/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              instagram
-            </a>
-          </li>
         </ul>
         <div className="Footer__small-container flex">
           <small className="Footer__small self-end">© Dan Hemerlein 2021</small>

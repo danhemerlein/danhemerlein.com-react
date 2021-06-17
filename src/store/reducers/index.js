@@ -4,6 +4,7 @@ import codeProjectsReducer from "./codeProjects";
 import moodboardReducer from "./moodboard";
 import musicPageReducer from "./musicPage";
 import musicProjectsReducer from "./musicProjects";
+import siteSettingsReducer from "./siteSettings";
 
 const rootReducer = combineReducers({
   aboutPage: aboutPageReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   moodboard: moodboardReducer,
   musicProjects: musicProjectsReducer,
   codeProjects: codeProjectsReducer,
+  siteSettings: siteSettingsReducer,
 });
 
 export default rootReducer;

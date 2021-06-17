@@ -1,26 +1,37 @@
 import React from "react";
-import "./styles.scss";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import { spacing } from "../../../../utils";
+
+const Container = styled(FlexContainer)`
+  width: 100%;
+  margin-bottom: ${spacing[1]};
+  margin-left: ${spacing[1]};
+  font-size: 1.25rem;
+`;
+
+const StyledSpan = styled.span`
+  color: white;
+  display: block;
+  margin-bottom: ${spacing[0.5]};
+`;
 
 const MusicSort = ({ handleChange }) => {
   return (
-    <div className="MusicSort full-width flex justify-center mb1 md:mb2">
-      <div className="flex flex-col">
-        <label className="MusicSort__label  body-serif  text-white">
-          sort
-          <select
-            onChange={(event) => handleChange(event)}
-            className="MusicSort__select"
-          >
-            <option value="">default</option>
-            <option value="most-recent">most recent</option>
-            <option value="oldest">oldest</option>
-            <option value="wrote">wrote</option>
-            <option value="produced">produced</option>
-            <option value="performed">perfomed</option>
-          </select>
-        </label>
-      </div>
-    </div>
+    <Container>
+      <label>
+        <StyledSpan>sort</StyledSpan>
+
+        <select onChange={(event) => handleChange(event)}>
+          <option value="">default</option>
+          <option value="most-recent">most recent</option>
+          <option value="oldest">oldest</option>
+          <option value="wrote">wrote</option>
+          <option value="produced">produced</option>
+          <option value="performed">perfomed</option>
+        </select>
+      </label>
+    </Container>
   );
 };
 

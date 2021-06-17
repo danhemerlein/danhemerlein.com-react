@@ -1,16 +1,53 @@
 import React from "react";
-import "./styles.scss";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import {
+  anchorColor,
+  SlideWideLeft,
+  SlideWideRight,
+} from "../../../../styles/utilities";
+
+const Hero = styled(FlexContainer)`
+  width: 100%;
+  height: 50vh;
+`;
+
+const StyledLink = styled.a`
+  ${anchorColor({
+    color: "black",
+  })};
+`;
+
+const HeadlineTwo = styled.h2`
+  font-size: 2rem;
+  animation: ${SlideWideRight} 2.5s;
+  color: black;
+`;
+
+const HeadlineThree = styled.h3`
+  font-size: 1.25rem;
+  animation: ${SlideWideLeft} 2.5s;
+  color: black;
+`;
 
 const MusicHero = () => {
   return (
-    <div className="MusicHero bg-black col-12 flex flex-col justify-center items-center">
-      <h2 className="MusicHero__headline color-red lack-italic">
-        young & nauseous
-      </h2>
-      <h3 className="MusicHero__sub-headline color-red lack-italic">
-        coming spring 2021
-      </h3>
-    </div>
+    <Hero
+      direction="column"
+      justify="center"
+      items="center"
+      className="lack-italic"
+    >
+      <StyledLink
+        href="http://www.youngandnauseo.us"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-center"
+      >
+        <HeadlineTwo>young & nauseous</HeadlineTwo>
+        <HeadlineThree>out now</HeadlineThree>
+      </StyledLink>
+    </Hero>
   );
 };
 

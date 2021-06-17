@@ -39,25 +39,25 @@ const MobileNav = ({ clickHandler, navOpen }) => {
       </div>
       <nav role="navigation">
         <ul className="list-style-none p0 flex items-center justify-center flex-col">
-          <li className="MobileNav__list-item body-serif my2">
+          <li className="MobileNav__list-item  my2">
             <Link to="/code">code</Link>
           </li>
-          <li className="MobileNav__list-item  body-serif my2">
+          <li className="MobileNav__list-item   my2">
             <Link to="/music">music</Link>
           </li>
-          <li className="MobileNav__list-item  body-serif my2">
+          <li className="MobileNav__list-item   my2">
             <Link to="/moodboard">moodboard</Link>
           </li>
-          <li className="MobileNav__list-item  body-serif my2">
+          <li className="MobileNav__list-item   my2">
             <Link to="/about">about</Link>
           </li>
-          <li className="MobileNav__list-item  body-serif my2">
+          <li className="MobileNav__list-item   my2">
             <Link to="/">home</Link>
           </li>
 
           <hr className="MobileNav__hr" />
 
-          <li className="MobileNav__list-item  body-serif my2">
+          <li className="MobileNav__list-item   my2">
             <a
               href="https://github.com/danhemerlein"
               target="_blank"
@@ -67,7 +67,7 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             </a>
           </li>
 
-          <li className="MobileNav__list-item  body-serif my2">
+          <li className="MobileNav__list-item   my2">
             <a
               href="https://workingnotworking.com/58170-dan"
               target="_blank"
@@ -77,7 +77,7 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             </a>
           </li>
 
-          <li className="MobileNav__list-item  body-serif my2">
+          <li className="MobileNav__list-item   my2">
             <a
               href="https://www.are.na/dan-hemerlein"
               target="_blank"
@@ -87,33 +87,13 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             </a>
           </li>
 
-          <li className="MobileNav__list-item  body-serif my2">
+          <li className="MobileNav__list-item   my2">
             <a
               href="https://medium.com/@danhemerlein"
               target="_blank"
               rel="noopener noreferrer"
             >
               medium
-            </a>
-          </li>
-
-          <li className="MobileNav__list-item  body-serif my2">
-            <a
-              href="https://twitter.com/danhemerlein"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              twitter
-            </a>
-          </li>
-
-          <li className="MobileNav__list-item  body-serif my2">
-            <a
-              href="https://www.instagram.com/danhemerlein/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              instagram
             </a>
           </li>
         </ul>

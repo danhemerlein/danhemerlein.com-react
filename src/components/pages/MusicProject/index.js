@@ -27,7 +27,7 @@ const MusicProject = (props) => {
 
   return (
     <div
-      className="MusicProject flex items-center flex-col relative h100 p1 md:p2 justify-between md:justify-center my1 body-serif"
+      className="MusicProject flex items-center flex-col relative h100 p1 md:p2 justify-between md:justify-center my1"
       style={bgStyle}
     >
       <div className="col-12 md:col-8 lg:col-8 flex justify-center flex-col lg:flex-row">

@@ -9,7 +9,7 @@ const HomeBox = ({ icon, header }) => {
           {icon}
         </div>
         <div className="HomeBox__overlay bg-white flex justify-center items-center absolute l0 t0 r0 b0 w100 h100">
-          <h3 className="HomeBox__header w100 text-center body-serif absolute m0">
+          <h3 className="HomeBox__header w100 text-center absolute m0">
             {header}
           </h3>
         </div>

@@ -2,90 +2,114 @@ import CodeIcon from "components/base/icons/Code";
 import ContactIcon from "components/base/icons/Contact";
 import MoodboardIcon from "components/base/icons/Moodboard";
 import MusicIcon from "components/base/icons/Music";
-import React, { Component } from "react";
+import FullScreenHeight from "components/other/FullScreenHeight";
+import React from "react";
 import { Link } from "react-router-dom";
-import debounce from "utils/debounce";
+import styled from "styled-components";
+import {
+  above,
+  SlideLeft,
+  SlideRight,
+  SlideWideLeft,
+  SlideWideRight,
+} from "../../../styles/utilities";
+import { spacing } from "../../../utils";
 import HomeBox from "./HomeBox";
-import "./Index.scss";
 
-class Index extends Component {
-  componentDidMount = () => {
-    this.setHeightHP();
-    window.addEventListener("resize", this.debounceHPHeight);
-  };
+export default function Index() {
+  return (
+    <FullScreenHeight>
+      <IndexContainer>
+        <RowContainer index={0}>
+          <CodeLinkContainer>
+            <Link to="/code">
+              <HomeBox header="code" icon={<CodeIcon />} />
+            </Link>
+          </CodeLinkContainer>
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.debounceHPHeight);
-  }
+          <MusicLinkContainer>
+            <Link to="/music">
+              <HomeBox header="music" icon={<MusicIcon />} />
+            </Link>
+          </MusicLinkContainer>
+        </RowContainer>
 
-  setHeightHP = () => {
-    const header = document.querySelector("header");
-    const footer = document.querySelector("footer");
-    const indexPage = document.querySelector(".Index");
+        <RowContainer index={1}>
+          <MoodboardLinkContainer>
+            <Link to="/moodboard">
+              <HomeBox header="moodboard" icon={<MoodboardIcon />} />
+            </Link>
+          </MoodboardLinkContainer>
 
-    const headerFooter = header.offsetHeight + footer.offsetHeight;
-
-    // so the 64 here is the Site container paddding top and bottom which is 48px plus the indexPage's top margin of 16px
-
-    if (window.innerWidth >= 720) {
-      const hpHeight = window.innerHeight - headerFooter - 64;
-      indexPage.style.height = `${hpHeight}px`;
-    } else {
-      indexPage.style.height = "auto";
-    }
-  };
-
-  debounceHPHeight = () => {
-    debounce(this.setHeightHP(), 100);
-  };
-
-  render() {
-    return (
-      <div className="Index mt1 mb1 md:mb0">
-        <div className="flex h100 flex-col md:flex-row">
-          <div className="flex flex-row md:flex-col w100 flex-wrap md:flex-nowrap">
-            <div className="Index__top-left w100">
-              <Link to="/code">
-                <HomeBox header="code" icon={<CodeIcon />} />
-              </Link>
-            </div>
-
-            <div className="Index__bottom-left w100 mt1 none md:block">
-              <Link to="/moodboard">
-                <HomeBox header="moodboard" icon={<MoodboardIcon />} />
-              </Link>
-            </div>
-
-            <div className="Index__bottom-left w100 mt1 md:mt0 block md:none">
-              <Link to="/music">
-                <HomeBox header="music" icon={<MusicIcon />} />
-              </Link>
-            </div>
-          </div>
-
-          <div className="flex flex-row md:flex-col w100 md:ml1 flex-wrap md:flex-nowrap">
-            <div className="Index__top-right w100 mt1 md:mt0 none md:block">
-              <Link to="/music">
-                <HomeBox header="music" icon={<MusicIcon />} />
-              </Link>
-            </div>
-
-            <div className="Index__top-right w100 mt1 block md:none">
-              <Link to="/moodboard">
-                <HomeBox header="moodboard" icon={<MoodboardIcon />} />
-              </Link>
-            </div>
-
-            <div className="Index__bottom-right w100 mt1">
-              <Link to="about">
-                <HomeBox header="about" icon={<ContactIcon />} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+          <AboutLinkContainer>
+            <Link to="about">
+              <HomeBox header="about" icon={<ContactIcon />} />
+            </Link>
+          </AboutLinkContainer>
+        </RowContainer>
+      </IndexContainer>
+    </FullScreenHeight>
+  );
 }
 
-export default Index;
+const LinkContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  ${above.tablet`
+    width: 50%;
+  `}
+`;
+
+const CodeLinkContainer = styled(LinkContainer)`
+  ${above.tablet`
+    animation: ${SlideRight} 2s;
+    margin-right: 1rem;
+  `}
+`;
+
+const MusicLinkContainer = styled(LinkContainer)`
+  margin-top: ${spacing[1]};
+
+  ${above.tablet`
+    animation: ${SlideLeft} 2s;
+    margin-top: 0;
+  `}
+`;
+
+const MoodboardLinkContainer = styled(LinkContainer)`
+  margin-top: ${spacing[1]};
+
+  ${above.tablet`
+    animation: ${SlideWideRight} 2.5s;
+    margin-right: 1rem;
+    margin-top: 0;
+  `}
+`;
+
+const AboutLinkContainer = styled(LinkContainer)`
+  margin-top: ${spacing[1]};
+
+  ${above.tablet`
+    animation: ${SlideWideLeft} 2.5s;
+    margin-top: 0;
+  `}
+`;
+
+const IndexContainer = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+`;
+
+const RowContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  ${above.tablet`
+    flex-direction: row;
+    ${({ index }) => index === 0 && `margin-bottom: ${spacing[1]}`};
+  `};
+`;

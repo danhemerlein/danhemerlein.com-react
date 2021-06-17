@@ -6,11 +6,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
-import { above, anchorColor } from "../../../styles/utilities";
+import { toggleHomepage } from "../../../store/actions/siteSettings";
+import { above } from "../../../styles/utilities";
 import { spacing } from "../../../utils";
 
-const AboutPage = ({ aboutPageLoading, aboutPage }) => {
+const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   const dispatch = useDispatch();
+
+  const clickHandler = () => {
+    return dispatch(toggleHomepage());
+  };
 
   useEffect(() => {
     const loadContent = async () => {
@@ -34,6 +39,7 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
   const ContentContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     ${above.tablet`
       height: 75%;
@@ -57,6 +63,12 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
     ${above.desktop`
       margin-top: 0;
       width: 50%;
+    `}
+  `;
+
+  const TextContainerInner = styled.div`
+    ${above.desktop`
+      max-width: 50%;
     `}
   `;
 
@@ -101,16 +113,17 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
     line-height: 1.69;
 
     ${above.desktop`
-      max-width: 75%;
+      max-width: %;
     `}
 
-    ${({ index }) => index > 0 && `margin-top ${spacing[0.5]};`};
+    ${({ index }) => index === 0 && `margin-bottom ${spacing[0.5]};`};
   `;
 
   const StyledLink = styled(Link)`
-    ${anchorColor({
+    ${"" /* ${anchorColor({
       color: "black",
-    })};
+    })}; */}
+    font-size: 1.4rem;
   `;
 
   return (
@@ -123,41 +136,27 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
         </ImageContainer>
 
         <TextContainer justify="center" items="flex-start" direction="column">
-          <StyledParagraph>hey I'm Dan (he/him),</StyledParagraph>
-
-          <StyledParagraph index={1}>
-            I'm a front-end web engineer and music producer based in Brooklyn,
-            New York.
-          </StyledParagraph>
-
-          <StyledParagraph index={2}>
-            As a coder, I'm really into JavaScript, e-commerce, CSS,
-            accessibility, developer experience and learning something new every
-            day. I find a lot of joy in the process of achieving a technical
-            goal.
-          </StyledParagraph>
-
-          <StyledParagraph index={3}>
-            Back before the pandemic you could find me playing shows with
-            indie-rock bands all over Manhattan and Brooklyn. These days, I
-            mostly write and produce songs on my own out of my home studio. I’m
-            planning to release a few tracks from a side project I’m currently
-            manifesting in spring 2021.
-          </StyledParagraph>
-
-          <StyledParagraph index={4}>
-            In my non-code/non-music time, I journal, read,&nbsp;
-            <StyledLink to="/blog">
-              <span className="underline">blog?</span>
-            </StyledLink>
-            &nbsp;moodboard, jog in McCarren Park and aimlessly ride my bike
-            around the city.
-          </StyledParagraph>
-
-          <StyledParagraph index={5}>
-            I write code and make music because I can't not and it's super
-            trill.
-          </StyledParagraph>
+          <TextContainerInner>
+            <StyledParagraph index={0}>hey I'm Dan (he/him),</StyledParagraph>
+            <StyledParagraph index={1}>
+              I write <StyledLink to="/code">code</StyledLink>, make&nbsp;
+              <StyledLink to="/music">music</StyledLink> and and occasionaly
+              take &nbsp;
+              <StyledLink to="/moodboard">film photos</StyledLink>
+            </StyledParagraph>
+            <StyledParagraph index={2}>
+              you can read more <StyledLink to="/about">about</StyledLink> me
+              here
+            </StyledParagraph>
+            <StyledParagraph index={3}>
+              also, this a new version of my website homepage that I'm trying
+              out. if you want see the old one click/tap{" "}
+              <button type="button" onClick={clickHandler}>
+                this
+              </button>
+              .
+            </StyledParagraph>
+          </TextContainerInner>
         </TextContainer>
       </ContentContainer>
     </FullScreenHeight>
@@ -171,4 +170,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(AboutPage);
+export default connect(mapStateToProps)(NewHomePage);
