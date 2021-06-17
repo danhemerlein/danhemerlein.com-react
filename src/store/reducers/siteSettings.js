@@ -1,5 +1,5 @@
 const initState = {
-  showNewHomepage: true,
+  showNewHomepage: false,
 };
 
 const SiteSettings = (state = initState, action) => {
