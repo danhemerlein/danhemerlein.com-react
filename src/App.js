@@ -87,6 +87,9 @@ function App({
   const loading = moodboardLoading && musicProjectsLoading;
   const content = moodboard.length && musicProjects.length;
 
+  console.log(musicProjects);
+  console.log("app showNewHomepage", showNewHomepage);
+
   function SwitchComp() {
     usePageViews();
 
@@ -135,6 +138,8 @@ function App({
         <Header
           toggleMobileNav={toggleMobileNav}
           mobileNavOpen={mobileNavOpen}
+          showNewHomepage={showNewHomepage}
+          currentRoute={currentRoute}
         />
         <SwitchComp />
         <Footer />

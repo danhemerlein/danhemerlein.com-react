@@ -96,26 +96,6 @@ const MobileNav = ({ clickHandler, navOpen }) => {
               medium
             </a>
           </li>
-
-          <li className="MobileNav__list-item   my2">
-            <a
-              href="https://twitter.com/danhemerlein"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              twitter
-            </a>
-          </li>
-
-          <li className="MobileNav__list-item  my2">
-            <a
-              href="https://www.instagram.com/danhemerlein/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              instagram
-            </a>
-          </li>
         </ul>
       </nav>
     </Nav>
