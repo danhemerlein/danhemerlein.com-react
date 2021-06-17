@@ -6,12 +6,10 @@ import Loading from "components/other/Loading";
 import About from "components/pages/About";
 import Blog from "components/pages/Blog";
 import Code from "components/pages/Code";
-// pages
-import Index from "components/pages/Index";
+import HomePage from "components/pages/HomePage";
 import Moodboard from "components/pages/Moodboard";
 import Music from "components/pages/Music";
 import MusicProject from "components/pages/MusicProject";
-import NewHomePage from "components/pages/NewHomePage";
 import NotFound from "components/pages/NotFound";
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
@@ -38,7 +36,6 @@ function App({
   moodboard,
   musicProjectsLoading,
   musicProjects,
-  showNewHomepage,
 }) {
   const dispatch = useDispatch();
 
@@ -92,11 +89,7 @@ function App({
 
     return (
       <Switch>
-        <Route
-          exact
-          path="/"
-          component={showNewHomepage ? NewHomePage : Index}
-        />
+        <Route exact path="/" component={HomePage} />
 
         <Route exact path="/about" component={About} />
 
@@ -135,7 +128,6 @@ function App({
         <Header
           toggleMobileNav={toggleMobileNav}
           mobileNavOpen={mobileNavOpen}
-          showNewHomepage={showNewHomepage}
           currentRoute={currentRoute}
         />
         <SwitchComp />
@@ -151,7 +143,6 @@ const mapStateToProps = (state) => {
     musicProjectsLoading: state.musicProjects.loading,
     moodboard: state.moodboard.content,
     musicProjects: state.musicProjects.content,
-    showNewHomepage: state.siteSettings.showNewHomepage,
   };
 };
 

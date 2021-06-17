@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
-import { toggleHomepage } from "../../../store/actions/siteSettings";
 import { above, anchorColor } from "../../../styles/utilities";
 
 const StyledHeader = styled.header`
@@ -51,16 +50,6 @@ const Header = ({
   currentRoute,
 }) => {
   const dispatch = useDispatch();
-
-  const clickHandler = () => {
-    return dispatch(toggleHomepage());
-  };
-
-  const _showNewContent = (route, show) => {
-    if (route !== "/") return false;
-
-    if (show) return true;
-  };
 
   return (
     <StyledHeader>
