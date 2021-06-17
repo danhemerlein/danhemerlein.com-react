@@ -72,26 +72,19 @@ const Header = ({
       <MobileNav clickHandler={toggleMobileNav} navOpen={mobileNavOpen} />
 
       <FlexContainer id="header">
-        {!_showNewContent(currentRoute, showNewHomepage) ? (
-          <HeadlineContainer direction="column">
-            <h1>
-              <StyledLink to="/">dan hemerlein</StyledLink>
-            </h1>
-            <SubHeadline>
-              <StyledLink to="/code">web engineer</StyledLink>
-              <span>&nbsp;/&nbsp;</span>
-              <StyledLink to="/music">music producer</StyledLink>
-            </SubHeadline>
-          </HeadlineContainer>
-        ) : null}
+        <HeadlineContainer direction="column">
+          <h1>
+            <StyledLink to="/">dan hemerlein</StyledLink>
+          </h1>
+          <SubHeadline>
+            <StyledLink to="/code">web engineer</StyledLink>
+            <span>&nbsp;/&nbsp;</span>
+            <StyledLink to="/music">music producer</StyledLink>
+          </SubHeadline>
+        </HeadlineContainer>
 
         <HeadlineContainer justify="flex-end" items="center">
           <AboutContainer role="navigation">
-            {/* {!_showNewContent(currentRoute, showNewHomepage) ? (
-              <button type="button" onClick={clickHandler}>
-                toggle homepage
-              </button>
-          ) : null} */}
             <StyledLink to="/about">about</StyledLink>
           </AboutContainer>
           <Menu clickHandler={toggleMobileNav} />
