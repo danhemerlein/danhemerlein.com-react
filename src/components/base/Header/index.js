@@ -86,15 +86,14 @@ const Header = ({
         ) : null}
 
         <HeadlineContainer justify="flex-end" items="center">
-          {!_showNewContent(currentRoute, showNewHomepage) ? (
-            <AboutContainer role="navigation">
+          <AboutContainer role="navigation">
+            {/* {!_showNewContent(currentRoute, showNewHomepage) ? (
               <button type="button" onClick={clickHandler}>
                 toggle homepage
               </button>
-
-              {/* <StyledLink to="/about">about</StyledLink> */}
-            </AboutContainer>
-          ) : null}
+          ) : null} */}
+            <StyledLink to="/about">about</StyledLink>
+          </AboutContainer>
           <Menu clickHandler={toggleMobileNav} />
         </HeadlineContainer>
       </FlexContainer>
