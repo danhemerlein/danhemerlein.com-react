@@ -31,9 +31,7 @@ export default function FullScreenHeight({
   const breakpoint = checkMediaQuery(BREAKPOINT[unsetBreakpoint]);
 
   const generateHeight = (mediaQuery, height, heightOffset) => {
-    console.log("mediaQuery", mediaQuery);
     return mediaQuery ? height - heightOffset : "auto";
-    // return height - heightOffset;
   };
 
   return (

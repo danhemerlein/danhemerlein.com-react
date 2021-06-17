@@ -62,11 +62,6 @@ const Header = ({
     if (show) return true;
   };
 
-  console.log(
-    "show new content",
-    _showNewContent(currentRoute, showNewHomepage)
-  );
-
   return (
     <StyledHeader>
       <MobileNavOverlay
