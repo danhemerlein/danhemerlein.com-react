@@ -6,16 +6,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
-import { toggleHomepage } from "../../../store/actions/siteSettings";
 import { above } from "../../../styles/utilities";
 import { spacing } from "../../../utils";
 
 const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   const dispatch = useDispatch();
-
-  const clickHandler = () => {
-    return dispatch(toggleHomepage());
-  };
 
   useEffect(() => {
     const loadContent = async () => {
@@ -68,7 +63,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
   const TextContainerInner = styled.div`
     ${above.desktop`
-      max-width: 50%;
+      max-width: 75%;
     `}
   `;
 
@@ -93,7 +88,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     ${({ index }) => index === 1 && `opacity: 0;`};
     background-position: center;
     background-size: cover;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
 
     &:hover {
       ${({ index }) => index === 1 && `opacity: 1;`};
@@ -111,18 +106,9 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
   const StyledParagraph = styled.p`
     line-height: 1.69;
-
-    ${above.desktop`
-      max-width: %;
-    `}
-
-    ${({ index }) => index === 0 && `margin-bottom ${spacing[0.5]};`};
   `;
 
   const StyledLink = styled(Link)`
-    ${"" /* ${anchorColor({
-      color: "black",
-    })}; */}
     font-size: 1.4rem;
   `;
 
@@ -137,24 +123,16 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
         <TextContainer justify="center" items="flex-start" direction="column">
           <TextContainerInner>
-            <StyledParagraph index={0}>hey I'm Dan (he/him),</StyledParagraph>
-            <StyledParagraph index={1}>
-              I write <StyledLink to="/code">code</StyledLink>, make&nbsp;
-              <StyledLink to="/music">music</StyledLink> and and occasionaly
-              take &nbsp;
-              <StyledLink to="/moodboard">film photos</StyledLink>
+            <StyledParagraph>hey i'm dan (he/him),</StyledParagraph>
+            <StyledParagraph>
+              i write <StyledLink to="/code">code</StyledLink>, make&nbsp;
+              <StyledLink to="/music">music</StyledLink> and sometimes
+              take&nbsp;
+              <StyledLink to="/moodboard">photos</StyledLink>
             </StyledParagraph>
-            <StyledParagraph index={2}>
-              you can read more <StyledLink to="/about">about</StyledLink> me
-              here
-            </StyledParagraph>
-            <StyledParagraph index={3}>
-              also, this a new version of my website homepage that I'm trying
-              out. if you want see the old one click/tap{" "}
-              <button type="button" onClick={clickHandler}>
-                this
-              </button>
-              .
+            <StyledParagraph>
+              you can read more about me&nbsp;
+              <StyledLink to="/about">here.</StyledLink>
             </StyledParagraph>
           </TextContainerInner>
         </TextContainer>
