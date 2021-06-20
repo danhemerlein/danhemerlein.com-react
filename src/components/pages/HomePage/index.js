@@ -47,15 +47,16 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
   const ImageContainer = styled(FlexContainer)`
     width: 100%;
+    justify-content: center;
 
     ${above.tablet`
       width: 100%;
     `}
 
     ${above.desktop`
+      justify-content: flex-end;
       width: 50%;
       padding-right: ${spacing[0.5]};
-
     `}
   `;
 
@@ -75,12 +76,12 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     }
 
     ${above.tablet`
-    width: 50%;
-  `}
+      width: 50%;
+    `}
 
     ${above.desktop`
-    width: 352px;
-  `}
+      width: 352px;
+    `}
   `;
 
   const TextContainer = styled(FlexContainer)`
@@ -107,7 +108,8 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   `;
 
   const StyledParagraph = styled.p`
-    line-height: 1.4;
+    ${"" /* line-height: 1.4; */}
+    ${({ index }) => index > 0 && `margin: ${spacing[0.5]} 0;`};
   `;
 
   const StyledLink = styled(Link)`
@@ -115,9 +117,9 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   `;
 
   return (
-    <FullScreenHeight unsetBreakpoint="desktop">
+    <FullScreenHeight>
       <ContentContainer>
-        <ImageContainer justify="flex-end" items="center">
+        <ImageContainer items="center">
           <BackgroundImage imageSRC={source}>
             <BackgroundImage imageSRC={sourcePrime} index={1} />
           </BackgroundImage>
@@ -125,14 +127,16 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
         <TextContainer justify="center" items="flex-start" direction="column">
           <TextContainerInner>
-            <StyledParagraph>hey i'm dan (he/him),</StyledParagraph>
-            <StyledParagraph>
+            <StyledParagraph index={0}>hey i'm dan (he/him),</StyledParagraph>
+
+            <StyledParagraph index={1}>
               i write <StyledLink to="/code">code</StyledLink>, make&nbsp;
               <StyledLink to="/music">music</StyledLink> and sometimes
               take&nbsp;
               <StyledLink to="/moodboard">photos</StyledLink>
             </StyledParagraph>
-            <StyledParagraph>
+
+            <StyledParagraph index={2}>
               you can read more about me&nbsp;
               <StyledLink to="/about">here.</StyledLink>
             </StyledParagraph>

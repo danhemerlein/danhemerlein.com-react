@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
-import { above, anchorColor } from "../../../styles/utilities";
+import { above } from "../../../styles/utilities";
 import { spacing } from "../../../utils";
 
 const AboutPage = ({ aboutPageLoading, aboutPage }) => {
@@ -34,6 +34,7 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
   const ContentContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     ${above.tablet`
       height: 75%;
@@ -41,6 +42,45 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
 
     ${above.desktop`
       flex-direction: row;
+    `}
+  `;
+
+  const ImageContainer = styled(FlexContainer)`
+    width: 100%;
+    justify-content: center;
+
+    ${above.tablet`
+      width: 100%;
+    `}
+
+    ${above.desktop`
+      justify-content: flex-end;
+      width: 50%;
+      padding-right: ${spacing[0.5]};
+    `}
+  `;
+
+  const BackgroundImage = styled.div`
+    width: 100%;
+    height: 420px;
+    background-position: center;
+    background-size: cover;
+    transition: opacity 0.25s ease-in-out;
+
+    ${({ imageSRC }) => `background-image: url(${imageSRC});`};
+    ${({ index }) => index === 1 && `opacity: 0;`};
+
+    &:hover {
+      ${({ index }) => index === 1 && `opacity: 1;`};
+      ${({ index }) => index === 0 && `opacity: 0;`};
+    }
+
+    ${above.tablet`
+      width: 50%;
+    `}
+
+    ${above.desktop`
+      width: 352px;
     `}
   `;
 
@@ -60,104 +100,67 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
     `}
   `;
 
-  const ImageContainer = styled(FlexContainer)`
-    width: 100%;
-    margin: 0 auto;
-
-    ${above.tablet`
-      width: 100%;
-    `}
-
+  const TextContainerInner = styled.div`
     ${above.desktop`
-      width: 50%;
-    `}
-  `;
-
-  const BackgroundImage = styled.div`
-    width: 100%;
-    height: 420px;
-    margin: 0 auto;
-    ${({ imageSRC }) => `background-image: url(${imageSRC});`};
-    ${({ index }) => index === 1 && `opacity: 0;`};
-    background-position: center;
-    background-size: cover;
-    transition: opacity 0.5s ease-in-out;
-
-    &:hover {
-      ${({ index }) => index === 1 && `opacity: 1;`};
-      ${({ index }) => index === 0 && `opacity: 0;`};
-    }
-
-    ${above.tablet`
-      width: 50%;
-    `}
-
-    ${above.desktop`
-      width: 352px;
+      max-width: 75%;
+      padding-left: ${spacing[0.5]};
     `}
   `;
 
   const StyledParagraph = styled.p`
-    line-height: 1.69;
-
-    ${above.desktop`
-      max-width: 75%;
-    `}
-
-    ${({ index }) => index > 0 && `margin-top ${spacing[0.5]};`};
-  `;
-
-  const StyledLink = styled(Link)`
-    ${anchorColor({
-      color: "black",
-    })};
+    ${"" /* line-height: 1.4; */}
+    ${({ index }) => index > 0 && `margin: ${spacing[0.5]} 0;`};
   `;
 
   return (
     <FullScreenHeight unsetBreakpoint="desktop">
       <ContentContainer>
-        <ImageContainer justify="center" items="center">
+        <ImageContainer items="center">
           <BackgroundImage imageSRC={source}>
             <BackgroundImage imageSRC={sourcePrime} index={1} />
           </BackgroundImage>
         </ImageContainer>
 
         <TextContainer justify="center" items="flex-start" direction="column">
-          <StyledParagraph>hey I'm Dan (he/him),</StyledParagraph>
+          <TextContainerInner>
+            <StyledParagraph index={0}>
+              &emsp;hey I'm dan (he/him),
+            </StyledParagraph>
 
-          <StyledParagraph index={1}>
-            I'm a front-end web engineer and music producer based in Brooklyn,
-            New York.
-          </StyledParagraph>
+            <StyledParagraph index={1}>
+              &emsp;I'm a front-end web engineer and music producer based in
+              Brooklyn, New York.
+            </StyledParagraph>
 
-          <StyledParagraph index={2}>
-            As a coder, I'm really into JavaScript, e-commerce, CSS,
-            accessibility, developer experience and learning something new every
-            day. I find a lot of joy in the process of achieving a technical
-            goal.
-          </StyledParagraph>
+            <StyledParagraph index={2}>
+              &emsp;As a coder, I'm really into JavaScript, e-commerce, CSS,
+              accessibility, developer experience and learning something new
+              every day. I find a lot of joy in the process of achieving a
+              technical goal.
+            </StyledParagraph>
 
-          <StyledParagraph index={3}>
-            Back before the pandemic you could find me playing shows with
-            indie-rock bands all over Manhattan and Brooklyn. These days, I
-            mostly write and produce songs on my own out of my home studio. I’m
-            planning to release a few tracks from a side project I’m currently
-            manifesting in spring 2021.
-          </StyledParagraph>
+            <StyledParagraph index={3}>
+              &emsp;Back before the pandemic you could find me playing shows
+              with indie-rock bands all over Manhattan and Brooklyn. These days,
+              I mostly write and produce songs on my own out of my home studio.
+              I’m planning to release a few tracks from a side project I’m
+              currently manifesting in spring 2021.
+            </StyledParagraph>
 
-          <StyledParagraph index={4}>
-            In my non-code/non-music time, I journal, read,&nbsp;
-            <StyledLink to="/blog">
-              <span className="underline">blog?</span>
-            </StyledLink>
-            &nbsp;moodboard, jog in McCarren Park and aimlessly ride my bike
-            around the city.
-          </StyledParagraph>
+            <StyledParagraph index={4}>
+              &emsp;In my non-code/non-music time, I journal, read,&nbsp;
+              <Link to="/blog">
+                <span className="underline">blog?</span>
+              </Link>
+              &nbsp;moodboard, jog in McCarren Park and aimlessly ride my bike
+              around the city.
+            </StyledParagraph>
 
-          <StyledParagraph index={5}>
-            I write code and make music because I can't not and it's super
-            trill.
-          </StyledParagraph>
+            <StyledParagraph index={5}>
+              &emsp;I write code and make music because I can't not and it's
+              super trill.
+            </StyledParagraph>
+          </TextContainerInner>
         </TextContainer>
       </ContentContainer>
     </FullScreenHeight>
