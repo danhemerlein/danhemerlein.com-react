@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { above } from "../../../styles/utilities";
 
 const Overlay = styled.div`
   display: none;
@@ -13,9 +12,9 @@ const Overlay = styled.div`
   z-index: 4;
   cursor: pointer;
 
-  ${above.tablet`
+  ${"" /* ${above.tablet`
     display: none;
-  `};
+  `}; */}
 
   ${({ navOpen }) => navOpen && `display: block;`};
 `;

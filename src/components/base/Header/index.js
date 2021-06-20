@@ -15,10 +15,6 @@ const StyledHeader = styled.header`
   `}
 `;
 
-const HeadlineContainer = styled(FlexContainer)`
-  width: 50%;
-`;
-
 const Header = ({ mobileNavOpen, toggleMobileNav }) => {
   return (
     <StyledHeader>
@@ -30,9 +26,7 @@ const Header = ({ mobileNavOpen, toggleMobileNav }) => {
       <MobileNav clickHandler={toggleMobileNav} navOpen={mobileNavOpen} />
 
       <FlexContainer>
-        <HeadlineContainer justify="flex-end" items="center">
-          <Menu clickHandler={toggleMobileNav} />
-        </HeadlineContainer>
+        <Menu clickHandler={toggleMobileNav} />
       </FlexContainer>
     </StyledHeader>
   );

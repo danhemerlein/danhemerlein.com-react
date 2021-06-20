@@ -45,6 +45,44 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     `}
   `;
 
+  const ImageContainer = styled(FlexContainer)`
+    width: 100%;
+
+    ${above.tablet`
+      width: 100%;
+    `}
+
+    ${above.desktop`
+      width: 50%;
+      padding-right: ${spacing[0.5]};
+
+    `}
+  `;
+
+  const BackgroundImage = styled.div`
+    width: 100%;
+    height: 420px;
+    background-position: center;
+    background-size: cover;
+    transition: opacity 0.25s ease-in-out;
+
+    ${({ imageSRC }) => `background-image: url(${imageSRC});`};
+    ${({ index }) => index === 1 && `opacity: 0;`};
+
+    &:hover {
+      ${({ index }) => index === 1 && `opacity: 1;`};
+      ${({ index }) => index === 0 && `opacity: 0;`};
+    }
+
+    ${above.tablet`
+    width: 50%;
+  `}
+
+    ${above.desktop`
+    width: 352px;
+  `}
+  `;
+
   const TextContainer = styled(FlexContainer)`
     width: 100%;
     margin-top: ${spacing[1]};
@@ -64,48 +102,12 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   const TextContainerInner = styled.div`
     ${above.desktop`
       max-width: 75%;
-    `}
-  `;
-
-  const ImageContainer = styled(FlexContainer)`
-    width: 100%;
-    margin: 0 auto;
-
-    ${above.tablet`
-      width: 100%;
-    `}
-
-    ${above.desktop`
-      width: 50%;
-    `}
-  `;
-
-  const BackgroundImage = styled.div`
-    width: 100%;
-    height: 420px;
-    margin: 0 auto;
-    ${({ imageSRC }) => `background-image: url(${imageSRC});`};
-    ${({ index }) => index === 1 && `opacity: 0;`};
-    background-position: center;
-    background-size: cover;
-    transition: opacity 0.25s ease-in-out;
-
-    &:hover {
-      ${({ index }) => index === 1 && `opacity: 1;`};
-      ${({ index }) => index === 0 && `opacity: 0;`};
-    }
-
-    ${above.tablet`
-      width: 50%;
-    `}
-
-    ${above.desktop`
-      width: 352px;
+      padding-left: ${spacing[0.5]};
     `}
   `;
 
   const StyledParagraph = styled.p`
-    line-height: 1.69;
+    line-height: 1.4;
   `;
 
   const StyledLink = styled(Link)`
@@ -115,7 +117,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   return (
     <FullScreenHeight unsetBreakpoint="desktop">
       <ContentContainer>
-        <ImageContainer justify="center" items="center">
+        <ImageContainer justify="flex-end" items="center">
           <BackgroundImage imageSRC={source}>
             <BackgroundImage imageSRC={sourcePrime} index={1} />
           </BackgroundImage>

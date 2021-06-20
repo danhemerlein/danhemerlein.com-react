@@ -7,8 +7,8 @@ import "./MobileNav.scss";
 
 const Nav = styled.div`
   z-index: 5;
-  transform: translateX(226px);
-  right: 0;
+  transform: translateX(-226px);
+  left: 0;
   top: 0;
   transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1);
   position: absolute;
