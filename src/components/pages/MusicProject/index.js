@@ -1,22 +1,12 @@
 import GoHomeBack from "components/base/GoHomeBack";
 import Image from "components/base/Image";
-import useHeight from "hooks/useHeightMS";
 import React from "react";
 import { usePalette } from "react-palette";
 import "./MusicProject.scss";
 import ProjectDetails from "./ProjectDetails";
 import ProjectLink from "./ProjectLink";
 
-const MusicProject = (props) => {
-  const { project } = props;
-
-  const header = document.querySelector("header");
-  const footer = document.querySelector("footer");
-  const MusicProjectEl = document.querySelector(".MusicProject");
-  const links = document.querySelector(".MusicProject__links-container");
-
-  useHeight(header, footer, MusicProjectEl, links);
-
+const MusicProject = ({ project }) => {
   const { data } = usePalette(
     `https:${project.fields.artwork.fields.file.url}`
   );
