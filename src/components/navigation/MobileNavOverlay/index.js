@@ -12,10 +12,6 @@ const Overlay = styled.div`
   z-index: 4;
   cursor: pointer;
 
-  ${"" /* ${above.tablet`
-    display: none;
-  `}; */}
-
   ${({ navOpen }) => navOpen && `display: block;`};
 `;
 

@@ -2,6 +2,7 @@ import CloseIcon from "components/base/icons/Close";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
 import { spacing } from "../../../utils";
 import "./MobileNav.scss";
 
@@ -32,32 +33,37 @@ const Nav = styled.div`
 const MobileNav = ({ clickHandler, navOpen }) => {
   return (
     <Nav navOpen={navOpen}>
-      <div className="flex items-end justify-end">
+      <FlexContainer items="flex-end" justify="flex-end">
         <div className="MobileNav__close-icon pointer">
           <CloseIcon clickHandler={clickHandler} />
         </div>
-      </div>
+      </FlexContainer>
       <nav role="navigation">
-        <ul className="list-style-none p0 flex items-center justify-center flex-col">
-          <li className="MobileNav__list-item  my2">
+        <FlexContainer
+          as="ul"
+          items="center"
+          justify="center"
+          direction="column"
+        >
+          <li>
             <Link to="/code">code</Link>
           </li>
-          <li className="MobileNav__list-item   my2">
+          <li>
             <Link to="/music">music</Link>
           </li>
-          <li className="MobileNav__list-item   my2">
+          <li>
             <Link to="/moodboard">moodboard</Link>
           </li>
-          <li className="MobileNav__list-item   my2">
+          <li>
             <Link to="/about">about</Link>
           </li>
-          <li className="MobileNav__list-item   my2">
+          <li>
             <Link to="/">home</Link>
           </li>
 
           <hr className="MobileNav__hr" />
 
-          <li className="MobileNav__list-item   my2">
+          <li>
             <a
               href="https://github.com/danhemerlein"
               target="_blank"
@@ -67,7 +73,7 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             </a>
           </li>
 
-          <li className="MobileNav__list-item   my2">
+          <li>
             <a
               href="https://workingnotworking.com/58170-dan"
               target="_blank"
@@ -77,7 +83,7 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             </a>
           </li>
 
-          <li className="MobileNav__list-item   my2">
+          <li className="MobileNav__list-item">
             <a
               href="https://www.are.na/dan-hemerlein"
               target="_blank"
@@ -87,7 +93,7 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             </a>
           </li>
 
-          <li className="MobileNav__list-item   my2">
+          <li>
             <a
               href="https://medium.com/@danhemerlein"
               target="_blank"
@@ -96,7 +102,7 @@ const MobileNav = ({ clickHandler, navOpen }) => {
               medium
             </a>
           </li>
-        </ul>
+        </FlexContainer>
       </nav>
     </Nav>
   );
