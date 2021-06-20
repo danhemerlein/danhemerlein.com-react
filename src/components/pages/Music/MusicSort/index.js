@@ -11,7 +11,7 @@ const Container = styled(FlexContainer)`
 `;
 
 const StyledSpan = styled.span`
-  color: white;
+  color: black;
   display: block;
   margin-bottom: ${spacing[0.5]};
 `;

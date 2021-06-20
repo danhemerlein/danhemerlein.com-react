@@ -13,14 +13,8 @@ import ProjectPreview from "./ProjectPreview";
 
 const PageContainter = styled(FlexContainer)`
   ${fullBleed({ space: 1, right: true, left: true })};
-  margin-top: ${spacing[1]};
-  margin-bottom: ${spacing[1]};
-  background-image: linear-gradient(
-    180deg,
-    rgba(194, 59, 34, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(194, 59, 34, 1) 100%
-  );
+  padding-top: ${spacing[1]};
+  padding-bottom: ${spacing[1]};
 `;
 
 const ProjectPreviewContainer = styled(FlexContainer)`
