@@ -22,6 +22,7 @@ import {
 import styled from "styled-components";
 import { getMoodboardContent } from "./store/actions/moodboard";
 import { getMusicProjectsContent } from "./store/actions/musicProjects";
+import GlobalReset from "./styles/global";
 import GlobalFonts from "./styles/utilities/type";
 import { spacing } from "./utils";
 
@@ -123,6 +124,8 @@ function App({
   }
   return (
     <AppContainer>
+      <GlobalReset />
+
       <GlobalFonts />
 
       <Router>

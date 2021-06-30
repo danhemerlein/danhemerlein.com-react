@@ -109,6 +109,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
   const StyledParagraph = styled.p`
     font-family: "happy_times";
+    font-size: 2rem;
 
     ${({ index }) => index > 0 && `margin: ${spacing[0.5]} 0;`};
   `;
