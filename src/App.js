@@ -22,12 +22,11 @@ import {
 import styled from "styled-components";
 import { getMoodboardContent } from "./store/actions/moodboard";
 import { getMusicProjectsContent } from "./store/actions/musicProjects";
-import { bodySerif } from "./styles/utilities";
+import GlobalFonts from "./styles/utilities/type";
 import { spacing } from "./utils";
 
 const AppContainer = styled.div`
   padding: ${spacing[1]};
-  ${bodySerif}
   overflow: hidden;
 `;
 
@@ -124,6 +123,8 @@ function App({
   }
   return (
     <AppContainer>
+      <GlobalFonts />
+
       <Router>
         <Header
           toggleMobileNav={toggleMobileNav}

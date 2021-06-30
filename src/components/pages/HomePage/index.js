@@ -108,7 +108,8 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   `;
 
   const StyledParagraph = styled.p`
-    ${"" /* line-height: 1.4; */}
+    font-family: "happy_times";
+
     ${({ index }) => index > 0 && `margin: ${spacing[0.5]} 0;`};
   `;
 
