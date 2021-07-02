@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { spacing } from "../../../utils";
-import "./MobileNav.scss";
 
 const Nav = styled.div`
   z-index: 5;
@@ -21,6 +20,9 @@ const Nav = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${spacing[1]};
+  font-family: "custom_serif";
+
+  font-size: 1.6rem;
 
   ${({ navOpen }) =>
     navOpen &&
@@ -30,13 +32,31 @@ const Nav = styled.div`
   `};
 `;
 
+const ListItem = styled.li`
+  margin-bottom: 1.6rem;
+`;
+
+const StyledCloseButton = styled.button`
+  cursor: pointer;
+  padding: none;
+  border: 0;
+  outline: none;
+  background: transparent;
+`;
+
+const StyledHR = styled.hr`
+  width: 50%;
+  border: 1px solid black;
+  margin: 1.6rem 0;
+`;
+
 const MobileNav = ({ clickHandler, navOpen }) => {
   return (
     <Nav navOpen={navOpen}>
       <FlexContainer items="flex-end" justify="flex-end">
-        <div className="MobileNav__close-icon pointer">
-          <CloseIcon clickHandler={clickHandler} />
-        </div>
+        <StyledCloseButton onClick={clickHandler}>
+          <CloseIcon width="2.4rem" height="2.4rem" />
+        </StyledCloseButton>
       </FlexContainer>
       <nav role="navigation">
         <FlexContainer
@@ -45,25 +65,25 @@ const MobileNav = ({ clickHandler, navOpen }) => {
           justify="center"
           direction="column"
         >
-          <li>
+          <ListItem>
             <Link to="/code">code</Link>
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <Link to="/music">music</Link>
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <Link to="/moodboard">moodboard</Link>
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <Link to="/about">about</Link>
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <Link to="/">home</Link>
-          </li>
+          </ListItem>
 
-          <hr className="MobileNav__hr" />
+          <StyledHR className="MobileNav__hr" />
 
-          <li>
+          <ListItem>
             <a
               href="https://github.com/danhemerlein"
               target="_blank"
@@ -71,9 +91,9 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             >
               github
             </a>
-          </li>
+          </ListItem>
 
-          <li>
+          <ListItem>
             <a
               href="https://workingnotworking.com/58170-dan"
               target="_blank"
@@ -81,9 +101,9 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             >
               working not working
             </a>
-          </li>
+          </ListItem>
 
-          <li className="MobileNav__list-item">
+          <ListItem className="MobileNav__list-item">
             <a
               href="https://www.are.na/dan-hemerlein"
               target="_blank"
@@ -91,9 +111,9 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             >
               are.na
             </a>
-          </li>
+          </ListItem>
 
-          <li>
+          <ListItem>
             <a
               href="https://medium.com/@danhemerlein"
               target="_blank"
@@ -101,7 +121,7 @@ const MobileNav = ({ clickHandler, navOpen }) => {
             >
               medium
             </a>
-          </li>
+          </ListItem>
         </FlexContainer>
       </nav>
     </Nav>

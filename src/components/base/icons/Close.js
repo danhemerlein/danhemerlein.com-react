@@ -1,12 +1,15 @@
 import React from "react";
 
-const CloseIcon = ({ clickHandler }) => {
+const CloseIcon = ({ clickHandler, height, width, className }) => {
   return (
     <svg
       onClick={clickHandler}
       xmlns="http://www.w3.org/2000/svg"
       xlink="http://www.w3.org/1999/xlink"
       version="1.1"
+      className={className}
+      height={height}
+      width={width}
       x="0px"
       y="0px"
       viewBox="0 0 25 25"

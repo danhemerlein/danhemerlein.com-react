@@ -6,6 +6,7 @@ const StyledButton = styled.button`
   border: none;
   outline: none;
   background: transparent;
+  font-family: "custom_serif";
 `;
 
 const Menu = ({ clickHandler }) => {

@@ -77,6 +77,8 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
     ${above.tablet`
       width: 50%;
+      ${({ index }) => index === 1 && `width: 100%;`};
+
     `}
 
     ${above.desktop`
@@ -108,7 +110,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   `;
 
   const StyledParagraph = styled.p`
-    font-family: "happy_times";
+    font-family: "custom_serif";
     font-size: 2rem;
 
     ${({ index }) => index > 0 && `margin: ${spacing[0.5]} 0;`};
