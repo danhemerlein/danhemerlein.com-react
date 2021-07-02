@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FlexContainer } from "styles/elements";
+import { FlexContainer, P } from "styles/elements";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
 import { above } from "../../../styles/utilities";
 import { remHelper } from "../../../utils";
@@ -109,10 +109,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     `}
   `;
 
-  const StyledParagraph = styled.p`
-    font-family: "custom_serif";
-    font-size: 2rem;
-
+  const StyledP = styled(P)`
     ${({ index }) => index > 0 && `margin: ${remHelper[8]} 0;`};
   `;
 
@@ -131,19 +128,19 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
         <TextContainer justify="center" items="flex-start" direction="column">
           <TextContainerInner>
-            <StyledParagraph index={0}>hey i'm dan (he/him),</StyledParagraph>
+            <StyledP index={0}>hey i'm dan (he/him),</StyledP>
 
-            <StyledParagraph index={1}>
+            <StyledP index={1}>
               i write <StyledLink to="/code">code</StyledLink>, make&nbsp;
               <StyledLink to="/music">music</StyledLink> and sometimes
               take&nbsp;
               <StyledLink to="/moodboard">photos</StyledLink>
-            </StyledParagraph>
+            </StyledP>
 
-            <StyledParagraph index={2}>
+            <StyledP index={2}>
               you can read more about me&nbsp;
               <StyledLink to="/about">here.</StyledLink>
-            </StyledParagraph>
+            </StyledP>
           </TextContainerInner>
         </TextContainer>
       </ContentContainer>

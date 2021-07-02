@@ -19,7 +19,8 @@ import {
   Switch,
   useLocation,
 } from "react-router-dom";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "styles/theme";
 import { getMoodboardContent } from "./store/actions/moodboard";
 import { getMusicProjectsContent } from "./store/actions/musicProjects";
 import GlobalReset from "./styles/global";
@@ -125,18 +126,19 @@ function App({
   return (
     <AppContainer>
       <GlobalReset />
-
       <GlobalFonts />
 
-      <Router>
-        <Header
-          toggleMobileNav={toggleMobileNav}
-          mobileNavOpen={mobileNavOpen}
-          currentRoute={currentRoute}
-        />
-        <SwitchComp />
-        <Footer />
-      </Router>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Header
+            toggleMobileNav={toggleMobileNav}
+            mobileNavOpen={mobileNavOpen}
+            currentRoute={currentRoute}
+          />
+          <SwitchComp />
+          <Footer />
+        </Router>
+      </ThemeProvider>
     </AppContainer>
   );
 }
