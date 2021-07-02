@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { above, anchorColor } from "../../../styles/utilities";
-import { spacing } from "../../../utils";
+import { remHelper } from "../../../utils";
 
 const PageContainer = styled(FlexContainer)`
   height: 100%;
@@ -27,7 +27,7 @@ const SVGContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
-  margin-bottom: ${spacing[2]};
+  margin-bottom: ${remHelper[32]};
 `;
 
 const StyledLink = styled(Link)`

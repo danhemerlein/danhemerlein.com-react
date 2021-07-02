@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
-import { spacing } from "../../../../utils";
+import { remHelper } from "../../../../utils";
 
 const Container = styled(FlexContainer)`
   width: 100%;
-  margin-bottom: ${spacing[1]};
-  margin-left: ${spacing[1]};
+  margin-bottom: ${remHelper[16]};
+  margin-left: ${remHelper[16]};
   font-size: 1.25rem;
 `;
 
 const StyledSpan = styled.span`
   color: black;
   display: block;
-  margin-bottom: ${spacing[0.5]};
+  margin-bottom: ${remHelper[16]};
 `;
 
 const MusicSort = ({ handleChange }) => {

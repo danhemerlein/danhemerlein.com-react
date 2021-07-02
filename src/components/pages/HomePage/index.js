@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
 import { above } from "../../../styles/utilities";
-import { spacing } from "../../../utils";
+import { remHelper } from "../../../utils";
 
 const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     ${above.desktop`
       justify-content: flex-end;
       width: 50%;
-      padding-right: ${spacing[0.5]};
+      padding-right: ${remHelper[8]};
     `}
   `;
 
@@ -88,7 +88,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
   const TextContainer = styled(FlexContainer)`
     width: 100%;
-    margin-top: ${spacing[1]};
+    margin-top: ${remHelper[16]};
 
     ${above.tablet`
       width: 75%;
@@ -105,7 +105,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   const TextContainerInner = styled.div`
     ${above.desktop`
       max-width: 75%;
-      padding-left: ${spacing[0.5]};
+      padding-left: ${remHelper[8]};
     `}
   `;
 
@@ -113,7 +113,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     font-family: "custom_serif";
     font-size: 2rem;
 
-    ${({ index }) => index > 0 && `margin: ${spacing[0.5]} 0;`};
+    ${({ index }) => index > 0 && `margin: ${remHelper[8]} 0;`};
   `;
 
   const StyledLink = styled(Link)`

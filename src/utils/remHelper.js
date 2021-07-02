@@ -1,13 +1,15 @@
 import { SPACING } from "../constants/spacing";
 
-let spacingValues = SPACING;
+let values = SPACING;
 
-spacingValues = Object.values(spacingValues).reduce(
+const toRem = (value) => value / 10;
+
+values = Object.values(values).reduce(
   (acc, curr) => ((acc[curr] = curr), acc),
-  spacingValues
+  values
 );
 
-spacingValues.override = (value) => `${value}rem`;
+values.override = (value) => `${toRem(value)}rem`;
 
 /*
 Usage:
@@ -19,7 +21,7 @@ const StyledComponent = styled.div`
   margin-top: ${spacing.override(23)};
 `;
 */
-export const spacing = new Proxy(spacingValues, {
+export const remHelper = new Proxy(values, {
   get: function Get(target, name) {
     const value = target[name];
     if (typeof value === "function") {
@@ -27,9 +29,9 @@ export const spacing = new Proxy(spacingValues, {
     }
     if (!value) {
       console.warn(`Using non-standard value (${name})`);
-      return `${name}rem`;
+      return `${toRem(name)}rem`;
     }
 
-    return `${value}rem`;
+    return `${toRem(value)}rem`;
   },
 });

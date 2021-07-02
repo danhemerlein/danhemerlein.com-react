@@ -6,20 +6,20 @@ import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { getMusicPageContent } from "../../../store/actions/musicPage";
 import { above, fullBleed } from "../../../styles/utilities";
-import { spacing } from "../../../utils";
+import { remHelper } from "../../../utils";
 import MusicHero from "./MusicHero";
 import MusicSort from "./MusicSort";
 import ProjectPreview from "./ProjectPreview";
 
 const PageContainter = styled(FlexContainer)`
   ${fullBleed({ space: 1, right: true, left: true })};
-  padding-top: ${spacing[1]};
-  padding-bottom: ${spacing[1]};
+  padding-top: ${remHelper[16]};
+  padding-bottom: ${remHelper[16]};
 `;
 
 const ProjectPreviewContainer = styled(FlexContainer)`
   flex-direction: column;
-  padding: 0 ${spacing[1]} 0 ${spacing[1]};
+  padding: 0 ${remHelper[16]} 0 ${remHelper[16]};
 
   ${above.tablet`
     flex-direction: row;

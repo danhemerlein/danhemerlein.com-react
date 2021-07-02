@@ -6,14 +6,14 @@ import {
   checkIsBreakpoint,
   checkMediaQuery,
 } from "../../../styles/utilities";
-import { spacing } from "../../../utils";
+import { remHelper } from "../../../utils";
 
 const Container = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${spacing[1]} 0;
+  padding: ${remHelper[16]} 0;
 `;
 
 export default function FullScreenHeight({

@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
-import { spacing } from "../../../utils";
+import { remHelper } from "../../../utils";
 
 const Nav = styled.div`
   z-index: 5;
@@ -19,7 +19,7 @@ const Nav = styled.div`
   background: white;
   display: flex;
   flex-direction: column;
-  padding: ${spacing[1]};
+  padding: ${remHelper[16]};
   font-family: "custom_serif";
 
   font-size: 1.6rem;

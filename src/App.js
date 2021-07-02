@@ -24,10 +24,10 @@ import { getMoodboardContent } from "./store/actions/moodboard";
 import { getMusicProjectsContent } from "./store/actions/musicProjects";
 import GlobalReset from "./styles/global";
 import GlobalFonts from "./styles/utilities/type";
-import { spacing } from "./utils";
+import { remHelper } from "./utils";
 
 const AppContainer = styled.div`
-  padding: ${spacing[1]};
+  padding: ${remHelper[16]};
   overflow: hidden;
 `;
 
