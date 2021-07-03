@@ -62,17 +62,25 @@ const Moodboard = ({ images }) => {
   const renderGalleryRow = (imageGroup, index) => {
     const imageOneURL = imageGroup[0].fields.file.url;
     const imageOneTitle = imageGroup[0].fields.file.title;
-    const imageTwoURL = imageGroup[1].fields.file.url;
-    const imageTwoTitle = imageGroup[1].fields.file.title;
+    let imageTwoURL;
+    let imageTwoTitle;
+
+    if (imageGroup.length === 2) {
+      imageTwoURL = imageGroup[1].fields.file.url;
+      imageTwoTitle = imageGroup[1].fields.file.title;
+    }
 
     return (
       <MoodboardContent key={index}>
         <MoodboardContentInner className="mr1">
           <StyledImg src={imageOneURL} alt={imageOneTitle} />
         </MoodboardContentInner>
-        <MoodboardContentInner>
-          <StyledImg src={imageTwoURL} alt={imageTwoTitle} />
-        </MoodboardContentInner>
+
+        {imageGroup.length === 2 ? (
+          <MoodboardContentInner>
+            <StyledImg src={imageTwoURL} alt={imageTwoTitle} />
+          </MoodboardContentInner>
+        ) : null}
       </MoodboardContent>
     );
   };
@@ -91,7 +99,7 @@ const Moodboard = ({ images }) => {
   );
 
   return (
-    <FlexContainer wrap>
+    <FlexContainer wrap="wrap">
       {imageMatrix.map((imageGroup, index) =>
         renderGalleryRow(imageGroup, index, imageMatrix)
       )}

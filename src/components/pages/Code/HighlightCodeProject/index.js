@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
+import { blackBorder } from "styles/utilities";
 import { remHelper } from "utils";
 import LaunchDate from "../LaunchDate";
 import ProjectContent from "../ProjectContent";
 import ProjectTitle from "../ProjectTitle";
 
-const Container = styled.div`
-  border: 1px solid #000;
+const HighlightProject = styled.div`
+  border: ${blackBorder};
   max-width: 60rem;
   margin-top: ${remHelper[16]};
   padding: ${remHelper[32]};
@@ -29,7 +30,7 @@ const HighlightCodeProject = ({
 }) => {
   const { title, timelineLaunchDate, description } = project.fields;
   return (
-    <Container
+    <HighlightProject
       gradientRotation={gradientRotation}
       gradientStart={gradientStart}
       gradientEnd={gradientEnd}
@@ -40,7 +41,7 @@ const HighlightCodeProject = ({
         <LaunchDate launchDate={timelineLaunchDate} />
       </FlexContainer>
       <ProjectContent description={description} />
-    </Container>
+    </HighlightProject>
   );
 };
 

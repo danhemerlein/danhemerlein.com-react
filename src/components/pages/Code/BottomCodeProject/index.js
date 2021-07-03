@@ -7,7 +7,7 @@ import LaunchDate from "../LaunchDate";
 import ProjectContent from "../ProjectContent";
 import ProjectTitle from "../ProjectTitle";
 
-const CodeProject = styled.div`
+const BottomProject = styled.div`
   border: ${blackBorder};
   width: 100%;
   max-width: 60rem;
@@ -35,7 +35,7 @@ const StyledAnchor = styled.a`
 const BottomCodeProject = ({ project }) => {
   const { link, title, timelineLaunchDate, description } = project.fields;
   return (
-    <CodeProject>
+    <BottomProject>
       <Inner direction="column" justify="center">
         <StyledAnchor href={link} target="_blank" rel="noopener noreferrer">
           <ProjectTitle title={title} />
@@ -44,7 +44,7 @@ const BottomCodeProject = ({ project }) => {
       </Inner>
 
       <ProjectContent description={description} />
-    </CodeProject>
+    </BottomProject>
   );
 };
 

@@ -11,7 +11,7 @@ const isEven = (i) => {
   return i % 2 === 0;
 };
 
-const CodeProject = styled.div`
+const TopProject = styled.div`
   border: ${blackBorder};
   max-width: 60rem;
   margin-top: ${remHelper[16]};
@@ -63,7 +63,7 @@ const TopCodeProject = ({ project, index }) => {
   } = project.fields;
 
   return (
-    <CodeProject>
+    <TopProject>
       <TitleContainer index={index}>
         <FlexContainer direction="column" items="center" justify="center">
           <StyledAnchor href={link} target="_blank" rel="noopener noreferrer">
@@ -77,7 +77,7 @@ const TopCodeProject = ({ project, index }) => {
       </TitleContainer>
 
       <ProjectContent description={description} />
-    </CodeProject>
+    </TopProject>
   );
 };
 
