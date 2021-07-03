@@ -1,66 +1,105 @@
 import GoHomeBack from "components/base/GoHomeBack";
-import Image from "components/base/Image";
-import React, { Component } from "react";
-import "./Moodboard.scss";
+import _ from "lodash";
+import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import { above } from "styles/utilities";
+import { remHelper } from "utils";
 
-export default class Moodboard extends Component {
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+const StyledImg = styled.img`
+  width: 100%;
+`;
+
+const GoHomeContainer = styled(FlexContainer)`
+  width: 100%;
+`;
+
+const MoodboardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: ${remHelper[16]};
+
+  ${above.tablet`
+    flex-direction: row
+  `}
+`;
+
+const MoodboardContentInner = styled.div`
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+
+  &:first-of-type > img {
+    margin-bottom: ${remHelper[8]};
   }
 
-  isInViewport = () => {
-    if (!this.elem) return false;
-    const { top } = this.elem.getBoundingClientRect();
-    return top + 80 <= window.innerHeight;
+  ${above.tablet`
+    &:first-of-type > img {
+      margin-bottom: 0;
+    }
+
+    width: 50%;
+  `}
+`;
+
+const Moodboard = ({ images }) => {
+  const isInViewport = () => {
+    if (!divRef.current) return false;
+    const { top } = divRef.current.getBoundingClientRect();
+    return top <= window.innerHeight;
   };
 
-  handleScroll = () => {
-    const bool = this.isInViewport();
-
+  const handleScroll = () => {
+    const bool = isInViewport();
     if (bool) {
       window.scrollTo(0, 0);
     }
   };
 
-  renderGalleryRow = (imageGroup, index) => {
+  const divRef = useRef();
+
+  const renderGalleryRow = (imageGroup, index) => {
     const imageOneURL = imageGroup[0].fields.file.url;
     const imageOneTitle = imageGroup[0].fields.file.title;
     const imageTwoURL = imageGroup[1].fields.file.url;
     const imageTwoTitle = imageGroup[1].fields.file.title;
 
     return (
-      <div className="Moodboard__content full-width flex mb1" key={index}>
-        <div className="flex items-end col-12 md-col-6 mr1">
-          <Image src={imageOneURL} alt={imageOneTitle} />
-        </div>
-        <div className="flex items-end col-12 md-col-6">
-          <Image src={imageTwoURL} alt={imageTwoTitle} />
-        </div>
-      </div>
+      <MoodboardContent key={index}>
+        <MoodboardContentInner className="mr1">
+          <StyledImg src={imageOneURL} alt={imageOneTitle} />
+        </MoodboardContentInner>
+        <MoodboardContentInner>
+          <StyledImg src={imageTwoURL} alt={imageTwoTitle} />
+        </MoodboardContentInner>
+      </MoodboardContent>
     );
   };
 
-  render() {
-    const { images } = this.props;
+  useEffect(() => {
+    const debouncedScroll = _.debounce(handleScroll, 250);
+    window.addEventListener("scroll", debouncedScroll);
+  }, []);
 
-    const imageMatrix = images[0].fields.images.reduce(
-      (rows, image, index) =>
-        (index % 2 === 0
-          ? rows.push([image])
-          : rows[rows.length - 1].push(image)) && rows,
-      []
-    );
+  const imageMatrix = images[0].fields.images.reduce(
+    (rows, image, index) =>
+      (index % 2 === 0
+        ? rows.push([image])
+        : rows[rows.length - 1].push(image)) && rows,
+    []
+  );
 
-    return (
-      <div className="Moodboard flex flex-wrap">
-        {imageMatrix.map((imageGroup, index) =>
-          this.renderGalleryRow(imageGroup, index, imageMatrix)
-        )}
-        <div className="full-width flex justify-center my3">
-          <GoHomeBack destination="/" cta="go back" white={false} />
-        </div>
-        <div ref={(el) => (this.elem = el)} />
-      </div>
-    );
-  }
-}
+  return (
+    <FlexContainer wrap>
+      {imageMatrix.map((imageGroup, index) =>
+        renderGalleryRow(imageGroup, index, imageMatrix)
+      )}
+      <GoHomeContainer justify="center">
+        <GoHomeBack destination="/" cta="go back" white={false} />
+      </GoHomeContainer>
+      <div ref={divRef} />
+    </FlexContainer>
+  );
+};
+export default Moodboard;

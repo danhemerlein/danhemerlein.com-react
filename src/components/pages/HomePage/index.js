@@ -5,9 +5,9 @@ import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer, P } from "styles/elements";
+import { above } from "styles/utilities";
+import { remHelper } from "utils";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
-import { above } from "../../../styles/utilities";
-import { remHelper } from "../../../utils";
 
 const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   const dispatch = useDispatch();
