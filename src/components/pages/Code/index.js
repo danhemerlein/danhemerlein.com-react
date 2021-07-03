@@ -2,13 +2,46 @@ import GoHomeBack from "components/base/GoHomeBack";
 import Loading from "components/other/Loading";
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
+import styled from "styled-components";
 import { FlexContainer, P } from "styles/elements";
+import { above, blackBorder } from "styles/utilities";
+import { remHelper } from "utils";
 import { getCodeProjectsContent } from "../../../store/actions/codeProjects";
 import BottomCodeProject from "./BottomCodeProject";
-import "./Code.scss";
 import HighlightCodeProject from "./HighlightCodeProject";
 import ListLinkCodeProject from "./ListLinkCodeProject";
 import TopCodeProject from "./TopCodeProject";
+
+const CodePage = styled(FlexContainer)`
+  p {
+    font-size: ${remHelper[16]};
+  }
+`;
+
+const PageParagraph = styled(P)`
+  width: 100%;
+  padding: 0 ${remHelper[16]};
+`;
+
+const ListLinkContainer = styled(FlexContainer)`
+  width: 100%;
+  max-width: 60rem;
+  margin-top: ${remHelper[16]};
+
+  ${above.tablet`
+    padding-top: ${remHelper[32]};
+    border: ${blackBorder};
+  `}
+`;
+
+const MarkdownSpan = styled.span`
+  font-family: "Courier", serif;
+  color: ${({ theme }) => theme.light.yanRed};
+`;
+
+const MarginContainer = styled.div`
+  margin-top: ${remHelper[16]};
+`;
 
 const Code = (props) => {
   const { codeProjectsLoading, codeProjects } = props;
@@ -34,7 +67,7 @@ const Code = (props) => {
     return <Loading />;
   }
   return (
-    <FlexContainer items="center" justify="center" direction="column">
+    <CodePage items="center" justify="center" direction="column">
       {topLinks.map((project, topLinkKey) => {
         const { title } = project.fields;
         return (
@@ -57,13 +90,18 @@ const Code = (props) => {
         );
       })}
 
-      <div className="Code__list-link-container  w100  flex  flex-col  items-center">
-        <P className="px2  w100">
+      <ListLinkContainer direction="column" wrap="wrap" items="center">
+        <PageParagraph>
           In my spare time, I enjoy developing, hosting and maintaining websites
           for my musician friends. Below are few recent selections.
-        </P>
+        </PageParagraph>
 
-        <div className="Code__list-links-container flex col-12 md:col-8">
+        <ListLinkContainer
+          direction="column"
+          wrap="wrap"
+          items="center"
+          index={1}
+        >
           {listLinks.map((project, key) => {
             return (
               <ListLinkCodeProject
@@ -73,31 +111,34 @@ const Code = (props) => {
               />
             );
           })}
-        </div>
-      </div>
+        </ListLinkContainer>
+      </ListLinkContainer>
 
-      <div className="Code__list-link-container w100 flex flex-col items-center mt2">
-        <P className="px2  w100">
-          Below are a few{" "}
-          <span className="Code__markdown p_25 color-red bg-solitude">
-            just for fun
-          </span>{" "}
-          projects I'm working on in various states of completion:
-        </P>
+      <ListLinkContainer
+        direction="column"
+        wrap="wrap"
+        items="center"
+        index={1}
+      >
+        <PageParagraph>
+          Below are a few&nbsp;
+          <MarkdownSpan>just for fun</MarkdownSpan>
+          &nbsp; projects I'm working on in various states of completion:
+        </PageParagraph>
 
-        <div className="mt2">
+        <MarginContainer>
           {bottomLinks.map((project, key) => {
             return (
               <BottomCodeProject project={project} index={key} key={project} />
             );
           })}
-        </div>
-      </div>
+        </MarginContainer>
+      </ListLinkContainer>
 
-      <div className="mt2">
+      <MarginContainer>
         <GoHomeBack destination="/" cta="go home" white={false} />
-      </div>
-    </FlexContainer>
+      </MarginContainer>
+    </CodePage>
   );
 };
 
