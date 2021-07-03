@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FlexContainer } from "styles/elements";
+import { FlexContainer, P } from "styles/elements";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
 import { above } from "../../../styles/utilities";
 import { remHelper } from "../../../utils";
@@ -77,6 +77,8 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
 
     ${above.tablet`
       width: 50%;
+      ${({ index }) => index === 1 && `width: 100%;`};
+
     `}
 
     ${above.desktop`
@@ -107,12 +109,12 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
     `}
   `;
 
-  const StyledParagraph = styled.p`
+  const StyledP = styled(P)`
     ${({ index }) => index > 0 && `margin: ${remHelper[8]} 0;`};
   `;
 
   return (
-    <FullScreenHeight unsetBreakpoint="desktop">
+    <FullScreenHeight>
       <ContentContainer>
         <ImageContainer items="center">
           <BackgroundImage imageSRC={source}>
@@ -122,43 +124,41 @@ const AboutPage = ({ aboutPageLoading, aboutPage }) => {
 
         <TextContainer justify="center" items="flex-start" direction="column">
           <TextContainerInner>
-            <StyledParagraph index={0}>
-              &emsp;hey I'm dan (he/him),
-            </StyledParagraph>
+            <StyledP index={0}>&emsp;hey I'm dan (he/him),</StyledP>
 
-            <StyledParagraph index={1}>
+            <StyledP index={1}>
               &emsp;I'm a front-end web engineer and music producer based in
               Brooklyn, New York.
-            </StyledParagraph>
+            </StyledP>
 
-            <StyledParagraph index={2}>
+            <StyledP index={2}>
               &emsp;As a coder, I'm really into JavaScript, e-commerce, CSS,
               accessibility, developer experience and learning something new
               every day. I find a lot of joy in the process of achieving a
               technical goal.
-            </StyledParagraph>
+            </StyledP>
 
-            <StyledParagraph index={3}>
+            <StyledP index={3}>
               &emsp;Back before the pandemic you could find me playing shows
               with indie-rock bands all over Manhattan and Brooklyn. These days,
               I mostly write and produce songs on my own out of my home studio.
               I’m planning to release a few tracks from a side project I’m
               currently manifesting in spring 2021.
-            </StyledParagraph>
+            </StyledP>
 
-            <StyledParagraph index={4}>
+            <StyledP index={4}>
               &emsp;In my non-code/non-music time, I journal, read,&nbsp;
               <Link to="/blog">
                 <span className="underline">blog?</span>
               </Link>
               &nbsp;moodboard, jog in McCarren Park and aimlessly ride my bike
               around the city.
-            </StyledParagraph>
+            </StyledP>
 
-            <StyledParagraph index={5}>
+            <StyledP index={5}>
               &emsp;I write code and make music because I can't not and it's
               super trill.
-            </StyledParagraph>
+            </StyledP>
           </TextContainerInner>
         </TextContainer>
       </ContentContainer>

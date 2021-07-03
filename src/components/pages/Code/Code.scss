@@ -1,22 +1,6 @@
 @import "../../../styles/app.scss";
 
 .Code {
-  &__title-container {
-    flex-direction: column;
-
-    a {
-      text-decoration: underline;
-    }
-
-    @include common-bp(tablet) {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
-  &__title-container-inner {
-    flex-direction: column;
-  }
 
   p {
     line-height: 1.69;

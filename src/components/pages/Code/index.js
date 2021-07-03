@@ -2,7 +2,7 @@ import GoHomeBack from "components/base/GoHomeBack";
 import Loading from "components/other/Loading";
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
-import { makeKey } from "utils";
+import { FlexContainer, P } from "styles/elements";
 import { getCodeProjectsContent } from "../../../store/actions/codeProjects";
 import BottomCodeProject from "./BottomCodeProject";
 import "./Code.scss";
@@ -34,23 +34,22 @@ const Code = (props) => {
     return <Loading />;
   }
   return (
-    <div className="Code flex items-center justify-center flex-col my1">
+    <FlexContainer items="center" justify="center" direction="column">
       {topLinks.map((project, topLinkKey) => {
+        const { title } = project.fields;
         return (
-          <TopCodeProject
-            project={project}
-            index={topLinkKey}
-            key={makeKey(topLinkKey)}
-          />
+          <TopCodeProject project={project} index={topLinkKey} key={title} />
         );
       })}
 
       {highlight.map((project, projectKey) => {
+        const { title } = project.fields;
+
         return (
           <HighlightCodeProject
             project={project}
             index={projectKey}
-            key={makeKey(projectKey)}
+            key={title}
             gradientRotation="45deg"
             gradientStart="#fff"
             gradientEnd="#ff6ad5"
@@ -59,10 +58,10 @@ const Code = (props) => {
       })}
 
       <div className="Code__list-link-container  w100  flex  flex-col  items-center">
-        <p className="px2  w100">
+        <P className="px2  w100">
           In my spare time, I enjoy developing, hosting and maintaining websites
           for my musician friends. Below are few recent selections.
-        </p>
+        </P>
 
         <div className="Code__list-links-container flex col-12 md:col-8">
           {listLinks.map((project, key) => {
@@ -78,13 +77,13 @@ const Code = (props) => {
       </div>
 
       <div className="Code__list-link-container w100 flex flex-col items-center mt2">
-        <p className="px2  w100">
+        <P className="px2  w100">
           Below are a few{" "}
           <span className="Code__markdown p_25 color-red bg-solitude">
             just for fun
           </span>{" "}
           projects I'm working on in various states of completion:
-        </p>
+        </P>
 
         <div className="mt2">
           {bottomLinks.map((project, key) => {
@@ -98,7 +97,7 @@ const Code = (props) => {
       <div className="mt2">
         <GoHomeBack destination="/" cta="go home" white={false} />
       </div>
-    </div>
+    </FlexContainer>
   );
 };
 

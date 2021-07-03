@@ -7,4 +7,5 @@ export const FlexContainer = styled.div`
   ${({ direction }) => direction && `flex-direction: ${direction}`};
   ${({ wrap }) => wrap && `flex-wrap: wrap`};
   ${({ height }) => height && `height: ${height}`};
+  ${({ width }) => width && `width: ${width}`};
 `;
