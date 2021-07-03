@@ -12,6 +12,16 @@ export const H1 = styled.h1`
   ${({ red }) => red && `color: ${theme.light.yanRed};`};
 `;
 
+export const H2 = styled.h2`
+  font-size: ${remHelper[16]};
+  font-family: "custom_serif";
+
+  color: ${theme.light.black};
+  ${({ textCenter }) => textCenter && `text-align: center`};
+  ${({ black }) => black && `color: ${theme.light.black};`};
+  ${({ red }) => red && `color: ${theme.light.yanRed};`};
+`;
+
 export const P = styled.p`
   font-size: ${remHelper[16]};
   font-family: "custom_serif";

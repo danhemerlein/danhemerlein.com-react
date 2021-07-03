@@ -1,7 +1,24 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import React from "react";
 import styled from "styled-components";
-import "./styles.scss";
+import { FlexContainer } from "styles/elements";
+import { remHelper } from "utils";
+import ProjectContent from "../ProjectContent";
+import ProjectTitle from "../ProjectTitle";
+
+const Container = styled.div`
+  border: 1px solid #000;
+  max-width: 60rem;
+  margin-top: ${remHelper[16]};
+  padding: ${remHelper[32]};
+  width: 100%;
+
+  ${({ gradientRotation, gradientStart, gradientEnd }) =>
+    gradientRotation &&
+    gradientStart &&
+    gradientEnd &&
+    `
+      background: linear-gradient(${gradientRotation}, ${gradientStart}, ${gradientEnd})};
+    `};
+`;
 
 const HighlightCodeProject = ({
   project,
@@ -9,30 +26,19 @@ const HighlightCodeProject = ({
   gradientStart,
   gradientEnd,
 }) => {
-  const Container = styled.div`
-    border: 1px solid #000;
-    max-width: 60rem;
-    margin-top: 1rem;
-    padding: 2rem;
-    width: 100%;
-    background: linear-gradient(${gradientRotation}, ${gradientStart}, ${gradientEnd})};
-  `;
-
+  const { title, timelineLaunchDate, description } = project.fields;
   return (
-    <Container>
-      <div className="HighlightCodeProject flex flex-col items-center justify-center">
-        <h4 className="HighlightCodeProject__title m0">
-          {project.fields.title}
-        </h4>
+    <Container
+      gradientRotation={gradientRotation}
+      gradientStart={gradientStart}
+      gradientEnd={gradientEnd}
+    >
+      <FlexContainer direction="column" justify="center" items="center">
+        <ProjectTitle title={title} />
 
-        <h4 className="mt_5">({project.fields.timelineLaunchDate})</h4>
-      </div>
-
-      <div className="HighlightCodeProject__content mt2">
-        {project.fields.description.content.map((node) =>
-          documentToReactComponents(node)
-        )}
-      </div>
+        <h4 className="mt_5">({timelineLaunchDate})</h4>
+      </FlexContainer>
+      <ProjectContent description={description} />
     </Container>
   );
 };
