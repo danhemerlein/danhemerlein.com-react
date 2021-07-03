@@ -88,11 +88,13 @@ const Music = (props) => {
   return (
     <PageContainter wrap="wrap" items="center" justify="center">
       <MusicHero />
+
       <ProjectPreviewContainer wrap="wrap" items="center" justify="center">
         <MusicSort handleChange={handleChange} />
 
         {activeProjects.map((project) => {
-          return <ProjectPreview project={project} key={project} />;
+          const { title } = project.fields;
+          return <ProjectPreview project={project} key={title} />;
         })}
 
         <div className="w100 flex justify-center mb3">
