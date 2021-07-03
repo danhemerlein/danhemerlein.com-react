@@ -1,30 +1,50 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import React from "react";
-import "./styles.scss";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import { above, blackBorder } from "styles/utilities";
+import { remHelper } from "utils";
+import LaunchDate from "../LaunchDate";
+import ProjectContent from "../ProjectContent";
+import ProjectTitle from "../ProjectTitle";
+
+const CodeProject = styled.div`
+  border: ${blackBorder};
+  width: 100%;
+  max-width: 60rem;
+  padding: ${remHelper[32]};
+  margin-top: ${remHelper[16]};
+`;
+
+const Inner = styled(FlexContainer)`
+  align-items: center;
+
+  ${above.tablet`
+    align-items: flex-start;
+  `}
+`;
+
+const StyledAnchor = styled.a`
+  text-decoration: underline;
+  color: ${({ theme }) => theme.light.black};
+
+  &:visited {
+    color: ${({ theme }) => theme.light.black};
+  }
+`;
 
 const BottomCodeProject = ({ project }) => {
+  const { link, title, timelineLaunchDate, description } = project.fields;
   return (
-    <div className="BottomCodeProject p2 mt1 w100">
-      <div className="flex justify-center items-center md:items-start flex-col">
-        <a
-          href={project.fields.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="BottomCodeProject__a"
-        >
-          <h4 className="BottomCodeProject__title m0">
-            {project.fields.title}
-          </h4>
-        </a>
-        <h4 className="mt_5">({project.fields.timelineLaunchDate})</h4>
-      </div>
+    <CodeProject>
+      <Inner direction="column" justify="center">
+        <StyledAnchor href={link} target="_blank" rel="noopener noreferrer">
+          <ProjectTitle title={title} />
+        </StyledAnchor>
+        <LaunchDate launchDate={timelineLaunchDate} />
+      </Inner>
 
-      <div className="BottomCodeProject__content mt2">
-        {project.fields.description.content.map((node) =>
-          documentToReactComponents(node)
-        )}
-      </div>
-    </div>
+      <ProjectContent description={description} />
+    </CodeProject>
   );
 };
 

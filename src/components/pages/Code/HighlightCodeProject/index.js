@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { remHelper } from "utils";
+import LaunchDate from "../LaunchDate";
 import ProjectContent from "../ProjectContent";
 import ProjectTitle from "../ProjectTitle";
 
@@ -36,7 +37,7 @@ const HighlightCodeProject = ({
       <FlexContainer direction="column" justify="center" items="center">
         <ProjectTitle title={title} />
 
-        <h4 className="mt_5">({timelineLaunchDate})</h4>
+        <LaunchDate launchDate={timelineLaunchDate} />
       </FlexContainer>
       <ProjectContent description={description} />
     </Container>

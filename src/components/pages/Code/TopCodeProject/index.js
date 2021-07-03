@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { FlexContainer, P } from "styles/elements";
+import { FlexContainer } from "styles/elements";
 import { above, blackBorder } from "styles/utilities";
 import { remHelper } from "utils";
+import LaunchDate from "../LaunchDate";
 import ProjectContent from "../ProjectContent";
 import ProjectTitle from "../ProjectTitle";
 
@@ -43,10 +44,6 @@ const TitleContainer = styled.div`
     `}
 `;
 
-const StyledP = styled(P)`
-  margin-top: ${remHelper[8]};
-`;
-
 const StyledAnchor = styled.a`
   text-decoration: underline;
   color: ${({ theme }) => theme.light.black};
@@ -73,7 +70,7 @@ const TopCodeProject = ({ project, index }) => {
             <ProjectTitle title={title} />
           </StyledAnchor>
 
-          <StyledP>({timelineLaunchDate})</StyledP>
+          <LaunchDate launchDate={timelineLaunchDate} />
         </FlexContainer>
 
         <StyledImg src={image.fields.file.url} alt={image.fields.file.title} />
