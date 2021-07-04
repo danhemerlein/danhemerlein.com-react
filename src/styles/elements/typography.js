@@ -30,7 +30,7 @@ export const P = styled.p`
   ${({ lowercase }) => lowercase && `text-transform: lowercase`};
   ${({ textCenter }) => textCenter && `text-align: center`};
   ${({ textRight }) => textRight && `text-align: right`};
-  ${({ black }) => black && `color: ${theme.light.black};`};
+  ${({ white }) => white && `color: ${theme.light.white};`};
   ${({ red }) => red && `color: ${theme.light.yanRed};`};
 `;
 

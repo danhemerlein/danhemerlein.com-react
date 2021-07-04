@@ -1,5 +1,33 @@
 import React from "react";
+import styled from "styled-components";
 import { FlexContainer, P } from "styles/elements";
+import { above } from "styles/utilities";
+import { remHelper } from "utils";
+
+const TitleContainer = styled(FlexContainer)`
+  margin-top: ${remHelper[16]};
+
+  ${above.tablet`
+    margin-top: 0;
+  `}
+`;
+
+const DateContainer = styled(FlexContainer)`
+  margin-top: ${remHelper[16]};
+  width: 50%:
+`;
+
+const ReleaseDate = styled(P)`
+  margin: ${remHelper[8]} 0;
+
+  ${above.tablet`
+    margin-top: 0;
+  `}
+`;
+
+const Title = styled(P)`
+  margin: ${remHelper[8]} 0;
+`;
 
 const ProjectDetails = ({ project }) => {
   const { artistWebsite, artist, title, releaseDate, role } = project.fields;
@@ -7,7 +35,7 @@ const ProjectDetails = ({ project }) => {
     if (artistWebsite !== undefined) {
       return (
         <>
-          <P className="w100 my_25">
+          <P white>
             by&nbsp;
             <a href={artistWebsite} target="_blank" rel="noopener noreferrer">
               {artist}
@@ -16,25 +44,25 @@ const ProjectDetails = ({ project }) => {
         </>
       );
     }
-    return <P className="w100 my_25">by&nbsp;{artist}</P>;
+    return <P white>by&nbsp;{artist}</P>;
   };
 
   return (
     <FlexContainer justify="space-between" items="center">
-      <div className="flex flex-col mt1 lg:mt0">
-        <P>{title}</P>
+      <TitleContainer direction="column">
+        <Title white>{title}</Title>
         {renderArtistATag()}
-      </div>
+      </TitleContainer>
 
-      <FlexContainer direction="column" className="mt1 col-6">
-        <P lowecase textRight className="my_25 lg:mt0">
+      <DateContainer direction="column">
+        <ReleaseDate lowecase textRight white>
           {releaseDate.replace(",", "")}
-        </P>
+        </ReleaseDate>
 
-        <P lowercase textRight>
+        <P lowercase textRight white>
           {role}
         </P>
-      </FlexContainer>
+      </DateContainer>
     </FlexContainer>
   );
 };
