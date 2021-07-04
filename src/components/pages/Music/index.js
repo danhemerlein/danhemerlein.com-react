@@ -26,9 +26,12 @@ const ProjectPreviewContainer = styled(FlexContainer)`
   `}
 `;
 
-const Music = (props) => {
-  const { musicPageLoading, musicPage, projects } = props;
+const GoHomeContainer = styled(FlexContainer)`
+  width: 100%;
+  margin-bottom: ${remHelper[32]};
+`;
 
+const Music = ({ musicPageLoading, musicPage, projects }) => {
   const [sort, setSort] = useState("default");
   const [activeProjects, setActiveProjects] = useState(projects);
 
@@ -46,29 +49,29 @@ const Music = (props) => {
     setSort(event.target.value);
 
     if (event.target.value === "") {
-      const sorted = props.projects.sort((a, b) => {
+      const sorted = projects.sort((a, b) => {
         return a.fields.order - b.fields.order;
       });
 
       setActiveProjects(sorted);
     } else if (event.target.value === "most-recent") {
-      const sorted = props.projects.sort(function (a, b) {
+      const sorted = projects.sort((a, b) => {
         return b.fields.releaseDateFormat - a.fields.releaseDateFormat;
       });
 
       setActiveProjects(sorted);
     } else if (event.target.value === "oldest") {
-      const sorted = props.projects.sort(function (a, b) {
+      const sorted = projects.sort((a, b) => {
         return a.fields.releaseDateFormat - b.fields.releaseDateFormat;
       });
 
       setActiveProjects(sorted);
     } else {
-      const sorted = props.projects.sort((a, b) => {
+      const sorted = projects.sort((a, b) => {
         return a.fields.order - b.fields.order;
       });
 
-      const filtered = sorted.filter(function (project) {
+      const filtered = sorted.filter((project) => {
         return project.fields[event.target.value];
       });
 
@@ -97,9 +100,9 @@ const Music = (props) => {
           return <ProjectPreview project={project} key={title} />;
         })}
 
-        <div className="w100 flex justify-center mb3">
+        <GoHomeContainer justify="center">
           <GoHomeBack destination="/" cta="go back" white />
-        </div>
+        </GoHomeContainer>
       </ProjectPreviewContainer>
     </PageContainter>
   );

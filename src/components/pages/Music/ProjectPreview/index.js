@@ -1,48 +1,71 @@
-import Image from "components/base/Image";
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import { above } from "styles/utilities";
+import { remHelper } from "utils";
+import DesktopOverlay from "./DesktopOverlay";
 import "./styles.scss";
 
+const Container = styled(FlexContainer)`
+  width: 100%;
+  margin-bottom: ${remHelper[16]};
+
+  ${above.tablet`
+    width: 50%;
+    margin-bottom; ${remHelper[32]};
+  `}
+
+  ${above.desktop`
+    width: 25%;
+  `};
+`;
+
+const Inner = styled(FlexContainer)`
+  position: relative;
+  flex-direction: column;
+
+  ${above.tablet`
+    flex-direction: row;
+    margin: 0 ${remHelper[16]}
+  `}
+
+  &:hover div {
+    opacity: 0.95;
+  }
+`;
+
+const StyledImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
 const ProjectPreview = ({ project }) => {
-  const { handle, artwork, title, artist, role } = project;
+  const { handle, artwork, title, artist, role } = project.fields;
+
   return (
-    <div
-      className="ProjectPreview flex col-12 md:col-6
-      lg:col-3 mb1 md:mb2"
-    >
-      <div className="ProjectPreview__container flex relative mx0 my0 md:mx1 flex-col md:flex-row">
+    <Container>
+      <Inner>
         <Link to={`/music/${handle}`}>
-          <Image
+          <StyledImg
             src={artwork.fields.file.url}
             alt={artwork.fields.file.title}
           />
-          <div
-            className="ProjectPreview__overlay bg-white color-black
-          justify-center flex-col items-center absolute l0 t0
-          r0 b0 w100 h100 p2 text-center none md:flex"
-          >
-            <h3 className="ProjectPreview__title my_25">{title}</h3>
-            <h4 className="ProjectPreview__artist my_25">by {artist}</h4>
-            <h5
-              className="ProjectPreview__role bold
-            text-lowercase my_25"
-            >
-              {role}
-            </h5>
-          </div>
+          <DesktopOverlay title={title} artist={artist} role={role} />
         </Link>
+
         <div className="ProjectPreview__mobile-details flex justify-between items-center md:none mt1">
           <div>
-            <h4 className="ProjectPreview__title color-white">
+            <h4 className="ProjectPreview__title">
               <Link to={`/music/${handle}`}>{title}</Link>
             </h4>
-            <h3 className="ProjectPreview__artist color-white">
+            <h3 className="ProjectPreview__artist">
               <Link to={`/music/${handle}`}>by {artist}</Link>
             </h3>
           </div>
         </div>
-      </div>
-    </div>
+      </Inner>
+    </Container>
   );
 };
 
