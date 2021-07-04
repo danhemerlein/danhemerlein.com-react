@@ -1,46 +1,103 @@
 import GoHomeBack from "components/base/GoHomeBack";
-import Image from "components/base/Image";
 import React from "react";
 import { usePalette } from "react-palette";
-import "./MusicProject.scss";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import { above, fullBleed } from "styles/utilities";
+import { remHelper } from "utils";
 import ProjectDetails from "./ProjectDetails";
 import ProjectLink from "./ProjectLink";
 
-const MusicProject = ({ project }) => {
-  const { data } = usePalette(
-    `https:${project.fields.artwork.fields.file.url}`
-  );
+const Project = styled(FlexContainer)`
+  position: relative;
+  height: 100%;
+  padding: ${remHelper[16]};
+  margin: ${remHelper[16]} 0;
+  ${fullBleed({ space: 1.6, right: true, left: true })};
+  justify-content: space-between;
 
-  const bgStyle = {
-    backgroundImage: `linear-gradient(45deg, ${data.lightMuted}, ${data.muted})`,
-  };
+  ${({ lightMuted, muted }) =>
+    lightMuted &&
+    muted &&
+    `background-image: linear-gradient(45deg, ${lightMuted}, ${muted})`};
+
+  ${above.tablet`
+    justify-content: center;
+  `}
+`;
+
+const Inner = styled(FlexContainer)`
+  width: 100%;
+  flex-direction: column;
+
+  ${above.tablet`
+    width: 66%
+  `}
+
+  ${above.desktop`
+    flex-direction: row;
+  `}
+`;
+
+const StyledImg = styled.img`
+  width: 100%;
+
+  ${above.desktop`
+    width: 50%;
+    margin-right: ${remHelper[8]};
+  `}
+`;
+
+const DetailsContainer = styled.div`
+  width: 100%;
+  margin-bottom: ${remHelper[16]};
+
+  ${above.desktop`
+    width: 50%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-left: ${remHelper[8]};
+  `}
+`;
+
+const LinksContainer = styled.div`
+  margin-top: ${remHelper[16]};
+  color: ${({ theme }) => theme.light.white};
+`;
+
+const MusicProject = ({ project }) => {
+  const { artwork, links } = project.fields;
+
+  const { data } = usePalette(`https:${artwork.fields.file.url}`);
 
   return (
-    <div
-      className="MusicProject flex items-center flex-col relative h100 p1 md:p2 justify-between md:justify-center my1"
-      style={bgStyle}
+    <Project
+      items="center"
+      direction="column"
+      lightMuted={data.lightMuted}
+      muted={data.muted}
     >
-      <div className="col-12 md:col-8 lg:col-8 flex justify-center flex-col lg:flex-row">
-        <Image
-          src={project.fields.artwork.fields.file.url}
-          alt={project.fields.artwork.fields.file.title}
+      <Inner>
+        <StyledImg
+          src={artwork.fields.file.url}
+          alt={artwork.fields.file.title}
         />
 
-        <div className="col-12 lg:col-6 mb1 lg:mb0 lg:ml_5 lg:flex lg:flex-col lg:justify-center">
+        <DetailsContainer>
           <ProjectDetails project={project} />
 
-          <div className="MusicProject__links-container mt1">
-            {project.fields.links.map((link, key) => {
+          <LinksContainer>
+            {links.map((link, key) => {
               return <ProjectLink mapKey={key} link={link} />;
             })}
-          </div>
-        </div>
-      </div>
+          </LinksContainer>
+        </DetailsContainer>
+      </Inner>
 
-      <div className="MusicProject__go-back-container absolute">
-        <GoHomeBack destination="/music/" cta="go back" white />
-      </div>
-    </div>
+      <GoHomeBack destination="/music/" cta="go back" white />
+    </Project>
   );
 };
 

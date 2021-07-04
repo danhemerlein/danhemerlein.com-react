@@ -29,7 +29,6 @@ const Overlay = styled(FlexContainer)`
 
 const StyledP = styled(P)`
   margin: ${remHelper[4]} 0;
-  ${({ lowercase }) => lowercase && `text-tranform: lowercase`};
 `;
 
 export default function DesktopOverlay({ title, artist, role }) {

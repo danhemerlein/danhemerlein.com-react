@@ -25,9 +25,11 @@ export const H2 = styled.h2`
 export const P = styled.p`
   font-size: ${remHelper[16]};
   font-family: "custom_serif";
-
   color: ${theme.light.black};
+
+  ${({ lowercase }) => lowercase && `text-transform: lowercase`};
   ${({ textCenter }) => textCenter && `text-align: center`};
+  ${({ textRight }) => textRight && `text-align: right`};
   ${({ black }) => black && `color: ${theme.light.black};`};
   ${({ red }) => red && `color: ${theme.light.yanRed};`};
 `;

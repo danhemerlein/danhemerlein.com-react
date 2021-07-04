@@ -1,50 +1,41 @@
 import React from "react";
-import "./styles.scss";
+import { FlexContainer, P } from "styles/elements";
 
 const ProjectDetails = ({ project }) => {
+  const { artistWebsite, artist, title, releaseDate, role } = project.fields;
   const renderArtistATag = () => {
-    if (project.fields.artistWebsite !== undefined) {
+    if (artistWebsite !== undefined) {
       return (
-        <div className="ProjectDetails__artist-link">
-          <h4 className="ProjectDetails__artist color-white w100 my_25">
-            by{" "}
-            <a
-              href={project.fields.artistWebsite}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {project.fields.artist}
+        <>
+          <P className="w100 my_25">
+            by&nbsp;
+            <a href={artistWebsite} target="_blank" rel="noopener noreferrer">
+              {artist}
             </a>
-          </h4>
-        </div>
+          </P>
+        </>
       );
     }
-    return (
-      <h4 className="ProjectDetails__artist color-white w100 my_25">
-        by {project.fields.artist}
-      </h4>
-    );
+    return <P className="w100 my_25">by&nbsp;{artist}</P>;
   };
 
   return (
-    <div className="flex justify-between items-center m0">
+    <FlexContainer justify="space-between" items="center">
       <div className="flex flex-col mt1 lg:mt0">
-        <h3 className="ProjectDetails__title color-white m0">
-          {project.fields.title}
-        </h3>
+        <P>{title}</P>
         {renderArtistATag()}
       </div>
 
-      <div className="flex flex-col mt1 col-6">
-        <h3 className="ProjectDetails__release color-white text-lowercase text-right my_25 lg:mt0">
-          {project.fields.releaseDate.replace(",", "")}
-        </h3>
+      <FlexContainer direction="column" className="mt1 col-6">
+        <P lowecase textRight className="my_25 lg:mt0">
+          {releaseDate.replace(",", "")}
+        </P>
 
-        <h3 className="ProjectDetails__role color-white text-lowercase text-right">
-          {project.fields.role}
-        </h3>
-      </div>
-    </div>
+        <P lowercase textRight>
+          {role}
+        </P>
+      </FlexContainer>
+    </FlexContainer>
   );
 };
 
