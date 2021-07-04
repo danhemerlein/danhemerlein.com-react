@@ -6,6 +6,7 @@ import Loading from "components/other/Loading";
 import About from "components/pages/About";
 import Blog from "components/pages/Blog";
 import Code from "components/pages/Code";
+import Credits from "components/pages/Credits";
 import HomePage from "components/pages/HomePage";
 import Moodboard from "components/pages/Moodboard";
 import Music from "components/pages/Music";
@@ -94,13 +95,11 @@ function App({
 
         <Route exact path="/about" component={About} />
 
+        <Route exact path="/blog" render={() => <Blog />} />
+
         <Route exact path="/code" component={Code} />
 
-        <Route
-          exact
-          path="/music"
-          render={() => <Music projects={musicProjects} />}
-        />
+        <Route exact path="/credits" component={Credits} />
 
         <Route
           exact
@@ -108,7 +107,11 @@ function App({
           render={() => <Moodboard images={moodboard} />}
         />
 
-        <Route exact path="/blog" render={() => <Blog />} />
+        <Route
+          exact
+          path="/music"
+          render={() => <Music projects={musicProjects} />}
+        />
 
         {musicPageRoutes}
 
