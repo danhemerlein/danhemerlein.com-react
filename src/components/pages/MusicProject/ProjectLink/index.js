@@ -1,71 +1,53 @@
 import React from "react";
-import "./styles.scss";
+import styled from "styled-components";
+import { FlexContainer } from "styles/elements";
+import { above, transparentBorder, whiteBorder } from "styles/utilities";
+import { remHelper } from "utils";
+import { i, j, k } from "./data";
 
-const Links = (props) => {
-  const { key, link } = props;
-  let hasLink = false;
-  const i = [
-    ["i0", "•"],
-    ["i1", "•"],
-    ["i2", "•"],
-    ["i3", "•"],
-    ["i4", "•"],
-    ["i5", "•"],
-    ["i6", "•"],
-    ["i7", "•"],
-    ["i8", "•"],
-    ["i9", "•"],
-    ["i10", "•"],
-    ["i11", "•"],
-  ];
-  const j = [
-    ["j0", "•"],
-    ["j1", "•"],
-    ["j2", "•"],
-    ["j3", "•"],
-    ["j4", "•"],
-    ["j5", "•"],
-    ["j6", "•"],
-    ["j7", "•"],
-    ["j8", "•"],
-    ["j9", "•"],
-    ["j10", "•"],
-    ["j11", "•"],
-  ];
-  const k = [
-    ["k0", "."],
-    ["k1", "."],
-    ["k2", "."],
-    ["k3", "."],
-    ["k4", "."],
-    ["k5", "."],
-    ["k6", "."],
-    ["k7", "."],
-    ["k8", "."],
-    ["k9", "."],
-    ["k10", "."],
-    ["k11", "."],
-    ["k12", "."],
-    ["k13", "."],
-    ["k14", "."],
-    ["k15", "."],
-  ];
+const Inner = styled(FlexContainer)`
+width: 100%;
+margin-bottom: ${remHelper[32]}
+
+color: ${({ theme }) => theme.light.white};
+
+  ${above.desktop`
+    border-bottom: ${transparentBorder}
+
+    &:hover {
+      border-bottom: ${whiteBorder};
+    }
+  `}
+`;
+
+const StyledA = styled.a`
+  ${({ desktop }) => desktop && `display: none;`};
+  ${({ mobile }) => mobile && `display: inline;`};
+
+  ${above.desktop`
+    ${({ mobile }) => mobile && `display: none;`};
+    ${({ desktop }) => desktop && `display: inline;`};
+  `}
+`;
+
+const LinkTitleContainer = styled(FlexContainer)`
+  width: 100%;
+  margin-bottom: ${remHelper[16]}
+  color: ${({ theme }) => theme.light.white};
+
+`;
+
+const Links = ({ key, link }) => {
   if (link.link !== undefined) {
-    hasLink = true;
-  }
-  if (hasLink) {
     return (
       <span key={key}>
-        <a
-          className="none lg:inline"
+        <StyledA
+          mobile
           href={link.link}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div
-            className="ProjectLink__inner color-white
-            flex justify-between w100 mb2"
-          >
+          <Inner justify="space-between">
             {i.map((item) => {
               const [id, sym] = item;
               return <span key={id}>{sym}</span>;
@@ -75,17 +57,17 @@ const Links = (props) => {
               const [id, sym] = item;
               return <span key={id}>{sym}</span>;
             })}
-          </div>
-        </a>
+          </Inner>
+        </StyledA>
 
-        <a
-          className="inline lg:none"
+        <StyledA
+          desktop
           href={link.link}
           target="_blank"
           rel="noopener noreferrer"
           key={key + 10}
         >
-          <div className="color-white flex justify-between w100 mb1">
+          <LinkTitleContainer justify="space-between">
             <span>{key}</span>
             {k.map((item) => {
               const [id, sym] = item;
@@ -93,8 +75,8 @@ const Links = (props) => {
               return <span key={id}>{sym}</span>;
             })}
             <span>{link.title}</span>
-          </div>
-        </a>
+          </LinkTitleContainer>
+        </StyledA>
       </span>
     );
   }
