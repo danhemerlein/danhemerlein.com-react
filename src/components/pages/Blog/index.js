@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { makeKey } from "utils";
+import { H1, H2, P } from "styles/elements";
 import data from "./q1-2021.json";
 
 const CategoryTitle = styled.strong`
@@ -16,25 +16,28 @@ const Blog = () => {
 
   return (
     <section className="blog">
-      <h1 className="mb_5 text-center">music, movies, books & tv shows</h1>
-      <h2 className="text-center">january - march 2021</h2>
+      <H1 className="mb_5 text-center">music, movies, books & tv shows</H1>
+      <H2 className="text-center">january - march 2021</H2>
 
       <div>
-        <CategoryTitle>music</CategoryTitle>
-        {music.music.map((album, albumMonthKey) => {
-          return (
-            <div key={makeKey(albumMonthKey)} className="my1">
-              <p>
-                <CategoryTitle>{album.month}</CategoryTitle>
-              </p>
+        <P>
+          <CategoryTitle>music</CategoryTitle>
+        </P>
 
-              {album.data.map((albumData, albumKey) => {
+        {music.music.map((album) => {
+          return (
+            <div key={album.month} className="my1">
+              <P>
+                <CategoryTitle>{album.month}</CategoryTitle>
+              </P>
+
+              {album.data.map((albumData) => {
                 return (
-                  <p key={makeKey(albumKey)}>
+                  <P key={albumData.title}>
                     <StyledSpan>{albumData.title}</StyledSpan>&nbsp;
                     <span>({albumData.releaseYear})</span>
                     <span> by {albumData.artist}</span>
-                  </p>
+                  </P>
                 );
               })}
             </div>
@@ -43,21 +46,24 @@ const Blog = () => {
       </div>
 
       <div>
-        <CategoryTitle>books</CategoryTitle>
-        {books.books.map((book, bookMonthKey) => {
+        <P>
+          <CategoryTitle>books</CategoryTitle>
+        </P>
+
+        {books.books.map((book) => {
           return (
-            <div key={makeKey(bookMonthKey)} className="my1">
-              <p>
+            <div key={book.month} className="my1">
+              <P>
                 <CategoryTitle>{book.month}</CategoryTitle>
-              </p>
+              </P>
 
               {book.data.map((bookData, bookKey) => {
                 return (
-                  <p bookKey={makeKey(bookKey)}>
+                  <P bookKey={bookKey.title}>
                     <StyledSpan>{bookData.title}</StyledSpan>&nbsp;
                     <span>({bookData.releaseYear})</span>
                     <span> by {bookData.author}</span>
-                  </p>
+                  </P>
                 );
               })}
             </div>
@@ -66,20 +72,22 @@ const Blog = () => {
       </div>
 
       <div>
-        <CategoryTitle>movies</CategoryTitle>
-        {movies.movies.map((movie, movieMonthKey) => {
+        <P>
+          <CategoryTitle>movies</CategoryTitle>
+        </P>
+        {movies.movies.map((movie) => {
           return (
-            <div key={makeKey(movieMonthKey)} className="my1">
-              <p>
+            <div key={movie.month} className="my1">
+              <P>
                 <CategoryTitle>{movie.month}</CategoryTitle>
-              </p>
+              </P>
 
-              {movie.data.map((movieData, movieKey) => {
+              {movie.data.map((movieData) => {
                 return (
-                  <p key={makeKey(movieKey)}>
+                  <P key={movieData.title}>
                     <span>{movieData.title}</span>&nbsp;
                     <span>({movieData.releaseYear})</span>
-                  </p>
+                  </P>
                 );
               })}
             </div>
@@ -88,20 +96,22 @@ const Blog = () => {
       </div>
 
       <div>
-        <CategoryTitle>tv shows</CategoryTitle>
-        {tvShows.tvShows.map((show, tvShowsMonthKey) => {
+        <P>
+          <CategoryTitle>tv shows</CategoryTitle>
+        </P>
+        {tvShows.tvShows.map((show) => {
           return (
-            <div key={makeKey(tvShowsMonthKey)} className="my1">
-              <p>
+            <div key={show.month} className="my1">
+              <P>
                 <CategoryTitle>{show.month}</CategoryTitle>
-              </p>
+              </P>
 
-              {show.data.map((showData, showKey) => {
+              {show.data.map((showData) => {
                 return (
-                  <p key={makeKey(showKey)}>
+                  <P key={showData.title}>
                     <span>{showData.title}</span>&nbsp;
                     <span>({showData.releaseYear})</span>
-                  </p>
+                  </P>
                 );
               })}
             </div>
