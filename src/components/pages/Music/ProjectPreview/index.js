@@ -5,11 +5,12 @@ import { FlexContainer } from "styles/elements";
 import { above } from "styles/utilities";
 import { remHelper } from "utils";
 import DesktopOverlay from "./DesktopOverlay";
-import "./styles.scss";
+import MobileDetails from "./MobileDetails";
 
 const Container = styled(FlexContainer)`
   width: 100%;
   margin-bottom: ${remHelper[16]};
+  font-family: "custom_serif";
 
   ${above.tablet`
     width: 50%;
@@ -53,17 +54,7 @@ const ProjectPreview = ({ project }) => {
           />
           <DesktopOverlay title={title} artist={artist} role={role} />
         </Link>
-
-        <div className="ProjectPreview__mobile-details flex justify-between items-center md:none mt1">
-          <div>
-            <h4 className="ProjectPreview__title">
-              <Link to={`/music/${handle}`}>{title}</Link>
-            </h4>
-            <h3 className="ProjectPreview__artist">
-              <Link to={`/music/${handle}`}>by {artist}</Link>
-            </h3>
-          </div>
-        </div>
+        <MobileDetails handle={handle} title={title} artist={artist} />
       </Inner>
     </Container>
   );
