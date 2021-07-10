@@ -24,6 +24,14 @@ const ImageContainer = styled(FlexContainer)`
   width: 100%;
   justify-content: center;
   margin: 0 auto;
+
+  ${above.tablet`
+    width: 50%;
+  `}
+
+  ${above.desktop`
+    width: 100%;
+  `}
 `;
 
 const BackgroundImage = styled.div`

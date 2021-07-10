@@ -23,7 +23,8 @@ export default function FullScreenHeight({
   const isMobile = checkIsBreakpoint(BREAKPOINT.tablet);
   const PADDING = 32;
   const HEADER_HEIGHT = 22;
-  const FOOTER_HEIGHT = isMobile ? 12 : 16;
+  // const FOOTER_HEIGHT = isMobile ? 12 : 16;
+  const FOOTER_HEIGHT = 22;
 
   const offset = PADDING + HEADER_HEIGHT + FOOTER_HEIGHT;
   const height = use100vh();

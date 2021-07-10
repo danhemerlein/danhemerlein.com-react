@@ -4,9 +4,9 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { getAboutPageContent } from "store/actions/aboutPage";
 import styled from "styled-components";
-import { FlexContainer, H2, P } from "styles/elements";
+import { FlexContainer, H2 } from "styles/elements";
 import { above } from "styles/utilities";
-import { remHelper } from "utils";
+import HomePageBanner from "./HomePageBanner";
 import HomePageLink from "./HomePageLink";
 import Info from "./Info";
 
@@ -32,6 +32,10 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   const source = `https:${aboutPageContent.fields.heroImage.fields.file.url}`;
   const sourcePrime = `https:${aboutPageContent.fields.heroImagePrime.fields.file.url}`;
 
+  const HomeContainer = styled(FlexContainer)`
+    position: relative;
+  `;
+
   const BoxContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -44,25 +48,14 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     `}
   `;
 
-  const Banner = styled.div`
-    background-color: ${({ theme }) => theme.light.black};
-    padding: ${remHelper[4]} 0;
-  `;
-
-  const HomeContainer = styled(FlexContainer)`
-    position: relative;
-  `;
-
   return (
-    <FullScreenHeight>
+    <FullScreenHeight unsetBreakpoint="desktop">
       <HomeContainer direction="column" height="100%" width="100%">
-        <Banner>
-          <P white textCenter>
-            young and nauseous
-          </P>
-        </Banner>
+        <HomePageBanner desktop />
 
         <BoxContainer>
+          <Info source={source} sourcePrime={sourcePrime} />
+
           <HomePageLink destination="/code" position="top-left">
             <H2>code</H2>
           </HomePageLink>
@@ -70,7 +63,8 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
             <H2>music</H2>
           </HomePageLink>
 
-          <Info source={source} sourcePrime={sourcePrime} />
+          <HomePageBanner mobile />
+
 
           <HomePageLink destination="/moodboard" position="bottom-left">
             <H2>mood</H2>

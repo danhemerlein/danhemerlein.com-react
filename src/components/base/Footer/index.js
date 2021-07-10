@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { FlexContainer } from "styles/elements";
+import { FlexContainer, P } from "styles/elements";
 
-const StyledSmall = styled.small`
-  font-size: 12px;
+const StyledFlexContainer = styled(FlexContainer)`
+  min-height: 22px;
 `;
 
 const Footer = () => {
   return (
-    <FlexContainer as="footer" items="center" justify="flex-end">
-      <StyledSmall>© Dan Hemerlein 2021</StyledSmall>
-    </FlexContainer>
+    <StyledFlexContainer as="footer" items="center" justify="flex-end">
+      <P as="small">© Dan Hemerlein 2021</P>
+    </StyledFlexContainer>
   );
 };
 
