@@ -6,7 +6,8 @@ import { anchorColor, SlideWideLeft, SlideWideRight } from "styles/utilities";
 const Hero = styled(FlexContainer)`
   width: 100%;
   height: 50vh;
-  font-family: "lack_italic";
+  font-family: "lack_regular";
+  color: ${({ theme }) => theme.light.yanRed};
 `;
 
 const StyledLink = styled.a`
@@ -36,7 +37,7 @@ const MusicHero = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <HeadlineTwo>young & nauseous</HeadlineTwo>
+        <HeadlineTwo>young and nauseous</HeadlineTwo>
         <HeadlineThree>out now</HeadlineThree>
       </StyledLink>
     </Hero>

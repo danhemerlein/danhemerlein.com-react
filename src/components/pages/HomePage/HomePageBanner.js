@@ -13,6 +13,11 @@ const Banner = styled.a`
   border-right: 1px solid;
   border-color: ${({ theme }) => theme.light.black};
 
+  span {
+    font-family: "lack_regular";
+    color: ${({ theme }) => theme.light.yanRed};
+  }
+
   ${({ desktop }) => desktop && `display: none;`}
 
   ${({ mobile }) =>
@@ -28,17 +33,9 @@ const Banner = styled.a`
       }
     `}
 
-  span {
-    color: ${({ theme }) => theme.light.white};
-    transition: color 0.25s ease-in-out;
-  }
-
   &:hover,
   &:focus {
     background: ${({ theme }) => theme.light.white};
-    span {
-      color: ${({ theme }) => theme.light.black};
-    }
   }
 
   ${above.desktop`
