@@ -6,6 +6,10 @@ import { FlexContainer } from "styles/elements";
 import { above } from "styles/utilities";
 import { remHelper } from "utils";
 
+const PageContainer = styled(FlexContainer)`
+  padding: ${remHelper[16]} 0;
+`;
+
 const StyledImg = styled.img`
   width: 100%;
 `;
@@ -31,10 +35,12 @@ const MoodboardContentInner = styled.div`
   width: 100%;
 
   &:first-of-type > img {
-    margin-bottom: ${remHelper[8]};
+    margin-bottom: ${remHelper[16]};
   }
 
   ${above.tablet`
+    ${({ first }) => first && `margin-right: ${remHelper[8]};`}
+    ${({ second }) => second && `margin-left: ${remHelper[8]};`}
     &:first-of-type > img {
       margin-bottom: 0;
     }
@@ -65,19 +71,21 @@ const Moodboard = ({ images }) => {
     let imageTwoURL;
     let imageTwoTitle;
 
-    if (imageGroup.length === 2) {
+    const twoImages = imageGroup.length === 2;
+
+    if (twoImages) {
       imageTwoURL = imageGroup[1].fields.file.url;
       imageTwoTitle = imageGroup[1].fields.file.title;
     }
 
     return (
       <MoodboardContent key={index}>
-        <MoodboardContentInner className="mr1">
+        <MoodboardContentInner first>
           <StyledImg src={imageOneURL} alt={imageOneTitle} />
         </MoodboardContentInner>
 
-        {imageGroup.length === 2 ? (
-          <MoodboardContentInner>
+        {twoImages ? (
+          <MoodboardContentInner second>
             <StyledImg src={imageTwoURL} alt={imageTwoTitle} />
           </MoodboardContentInner>
         ) : null}
@@ -99,7 +107,7 @@ const Moodboard = ({ images }) => {
   );
 
   return (
-    <FlexContainer wrap="wrap">
+    <PageContainer wrap="wrap">
       {imageMatrix.map((imageGroup, index) =>
         renderGalleryRow(imageGroup, index, imageMatrix)
       )}
@@ -107,7 +115,7 @@ const Moodboard = ({ images }) => {
         <GoHomeBack destination="/" cta="go back" white={false} />
       </GoHomeContainer>
       <div ref={divRef} />
-    </FlexContainer>
+    </PageContainer>
   );
 };
 export default Moodboard;
