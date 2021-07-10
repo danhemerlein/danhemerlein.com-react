@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { P } from "styles/elements";
 
 const StyledButton = styled.button`
   cursor: pointer;
@@ -12,7 +13,7 @@ const StyledButton = styled.button`
 const Menu = ({ clickHandler }) => {
   return (
     <StyledButton type="button" onClick={clickHandler}>
-      menu
+      <P as="span">menu</P>
     </StyledButton>
   );
 };

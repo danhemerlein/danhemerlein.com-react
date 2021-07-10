@@ -31,7 +31,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
   const source = `https:${aboutPageContent.fields.heroImage.fields.file.url}`;
   const sourcePrime = `https:${aboutPageContent.fields.heroImagePrime.fields.file.url}`;
 
-  const ContentContainer = styled.div`
+  const BoxContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -115,10 +115,27 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     font-size: 1.4rem;
   `;
 
+  const Banner = styled.div`
+    background-color: ${({ theme }) => theme.light.black};
+    padding: ${remHelper[4]};
+  `;
+
   const HomeBox = styled.div`
-    border: 1px solid;
     border-color: ${({ theme }) => theme.light.black};
     padding: ${remHelper[16]};
+
+    ${({ topLeft }) =>
+      topLeft && `border-top: 1px solid; border-left: 1px solid;`}
+    ${({ topRight }) =>
+      topRight &&
+      `border-top: 1px solid; border-right: 1px solid; border-left: 1px solid; text-align: right;`}
+    ${({ bottomLeft }) =>
+      bottomLeft &&
+      `border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; display: flex; align-items: flex-end;`}
+
+    ${({ bottomRight }) =>
+      bottomRight &&
+      `border: 1px solid; text-align: right; display: flex; align-items: flex-end; justify-content: flex-end;`}
 
     width: 50%;
     height: 50%;
@@ -126,7 +143,7 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
 
   return (
     <FullScreenHeight>
-      <ContentContainer>
+      <FlexContainer direction="column" height="100%" width="100%">
         {/* <ImageContainer items="center">
           <BackgroundImage imageSRC={source}>
             <BackgroundImage imageSRC={sourcePrime} index={1} />
@@ -150,19 +167,26 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
             </StyledP>
           </TextContainerInner>
         </TextContainer> */}
-        <HomeBox>
-          <H2>code</H2>
-        </HomeBox>
-        <HomeBox>
-          <H2>music</H2>
-        </HomeBox>
-        <HomeBox>
-          <H2>moodboard</H2>
-        </HomeBox>
-        <HomeBox>
-          <H2>more</H2>
-        </HomeBox>
-      </ContentContainer>
+        <Banner>
+          <P white textCenter>
+            young and nauseous
+          </P>
+        </Banner>
+        <BoxContainer>
+          <HomeBox topLeft>
+            <H2>code</H2>
+          </HomeBox>
+          <HomeBox topRight>
+            <H2>music</H2>
+          </HomeBox>
+          <HomeBox bottomLeft>
+            <H2>moodboard</H2>
+          </HomeBox>
+          <HomeBox bottomRight>
+            <H2>more</H2>
+          </HomeBox>
+        </BoxContainer>
+      </FlexContainer>
     </FullScreenHeight>
   );
 };

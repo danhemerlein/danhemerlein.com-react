@@ -4,15 +4,14 @@ import MobileNavOverlay from "components/navigation/MobileNavOverlay";
 import React from "react";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
-import { above } from "../../../styles/utilities";
 
 const StyledHeader = styled.header`
   position: relative;
-  min-height: 17px;
+  ${"" /* min-height: 17px;
 
   ${above.tablet`
     min-height: 32px;
-  `}
+  `} */}
 `;
 
 const Header = ({ mobileNavOpen, toggleMobileNav }) => {
