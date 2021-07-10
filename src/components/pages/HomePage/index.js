@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FlexContainer, P } from "styles/elements";
+import { FlexContainer, H2, P } from "styles/elements";
 import { above } from "styles/utilities";
 import { remHelper } from "utils";
 import { getAboutPageContent } from "../../../store/actions/aboutPage";
@@ -35,14 +35,12 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
 
-    ${above.tablet`
-      height: 75%;
-    `}
-
+    flex-wrap: wrap;
+    flex-direction: row;
     ${above.desktop`
-      flex-direction: row;
-    `}
+     `}
   `;
 
   const ImageContainer = styled(FlexContainer)`
@@ -117,10 +115,19 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
     font-size: 1.4rem;
   `;
 
+  const HomeBox = styled.div`
+    border: 1px solid;
+    border-color: ${({ theme }) => theme.light.black};
+    padding: ${remHelper[16]};
+
+    width: 50%;
+    height: 50%;
+  `;
+
   return (
     <FullScreenHeight>
       <ContentContainer>
-        <ImageContainer items="center">
+        {/* <ImageContainer items="center">
           <BackgroundImage imageSRC={source}>
             <BackgroundImage imageSRC={sourcePrime} index={1} />
           </BackgroundImage>
@@ -142,7 +149,19 @@ const NewHomePage = ({ aboutPageLoading, aboutPage }) => {
               <StyledLink to="/about">here.</StyledLink>
             </StyledP>
           </TextContainerInner>
-        </TextContainer>
+        </TextContainer> */}
+        <HomeBox>
+          <H2>code</H2>
+        </HomeBox>
+        <HomeBox>
+          <H2>music</H2>
+        </HomeBox>
+        <HomeBox>
+          <H2>moodboard</H2>
+        </HomeBox>
+        <HomeBox>
+          <H2>more</H2>
+        </HomeBox>
       </ContentContainer>
     </FullScreenHeight>
   );
