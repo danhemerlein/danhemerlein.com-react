@@ -2,14 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
 import { above, blackBorder } from "styles/utilities";
-import { remHelper } from "utils";
+import { isEven, remHelper } from "utils";
 import LaunchDate from "../LaunchDate";
 import ProjectContent from "../ProjectContent";
 import ProjectTitle from "../ProjectTitle";
-
-const isEven = (i) => {
-  return i % 2 === 0;
-};
 
 const TopProject = styled.div`
   border: ${blackBorder};

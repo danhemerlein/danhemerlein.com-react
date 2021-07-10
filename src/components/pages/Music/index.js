@@ -5,21 +5,18 @@ import { connect, useDispatch } from "react-redux";
 import { getMusicPageContent } from "store/actions/musicPage";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
-import { above, fullBleed } from "styles/utilities";
+import { above } from "styles/utilities";
 import { remHelper } from "utils";
 import MusicHero from "./MusicHero";
 import MusicSort from "./MusicSort";
 import ProjectPreview from "./ProjectPreview";
 
-const PageContainter = styled(FlexContainer)`
-  ${fullBleed({ space: 1, right: true, left: true })};
-  padding-top: ${remHelper[16]};
-  padding-bottom: ${remHelper[16]};
+const PageContainer = styled.div`
+  margin-bottom: ${remHelper[16]};
 `;
 
 const ProjectPreviewContainer = styled(FlexContainer)`
   flex-direction: column;
-  padding: 0 ${remHelper[16]} 0 ${remHelper[16]};
 
   ${above.tablet`
     flex-direction: row;
@@ -28,7 +25,6 @@ const ProjectPreviewContainer = styled(FlexContainer)`
 
 const GoHomeContainer = styled(FlexContainer)`
   width: 100%;
-  margin-bottom: ${remHelper[32]};
 `;
 
 const Music = ({ musicPageLoading, musicPage, projects }) => {
@@ -89,22 +85,25 @@ const Music = ({ musicPageLoading, musicPage, projects }) => {
   }
 
   return (
-    <PageContainter wrap="wrap" items="center" justify="center">
+    <PageContainer>
       <MusicHero />
+      <FlexContainer wrap="wrap" items="center" justify="center">
+        <ProjectPreviewContainer wrap="wrap" items="center" justify="center">
+          <MusicSort handleChange={handleChange} />
 
-      <ProjectPreviewContainer wrap="wrap" items="center" justify="center">
-        <MusicSort handleChange={handleChange} />
+          {activeProjects.map((project, index) => {
+            const { title } = project.fields;
+            return (
+              <ProjectPreview index={index} project={project} key={title} />
+            );
+          })}
 
-        {activeProjects.map((project) => {
-          const { title } = project.fields;
-          return <ProjectPreview project={project} key={title} />;
-        })}
-
-        <GoHomeContainer justify="center">
-          <GoHomeBack destination="/" cta="go back" white />
-        </GoHomeContainer>
-      </ProjectPreviewContainer>
-    </PageContainter>
+          <GoHomeContainer justify="center">
+            <GoHomeBack destination="/" cta="go back" white />
+          </GoHomeContainer>
+        </ProjectPreviewContainer>
+      </FlexContainer>
+    </PageContainer>
   );
 };
 

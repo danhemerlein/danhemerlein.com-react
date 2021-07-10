@@ -1,26 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import { FlexContainer } from "styles/elements";
+import { FlexContainer, P } from "styles/elements";
 import { remHelper } from "../../../../utils";
 
 const Container = styled(FlexContainer)`
   width: 100%;
-  margin-bottom: ${remHelper[16]};
-  margin-left: ${remHelper[16]};
-  font-size: 1.25rem;
+  margin: ${remHelper[16]} 0;
 `;
 
-const StyledSpan = styled.span`
-  color: black;
+const LabelText = styled(P)`
   display: block;
-  margin-bottom: ${remHelper[16]};
+  margin-bottom: ${remHelper[8]};
 `;
 
 const MusicSort = ({ handleChange }) => {
   return (
     <Container>
       <label>
-        <StyledSpan>sort</StyledSpan>
+        <LabelText as="span">sort</LabelText>
 
         <select onChange={(event) => handleChange(event)}>
           <option value="">default</option>

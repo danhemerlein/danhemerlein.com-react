@@ -5,20 +5,34 @@ import { FlexContainer } from "styles/elements";
 import { above } from "styles/utilities";
 import { remHelper } from "utils";
 import DesktopOverlay from "./DesktopOverlay";
+import {
+  getDesktopMarginLeft,
+  getDestkopMarginRight,
+  getTabletMarginLeft,
+  getTabletMarginRight,
+} from "./lib";
 import MobileDetails from "./MobileDetails";
 
 const Container = styled(FlexContainer)`
-  width: 100%;
+  width: calc(100%);
   margin-bottom: ${remHelper[16]};
   font-family: "custom_serif";
 
   ${above.tablet`
-    width: 50%;
-    margin-bottom; ${remHelper[32]};
+    width: calc(50% - ${remHelper[8]});
+
+    ${({ index }) =>
+      String(index) && `margin-right: ${getTabletMarginRight(String(index))};`}
+    ${({ index }) =>
+      String(index) && `margin-left: ${getTabletMarginLeft(String(index))};`}
   `}
 
   ${above.desktop`
-    width: 25%;
+    width: calc(25% - ${remHelper.override(12)});
+    ${({ index }) =>
+      String(index) && `margin-right: ${getDestkopMarginRight(String(index))};`}
+    ${({ index }) =>
+      String(index) && `margin-left: ${getDesktopMarginLeft(String(index))};`}
   `};
 `;
 
@@ -28,7 +42,6 @@ const Inner = styled(FlexContainer)`
 
   ${above.tablet`
     flex-direction: row;
-    margin: 0 ${remHelper[16]}
   `}
 
   &:hover div {
@@ -41,11 +54,12 @@ const StyledImg = styled.img`
   height: 100%;
 `;
 
-const ProjectPreview = ({ project }) => {
+const ProjectPreview = ({ project, index }) => {
   const { handle, artwork, title, artist, role } = project.fields;
+  console.log("project preview index", index);
 
   return (
-    <Container>
+    <Container index={index}>
       <Inner>
         <Link to={`/music/${handle}`}>
           <StyledImg

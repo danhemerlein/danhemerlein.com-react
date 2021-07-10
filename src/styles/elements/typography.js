@@ -9,7 +9,7 @@ export const H1 = styled.h1`
   color: ${theme.light.black};
   ${({ textCenter }) => textCenter && `text-align: center`};
   ${({ black }) => black && `color: ${theme.light.black};`};
-  ${({ red }) => red && `color: ${theme.light.yanRed};`};
+  ${({ yanRed }) => yanRed && `color: ${theme.light.yanRed};`};
 `;
 
 export const H2 = styled.h2`
@@ -19,7 +19,7 @@ export const H2 = styled.h2`
   color: ${theme.light.black};
   ${({ textCenter }) => textCenter && `text-align: center`};
   ${({ black }) => black && `color: ${theme.light.black};`};
-  ${({ red }) => red && `color: ${theme.light.yanRed};`};
+  ${({ yanRed }) => yanRed && `color: ${theme.light.yanRed};`};
 `;
 
 export const P = styled.p`
@@ -31,7 +31,7 @@ export const P = styled.p`
   ${({ textCenter }) => textCenter && `text-align: center`};
   ${({ textRight }) => textRight && `text-align: right`};
   ${({ white }) => white && `color: ${theme.light.white};`};
-  ${({ red }) => red && `color: ${theme.light.yanRed};`};
+  ${({ yanRed }) => yanRed && `color: ${theme.light.yanRed};`};
 `;
 
 // export const A = styled.a`

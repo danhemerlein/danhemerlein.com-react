@@ -1,32 +1,39 @@
 import React from "react";
 import styled from "styled-components";
 import { FlexContainer } from "styles/elements";
-import { anchorColor, SlideWideLeft, SlideWideRight } from "styles/utilities";
+import theme from "styles/theme";
+import {
+  anchorColor,
+  fullBleed,
+  SlideWideLeft,
+  SlideWideRight,
+} from "styles/utilities";
+import { remHelper } from "utils";
 
 const Hero = styled(FlexContainer)`
-  width: 100%;
-  height: 50vh;
+  height: 25vh;
+  margin-top: ${remHelper[16]};
   font-family: "lack_regular";
-  color: ${({ theme }) => theme.light.yanRed};
+  background: ${({ theme }) => theme.light.black};
+  ${fullBleed({ space: 1.6, right: true, left: true })};
 `;
 
 const StyledLink = styled.a`
   text-align: center;
+
   ${anchorColor({
-    color: "black",
+    color: theme.light.yanRed,
   })};
 `;
 
 const HeadlineTwo = styled.h2`
   font-size: 2rem;
   animation: ${SlideWideRight} 2.5s;
-  color: ${({ theme }) => theme.light.black};
 `;
 
 const HeadlineThree = styled.h3`
   font-size: 1.25rem;
   animation: ${SlideWideLeft} 2.5s;
-  color: ${({ theme }) => theme.light.black};
 `;
 
 const MusicHero = () => {
@@ -37,8 +44,8 @@ const MusicHero = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <HeadlineTwo>young and nauseous</HeadlineTwo>
-        <HeadlineThree>out now</HeadlineThree>
+        <HeadlineTwo yanRed>young and nauseous</HeadlineTwo>
+        <HeadlineThree yanRed>out now</HeadlineThree>
       </StyledLink>
     </Hero>
   );
