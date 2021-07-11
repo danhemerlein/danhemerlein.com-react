@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FlexContainer, P } from "styles/elements";
-import { above } from "styles/utilities";
+import theme from "styles/theme";
+import { above, anchorColor } from "styles/utilities";
 import { remHelper } from "utils";
 
 const Details = styled(FlexContainer)`
@@ -13,8 +14,14 @@ const Details = styled(FlexContainer)`
   }
 
   ${above.tablet`
-  display: none;
-`}
+    display: none;
+  `}
+`;
+
+const StyledLink = styled(Link)`
+  ${anchorColor({
+    color: theme.light.black,
+  })};
 `;
 
 export default function MobileDetails({ handle, title, artist }) {
@@ -22,10 +29,10 @@ export default function MobileDetails({ handle, title, artist }) {
     <Details items="center" justify="space-between">
       <div>
         <P>
-          <Link to={`/music/${handle}`}>{title}</Link>
+          <StyledLink to={`/music/${handle}`}>{title}</StyledLink>
         </P>
         <P>
-          <Link to={`/music/${handle}`}>by {artist}</Link>
+          <StyledLink to={`/music/${handle}`}>by {artist}</StyledLink>
         </P>
       </div>
     </Details>
