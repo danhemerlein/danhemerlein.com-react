@@ -41,7 +41,7 @@ const Music = ({ musicPageLoading, musicPage, projects }) => {
     loadContent();
   }, [dispatch]);
 
-  function handleChange(event) {
+  function handleSortChange(event) {
     setSort(event.target.value);
 
     if (event.target.value === "") {
@@ -75,6 +75,10 @@ const Music = ({ musicPageLoading, musicPage, projects }) => {
     }
   }
 
+  function handleFilterChange(event) {
+    console.log(event);
+  }
+
   const content = projects.length;
 
   if (musicPageLoading === false && !content) {
@@ -89,7 +93,10 @@ const Music = ({ musicPageLoading, musicPage, projects }) => {
       <MusicHero />
       <FlexContainer wrap="wrap" items="center" justify="center">
         <ProjectPreviewContainer wrap="wrap" items="center" justify="center">
-          <MusicSort handleChange={handleChange} />
+          <MusicSort
+            handleSortChange={handleSortChange}
+            handleFilterChange={handleFilterChange}
+          />
 
           {activeProjects.map((project, index) => {
             const { title } = project.fields;
