@@ -1,61 +1,77 @@
 import React from "react";
 import styled from "styled-components";
-import { FlexContainer } from "styles/elements";
+import { FlexContainer, P } from "styles/elements";
 import { above, transparentBorder, whiteBorder } from "styles/utilities";
 import { remHelper } from "utils";
 import { i, j, k } from "./data";
 
 const Inner = styled(FlexContainer)`
-width: 100%;
-margin-bottom: ${remHelper[32]}
-
-color: ${({ theme }) => theme.light.white};
-
-  ${above.desktop`
-    border-bottom: ${transparentBorder}
-
-    &:hover {
-      border-bottom: ${whiteBorder};
-    }
-  `}
+  width: 100%;
 `;
 
 const StyledA = styled.a`
+  text-decoration: none;
+  padding-bottom: ${remHelper[4]};
+  border-bottom: ${transparentBorder};
+  margin-bottom: ${remHelper[16]};
+  transition: border 0.25s ease-in-out;
+
   ${({ desktop }) => desktop && `display: none;`};
-  ${({ mobile }) => mobile && `display: inline;`};
+  ${({ mobile }) => mobile && `display: block;`};
 
   ${above.desktop`
     ${({ mobile }) => mobile && `display: none;`};
-    ${({ desktop }) => desktop && `display: inline;`};
+    ${({ desktop }) => desktop && `display: block;`};
   `}
+
+  &:hover {
+    border-bottom: ${whiteBorder};
+  }
 `;
 
 const LinkTitleContainer = styled(FlexContainer)`
   width: 100%;
-  margin-bottom: ${remHelper[16]}
-  color: ${({ theme }) => theme.light.white};
+`;
 
+const StyledListItem = styled.li`
+  margin-top: ${remHelper[8]};
+
+  ${above.desktop`
+    margin-top: 0;
+  `}
 `;
 
 const Links = ({ key, link }) => {
   if (link.link !== undefined) {
     return (
-      <span key={key}>
+      <StyledListItem key={key}>
         <StyledA
           mobile
           href={link.link}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Inner justify="space-between">
+          <Inner justify="space-between" as="span">
             {i.map((item) => {
               const [id, sym] = item;
-              return <span key={id}>{sym}</span>;
+              return (
+                <P as="span" white key={id}>
+                  {sym}
+                </P>
+              );
             })}
-            <span>{link.title}</span>
+
+            <P white as="span">
+              {link.title}
+            </P>
+
             {j.map((item) => {
               const [id, sym] = item;
-              return <span key={id}>{sym}</span>;
+              return (
+                <P as="span" white key={id}>
+                  {sym}
+                </P>
+              );
             })}
           </Inner>
         </StyledA>
@@ -67,17 +83,22 @@ const Links = ({ key, link }) => {
           rel="noopener noreferrer"
           key={key + 10}
         >
-          <LinkTitleContainer justify="space-between">
-            <span>{key}</span>
+          <LinkTitleContainer justify="space-between" as="span">
             {k.map((item) => {
               const [id, sym] = item;
 
-              return <span key={id}>{sym}</span>;
+              return (
+                <P as="span" white key={id}>
+                  {sym}
+                </P>
+              );
             })}
-            <span>{link.title}</span>
+            <P white as="span">
+              {link.title}
+            </P>
           </LinkTitleContainer>
         </StyledA>
-      </span>
+      </StyledListItem>
     );
   }
   return null;

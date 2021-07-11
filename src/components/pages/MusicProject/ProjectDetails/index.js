@@ -1,47 +1,57 @@
 import React from "react";
 import styled from "styled-components";
 import { FlexContainer, P } from "styles/elements";
-import { above } from "styles/utilities";
+import theme from "styles/theme";
+import { above, anchorColor } from "styles/utilities";
 import { remHelper } from "utils";
 
 const TitleContainer = styled(FlexContainer)`
   margin-top: ${remHelper[16]};
 
-  ${above.tablet`
+  ${above.desktop`
     margin-top: 0;
   `}
 `;
 
 const DateContainer = styled(FlexContainer)`
   margin-top: ${remHelper[16]};
-  width: 50%:
-`;
+  width: 50%;
 
-const ReleaseDate = styled(P)`
-  margin: ${remHelper[8]} 0;
-
-  ${above.tablet`
+  ${above.desktop`
     margin-top: 0;
   `}
 `;
 
+const ReleaseDate = styled(P)`
+  margin-bottom: ${remHelper[8]};
+`;
+
 const Title = styled(P)`
-  margin: ${remHelper[8]} 0;
+  margin-bottom: ${remHelper[8]};
+`;
+
+const StyledA = styled.a`
+  ${anchorColor({
+    color: theme.light.white,
+  })};
 `;
 
 const ProjectDetails = ({ project }) => {
   const { artistWebsite, artist, title, releaseDate, role } = project.fields;
+
   const renderArtistATag = () => {
     if (artistWebsite !== undefined) {
       return (
-        <>
-          <P white>
-            by&nbsp;
-            <a href={artistWebsite} target="_blank" rel="noopener noreferrer">
-              {artist}
-            </a>
-          </P>
-        </>
+        <P white>
+          by&nbsp;
+          <StyledA
+            href={artistWebsite}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {artist}
+          </StyledA>
+        </P>
       );
     }
     return <P white>by&nbsp;{artist}</P>;

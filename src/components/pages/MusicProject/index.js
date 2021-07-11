@@ -1,4 +1,5 @@
 import GoHomeBack from "components/base/GoHomeBack";
+import FullScreenHeight from "components/other/FullScreenHeight";
 import React from "react";
 import { usePalette } from "react-palette";
 import styled from "styled-components";
@@ -12,9 +13,9 @@ const Project = styled(FlexContainer)`
   position: relative;
   height: 100%;
   padding: ${remHelper[16]};
-  margin: ${remHelper[16]} 0;
-  ${fullBleed({ space: 1.6, right: true, left: true })};
   justify-content: space-between;
+  ${fullBleed({ space: 1.6, right: true, left: true })};
+  overflow-y: scroll;
 
   ${({ lightMuted, muted }) =>
     lightMuted &&
@@ -23,6 +24,7 @@ const Project = styled(FlexContainer)`
 
   ${above.tablet`
     justify-content: center;
+    overflow-y: unset;
   `}
 `;
 
@@ -31,7 +33,7 @@ const Inner = styled(FlexContainer)`
   flex-direction: column;
 
   ${above.tablet`
-    width: 66%
+    width: 75%
   `}
 
   ${above.desktop`
@@ -41,10 +43,14 @@ const Inner = styled(FlexContainer)`
 
 const StyledImg = styled.img`
   width: 100%;
+  margin: 0 auto;
+
+  ${above.tablet`
+    width: 50%;
+  `}
 
   ${above.desktop`
-    width: 50%;
-    margin-right: ${remHelper[8]};
+    margin: 0 ${remHelper[8]} 0 0;
   `}
 `;
 
@@ -62,9 +68,15 @@ const DetailsContainer = styled.div`
   `}
 `;
 
-const LinksContainer = styled.div`
+const LinksContainer = styled.ul`
   margin-top: ${remHelper[16]};
-  color: ${({ theme }) => theme.light.white};
+`;
+
+const StyledGoHomeBack = styled(GoHomeBack)`
+  ${above.tablet`
+    position: absolute;
+    bottom: ${remHelper[16]};
+  `}
 `;
 
 const MusicProject = ({ project }) => {
@@ -73,31 +85,37 @@ const MusicProject = ({ project }) => {
   const { data } = usePalette(`https:${artwork.fields.file.url}`);
 
   return (
-    <Project
-      items="center"
-      direction="column"
-      lightMuted={data.lightMuted}
-      muted={data.muted}
-    >
-      <Inner>
-        <StyledImg
-          src={artwork.fields.file.url}
-          alt={artwork.fields.file.title}
+    <FullScreenHeight unsetBreakpoint="none">
+      <Project
+        items="center"
+        direction="column"
+        lightMuted={data.lightMuted}
+        muted={data.muted}
+      >
+        <Inner>
+          <StyledImg
+            src={artwork.fields.file.url}
+            alt={artwork.fields.file.title}
+          />
+
+          <DetailsContainer>
+            <ProjectDetails project={project} />
+
+            <LinksContainer>
+              {links.map((link, key) => {
+                return <ProjectLink mapKey={key} link={link} />;
+              })}
+            </LinksContainer>
+          </DetailsContainer>
+        </Inner>
+
+        <StyledGoHomeBack
+          destination="/music/"
+          cta="go back"
+          themeColor="white"
         />
-
-        <DetailsContainer>
-          <ProjectDetails project={project} />
-
-          <LinksContainer>
-            {links.map((link, key) => {
-              return <ProjectLink mapKey={key} link={link} />;
-            })}
-          </LinksContainer>
-        </DetailsContainer>
-      </Inner>
-
-      <GoHomeBack destination="/music/" cta="go back" white />
-    </Project>
+      </Project>
+    </FullScreenHeight>
   );
 };
 
